@@ -5,5 +5,5 @@ project:
 nginx:
   version: "3.33.0"
 
-cert-manager:
+certmanager:
   version: "v1.3.1"

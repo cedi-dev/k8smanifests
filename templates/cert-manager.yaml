@@ -14,7 +14,7 @@ spec:
   source:
     path: ''
     repoURL: 'https://charts.jetstack.io'
-    targetRevision: {{ .Values.cert-manager.version }}
+    targetRevision: {{ .Values.certmanager.version }}
     chart: cert-manager
   syncPolicy:
     automated:
