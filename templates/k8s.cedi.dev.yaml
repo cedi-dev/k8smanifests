@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k8s.cedi.dev
+  name: k8s-cedi-dev
 spec:
   destination:
     name: ''
