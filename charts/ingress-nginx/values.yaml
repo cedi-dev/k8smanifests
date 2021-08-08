@@ -2,7 +2,7 @@ ingress-nginx:
   fullnameOverride: ingress-nginx
   controller:
     image:
-      image: docker/ingress-nginx/controller
+      image: ingress-nginx/controller
     extraArgs:
       enable-ssl-passthrough: ''
     replicaCount: 3
@@ -11,10 +11,6 @@ ingress-nginx:
     adminssionWebhooks:
       patch:
         image:
-          image: docker/jettech/kube-webhook-certgen
+          image: jettech/kube-webhook-certgen
     serviceMonitor:
       enabled: true
-  defaultBackend:
-    enabled: true
-    image:
-      image: docker/defaultbackend-amd64
