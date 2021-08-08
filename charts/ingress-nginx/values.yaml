@@ -1,9 +1,14 @@
-ingress-nginx:
-  fullnameOverride: ingress-nginx
-    extraArgs:
-      enable-ssl-passthrough: ''
-    replicaCount: 3
-    service:
-      externalTrafficPolicy: "Local"
+fullnameOverride: ingress-nginx
+
+controller:
+  replicaCount: 3
+
+  extraArgs:
+    enable-ssl-passthrough: ''
+
+  service:
+    externalTrafficPolicy: "Local"
+
+  metrics:
     serviceMonitor:
       enabled: true
