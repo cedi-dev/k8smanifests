@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: charts/ingress-nginx
-    repoURL: git@github.com:cedi/k8s.cedi.dev.git
+    repoURL: https://github.com/cedi-dev/k8s.cedi.dev.git
     targetRevision: main
   syncPolicy:
     automated:
