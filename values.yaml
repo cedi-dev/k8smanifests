@@ -1,9 +1,0 @@
-project:
-  name: default
-  namespace: default
-
-nginx:
-  version: "3.33.0"
-
-certmanager:
-  version: "v1.3.1"

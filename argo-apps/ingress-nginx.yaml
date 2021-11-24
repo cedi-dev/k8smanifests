@@ -2,7 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ingress-nginx
+  namespace: argocd
 spec:
+  project: default
   destination:
     namespace: ingress-nginx
     server: 'https://kubernetes.default.svc'
@@ -20,10 +22,14 @@ spec:
           value: 'true'
         - name: controller.extraArgs.enable-ssl-passtrough
           value: ''
-  project: default
+  
   syncPolicy:
     automated:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
