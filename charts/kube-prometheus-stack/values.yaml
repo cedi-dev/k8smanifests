@@ -1,0 +1,103 @@
+kube-prometheus-stack:
+  namespaceOverride: "monitoring"
+  kubeTargetVersionOverride: "1.20.6"
+  fullnameOverride: "prom-stack"
+  alertmanager:
+    podDisruptionBudget:
+      enabled: true
+    alertmanagerSpec:
+      externalUrl: "https://alertmgr.k8s.cedi.dev"
+      replicas: 3
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: alertmanager
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      storage:
+        volumeClaimTemplate:
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 1Gi
+            storageClassName: cinder-fast-delete
+      configSecret: alertmanager
+      useExistingSecret: true
+  kubelet:
+    serviceMonitor:
+      resourcePath: "/metrics/resource"
+  kubeControllerManager:
+    serviceMonitor:
+      https: true
+  kubeEtcd:
+    serviceMonitor:
+      scheme: https
+  kubeProxy:
+    serviceMonitor:
+      https: true
+  kubeScheduler:
+    serviceMonitor:
+      https: true
+  prometheus:
+    prometheusSpec:
+      externalUrl: "https://prometheus.mgmt.gks.gec.io"
+      image:
+        repository: artifactory.intern.gec.io/docker/prometheus/prometheus
+      replicas: 2
+      retention: 30d
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: prometheus
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      resources:
+        limits:
+          cpu: "2"
+          memory: 2Gi
+        requests:
+          cpu: 100m
+          memory: 64Mi
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 64Gi
+            storageClassName: cinder-fast-retain
+  prometheus-operator:
+    admissionWebhooks:
+      patch:
+        image:
+          repository: artifactory.intern.gec.io/docker/jettech/kube-webhook-certgen
+    image:
+      repository: artifactory.intern.gec.io/docker/prometheus-operator/prometheus-operator
+  prometheus-node-exporter:
+    image:
+      repository: artifactory.intern.gec.io/docker/prometheus/node-exporter
+    serviceAccount:
+      imagePullSecrets:
+      - name: dockercfg-artifactory
+  kube-state-metrics:
+    image:
+      repository: artifactory.intern.gec.io/docker/kube-state-metrics/kube-state-metrics
+    imagePullSecrets:
+    - name: dockercfg-artifactory
+  grafana:
+    image:
+      repository: artifactory.intern.gec.io/docker/grafana/grafana
+      pullSecrets:
+      - dockercfg-artifactory
+    downloadDashboardsImage:
+      repository: artifactory.intern.gec.io/docker/curlimages/curl
+    initChownData:
+      image:
+        repository: artifactory.intern.gec.io/docker/busybox

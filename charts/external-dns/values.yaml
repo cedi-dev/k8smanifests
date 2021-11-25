@@ -17,5 +17,4 @@ external-dns:
   metrics:
     enabled: true
     serviceMonitor:
-      enabled: true
-      namespace: external-dns
+      enabled: false
