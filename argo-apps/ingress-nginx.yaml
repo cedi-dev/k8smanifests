@@ -4,32 +4,17 @@ metadata:
   name: ingress-nginx
   namespace: argocd
 spec:
-  project: default
   destination:
     namespace: ingress-nginx
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
+  project: default
   source:
-    repoURL: 'https://kubernetes.github.io/ingress-nginx'
-    targetRevision: 3.35.0
-    chart: ingress-nginx
-    helm:
-      parameters:
-        - name: controller.replicaCount
-          value: '3'
-        - name: controller.metrics.enabled
-          value: 'true'
-        - name: controller.metrics.serviceMonitor.enabled
-          value: 'true'
-        - name: controller.extraArgs.enable-ssl-passtrough
-          value: ''
-  
+    path: charts/ingress-nginx
+    repoURL: https://github.com/cedi-dev/k8s-manifests.git
+    targetRevision: main
   syncPolicy:
     automated:
+      prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
-  ignoreDifferences:
-    - group: apps
-      kind: Deployment
-      jsonPointers:
-        - /spec/replicas
+    - CreateNamespace=true
