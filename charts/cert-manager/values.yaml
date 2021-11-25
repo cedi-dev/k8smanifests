@@ -1,0 +1,10 @@
+cert-manager:
+  fullnameOverride: cert-manager
+  global:
+    leaderElection:
+      namespace: cert-manager
+  installCRDs: true
+  prometheus:
+    enabled: true
+    servicemonitor:
+      enabled: false
