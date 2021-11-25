@@ -1,0 +1,21 @@
+external-dns:
+  fullnameOverride: external-dns
+  provider: hetzner
+  hetzner:
+    secretName: cloud-provider-credentials
+    secretKey: HZ_TOKEN
+  domainFilters:
+    - k8s.cedi.dev
+  txtOwnerId: "k8s"
+  resources:
+    limits:
+      cpu: 50m
+      memory: 50Mi
+    requests:
+      memory: 50Mi
+      cpu: 10m
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: external-dns
