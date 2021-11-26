@@ -4,8 +4,6 @@ external-dns:
   hetzner:
     secretName: cloud-provider-credentials
     secretKey: HZ_DNS_TOKEN
-  domainFilters:
-    - av0.de
   txtOwnerId: "k8s"
   resources:
     limits:
