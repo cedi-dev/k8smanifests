@@ -3,9 +3,9 @@ external-dns:
   provider: hetzner
   hetzner:
     secretName: cloud-provider-credentials
-    secretKey: HZ_TOKEN
+    secretKey: HZ_DNS_TOKEN
   domainFilters:
-    - k8s.cedi.dev
+    - av0.de
   txtOwnerId: "k8s"
   resources:
     limits:
