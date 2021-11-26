@@ -1,0 +1,6 @@
+dependencies:
+- name: hcloud-fip-controller
+  repository: https://cbeneke.github.io/helm-charts
+  version: 0.2.2
+digest: sha256:b99c8d044b5940b6d21e7d1a8d3d3acba0475158f260c1e622320f17b86c4198
+generated: "2021-11-26T21:50:03.569165+01:00"

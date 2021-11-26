@@ -1,0 +1,7 @@
+apiVersion: v2
+name: fip-controller
+version: 0.2.2
+dependencies:
+  - name: hcloud-fip-controller
+    repository: https://cbeneke.github.io/helm-charts
+    version: 0.2.2

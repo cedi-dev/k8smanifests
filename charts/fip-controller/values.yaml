@@ -1,0 +1,7 @@
+existingEnvSecret: cloud-provider-credentials
+configInline:
+  hcloud_floating_ips:
+    - 116.202.185.176
+  lease_duration: 30
+  lease_name: production
+  log_level: info
