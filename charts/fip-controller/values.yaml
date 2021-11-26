@@ -1,7 +1,9 @@
-existingEnvSecret: cloud-provider-credentials
-configInline:
-  hcloud_floating_ips:
-    - 116.202.185.176
-  lease_duration: 30
-  lease_name: production
-  log_level: info
+hcloud-fip-controller:
+  existingEnvSecret: cloud-provider-credentials
+  fullnameOverride: fip-controller
+  configInline:
+    hcloud_floating_ips:
+      - 116.202.185.176
+    lease_duration: 30
+    lease_name: production
+    log_level: info
