@@ -6,7 +6,7 @@ kube-prometheus-stack:
     podDisruptionBudget:
       enabled: true
     alertmanagerSpec:
-      externalUrl: "https://alertmgr.k8s.cedi.dev"
+      externalUrl: "https://alertmgr.av0.de"
       replicas: 3
       affinity:
         podAntiAffinity:
@@ -44,7 +44,7 @@ kube-prometheus-stack:
       https: true
   prometheus:
     prometheusSpec:
-      externalUrl: "https://prometheus.mgmt.gks.gec.io"
+      externalUrl: "https://prometheus.av0.de"
       image:
         repository: artifactory.intern.gec.io/docker/prometheus/prometheus
       replicas: 2

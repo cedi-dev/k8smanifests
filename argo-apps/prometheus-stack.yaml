@@ -1,18 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: metallb-to-nginx
+  name: prometheus-stack
   namespace: argocd
 spec:
-  project: default
   destination:
-    namespace: ingress-nginx
+    namespace: monitoring
     server: https://kubernetes.default.svc
+  project: default
   source:
-    path: manifests/metallb-to-nginx
+    path: charts/kube-prometheus-stack
     repoURL: https://github.com/cedi-dev/k8s-manifests.git
     targetRevision: main
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
