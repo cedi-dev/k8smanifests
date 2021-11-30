@@ -19,9 +19,9 @@ argo-cd:
   server:
     certificate:
       enabled: false
-      domain: argocd.av0.de
+      domain: argo.av0.de
     config:
-      url: https://argocd.av0.de
+      url: https://argo.av0.de
       dex.config: |
         connectors:
           - type: github
@@ -37,10 +37,10 @@ argo-cd:
       https: true
       pathType: ImplementationSpecific
       hosts:
-        - argocd.av0.de
+        - argo.av0.de
       tls:
         - hosts:
-            - argocd.av0.de
+            - argo.av0.de
           secretName: argocd-secret
       annotations:
         "cert-manager.io/cluster-issuer": "letsencrypt-prod"
