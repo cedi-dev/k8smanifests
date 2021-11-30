@@ -4,7 +4,12 @@ metadata:
   name: example-ingress
   annotations:
     ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+    - hosts:
+      - av0.de
+      secretName: av0de-tls
   rules:
   - http:
       paths:
