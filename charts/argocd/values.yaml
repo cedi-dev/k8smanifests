@@ -28,8 +28,8 @@ argo-cd:
             id: github
             name: GitHub
             config:
-              clientID: $github-secret:github.oauth.clientID
-              clientSecret: $github-secret:github.oauth.clientSecret
+              clientID: $github-secret:oauth.clientID
+              clientSecret: $github-secret:oauth.clientSecret
               orgs:
                 - name: cedi-dev
     ingress:
