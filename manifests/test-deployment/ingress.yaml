@@ -8,10 +8,11 @@ metadata:
 spec:
   #tls:
   #  - hosts:
-  #    - av0.de
-  #    secretName: av0de-tls
+  #    - test.av0.de
+  #    secretName: test-av0-de-tls
   rules:
-  - http:
+  - host: test.av0.de
+    http:
       paths:
         - path: /foo
           pathType: Prefix
