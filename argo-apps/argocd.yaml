@@ -12,15 +12,9 @@ spec:
     path: charts/argocd
     repoURL: https://github.com/cedi-dev/k8s-manifests.git
     targetRevision: main
-  ignoreDifferences:
-    - group: v1
-      kind: Secret
-      jsonPointers:
-        - "/data/github.oauth.clientID"
-        - "/data/github.oauth.clientSecret"
-  #syncPolicy:
-  #  automated:
-  #    prune: true
-  #    selfHeal: true
-  #  syncOptions:
-  #  - CreateNamespace=true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
