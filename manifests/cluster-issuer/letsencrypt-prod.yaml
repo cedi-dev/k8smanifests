@@ -4,7 +4,7 @@ metadata:
   name: letsencrypt-prod
 spec:
   acme:
-    email: k8s@cedi.edv
+    email: k8s@cedi.dev
     preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-prod-acme-account-key
