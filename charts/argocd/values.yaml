@@ -18,6 +18,7 @@ argo-cd:
           scope: k8s-cedi-dev
   server:
     config:
+      url: https://argocd.av0.de
       dex.config: |-
         connectors:
           - type: github
