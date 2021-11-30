@@ -1,0 +1,58 @@
+argo-cd:
+  fullnameOverride: argocd
+  dex:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        selector:
+          scope: k8s-cedi-dev
+  redis:
+    serviceAccount:
+      create: true
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        selector:
+          scope: k8s-cedi-dev
+  server:
+    config:
+      dex.config: |-
+        connectors:
+          - type: github
+            id: github
+            name: GitHub
+            config:
+              clientID: $github.oauth.clientID
+              clientSecret: $github.oauth.clientSecret
+              redirectURI: http://127.0.0.1:5556/dex/callback
+    ingress:
+      enabled: true
+      https: true
+      pathType: ImplementationSpecific
+      hosts:
+        - argocd.av0.de
+      tls:
+        - hosts:
+            - argocd.av0.de
+          secretName: argocd-secret
+      annotations:
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+        "kubernetes.io/ingress.class": nginx
+        "nginx.ingress.kubernetes.io/backend-protocol": HTTPS
+        "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        selector:
+          scope: k8s-cedi-dev
+  controller:
+    metrics:
+      enabled: true
+  configs:  
+    secret:
+      extra:
+        github.oauth.clientID: test455
+        github.oauth.clientSecret: test123
