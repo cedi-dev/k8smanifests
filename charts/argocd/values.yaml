@@ -22,7 +22,7 @@ argo-cd:
       domain: argocd.av0.de
     config:
       url: https://argocd.av0.de
-      dex.config: |-
+      dex.config: |
         connectors:
           - type: github
             id: github
@@ -30,7 +30,6 @@ argo-cd:
             config:
               clientID: $github.oauth.clientID
               clientSecret: $github.oauth.clientSecret
-              redirectURI: https://argocd.av0.de/api/dex/callback
               orgs:
                 - name: cedi-dev
     ingress:
