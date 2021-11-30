@@ -17,6 +17,9 @@ argo-cd:
         selector:
           scope: k8s-cedi-dev
   server:
+    certificate:
+      enabled: false
+      domain: argocd.av0.de
     config:
       url: https://argocd.av0.de
       dex.config: |-
