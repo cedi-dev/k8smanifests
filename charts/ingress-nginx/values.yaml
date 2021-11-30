@@ -7,7 +7,7 @@ ingress-nginx:
     service:
       externalTrafficPolicy: "Local"
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: "*.av0.de."
+        external-dns.alpha.kubernetes.io/hostname: "av0.de."
         load-balancer.hetzner.cloud/name: "k8s-cedi-dev-lb"
         load-balancer.hetzner.cloud/health-check-port: "30686"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
