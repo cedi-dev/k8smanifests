@@ -64,8 +64,4 @@ argo-cd:
   controller:
     metrics:
       enabled: true
-  configs:  
-    secret:
-      extra:
-        github.oauth.clientID: test455
-        github.oauth.clientSecret: test123
+
