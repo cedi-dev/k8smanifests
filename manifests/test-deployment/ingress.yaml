@@ -1,17 +1,52 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: http-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+  - host: test.av0.de
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: kuard
+              port:
+                number: 80
+        - path: /foo
+          pathType: Prefix
+          backend:
+            service:
+              name: foo-svc
+              port:
+                number: 5678
+        - path: /bar
+          pathType: Prefix
+          backend:
+            service:
+              name: bar-svc
+              port:
+                number: 5678
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: https-ingress
   annotations:
     ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
     - hosts:
-      - test.av0.de
+      - test2.av0.de
       secretName: test-av0-de-tls
   rules:
-  - host: test.av0.de
+  - host: test2.av0.de
     http:
       paths:
         - path: /foo
