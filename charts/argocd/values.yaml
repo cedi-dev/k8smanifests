@@ -48,13 +48,13 @@ argo-cd:
         "nginx.ingress.kubernetes.io/backend-protocol": HTTPS
         "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
     rbacConfig:
+      policy.default: role:readonly
       policy.csv: |
         p, role:org-admin, applications, *, */*, allow
         p, role:org-admin, clusters, *, *, allow
         p, role:org-admin, repositories, *, *, allow
         p, role:org-admin, projects, *, *, allow
         g, "cedi-dev", role:org-admin
-        policy.default: role:readonly
     metrics:
       enabled: true
       serviceMonitor:
