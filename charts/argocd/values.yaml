@@ -30,7 +30,7 @@ argo-cd:
             config:
               clientID: $github.oauth.clientID
               clientSecret: $github.oauth.clientSecret
-              redirectURI: http://127.0.0.1:5556/dex/callback
+              redirectURI: https://argocd.av0.de/api/dex/callback
               orgs:
                 - name: cedi-dev
     ingress:
