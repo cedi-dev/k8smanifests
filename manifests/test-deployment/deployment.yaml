@@ -1,19 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: foo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: foo
   template:
     metadata:
       labels:
-        app: nginx
+        app: foo
     spec:
       containers:
-      - image: nginx
-        name: nginx
-        ports:
-        - containerPort: 80
+        - name: foo-app
+          image: hashicorp/http-echo
+          args:
+            - "-text=foo"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bar
+  template:
+    metadata:
+      labels:
+        app: bar
+    spec:
+      containers:
+        - name: bar-app
+          image: hashicorp/http-echo
+          args:
+            - "-text=bar"
