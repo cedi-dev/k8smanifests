@@ -45,8 +45,6 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       externalUrl: "https://prometheus.av0.de"
-      image:
-        repository: artifactory.intern.gec.io/docker/prometheus/prometheus
       replicas: 2
       retention: 30d
       affinity:
@@ -73,31 +71,4 @@ kube-prometheus-stack:
               requests:
                 storage: 64Gi
             storageClassName: cinder-fast-retain
-  prometheus-operator:
-    admissionWebhooks:
-      patch:
-        image:
-          repository: artifactory.intern.gec.io/docker/jettech/kube-webhook-certgen
-    image:
-      repository: artifactory.intern.gec.io/docker/prometheus-operator/prometheus-operator
-  prometheus-node-exporter:
-    image:
-      repository: artifactory.intern.gec.io/docker/prometheus/node-exporter
-    serviceAccount:
-      imagePullSecrets:
-      - name: dockercfg-artifactory
-  kube-state-metrics:
-    image:
-      repository: artifactory.intern.gec.io/docker/kube-state-metrics/kube-state-metrics
-    imagePullSecrets:
-    - name: dockercfg-artifactory
-  grafana:
-    image:
-      repository: artifactory.intern.gec.io/docker/grafana/grafana
-      pullSecrets:
-      - dockercfg-artifactory
-    downloadDashboardsImage:
-      repository: artifactory.intern.gec.io/docker/curlimages/curl
-    initChownData:
-      image:
-        repository: artifactory.intern.gec.io/docker/busybox
+
