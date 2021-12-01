@@ -30,7 +30,7 @@ adguard-home:
       enabled: true
       annotations:
         load-balancer.hetzner.cloud/name: "k8s-cedi-dev-lb"
-      type: NodePort
+      type: LoadBalancer
       ports:
         dns-tcp:
           enabled: true
@@ -42,7 +42,7 @@ adguard-home:
       enabled: true
       annotations:
         load-balancer.hetzner.cloud/name: "k8s-cedi-dev-lb"
-      type: NodePort
+      type: LoadBalancer
       ports:
         dns-udp:
           enabled: true
