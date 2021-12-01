@@ -1,6 +1,6 @@
 adguard-home:
   controller:
-    replicas: 2
+    replicas: 1
     # -- Configures service settings for the chart.
     # @default -- See values.yaml
     service:
