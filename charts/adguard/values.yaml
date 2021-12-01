@@ -13,12 +13,12 @@ adguard-home:
       hosts:
       - host: adguard.av0.de
         paths:
-        - path: /
-          pathType: Prefix
+          - path: /
+            pathType: Prefix
       tls:
         - secretName: "adguard-av0-de-tls"
-        - hosts:
-          - adguard.av0.de
+          hosts:
+            - adguard.av0.de
 
   service:
     main:
