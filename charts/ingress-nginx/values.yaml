@@ -5,11 +5,18 @@ ingress-nginx:
       enable-ssl-passthrough: ''
     replicaCount: 3
     service:
+      enabled: true
       externalTrafficPolicy: "Local"
       annotations:
         external-dns.alpha.kubernetes.io/hostname: "av0.de."
         load-balancer.hetzner.cloud/name: "k8s-cedi-dev-lb"
         load-balancer.hetzner.cloud/health-check-port: "32154"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
+  tcp:
+    53: "adguard/adguard-adguard-home-dns-tcp:53"
+  udp:
+    53: "adguard/adguard-adguard-home-dns-udp:53"
+
     serviceMonitor:
       enabled: true
