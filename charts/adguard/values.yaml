@@ -47,12 +47,12 @@ adguard-home:
       bind_hosts:
         - 0.0.0.0
       port: 53
-      statistics_interval: 1
+      statistics_interval: 7
       querylog_enabled: true
       querylog_file_enabled: true
-      querylog_interval: 90
+      querylog_interval: 1
       querylog_size_memory: 1000
-      anonymize_client_ip: false
+      anonymize_client_ip: true
       protection_enabled: true
       blocking_mode: default
       blocking_ipv4: ""
@@ -119,11 +119,11 @@ adguard-home:
         url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
         name: AdGuard DNS filter
         id: 1
-      - enabled: false
+      - enabled: true
         url: https://adaway.org/hosts.txt
         name: AdAway
         id: 2
-      - enabled: false
+      - enabled: true
         url: https://www.malwaredomainlist.com/hostslist/hosts.txt
         name: MalwareDomainList.com Hosts List
         id: 4
@@ -146,7 +146,7 @@ adguard-home:
         ra_slaac_only: false
         ra_allow_slaac: false
     clients: []
-    log_compress: false
+    log_compress: true
     log_localtime: false
     log_max_backups: 0
     log_max_size: 100
