@@ -28,8 +28,8 @@ argo-cd:
             id: github
             name: GitHub
             config:
-              clientID: $dex.oauth.clientID
-              clientSecret: $dex.oauth.clientSecret
+              clientID: $dex.oauth.github.clientID
+              clientSecret: $dex.oauth.github.clientSecret
               orgs:
                 - name: cedi-dev
     ingress:
@@ -67,5 +67,5 @@ argo-cd:
   configs:  
     secret:
       extra:
-        github.oauth.clientID: test455
-        github.oauth.clientSecret: test123
+        dex.oauth.github.clientID: test455 # TODO encrypt and use real values
+        dex.oauth.github.clientSecret: test123 # TODO encrypt and use real values
