@@ -28,11 +28,8 @@ adguard-home:
           port: 3000
     dns-tcp:
       enabled: true
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: "dns.av0.de."
-        load-balancer.hetzner.cloud/name: "k8s-cedi-dev-dns-lb"
-        load-balancer.hetzner.cloud/health-check-port: "53"
-      type: LoadBalancer
+      annotations: {}
+      type: NodePort
       ports:
         dns-tcp:
           enabled: true
@@ -42,11 +39,8 @@ adguard-home:
       externalTrafficPolicy: Local
     dns-udp:
       enabled: true
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: "dns.av0.de."
-        load-balancer.hetzner.cloud/name: "k8s-cedi-dev-dns-lb"
-        load-balancer.hetzner.cloud/health-check-port: "53"
-      type: LoadBalancer
+      annotations: {}
+      type: NodePort
       ports:
         dns-udp:
           enabled: true
