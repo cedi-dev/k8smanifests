@@ -35,7 +35,7 @@ adguard-home:
     beta_bind_port: 0
     users:
       - name: cedi
-        password: $2y$05$U4wl0H.mQT/8z9w1NeyePOjqPDIuNuQZl0sRY5EVEtkGxtc3GalaO
+        password: $2y$05$aPXhjGMbpvlfZOGZQskHeea.bOezaJoet.f4n7ZZKrdAFi42RL3sC
     auth_attempts: 5
     block_auth_min: 15
     http_proxy: ""
