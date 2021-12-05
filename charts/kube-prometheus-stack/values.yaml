@@ -20,11 +20,9 @@ kube-prometheus-stack:
       storage:
         volumeClaimTemplate:
           spec:
-            accessModes: ["ReadWriteOnce"]
             resources:
               requests:
                 storage: 1Gi
-            storageClassName: hcloud-volumes
       configSecret: alertmanager
       useExistingSecret: true
   kubelet:
@@ -66,9 +64,6 @@ kube-prometheus-stack:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            accessModes: ["ReadWriteOnce"]
             resources:
               requests:
                 storage: 64Gi
-            storageClassName: hcloud-volumes
-
