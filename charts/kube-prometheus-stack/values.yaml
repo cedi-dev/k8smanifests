@@ -7,7 +7,7 @@ kube-prometheus-stack:
       enabled: true
     alertmanagerSpec:
       externalUrl: "https://alertmgr.av0.de"
-      replicas: 3
+      replicas: 1
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -24,7 +24,7 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 1Gi
-            storageClassName: cinder-fast-delete
+            storageClassName: hcloud-volumes
       configSecret: alertmanager
       useExistingSecret: true
   kubelet:
@@ -45,7 +45,7 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       externalUrl: "https://prometheus.av0.de"
-      replicas: 2
+      replicas: 1
       retention: 30d
       affinity:
         podAntiAffinity:
@@ -70,5 +70,5 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 64Gi
-            storageClassName: cinder-fast-retain
+            storageClassName: hcloud-volumes
 
