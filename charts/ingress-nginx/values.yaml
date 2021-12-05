@@ -7,10 +7,11 @@ ingress-nginx:
     service:
       enabled: true
       externalTrafficPolicy: "Local"
+      healthCheckNodePort: 32596
       annotations:
         external-dns.alpha.kubernetes.io/hostname: "av0.de."
         load-balancer.hetzner.cloud/name: "av0-de-lb"
-        load-balancer.hetzner.cloud/health-check-port: "10254"
+        load-balancer.hetzner.cloud/health-check-port: "32596"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
     serviceMonitor:
       enabled: true
