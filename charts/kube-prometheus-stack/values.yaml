@@ -20,6 +20,15 @@ kube-prometheus-stack:
   alertmanager:
     ingress:
       enabled: true
+      hosts:
+        - alertmanager.av0.de
+      pathType: ImplementationSpecific
+      paths:
+        - /
+      tls:
+        - secretName: alertmanager-tls-secret
+          hosts:
+            - alertmanager.av0.de
     alertmanagerSpec:
       externalUrl: "https://alertmgr.av0.de"
       replicas: 1
@@ -33,9 +42,26 @@ kube-prometheus-stack:
     enabled: true
     ingress:
       enabled: true
+      hosts:
+        - grafana.av0.de
+      paths:
+        - /
+      tls:
+        - secretName: grafana-tls-secret
+          hosts:
+            - grafana.av0.de
   prometheus:
     ingress:
       enabled: true
+      hosts:
+        - prometheus.av0.de
+      pathType: ImplementationSpecific
+      paths:
+        - /
+      tls:
+        - secretName: prometheus-tls-secret
+          hosts:
+            - prometheus.av0.de
     prometheusSpec:
       externalUrl: "https://prometheus.av0.de"
       replicas: 1
