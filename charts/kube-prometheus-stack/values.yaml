@@ -20,6 +20,8 @@ kube-prometheus-stack:
   alertmanager:
     ingress:
       enabled: true
+      annotations:
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
       hosts:
         - alertmanager.av0.de
       pathType: ImplementationSpecific
@@ -42,6 +44,8 @@ kube-prometheus-stack:
     enabled: true
     ingress:
       enabled: true
+      annotations:
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
       hosts:
         - grafana.av0.de
       paths:
@@ -53,6 +57,8 @@ kube-prometheus-stack:
   prometheus:
     ingress:
       enabled: true
+      annotations:
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
       hosts:
         - prometheus.av0.de
       pathType: ImplementationSpecific
