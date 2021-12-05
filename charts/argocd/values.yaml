@@ -6,7 +6,7 @@ argo-cd:
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-cedi-dev
+          scope: k8s-av0-de
   redis:
     serviceAccount:
       create: true
@@ -15,7 +15,7 @@ argo-cd:
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-cedi-dev
+          scope: k8s-av0-de
   server:
     certificate:
       enabled: false
@@ -31,7 +31,7 @@ argo-cd:
               clientID: $dex.oauth.github.clientID
               clientSecret: $dex.oauth.github.clientSecret
               orgs:
-                - name: cedi-dev
+                - name: av0-de
     ingress:
       enabled: true
       https: true
@@ -54,13 +54,13 @@ argo-cd:
         p, role:org-admin, clusters, *, *, allow
         p, role:org-admin, repositories, *, *, allow
         p, role:org-admin, projects, *, *, allow
-        g, "cedi-dev", role:org-admin
+        g, "av0de", role:org-admin
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-cedi-dev
+          scope: k8s-av0-de
   controller:
     metrics:
       enabled: true

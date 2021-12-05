@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: charts/cert-manager
-    repoURL: https://github.com/cedi-dev/k8s-manifests.git
+    repoURL: https://github.com/av0-de/k8s-manifests.git
     targetRevision: main
   syncPolicy:
     automated:
