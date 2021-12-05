@@ -8,23 +8,12 @@ kube-prometheus-stack:
     alertmanagerSpec:
       externalUrl: "https://alertmgr.av0.de"
       replicas: 1
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app: alertmanager
-              topologyKey: kubernetes.io/hostname
-            weight: 100
       storage:
         volumeClaimTemplate:
           spec:
             resources:
               requests:
                 storage: 1Gi
-      configSecret: alertmanager
-      useExistingSecret: true
   kubelet:
     serviceMonitor:
       resourcePath: "/metrics/resource"
@@ -45,15 +34,6 @@ kube-prometheus-stack:
       externalUrl: "https://prometheus.av0.de"
       replicas: 1
       retention: 30d
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app: prometheus
-              topologyKey: kubernetes.io/hostname
-            weight: 100
       resources:
         limits:
           cpu: "2"
