@@ -4,6 +4,8 @@ external-dns:
   hetzner:
     secretName: cloud-provider-credentials
     secretKey: HZ_DNS_TOKEN
+  cloudflare:
+    secretName: cloud-provider-credentials
   txtOwnerId: "k8s"
   resources:
     limits:
