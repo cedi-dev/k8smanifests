@@ -14,7 +14,3 @@ ingress-nginx:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
     serviceMonitor:
       enabled: true
-  tcp:
-    53: "adguard/adguard-adguard-home-dns-tcp:53"
-  udp:
-    53: "adguard/adguard-adguard-home-dns-udp:53"
