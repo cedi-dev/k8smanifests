@@ -2,18 +2,6 @@ kube-prometheus-stack:
   namespaceOverride: "monitoring"
   kubeTargetVersionOverride: "1.20.6"
   fullnameOverride: "prom-stack"
-  alertmanager:
-    podDisruptionBudget:
-      enabled: true
-    alertmanagerSpec:
-      externalUrl: "https://alertmgr.av0.de"
-      replicas: 1
-      storage:
-        volumeClaimTemplate:
-          spec:
-            resources:
-              requests:
-                storage: 1Gi
   kubelet:
     serviceMonitor:
       resourcePath: "/metrics/resource"
@@ -29,7 +17,25 @@ kube-prometheus-stack:
   kubeScheduler:
     serviceMonitor:
       https: true
+  alertmanager:
+    ingress:
+      enabled: true
+    alertmanagerSpec:
+      externalUrl: "https://alertmgr.av0.de"
+      replicas: 1
+      storage:
+        volumeClaimTemplate:
+          spec:
+            resources:
+              requests:
+                storage: 1Gi
+  grafana:
+    enabled: true
+    ingress:
+      enabled: true
   prometheus:
+    ingress:
+      enabled: true
     prometheusSpec:
       externalUrl: "https://prometheus.av0.de"
       replicas: 1
