@@ -20,7 +20,6 @@ argo-cd:
   server:
     image:
       repository: "ghcr.io/av0de/argocd-custom-container"
-      tag: "v3.7.1"
     certificate:
       enabled: false
       domain: argo.av0.de
