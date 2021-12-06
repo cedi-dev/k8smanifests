@@ -16,7 +16,10 @@ argo-cd:
         enabled: true
         selector:
           scope: k8s-av0-de
+
   server:
+    image:
+      repository: "ghcr.io/av0de/argocd-custom-container"
     certificate:
       enabled: false
       domain: argo.av0.de
@@ -32,6 +35,14 @@ argo-cd:
               clientSecret: $dex.oauth.github.clientSecret
               orgs:
                 - name: av0-de
+      configManagementPlugins: |
+        - name: helmSecrets
+          init:
+            command: ["gpg"]
+            args: ["--import", "/home/argocd/gpg/gpg.asc"] # is mounted as a kube secret
+          generate:
+            command: ["/bin/sh", "-c"]
+            args: ["helm secrets template $HELM_OPTS $RELEASE_NAME ."]
     ingress:
       enabled: true
       https: true
@@ -61,10 +72,12 @@ argo-cd:
         enabled: true
         selector:
           scope: k8s-av0-de
+
   controller:
     metrics:
       enabled: true
-  configs:  
+
+  configs:
     secret:
       extra:
         dex.oauth.github.clientID: test455 # TODO encrypt and use real values
