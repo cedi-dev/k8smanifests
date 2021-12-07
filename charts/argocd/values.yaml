@@ -70,7 +70,7 @@ argo-cd:
         p, role:viewer, applications, get, *, allow
         p, role:viewer, projects, get, *, allow
         p, role:viewer, clusters, get, *, allow
-        p, role:viewer, repositories, *, allow
+        p, role:viewer, repositories, get, *, allow
 
         g, av0de, role:viewer
         g, av0de:admin, role:org-admin
