@@ -68,8 +68,8 @@ argo-cd:
         p, role:org-admin, *, *, *, allow
         p, role:viewer, *, get, *, allow
 
-        g, av0de, role:org-admin
-        g, av0de:viewers, role:viewer
+        g, av0de, role:viewer
+        g, av0de:admin, role:org-admin
     metrics:
       enabled: true
       serviceMonitor:
