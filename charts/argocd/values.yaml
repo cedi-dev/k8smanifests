@@ -66,7 +66,6 @@ argo-cd:
       policy.default: role:readonly
       policy.csv: |
         p, role:org-admin, *, *, *, allow
-
         p, role:viewer, *, get, *, allow
 
         g, av0de, role:viewer
