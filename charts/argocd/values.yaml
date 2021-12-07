@@ -67,10 +67,7 @@ argo-cd:
       policy.csv: |
         p, role:org-admin, *, *, *, allow
 
-        p, role:viewer, applications, get, *, allow
-        p, role:viewer, projects, get, *, allow
-        p, role:viewer, clusters, get, *, allow
-        p, role:viewer, repositories, get, *, allow
+        p, role:viewer, *, get, *, allow
 
         g, av0de, role:viewer
         g, av0de:admin, role:org-admin
