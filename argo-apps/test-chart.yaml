@@ -7,23 +7,21 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: testing
-    server: https://kubernetes.default.svc
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
   project: default
   source:
     path: charts/test-chart
     repoURL: https://github.com/av0de/k8s-manifests.git
     targetRevision: main
-    plugin:
-      name: helmSecrets
-      env:
-        - name: HELM_OPTS
-          value: "values.secret.yaml"
-        - name: RELEASE_NAME
-          value: test-chart
+    helm:
+      valueFiles:
+        - values.yaml
+        - values.secret.yaml
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
