@@ -17,6 +17,17 @@ argo-cd:
         selector:
           scope: k8s-av0-de
 
+  repoServer:
+    image:
+      repository: "ghcr.io/av0de/argocd-custom-container"
+    volumes:
+    - name: helm-secrets
+      secret:
+        secretName: helm-secrets
+    volumeMounts:
+      - mountPath: /helm-secrets/
+        name: helm-secrets
+
   server:
     image:
       repository: "ghcr.io/av0de/argocd-custom-container"
