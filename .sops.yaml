@@ -1,0 +1,3 @@
+creation_rules:
+  - path_reges: charts\/.*\/.*secret\.yaml
+    age: age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq
