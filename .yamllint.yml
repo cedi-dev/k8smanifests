@@ -1,0 +1,13 @@
+extends: relaxed
+
+rules:
+  line-length:
+    max: 200
+    level: warning
+
+  new-line-at-end-of-file:
+    level: warning
+
+ignore: |
+  .yamllint.yml
+  charts/*/charts/
