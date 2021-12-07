@@ -14,6 +14,13 @@ spec:
     path: charts/test-chart
     repoURL: https://github.com/av0de/k8s-manifests.git
     targetRevision: main
+    plugin:
+      name: helmSecrets
+      env:
+        - name: HELM_OPTS
+          value: "values.secret.yaml"
+        - name: RELEASE_NAME
+          value: test-chart
   syncPolicy:
     automated:
       prune: true
