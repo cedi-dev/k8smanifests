@@ -65,11 +65,11 @@ argo-cd:
     rbacConfig:
       policy.default: role:readonly
       policy.csv: |
-        p, role:org-admin, applications, *, */*, allow
-        p, role:org-admin, clusters, *, *, allow
-        p, role:org-admin, repositories, *, *, allow
-        p, role:org-admin, projects, *, *, allow
-        g, "av0de", role:org-admin
+        p, role:org-admin, *, *, *, allow
+        p, role:viewer, *, get, *, allow
+
+        g, av0de, role:org-admin
+        g, av0de:viewers, role:viewer
     metrics:
       enabled: true
       serviceMonitor:
