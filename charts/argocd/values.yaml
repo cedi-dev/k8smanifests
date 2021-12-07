@@ -45,15 +45,7 @@ argo-cd:
               clientID: $dex.oauth.github.clientID
               clientSecret: $dex.oauth.github.clientSecret
               orgs:
-                - name: av0-de
-      configManagementPlugins: |
-        - name: helmSecrets
-          init:
-            command: ["gpg"]
-            args: ["--import", "/home/argocd/gpg/gpg.asc"] # is mounted as a kube secret
-          generate:
-            command: ["/bin/sh", "-c"]
-            args: ["helm secrets template $HELM_OPTS $RELEASE_NAME ."]
+                - name: av0de
     ingress:
       enabled: true
       https: true
