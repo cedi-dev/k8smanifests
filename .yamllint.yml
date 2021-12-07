@@ -11,3 +11,4 @@ rules:
 ignore: |
   .yamllint.yml
   charts/*/charts/
+  charts/*/templates/

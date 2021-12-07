@@ -8,31 +8,32 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
-    - hosts:
-      - test.av0.de
-      secretName: test-av0-de-tls
+    - secretName: test-av0-de-tls
+      hosts:
+        - test.av0.de
+
   rules:
-  - host: test.av0.de
-    http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: kuard
-              port:
-                number: 80
-        - path: /foo
-          pathType: Prefix
-          backend:
-            service:
-              name: foo-svc
-              port:
-                number: 5678
-        - path: /bar
-          pathType: Prefix
-          backend:
-            service:
-              name: bar-svc
-              port:
-                number: 5678
+    - host: test.av0.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kuard
+                port:
+                  number: 80
+          - path: /foo
+            pathType: Prefix
+            backend:
+              service:
+                name: foo-svc
+                port:
+                  number: 5678
+          - path: /bar
+            pathType: Prefix
+            backend:
+              service:
+                name: bar-svc
+                port:
+                  number: 5678

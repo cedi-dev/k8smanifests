@@ -55,8 +55,8 @@ spec:
         app: kuard
     spec:
       containers:
-      - image: gcr.io/kuar-demo/kuard-amd64:1
-        imagePullPolicy: Always
-        name: kuard
-        ports:
-        - containerPort: 8080
+        - image: gcr.io/kuar-demo/kuard-amd64:1
+          imagePullPolicy: Always
+          name: kuard
+          ports:
+            - containerPort: 8080

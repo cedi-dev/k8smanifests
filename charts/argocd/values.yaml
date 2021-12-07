@@ -21,9 +21,9 @@ argo-cd:
     image:
       repository: "ghcr.io/av0de/argocd-custom-container"
     volumes:
-    - name: helm-secrets
-      secret:
-        secretName: helm-secrets
+      - name: helm-secrets
+        secret:
+          secretName: helm-secrets
     volumeMounts:
       - mountPath: /helm-secrets/
         name: helm-secrets
@@ -53,9 +53,10 @@ argo-cd:
       hosts:
         - argo.av0.de
       tls:
-        - hosts:
+        - secretName: argocd-secret
+          hosts:
             - argo.av0.de
-          secretName: argocd-secret
+
       annotations:
         "cert-manager.io/cluster-issuer": "letsencrypt-prod"
         "kubernetes.io/ingress.class": nginx
