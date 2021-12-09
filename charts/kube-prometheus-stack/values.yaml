@@ -21,7 +21,9 @@ kube-prometheus-stack:
     ingress:
       enabled: true
       annotations:
-        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
       hosts:
         - alertmanager.av0.de
       pathType: ImplementationSpecific
@@ -45,7 +47,9 @@ kube-prometheus-stack:
     ingress:
       enabled: true
       annotations:
-        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
       hosts:
         - grafana.av0.de
       paths:
@@ -58,7 +62,9 @@ kube-prometheus-stack:
     ingress:
       enabled: true
       annotations:
-        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
       hosts:
         - prometheus.av0.de
       pathType: ImplementationSpecific
