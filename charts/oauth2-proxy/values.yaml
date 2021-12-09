@@ -1,14 +1,15 @@
 oauth2-proxy:
-  configuration:
-    ## @param configuration.clientID OAuth client ID
-    ##
-    clientID: "YYYYYYYYY"
-    ## @param configuration.clientSecret OAuth client secret
-    ##
-    clientSecret: "YYYYYYYYYY"
-    ## Create a new secret with the following command openssl rand -base64 32 | head -c 32 | base64
-    ## Use an existing secret for OAuth2 credentials (see secret.yaml for required fields)
-    ##
-    ## @param configuration.cookieSecret OAuth cookie secret
-    ##
-    cookieSecret: "YYYYYYYYYYY"
+  ingress:
+    enabled: true
+    tls: true
+    hostname: auth.av0.de
+    annotations:
+      "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+  extraArgs:
+    - --provider=github
+    - --github-org=av0de
+    - --cookie-domain=av0.de
+    - --whitelist-domain=.av0.de
+  redis:
+    auth:
+      enabled: false
