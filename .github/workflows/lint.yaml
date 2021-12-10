@@ -9,6 +9,7 @@ on:
 
 jobs:
   lint:
+    id: lint
     name: "Lint"
     runs-on: ubuntu-latest
     steps:
@@ -20,3 +21,69 @@ jobs:
           file_or_dir: .
           format: standard
           config_file: .yamllint.yml
+
+  kubeval_manifests:
+    name: "run kubeval on plain K8s manifests"
+    runson: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Install Kubeval
+        run: |
+          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C /usr/local/bin
+          cp kubeval /usr/local/bin
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Charts
+        run: |
+          for manifests in ./manifests/*/
+          do
+            echo "$manifests"
+            cat $manifests | kubeval --ignore-missing-schemas --strict
+          done
+
+  kubeval_charts:
+    name: "run kubeval on charts"
+    runson: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Install Kubeval
+        run: |
+          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C /usr/local/bin
+          cp kubeval /usr/local/bin
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Charts
+        run: |
+          for chart in ./charts/*/
+          do
+            echo "$chart"
+              for app in $stage*/
+              do
+                  helm template $chart --values $chart/values.yaml | kubeval --ignore-missing-schemas --strict
+              done
+          done
+
+  kubeval_kustomize:
+    name: "run kubeval on Kustomize overlays"
+    runson: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Install Kubeval
+        run: |
+          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C /usr/local/bin
+          cp kubeval /usr/local/bin
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Kustomize
+        run: |
+          for kust in ./kustomize/overlays/*/
+          do
+            echo "$kust"
+            kustomize build --enable-alpha-plugins --enable-helm $kust | kubeval --ignore-missing-schemas --strict
+          done
