@@ -28,8 +28,10 @@ jobs:
     steps:
       - name: Install Kubeval
         run: |
-          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C /usr/local/bin
-          cp kubeval /usr/local/bin
+          ttempdir=$(mktemp -d)
+          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C $tempdir
+          cp $tempdir/kubeval /usr/local/bin
+          rm -r $tempdir
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -49,8 +51,10 @@ jobs:
     steps:
       - name: Install Kubeval
         run: |
-          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C /usr/local/bin
-          cp kubeval /usr/local/bin
+          tempdir=$(mktemp -d)
+          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C $tempdir
+          cp $tempdir/kubeval /usr/local/bin
+          rm -r $tempdir
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -73,8 +77,10 @@ jobs:
     steps:
       - name: Install Kubeval
         run: |
-          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C /usr/local/bin
-          cp kubeval /usr/local/bin
+          tempdir=$(mktemp -d)
+          curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz -C $tempdir
+          cp $tempdir/kubeval /usr/local/bin
+          rm -r $tempdir
 
       - name: Checkout
         uses: actions/checkout@v2
