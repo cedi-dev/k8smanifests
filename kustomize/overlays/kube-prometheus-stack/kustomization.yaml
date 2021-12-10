@@ -1,8 +1,67 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../../bases/kube-prometheus-stack
+  - ../../bases/kube-prometheus-stack
 namespace: monitoring
 generators:
   - ./secret-generator.yaml
-patchesJson6902: []
+patches:
+- target:
+    kind: Deployment
+    namespace: monitoring
+    name: prometheus-stack-grafana
+  patch: |-
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_ENABLED
+        value: "true"
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_ALLOW_SIGN_UP
+        value: "true"
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_SCOPES
+        value: user:email,read:org
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_AUTH_URL
+        value: https://github.com/login/oauth/authorize'
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_TOKEN_URL
+        value: https://github.com/login/oauth/access_token
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_API_URL
+        value: https://api.github.com/user'
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_CLIENT_ID
+        valueFrom:
+          secretKeyRef:
+            name: oauth-credentials
+            key: auth_github_client_id
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: oauth-credentials
+            key: auth_github_client_secret
+    - op: add
+      path: "/spec/template/spec/containers/1/env/-"
+      value:
+        name: GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS
+        valueFrom:
+          secretKeyRef:
+            name: oauth-credentials
+            key: auth_github_allowed_organizations
