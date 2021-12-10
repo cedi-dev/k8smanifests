@@ -1,0 +1,93 @@
+kube-prometheus-stack:
+  namespaceOverride: "monitoring"
+  kubeTargetVersionOverride: "1.20.6"
+  fullnameOverride: "prom-stack"
+  kubelet:
+    serviceMonitor:
+      resourcePath: "/metrics/resource"
+  kubeControllerManager:
+    serviceMonitor:
+      https: true
+  kubeEtcd:
+    serviceMonitor:
+      scheme: https
+  kubeProxy:
+    serviceMonitor:
+      https: true
+  kubeScheduler:
+    serviceMonitor:
+      https: true
+  alertmanager:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
+      hosts:
+        - alertmanager.av0.de
+      pathType: ImplementationSpecific
+      paths:
+        - /
+      tls:
+        - secretName: alertmanager-tls-secret
+          hosts:
+            - alertmanager.av0.de
+    alertmanagerSpec:
+      externalUrl: "https://alertmgr.av0.de"
+      replicas: 1
+      storage:
+        volumeClaimTemplate:
+          spec:
+            resources:
+              requests:
+                storage: 1Gi
+  grafana:
+    enabled: true
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
+      hosts:
+        - grafana.av0.de
+      paths:
+        - /
+      tls:
+        - secretName: grafana-tls-secret
+          hosts:
+            - grafana.av0.de
+  prometheus:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
+      hosts:
+        - prometheus.av0.de
+      pathType: ImplementationSpecific
+      paths:
+        - /
+      tls:
+        - secretName: prometheus-tls-secret
+          hosts:
+            - prometheus.av0.de
+    prometheusSpec:
+      externalUrl: "https://prometheus.av0.de"
+      replicas: 1
+      retention: 30d
+      resources:
+        limits:
+          cpu: "2"
+          memory: 2Gi
+        requests:
+          cpu: 100m
+          memory: 64Mi
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            resources:
+              requests:
+                storage: 64Gi
