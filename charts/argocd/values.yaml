@@ -27,6 +27,9 @@ argo-cd:
     volumeMounts:
       - mountPath: /helm-secrets/
         name: helm-secrets
+    env:
+      - name: XDG_CONFIG_HOME
+        value: /home/argocd/.config
 
   server:
     image:
