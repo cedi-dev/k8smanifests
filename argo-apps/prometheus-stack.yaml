@@ -20,3 +20,9 @@ spec:
 #      selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  spec:
+  ignoreDifferences:
+    - group: apps
+      kind: ValidatingWebhookConfiguration
+      jsonPointers:
+      - /webhooks/*/failurePolicy
