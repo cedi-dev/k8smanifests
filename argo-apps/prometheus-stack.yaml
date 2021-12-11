@@ -14,10 +14,6 @@ spec:
     path: kustomize/overlays/kube-prometheus-stack
     repoURL: https://github.com/av0de/k8s-manifests.git
     targetRevision: main
-    helm:
-      valueFiles:
-        - values.yaml
-        - values.secret.yaml
   syncPolicy:
 #    automated:
 #      prune: true
