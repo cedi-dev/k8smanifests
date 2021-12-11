@@ -22,7 +22,9 @@ spec:
       - CreateNamespace=true
   spec:
   ignoreDifferences:
-    - group: apps
-      kind: ValidatingWebhookConfiguration
+    - kind: ValidatingWebhookConfiguration
       jsonPointers:
-      - /webhooks/*/failurePolicy
+        - /webhooks/
+    - kind: MutatingWebhookConfiguration
+      jsonPointers:
+        - /webhooks/
