@@ -36,6 +36,7 @@ argo-cd:
       domain: argo.av0.de
     config:
       url: https://argo.av0.de
+      kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
       dex.config: |
         connectors:
           - type: github
