@@ -15,16 +15,17 @@ spec:
     repoURL: https://github.com/av0de/k8s-manifests.git
     targetRevision: main
   syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
-  spec:
   ignoreDifferences:
     - kind: ValidatingWebhookConfiguration
+      group: admissionregistration.k8s.io
       jsonPointers:
-        - /webhooks/
+        - /webhooks/0/failurePolicy
     - kind: MutatingWebhookConfiguration
+      group: admissionregistration.k8s.io
       jsonPointers:
-        - /webhooks/
+        - /webhooks/0/failurePolicy
