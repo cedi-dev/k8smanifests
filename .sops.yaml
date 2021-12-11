@@ -1,3 +1,7 @@
 creation_rules:
-  - path_reges: charts\/.*\/.*secret\.yaml
+  - path_regex: charts\/.*\/.*secret\.yaml
     age: age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq
+  - path_regex: kustomize\/.*\/.*secret\.yaml
+    encrypted_regex: '^(data|stringData|spec)$'
+    age: age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq
+  - age: age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq
