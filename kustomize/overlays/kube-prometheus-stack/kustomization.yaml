@@ -30,7 +30,7 @@ patches:
         path: "/spec/template/spec/containers/1/env/-"
         value:
           name: GF_AUTH_GITHUB_AUTH_URL
-          value: https://github.com/login/oauth/authorize'
+          value: https://github.com/login/oauth/authorize
       - op: add
         path: "/spec/template/spec/containers/1/env/-"
         value:
@@ -40,7 +40,7 @@ patches:
         path: "/spec/template/spec/containers/1/env/-"
         value:
           name: GF_AUTH_GITHUB_API_URL
-          value: https://api.github.com/user'
+          value: https://api.github.com/user
       - op: add
         path: "/spec/template/spec/containers/1/env/-"
         value:
