@@ -20,6 +20,7 @@ argo-cd:
   repoServer:
     image:
       repository: "ghcr.io/av0de/argocd-custom-container"
+      imagePullPolicy: "Always"
     volumes:
       - name: helm-secrets
         secret:
@@ -34,6 +35,7 @@ argo-cd:
   server:
     image:
       repository: "ghcr.io/av0de/argocd-custom-container"
+      imagePullPolicy: "Always"
     certificate:
       enabled: false
       domain: argo.av0.de
