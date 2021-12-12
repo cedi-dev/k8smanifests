@@ -4,17 +4,9 @@ external-dns:
   hetzner:
     secretName: cloud-provider-credentials
     secretKey: HZ_DNS_TOKEN
-  cloudflare:
-    secretName: cloud-provider-credentials
   txtOwnerId: "k8s"
-  resources:
-    limits:
-      cpu: 50m
-      memory: 50Mi
-    requests:
-      memory: 50Mi
-      cpu: 10m
+  policy: sync
   metrics:
     enabled: true
     serviceMonitor:
-      enabled: false
+      enabled: true
