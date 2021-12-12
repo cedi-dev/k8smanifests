@@ -1,0 +1,47 @@
+apiVersion: cluster.k8s.io/v1alpha1
+kind: MachineDeployment
+metadata:
+  annotations:
+    cluster.k8s.io/cluster-api-autoscaler-node-group-max-size: "1"
+    cluster.k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
+  name: av0-de-cxp31
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      node: av0-de
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    env:
+    - name: HZ_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: HZ_TOKEN
+          name: cloud-provider-credentials
+    metadata:
+      labels:
+        node: av0-de
+    spec:
+      providerSpec:
+        value:
+          cloudProvider: hetzner
+          cloudProviderSpec:
+            image: ubuntu-20.04
+            location: nbg1
+            networks:
+            - "1290798"
+            serverType: cpx31
+          operatingSystem: ubuntu
+          operatingSystemSpec:
+            distUpgradeOnBoot: false
+          sshPublicKeys:
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKKQwlVWSGICyOiVryEdEp8bR+ltCxSeikxPTRRgSssL cedi@ivy
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0YM2rlsOXq9OLCMynkPSn6sFkGGOWS9/p5rbcS/OUX cedi@ava
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBW7KOtsdmhDszm0qaKdtxExNQqNnl6zJLz1vKRmmod2 cedi@liv
+      versions:
+        kubelet: 1.21.3
