@@ -55,6 +55,12 @@ grafana:
       - secretName: grafana-tls-secret
         hosts:
           - grafana.av0.de
+prometheusOperator:
+  namespaces: ''
+  denyNamespaces: ''
+  prometheusInstanceNamespaces: ''
+  alertmanagerInstanceNamespaces: ''
+  thanosRulerInstanceNamespaces: ''
 prometheus:
   ingress:
     enabled: true
@@ -90,3 +96,4 @@ prometheus:
               storage: 64Gi
     serviceMonitorNamespaceSelector: {}
     serviceMonitorSelector: {}
+    serviceMonitorSelectorNilUsesHelmValues: true
