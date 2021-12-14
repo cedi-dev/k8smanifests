@@ -90,4 +90,4 @@ prometheus:
               storage: 64Gi
     serviceMonitorNamespaceSelector:
       matchLabels:
-        kubernetes.io/metadata.name: argocd
+        prometheus: "true"
