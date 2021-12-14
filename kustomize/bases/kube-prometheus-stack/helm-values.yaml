@@ -88,6 +88,4 @@ prometheus:
           resources:
             requests:
               storage: 64Gi
-    serviceMonitorNamespaceSelector:
-      matchLabels:
-        prometheus: "true"
+    serviceMonitorNamespaceSelector: {}
