@@ -88,3 +88,6 @@ prometheus:
           resources:
             requests:
               storage: 64Gi
+    serviceMonitorNamespaceSelector:
+      matchLabels:
+        kubernetes.io/metadata.name: argocd
