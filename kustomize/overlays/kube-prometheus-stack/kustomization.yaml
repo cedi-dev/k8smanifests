@@ -7,16 +7,6 @@ generators:
   - ./secret-generator.yaml
 patches:
   - target:
-      kind: ClusterRoleBinding
-      name: prom-stack-operator
-    patch: |-
-      - op: add
-        path: "/subjects/-"
-        value:
-          kind: ServiceAccount
-          name: prom-stack-operator
-          namespace: argocd
-  - target:
       kind: Deployment
       namespace: monitoring
       name: prometheus-stack-grafana
