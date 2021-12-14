@@ -92,9 +92,7 @@ argo-cd:
   controller:
     metrics:
       enabled: true
-
-  configs:
-    secret:
-      extra:
-        dex.oauth.github.clientID: test455 # TODO encrypt and use real values
-        dex.oauth.github.clientSecret: test123 # TODO encrypt and use real values
+      serviceMonitor:
+        enabled: true
+        selector:
+          scope: k8s-av0-de
