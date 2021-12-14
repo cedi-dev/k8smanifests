@@ -96,4 +96,4 @@ prometheus:
               storage: 64Gi
     serviceMonitorNamespaceSelector: {}
     serviceMonitorSelector: {}
-    serviceMonitorSelectorNilUsesHelmValues: true
+    serviceMonitorSelectorNilUsesHelmValues: false
