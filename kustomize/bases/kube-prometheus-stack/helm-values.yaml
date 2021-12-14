@@ -89,3 +89,4 @@ prometheus:
             requests:
               storage: 64Gi
     serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: {}
