@@ -31,6 +31,12 @@ argo-cd:
     env:
       - name: XDG_CONFIG_HOME
         value: /home/argocd/.config
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        selector:
+          scope: k8s-av0-de
 
   server:
     image:
