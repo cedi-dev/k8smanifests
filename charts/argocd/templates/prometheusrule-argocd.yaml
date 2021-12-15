@@ -1,8 +1,6 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  labels:
-    scope: gks-mgmt
   name: argocd
   namespace: argocd
 spec:
