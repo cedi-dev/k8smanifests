@@ -1254,7 +1254,7 @@ data:
               "expr": "sum(increase(etcd_request_duration_seconds_bucket[1m])) by (le)",
               "format": "heatmap",
               "interval": "",
-              "intervalFactor": 10,
+              "intervalFactor": 2,
               "legendFormat": "{{le}}",
               "refId": "A"
             }

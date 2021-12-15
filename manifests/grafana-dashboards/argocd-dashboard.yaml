@@ -1149,7 +1149,7 @@ data:
                   "expr": "sum(increase(argocd_app_reconcile_bucket{namespace=~\"$namespace\"}[$interval])) by (le)",
                   "format": "heatmap",
                   "instant": false,
-                  "intervalFactor": 10,
+                  "intervalFactor": 1,
                   "legendFormat": "{{le}}",
                   "refId": "A"
                 }
@@ -2300,7 +2300,7 @@ data:
                 {
                   "expr": "sum(increase(argocd_git_request_duration_seconds_bucket{request_type=\"fetch\", namespace=~\"$namespace\"}[$interval])) by (le)",
                   "format": "heatmap",
-                  "intervalFactor": 10,
+                  "intervalFactor": 1,
                   "legendFormat": "{{le}}",
                   "refId": "A"
                 }
@@ -2364,7 +2364,7 @@ data:
                 {
                   "expr": "sum(increase(argocd_git_request_duration_seconds_bucket{request_type=\"ls-remote\", namespace=~\"$namespace\"}[$interval])) by (le)",
                   "format": "heatmap",
-                  "intervalFactor": 10,
+                  "intervalFactor": 1,
                   "legendFormat": "{{le}}",
                   "refId": "A"
                 }
