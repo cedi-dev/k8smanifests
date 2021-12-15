@@ -10,6 +10,7 @@ kubeControllerManager:
 kubeEtcd:
   serviceMonitor:
     scheme: https
+    insecureSkipVerify: true
 kubeProxy:
   serviceMonitor:
     https: true
