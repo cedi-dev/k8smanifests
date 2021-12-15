@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prom-stack-kube-proxy
+  namespace: kube-system
+  labels:
+    app: kube-prometheus-stack-kube-proxy
+    release: prometheus-stack
+spec:
+  type: ClusterIP
+  ports:
+  - name: http-metrics
+    port: 10249
+    protocol: TCP
+    targetPort: 10249
+  selector:
+    component: etcd
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: kube-prometheus-stack-kube-proxy
+    release: prometheus-stack
+  name: prom-stack-kube-proxy
+  namespace: kube-system
+spec:
+  endpoints:
+    - port: http-metrics
+      interval: 60s
+      path: /metrics
+      scrapeTimeout: 30s
+  jobLabel: kube-proxy
+  namespaceSelector:
+    matchNames:
+      - kube-system
+  selector:
+    matchLabels:
+      app: kube-prometheus-stack-kube-proxy
+      release: prometheus-stack

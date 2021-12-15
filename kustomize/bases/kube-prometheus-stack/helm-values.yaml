@@ -4,22 +4,31 @@ fullnameOverride: "prom-stack"
 kubelet:
   serviceMonitor:
     resourcePath: "/metrics/resource"
+
 kubeControllerManager:
+  service:
+    enabled: false
   serviceMonitor:
-    https: true
+    enabled: false
+
 kubeEtcd:
   service:
-    port: 2381
-    targetPort: 2381
+    enabled: false
   serviceMonitor:
-    scheme: https
-    insecureSkipVerify: true
+    enabled: false
+
 kubeProxy:
+  service:
+    enabled: false
   serviceMonitor:
-    https: true
+    enabled: false
+
 kubeScheduler:
+  service:
+    enabled: false
   serviceMonitor:
-    https: true
+    enabled: false
+
 alertmanager:
   ingress:
     enabled: true
