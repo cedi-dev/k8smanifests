@@ -8,6 +8,9 @@ kubeControllerManager:
   serviceMonitor:
     https: true
 kubeEtcd:
+  service:
+    port: 2381
+    targetPort: 2381
   serviceMonitor:
     scheme: https
     insecureSkipVerify: true
