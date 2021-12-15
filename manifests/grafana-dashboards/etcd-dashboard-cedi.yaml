@@ -1374,7 +1374,7 @@ data:
       },
       "timezone": "browser",
       "title": "etcd / cedi",
-      "uid": "BdqqORaseT7k",
+      "uid": "b63cf903af594d6b9511c4e9b3a14271",
       "version": 1
     }
 kind: ConfigMap
