@@ -7,6 +7,15 @@ generators:
   - ./secret-generator.yaml
 patches:
   - target:
+      kind: ServiceMonitor
+      namespace: monitoring
+      name: prom-stack-kube-etcd
+    patch: |-
+      - op: replace
+        path: "/spec/selector/matchLabels"
+        value:
+          component: etcd
+  - target:
       kind: Deployment
       namespace: monitoring
       name: prometheus-stack-grafana
