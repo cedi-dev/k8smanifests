@@ -4,7 +4,7 @@ metadata:
   name: prom-stack-kube-controller-manager
   namespace: kube-system
   labels:
-    app: kube-prometheus-stack-kube-controller-manager
+    app: prom-stack-kube-controller-manager
     release: prometheus-stack
 spec:
   type: ClusterIP
@@ -20,16 +20,16 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app: kube-prometheus-stack-kube-controller-manager
+    app: prom-stack-kube-controller-manager
     release: prometheus-stack
   name: prom-stack-kube-controller-manager
   namespace: kube-system
 spec:
   endpoints:
     - port: http-metrics
-      interval: 60s
+      interval: 30s
       path: /metrics
-      scrapeTimeout: 30s
+      scrapeTimeout: 20s
       scheme: https
       tlsConfig:
         insecureSkipVerify: true
@@ -39,5 +39,5 @@ spec:
       - kube-system
   selector:
     matchLabels:
-      app: kube-prometheus-stack-kube-controller-manager
+      app: prom-stack-kube-controller-manager
       release: prometheus-stack

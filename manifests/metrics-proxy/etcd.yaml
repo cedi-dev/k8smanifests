@@ -27,9 +27,9 @@ metadata:
 spec:
   endpoints:
     - port: http-metrics
-      interval: 60s
+      interval: 30s
       path: /metrics
-      scrapeTimeout: 30s
+      scrapeTimeout: 20s
   namespaceSelector:
     matchNames:
       - kube-system
