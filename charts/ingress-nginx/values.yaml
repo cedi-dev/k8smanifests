@@ -13,5 +13,7 @@ ingress-nginx:
         load-balancer.hetzner.cloud/name: "av0-de-lb"
         load-balancer.hetzner.cloud/health-check-port: "32596"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    serviceMonitor:
+    metrics:
       enabled: true
+      serviceMonitor:
+        enabled: true
