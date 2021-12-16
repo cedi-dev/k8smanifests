@@ -3,7 +3,7 @@
 1. Download Dashboard.json:
 
 ```bash
-curl -o argocd.json -L https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json
+curl -o argocd.json -L https://raw.githubusercontent.com/argoproj/argo-cd/master/examples/dashboard.json 
 ```
 
 2. Add Dashboard.json as configmap:
