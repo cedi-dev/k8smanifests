@@ -12,3 +12,10 @@ maintainers:
 - name: Loki Maintainers
   email: lokiproject@googlegroups.com
 engine: gotpl
+dependencies:
+- name: "loki"
+  repository: "https://grafana.github.io/helm-charts"
+  version: "^2.3.0"
+- name: "promtail"
+  repository: "https://grafana.github.io/helm-charts"
+  version: "^2.2.0"
