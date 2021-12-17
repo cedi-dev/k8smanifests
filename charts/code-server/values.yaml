@@ -45,9 +45,9 @@ ingress:
       paths:
         - /
   tls:
-    - secretName: alertmanager-tls-secret
+    - secretName: code-server-tls-secret
       hosts:
-        - alertmanager.av0.de
+        - code.av0.de
 
 # Optional additional arguments
 extraArgs: []
