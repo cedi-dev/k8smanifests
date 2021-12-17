@@ -96,3 +96,34 @@ argo-cd:
         enabled: true
         selector:
           scope: k8s-av0-de
+
+  configs:
+    repositories:
+      bitnami:
+        name: bitnami
+        type: helm
+        url: https://charts.bitnami.com/bitnami
+      grafana:
+        name: grafana
+        type: helm
+        url: https://grafana.github.io/helm-charts
+      argo:
+        name: Argo
+        type: helm
+        url: https://argoproj.github.io/argo-helm
+      jetstack:
+        name: jetstack
+        type: helm
+        url: https://charts.jetstack.io
+      ingress-nginx:
+        name: ingress-nginx
+        type: helm
+        url: https://kubernetes.github.io/ingress-nginx
+      deliveryhero:
+        name: deliveryhero
+        type: helm
+        url: https://charts.deliveryhero.io/
+      prometheus:
+        name: prometheus
+        type: helm
+        url: https://prometheus-community.github.io/helm-charts
