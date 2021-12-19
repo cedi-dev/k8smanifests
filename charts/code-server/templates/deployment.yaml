@@ -62,6 +62,7 @@ spec:
         {{- if .Values.extraVars }}
 {{ toYaml .Values.extraVars | indent 10 }}
         {{- end }}
+        {{- if .Values.password }}
           - name: PASSWORD
             valueFrom:
               secretKeyRef:
@@ -71,6 +72,7 @@ spec:
                 name: {{ template "code-server.fullname" . }}
               {{- end }}
                 key: password
+        {{- end }}
         {{- if .Values.extraArgs }}
           args:
 {{ toYaml .Values.extraArgs | indent 10 }}
