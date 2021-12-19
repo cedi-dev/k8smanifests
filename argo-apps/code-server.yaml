@@ -7,7 +7,9 @@ spec:
   generators:
     - list:
         elements:
-          - name: code
+          - name: 1
+            password: Y29kZQ==
+          - name: 2
   template:
     metadata:
       name: "{{name}}-code-server"
@@ -29,6 +31,7 @@ spec:
             - values.yaml
             - values.secret.yaml
           values: |-
+            password: {{password}}
             ingress:
                 hosts:
                   - host: {{name}}.code.av0.de
