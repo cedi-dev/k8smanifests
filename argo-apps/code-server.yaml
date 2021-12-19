@@ -28,6 +28,16 @@ spec:
           valueFiles:
             - values.yaml
             - values.secret.yaml
+          values: |-
+            ingress:
+                hosts:
+                  - host: {{name}}.code.av0.de
+                    paths:
+                      - /
+                tls:
+                  - secretName: {{name}}-code-server-tls-secret
+                    hosts:
+                      - {{name}}.code.av0.de
       syncPolicy:
         automated:
           prune: true
