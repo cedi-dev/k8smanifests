@@ -7,7 +7,7 @@ spec:
   generators:
     - list:
       elements:
-      - name: code
+        - name: code
   template:
     metadata:
       name: "{{name}}-code-server"
