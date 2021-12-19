@@ -1,26 +1,36 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: code-server
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: code-server
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    path: charts/code-server
-    repoURL: https://github.com/av0de/k8s-manifests.git
-    targetRevision: main
-    helm:
-      valueFiles:
-        - values.yaml
-        - values.secret.yaml
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  generators:
+    - list:
+      elements:
+      - name: code
+  template:
+    metadata:
+      name: "{{name}}-code-server"
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        namespace: "{{name}}-code-server"
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: charts/code-server
+        repoURL: https://github.com/av0de/k8s-manifests.git
+        targetRevision: main
+        helm:
+          releaseName: "{{name}}-code-server"
+          valueFiles:
+            - values.yaml
+            - values.secret.yaml
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
