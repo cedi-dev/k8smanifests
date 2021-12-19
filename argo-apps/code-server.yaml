@@ -7,9 +7,9 @@ spec:
   generators:
     - list:
         elements:
-          - name: 1
+          - name: "1"
             password: Y29kZQ==
-          - name: 2
+          - name: "2"
   template:
     metadata:
       name: "{{name}}-code-server"
