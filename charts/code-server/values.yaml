@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: codercom/code-server
-  tag: '3.12.0'
+  repository: linuxserver/code-server
+  tag: 'latest'
   pullPolicy: Always
 
 imagePullSecrets: []
