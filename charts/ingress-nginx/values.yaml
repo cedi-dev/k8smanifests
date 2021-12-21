@@ -3,7 +3,7 @@ ingress-nginx:
   controller:
     extraArgs:
       enable-ssl-passthrough: ''
-    replicaCount: 1
+    kind: DaemonSet
     service:
       enabled: true
       externalTrafficPolicy: "Local"
