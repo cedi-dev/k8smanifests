@@ -3,6 +3,7 @@ ingress-nginx:
   controller:
     extraArgs:
       enable-ssl-passthrough: ''
+      v: "6"
     kind: DaemonSet
     service:
       enabled: true
