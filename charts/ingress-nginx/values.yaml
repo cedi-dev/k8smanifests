@@ -13,9 +13,9 @@ ingress-nginx:
         load-balancer.hetzner.cloud/location: "nbg1"
         load-balancer.hetzner.cloud/name: "av0-de-lb"
         load-balancer.hetzner.cloud/type: lb11
-        load-balancer.hetzner.cloud/protocol: https
-        load-balancer.hetzner.cloud/http-certificates: prod-le
+        load-balancer.hetzner.cloud/protocol: http
         load-balancer.hetzner.cloud/algorithm-type: least_connections
+        load-balancer.hetzner.cloud/health-check-protocol: http
         load-balancer.hetzner.cloud/health-check-port: "32596"
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
     metrics:
