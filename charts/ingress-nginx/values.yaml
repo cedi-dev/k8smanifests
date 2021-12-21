@@ -10,6 +10,7 @@ ingress-nginx:
       healthCheckNodePort: 32596
       annotations:
         external-dns.alpha.kubernetes.io/hostname: "av0.de."
+        load-balancer.hetzner.cloud/network-zone: eu-central
         load-balancer.hetzner.cloud/name: "av0-de-lb"
         load-balancer.hetzner.cloud/type: lb11
         load-balancer.hetzner.cloud/protocol: https
