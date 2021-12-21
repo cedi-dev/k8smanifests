@@ -44,9 +44,9 @@ argo-cd:
       imagePullPolicy: "Always"
     certificate:
       enabled: false
-      domain: argo.av0.de
+      domain: argocd.av0.de
     config:
-      url: https://argo.av0.de
+      url: https://argocd.av0.de
       kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
       dex.config: |
         connectors:
@@ -63,11 +63,11 @@ argo-cd:
       https: true
       pathType: ImplementationSpecific
       hosts:
-        - argo.av0.de
+        - argocd.av0.de
       tls:
         - secretName: argocd-secret
           hosts:
-            - argo.av0.de
+            - argocd.av0.de
 
       annotations:
         "cert-manager.io/cluster-issuer": "letsencrypt-prod"
