@@ -1,6 +1,7 @@
 argo-cd:
   fullnameOverride: argocd
   dex:
+    enabled: true
     metrics:
       enabled: true
       serviceMonitor:
