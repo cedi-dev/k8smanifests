@@ -4,6 +4,7 @@ ingress-nginx:
     extraArgs:
       enable-ssl-passthrough: ''
     kind: DaemonSet
+    watchIngressWithoutClass: true
     service:
       enabled: true
       externalTrafficPolicy: "Local"
