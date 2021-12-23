@@ -1,6 +1,7 @@
 namespaceOverride: "monitoring"
 kubeTargetVersionOverride: "1.20.6"
 fullnameOverride: "prom-stack"
+
 kubelet:
   serviceMonitor:
     resourcePath: "/metrics/resource"
@@ -33,6 +34,7 @@ alertmanager:
   ingress:
     enabled: true
     annotations:
+      kubernetes.io/ingress.class: "nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
       nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
@@ -45,6 +47,7 @@ alertmanager:
       - secretName: alertmanager-tls-secret
         hosts:
           - alertmanager.av0.de
+
   alertmanagerSpec:
     externalUrl: "https://alertmgr.av0.de"
     replicas: 1
@@ -59,6 +62,7 @@ grafana:
   ingress:
     enabled: true
     annotations:
+      kubernetes.io/ingress.class: "nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
     hosts:
       - grafana.av0.de
@@ -74,10 +78,12 @@ prometheusOperator:
   prometheusInstanceNamespaces: ''
   alertmanagerInstanceNamespaces: ''
   thanosRulerInstanceNamespaces: ''
+
 prometheus:
   ingress:
     enabled: true
     annotations:
+      kubernetes.io/ingress.class: "nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       nginx.ingress.kubernetes.io/auth-signin: https://auth.av0.de/oauth2/start
       nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
@@ -90,6 +96,7 @@ prometheus:
       - secretName: prometheus-tls-secret
         hosts:
           - prometheus.av0.de
+
   prometheusSpec:
     externalUrl: "https://prometheus.av0.de"
     replicas: 1
@@ -107,6 +114,7 @@ prometheus:
           resources:
             requests:
               storage: 64Gi
+
     serviceMonitorNamespaceSelector: {}
     serviceMonitorSelector: {}
     serviceMonitorSelectorNilUsesHelmValues: false
