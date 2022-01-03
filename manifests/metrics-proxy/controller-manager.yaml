@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: http-metrics
-    port: 10252
-    protocol: TCP
-    targetPort: 10252
+    - name: http-metrics
+      port: 10252
+      protocol: TCP
+      targetPort: 10252
   selector:
     component: kube-controller-manager
 ---

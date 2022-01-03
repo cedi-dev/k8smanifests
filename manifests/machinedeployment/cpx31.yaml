@@ -18,11 +18,11 @@ spec:
     type: RollingUpdate
   template:
     env:
-    - name: HZ_TOKEN
-      valueFrom:
-        secretKeyRef:
-          key: HZ_TOKEN
-          name: cloud-provider-credentials
+      - name: HZ_TOKEN
+        valueFrom:
+          secretKeyRef:
+            key: HZ_TOKEN
+            name: cloud-provider-credentials
     metadata:
       labels:
         node: av0-de
@@ -34,7 +34,7 @@ spec:
             image: ubuntu-20.04
             location: nbg1
             networks:
-            - "1290798"
+              - "1290798"
             serverType: cpx31
           operatingSystem: ubuntu
           operatingSystemSpec:

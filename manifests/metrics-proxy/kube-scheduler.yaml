@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: http-metrics
-    port: 10251
-    protocol: TCP
-    targetPort: 10251
+    - name: http-metrics
+      port: 10251
+      protocol: TCP
+      targetPort: 10251
   selector:
     component: kube-scheduler
 ---

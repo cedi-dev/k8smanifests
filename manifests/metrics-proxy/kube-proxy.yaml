@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: http-metrics
-    port: 10249
-    protocol: TCP
-    targetPort: 10249
+    - name: http-metrics
+      port: 10249
+      protocol: TCP
+      targetPort: 10249
   selector:
     component: etcd
 ---

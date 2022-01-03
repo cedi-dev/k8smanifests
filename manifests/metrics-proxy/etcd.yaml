@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: http-metrics
-    port: 2381
-    protocol: TCP
-    targetPort: 2381
+    - name: http-metrics
+      port: 2381
+      protocol: TCP
+      targetPort: 2381
   selector:
     component: etcd
 ---
