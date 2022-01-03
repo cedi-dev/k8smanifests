@@ -35,10 +35,10 @@ spec:
           cloudProviderSpec:
             labels:
               role: worker
+              kubeone_cluster_name: "av0-de"
             serverType: "cpx31"
             location: "nbg1"
             image: "ubuntu-20.04"
-            # Optional: network IDs or names
             networks:
               - "1290798"
           operatingSystem: "ubuntu"
