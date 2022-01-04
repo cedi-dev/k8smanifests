@@ -163,6 +163,7 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
+                  namespace: kube-system
                   name: cloud-provider-credentials
                   key: HZ_TOKEN
           volumeMounts:
@@ -261,6 +262,7 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
+                  namespace: kube-system
                   name: cloud-provider-credentials
                   key: HZ_TOKEN
             - name: KUBE_NODE_NAME
