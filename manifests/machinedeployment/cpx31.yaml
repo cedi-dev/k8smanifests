@@ -1,7 +1,7 @@
 apiVersion: "cluster.k8s.io/v1alpha1"
 kind: MachineDeployment
 metadata:
-  name: "av0-de-cpx31"
+  name: "av0-cpx31"
   namespace: "kube-system"
   annotations:
     cluster.k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
@@ -17,25 +17,25 @@ spec:
   minReadySeconds: 0
   selector:
     matchLabels:
-      node: "av0-de"
+      node: "av0"
   template:
     metadata:
       labels:
-        node: "av0-de"
-    env:
-      - name: HZ_TOKEN
-        valueFrom:
-          secretKeyRef:
-            name: cloud-provider-credentials
-            key: HZ_TOKEN
+        node: "av0"
     spec:
       providerSpec:
         value:
           cloudProvider: "hetzner"
           cloudProviderSpec:
+            # If empty, can be set via HZ_TOKEN env var
+            token:
+              secretKeyRef:
+                namespace: kube-system
+                name: cloud-provider-credentials
+                key: HZ_TOKEN
             labels:
               role: worker
-              kubeone_cluster_name: "av0-de"
+              cluster: "av0"
             serverType: "cpx31"
             location: "nbg1"
             image: "ubuntu-20.04"
@@ -49,4 +49,4 @@ spec:
             - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0YM2rlsOXq9OLCMynkPSn6sFkGGOWS9/p5rbcS/OUX cedi@ava
             - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBW7KOtsdmhDszm0qaKdtxExNQqNnl6zJLz1vKRmmod2 cedi@liv
       versions:
-        kubelet: "1.22.5"
+        kubelet: "1.23.1"
