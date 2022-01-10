@@ -3,8 +3,17 @@ kind: Kustomization
 resources:
   - ../../bases/kube-prometheus-stack
 namespace: monitoring
+
 generators:
   - ./secret-generator.yaml
+
+configMapGenerator:
+  - name: prom-stack-grafana-datasource
+    namespace: monitoring
+    behavior: replace
+    files:
+      - datasource.yaml
+
 patches:
   - target:
       kind: Deployment
