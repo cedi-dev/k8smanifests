@@ -12,7 +12,7 @@ ingress-nginx:
       annotations:
         external-dns.alpha.kubernetes.io/hostname: "av0.de."
         load-balancer.hetzner.cloud/location: "nbg1"
-        load-balancer.hetzner.cloud/name: "av0-de-lb"
+        load-balancer.hetzner.cloud/name: "av0-ingress-lb"
         load-balancer.hetzner.cloud/type: lb11
         load-balancer.hetzner.cloud/algorithm-type: least_connections
         load-balancer.hetzner.cloud/health-check-protocol: http
