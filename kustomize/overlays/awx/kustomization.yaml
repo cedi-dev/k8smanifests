@@ -11,3 +11,4 @@ resources:
   - ../../bases/awx/crd
   - ../../bases/awx/rbac
   - ../../bases/awx/manager
+  - awx.yaml
