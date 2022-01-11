@@ -12,3 +12,6 @@ resources:
   - ../../bases/awx/rbac
   - ../../bases/awx/manager
   - awx.yaml
+
+generators:
+  - ./secret-generator.yaml

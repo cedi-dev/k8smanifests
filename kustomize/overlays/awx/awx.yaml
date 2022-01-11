@@ -12,3 +12,6 @@ spec:
     "kubernetes.io/ingress.class": nginx
   ingress_tls_secret: "awx-tls-secret"
   hostname: awx-demo.av0.de
+  admin_user: "admin"
+  admin_email: "test@example.com"
+  admin_password_secret: awx-admin-user-secret
