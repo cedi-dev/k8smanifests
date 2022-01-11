@@ -8,5 +8,6 @@ spec:
   ingress_path: /
   ingress_path_type: ImplementationSpecific
   ingress_annotations: |
-    "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+    "cert-manager.io/cluster-issuer": "letsencrypt-staging"
     "kubernetes.io/ingress.class": nginx
+  ingress_tls_secret: "awx-tls-secret"
