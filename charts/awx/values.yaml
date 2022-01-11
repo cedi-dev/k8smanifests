@@ -19,6 +19,7 @@ awx:
     # -- Define ingress routing here
     hosts:
       - host: awx.av0.de
+        pathType: ImplementationSpecific
         paths:
           - "/"
     annotations:
