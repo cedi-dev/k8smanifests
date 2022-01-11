@@ -14,4 +14,4 @@ spec:
   hostname: awx-demo.av0.de
   admin_user: "admin"
   admin_email: "test@example.com"
-  admin_password_secret: awx-awx-admin-password
+  admin_password_secret: awx-operator-awx-admin-password
