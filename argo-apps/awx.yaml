@@ -9,13 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/awx
+    path: kustomize/overlays/awx
     repoURL: https://github.com/av0de/k8s-manifests.git
     targetRevision: main
-    helm:
-      valueFiles:
-        - values.yaml
-        - values.secret.yaml
   syncPolicy:
     automated:
       prune: true
