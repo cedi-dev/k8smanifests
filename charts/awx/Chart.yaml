@@ -1,0 +1,7 @@
+apiVersion: v2
+name: addon-awx
+version: v3.4.0
+dependencies:
+  - name: awx
+    version: v3.4.0
+    repository: https://adwerx.github.io/charts

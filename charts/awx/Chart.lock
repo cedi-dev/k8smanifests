@@ -1,0 +1,6 @@
+dependencies:
+- name: awx
+  repository: https://adwerx.github.io/charts
+  version: 3.4.0
+digest: sha256:85de23fadf60db1ac873dc50ced4fca8a283d067fec76b53c16217ed05079fc5
+generated: "2022-01-11T19:02:52.291365+01:00"
