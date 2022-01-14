@@ -30,7 +30,7 @@ spec:
       interval: 30s
       path: /metrics
       scrapeTimeout: 20s
-      scheme: https
+      scheme: http
       tlsConfig:
         insecureSkipVerify: true
   jobLabel: kube-controller-manager
