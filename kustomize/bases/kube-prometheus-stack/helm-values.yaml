@@ -57,6 +57,7 @@ alertmanager:
           resources:
             requests:
               storage: 1Gi
+
 grafana:
   enabled: true
   ingress:
@@ -72,6 +73,7 @@ grafana:
       - secretName: grafana-tls-secret
         hosts:
           - grafana.av0.de
+
 prometheusOperator:
   namespaces: ''
   denyNamespaces: ''

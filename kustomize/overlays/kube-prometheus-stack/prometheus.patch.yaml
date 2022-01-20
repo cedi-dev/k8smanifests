@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prom-stack-prometheus
+  namespace: monitoring
+  labels:
+    app: kube-prometheus-stack-prometheus
+spec:
+  additionalScrapeConfigs:
+    name: additional-scrape-configs
+    key: prometheus-additional.yaml
