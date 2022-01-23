@@ -20,8 +20,7 @@ data:
       "fiscalYearStartMonth": 0,
       "gnetId": 13330,
       "graphTooltip": 0,
-      "id": 33,
-      "iteration": 1642964262488,
+      "iteration": 1642977285000,
       "links": [],
       "liveNow": false,
       "panels": [
@@ -788,7 +787,7 @@ data:
           "fieldConfig": {
             "defaults": {
               "color": {
-                "mode": "thresholds"
+                "mode": "continuous-GrYlRd"
               },
               "mappings": [],
               "thresholds": {
@@ -818,7 +817,7 @@ data:
           "maxDataPoints": 3,
           "options": {
             "displayMode": "gradient",
-            "orientation": "auto",
+            "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
                 "lastNotNull"
@@ -853,7 +852,7 @@ data:
           "fieldConfig": {
             "defaults": {
               "color": {
-                "mode": "thresholds"
+                "mode": "continuous-GrYlRd"
               },
               "mappings": [],
               "thresholds": {
@@ -901,7 +900,7 @@ data:
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "adguard_top_clients{hostname=~'$node'}",
+              "expr": "topk(7, adguard_top_clients{hostname=~'$node'})",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -1308,7 +1307,7 @@ data:
         ]
       },
       "time": {
-        "from": "now-30m",
+        "from": "now-12h",
         "to": "now"
       },
       "timepicker": {
