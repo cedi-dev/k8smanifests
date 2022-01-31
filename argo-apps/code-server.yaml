@@ -9,8 +9,10 @@ spec:
         elements:
           - name: "cedi"
             password: Y29kZQ==
+            diskSize: 10Gi
           - name: "thorben"
             password: Y29kZQ==
+            diskSize: 40Gi
   template:
     metadata:
       name: "{{name}}-code-server"
@@ -32,6 +34,8 @@ spec:
             - values.yaml
             - values.secret.yaml
           values: |-
+            persistence:
+              size: {{diskSize}}
             password: {{password}}
             ingress:
                 hosts:
