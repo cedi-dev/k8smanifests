@@ -10,7 +10,7 @@ spec:
           - name: "cedi"
             password: Y29kZQ==
           - name: "thorben"
-            password: dGhvcmJlbjIwMjI=
+            password: Y29kZQ==
   template:
     metadata:
       name: "{{name}}-code-server"
