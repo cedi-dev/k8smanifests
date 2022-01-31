@@ -9,6 +9,8 @@ spec:
         elements:
           - name: "cedi"
             password: Y29kZQ==
+          - name: "thorben"
+            password: dGhvcmJlbjIwMjI=
   template:
     metadata:
       name: "{{name}}-code-server"
