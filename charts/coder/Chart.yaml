@@ -1,8 +1,0 @@
-apiVersion: v2
-name: addon-coder
-description: Coder moves developer workspaces to your cloud and centralizes their creation and management.
-version: 1.27.0
-dependencies:
-  - name: coder
-    version: 1.27.0
-    repository: https://helm.coder.com
