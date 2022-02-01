@@ -10,9 +10,6 @@ spec:
           - name: "cedi"
             password: Y29kZQ==
             diskSize: 10Gi
-          - name: "thorben"
-            password: dGhvcmJlbjIwMjI=
-            diskSize: 40Gi
   template:
     metadata:
       name: "{{name}}-code-server"
