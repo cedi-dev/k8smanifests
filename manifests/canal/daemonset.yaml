@@ -101,7 +101,7 @@ spec:
         - /opt/bin/flanneld
         - --ip-masq
         - --kube-subnet-mgr
-        - -iface-regex=192\.168\.*\.*
+        - -iface-regex=10\.0\.*\.*
         env:
         - name: POD_NAME
           valueFrom:
