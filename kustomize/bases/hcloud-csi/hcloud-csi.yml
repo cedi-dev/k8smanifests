@@ -163,8 +163,8 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: cloud-provider-credentials
-                  key: HZ_TOKEN
+                  name: hcloud-csi
+                  key: token
           volumeMounts:
             - name: socket-dir
               mountPath: /run/csi
@@ -261,8 +261,8 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: cloud-provider-credentials
-                  key: HZ_TOKEN
+                  name: hcloud-csi
+                  key: token
             - name: KUBE_NODE_NAME
               valueFrom:
                 fieldRef:

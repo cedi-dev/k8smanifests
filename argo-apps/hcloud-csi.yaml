@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: manifests/hcloud-csi
+    path: kustomize/overlays/hcloud-csi
     repoURL: https://github.com/av0de/k8s-manifests.git
     targetRevision: main
   syncPolicy:
