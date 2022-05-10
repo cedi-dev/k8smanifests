@@ -3,6 +3,7 @@ oauth2-proxy:
     enabled: true
     tls: true
     hostname: auth.av0.de
+    certManager: true
     annotations:
       "cert-manager.io/cluster-issuer": "letsencrypt-prod"
   extraArgs:

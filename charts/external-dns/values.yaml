@@ -1,11 +1,13 @@
 external-dns:
   fullnameOverride: external-dns
-  provider: hetzner
-  hetzner:
-    secretName: cloud-provider-credentials
-    secretKey: HZ_DNS_TOKEN
+  provider: cloudflare
+  cloudflare:
+    proxied: false
   txtOwnerId: "k8s"
   policy: sync
+  logFormat: json
+  sources:
+    - ingress
   metrics:
     enabled: true
     serviceMonitor:
