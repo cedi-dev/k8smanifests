@@ -1,7 +1,7 @@
 apiVersion: v2
 name: addon-oauth2-proxy
-version: 1.3.0
+version: 2.0.20
 dependencies:
   - name: oauth2-proxy
-    version: 1.3.0
+    version: 2.0.20
     repository: https://charts.bitnami.com/bitnami
