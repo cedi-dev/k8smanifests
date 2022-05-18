@@ -83,3 +83,4 @@ patches:
 
 patchesStrategicMerge:
   - prometheus.patch.yaml
+  - grafana.patch.yaml
