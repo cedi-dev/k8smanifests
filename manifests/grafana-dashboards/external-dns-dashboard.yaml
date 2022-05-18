@@ -1437,6 +1437,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: external-dns
+    grafana_dashboard: '1'
   name: grafana-external-dns
   namespace: monitoring

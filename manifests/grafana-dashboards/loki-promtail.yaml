@@ -432,6 +432,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: loki-promtail
+    grafana_dashboard: '1'
   name: grafana-loki-promtail
   namespace: monitoring

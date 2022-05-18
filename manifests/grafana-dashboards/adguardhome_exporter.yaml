@@ -1346,6 +1346,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: adguardhome-exporter
+    grafana_dashboard: '1'
   name: grafana-adguardhome-exporter
   namespace: monitoring

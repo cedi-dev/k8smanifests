@@ -1277,6 +1277,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: etcd
+    grafana_dashboard: '1'
   name: grafana-etcd-enhanced
   namespace: monitoring

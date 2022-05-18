@@ -1463,6 +1463,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: ingress-nginx
+    grafana_dashboard: '1'
   name: grafana-ingress-nginx
   namespace: monitoring

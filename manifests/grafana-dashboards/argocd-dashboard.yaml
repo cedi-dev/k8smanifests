@@ -4092,6 +4092,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: ArgoCD
+    grafana_dashboard: '1'
   name: grafana-argocd
   namespace: monitoring

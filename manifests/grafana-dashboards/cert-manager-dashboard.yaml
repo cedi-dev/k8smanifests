@@ -1376,6 +1376,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: cert-manager
+    grafana_dashboard: '1'
   name: grafana-cert-manager
   namespace: monitoring

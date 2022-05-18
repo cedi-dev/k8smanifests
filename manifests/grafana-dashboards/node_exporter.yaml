@@ -3611,6 +3611,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: node-exporter
+    grafana_dashboard: '1'
   name: grafana-node-exporter
   namespace: monitoring
