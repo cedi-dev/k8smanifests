@@ -4,4 +4,4 @@ metadata:
   name: prometheus-stack-grafana
   namespace: monitoring
 spec:
-  replicas: 2
+  replicas: 1
