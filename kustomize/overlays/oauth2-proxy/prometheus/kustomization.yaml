@@ -13,7 +13,11 @@ patchesJson6902:
       kind: Deployment
       namespace: oauth2-proxy-prometheus
       name: oauth2-proxy
-    patch: |-
-      - op: add
-        path: "/spec/template/spec/containers/0/args/-"
-        value: "--github-team=prometheus"
+    path: deployment.patch.yaml
+
+  - target:
+      kind: Ingress
+      namespace: oauth2-proxy-prometheus
+      name: oauth2-proxy
+    path: ingress.patch.yaml
+      
