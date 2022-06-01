@@ -10,6 +10,7 @@ spec:
     - list:
         elements:
           - name: general
+          - name: prometheus
   template:
     metadata:
       name: oauth2-proxy-{{name}}
