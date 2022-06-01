@@ -1,22 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: oauth2-proxy
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: oauth2-proxy
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    path: kustomize/overlays/oauth2-proxy/general
-    repoURL: https://github.com/av0de/k8s-manifests.git
-    targetRevision: main
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+  generators:
+    - list:
+        elements:
+          - name: general
+  template:
+    metadata:
+      name: oauth2-proxy-{{name}}
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        namespace: oauth2-proxy-{{name}}
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: kustomize/overlays/oauth2-proxy/{{name}}
+        repoURL: https://github.com/av0de/k8s-manifests.git
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
