@@ -11,13 +11,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/oauth2-proxy
+    path: kustomize/overlays/oauth2-proxy/general
     repoURL: https://github.com/av0de/k8s-manifests.git
     targetRevision: main
-    helm:
-      valueFiles:
-        - values.yaml
-        - values.secret.yaml
   syncPolicy:
   #  automated:
   #    prune: true

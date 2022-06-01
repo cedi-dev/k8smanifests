@@ -1,0 +1,19 @@
+ingress:
+  enabled: true
+  tls: true
+  hostname: auth.av0.de
+  certManager: true
+  annotations:
+    "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+extraArgs:
+  - --provider=github
+  - --github-org=av0de
+  - --cookie-domain=av0.de
+  - --whitelist-domain=.av0.de
+redis:
+  auth:
+    enabled: false
+configuration:
+  clientID: MTIzNA==
+  clientSecret: MTIzNA==
+  cookieSecret: MTIzNA==
