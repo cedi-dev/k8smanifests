@@ -64,5 +64,14 @@
 - op: add
   path: "/spec/template/spec/containers/2/env/-"
   value:
+    name: GF_AUTH_GITHUB_TEAM_IDS
+    valueFrom:
+      secretKeyRef:
+        name: oauth-credentials
+        key: auth_github_team_ids
+
+- op: add
+  path: "/spec/template/spec/containers/2/env/-"
+  value:
     name: GF_SERVER_ROOT_URL
     value: https://grafana.av0.de/
