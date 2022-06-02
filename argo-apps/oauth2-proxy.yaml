@@ -11,6 +11,7 @@ spec:
         elements:
           - name: general
           - name: prometheus
+          - name: code-server
   template:
     metadata:
       name: oauth2-proxy-{{name}}
