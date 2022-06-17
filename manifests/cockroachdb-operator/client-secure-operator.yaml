@@ -21,7 +21,7 @@ metadata:
   name: cockroachdb-client-secure
   namespace: cockroach-operator-system
 spec:
-  serviceAccountName: cockroachdb-sa
+  serviceAccountName: cockroach-operator-sa
   restartPolicy: Always
   containers:
   - name: cockroachdb-client-secure
