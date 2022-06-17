@@ -74,7 +74,7 @@ jobs:
           for manifest in ./manifests/*/*.yaml
           do
             echo "$manifests"
-            kubeval --ignore-missing-schemas --strict $manifest | tee -a kubeval.txt
+            kubeval --ignore-missing-schemas --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/ $manifest | tee -a kubeval.txt
           done
           echo "::set-output name=kubeval::$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)"
 

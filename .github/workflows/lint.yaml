@@ -35,7 +35,7 @@ jobs:
           for manifest in ./manifests/*/*.yaml
           do
             echo -n "$manifest"
-            kubeval --ignore-missing-schemas --strict $manifest
+            kubeval --ignore-missing-schemas --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/ $manifest
           done
 
   kubeval_charts:
