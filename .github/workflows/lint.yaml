@@ -30,12 +30,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Charts
+      - name: Manifests
         run: |
-          for manifests in ./manifests/*/
+          for manifest in ./manifests/*/*.yaml
           do
-            echo "$manifests"
-            cat $manifests | kubeval --ignore-missing-schemas --strict
+            echo -n "$manifest"
+            kubeval --ignore-missing-schemas --strict $manifest
           done
 
   kubeval_charts:
