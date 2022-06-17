@@ -46,7 +46,7 @@ spec:
     name: cockroachdb/cockroach:v22.1.1
   # nodes refers to the number of crdb pods that are created
   # via the statefulset
-  nodes: 1
+  nodes: 3
   additionalLabels:
     crdb: is-cool
   # affinity is a new API field that is behind a feature gate that is
