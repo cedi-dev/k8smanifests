@@ -21,7 +21,6 @@ patches:
       namespace: monitoring
       name: prometheus-stack-grafana
     path: grafana-env.patch.yaml
-      
 
 patchesStrategicMerge:
   - prometheus.patch.yaml

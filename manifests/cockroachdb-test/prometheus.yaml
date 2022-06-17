@@ -11,14 +11,13 @@ spec:
     matchLabels:
       prometheus: cockroachdb
   endpoints:
-  - port: http
-    path: /_status/vars
-    tlsConfig:
-      ca:
-        secret:
-          key: ca.crt
-          # This is the secret name used by the CockroachDB Kubernetes Operator.
-          # When using a custom CA, replace this with your secret name
-          name: cockroachdb-node
-      serverName: "127.0.0.1"
-
+    - port: http
+      path: /_status/vars
+      tlsConfig:
+        ca:
+          secret:
+            key: ca.crt
+            # This is the secret name used by the CockroachDB Kubernetes Operator.
+            # When using a custom CA, replace this with your secret name
+            name: cockroachdb-node
+        serverName: "127.0.0.1"

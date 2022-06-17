@@ -24,30 +24,30 @@ spec:
   serviceAccountName: cockroachdb-sa
   restartPolicy: Always
   containers:
-  - name: cockroachdb-client-secure
-    image: cockroachdb/cockroach:v22.1.1
-    imagePullPolicy: IfNotPresent
-    volumeMounts:
-    - name: client-certs
-      mountPath: /cockroach/cockroach-certs/
-    command:
-    - sleep
-    - "2147483648" # 2^31
+    - name: cockroachdb-client-secure
+      image: cockroachdb/cockroach:v22.1.1
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: client-certs
+          mountPath: /cockroach/cockroach-certs/
+      command:
+        - sleep
+        - "2147483648" # 2^31
   terminationGracePeriodSeconds: 0
   volumes:
-  - name: client-certs
-    projected:
+    - name: client-certs
+      projected:
         sources:
           - secret:
-              name: cockroachdb-node
-              items:
-                - key: ca.crt
-                  path: ca.crt
+            name: cockroachdb-node
+            items:
+              - key: ca.crt
+                path: ca.crt
           - secret:
-              name: cockroachdb-root
-              items:
-                - key: tls.crt
-                  path: client.root.crt
-                - key: tls.key
-                  path: client.root.key
+            name: cockroachdb-root
+            items:
+              - key: tls.crt
+                path: client.root.crt
+              - key: tls.key
+                path: client.root.key
         defaultMode: 256

@@ -7,7 +7,7 @@ resources:
 
 generators:
   - ./secret-generator.yaml
-  
+
 patchesJson6902:
   - target:
       kind: Deployment
@@ -20,4 +20,3 @@ patchesJson6902:
       namespace: oauth2-proxy-code-server
       name: oauth2-proxy
     path: ingress.patch.yaml
-      

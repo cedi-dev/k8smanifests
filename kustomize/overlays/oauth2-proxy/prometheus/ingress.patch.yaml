@@ -7,4 +7,3 @@
 - op: replace
   path: "/spec/rules/0/host"
   value: auth-prometheus.av0.de
-
