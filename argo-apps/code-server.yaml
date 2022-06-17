@@ -1,51 +1,51 @@
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: code-server
-  namespace: argocd
-spec:
-  generators:
-    - list:
-        elements:
-          - name: "cedi"
-            password: Y29kZQ==
-            diskSize: 10Gi
-  template:
-    metadata:
-      name: "{{name}}-code-server"
-      namespace: argocd
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-    spec:
-      destination:
-        namespace: "{{name}}-code-server"
-        server: https://kubernetes.default.svc
-      project: default
-      source:
-        path: charts/code-server
-        repoURL: https://github.com/av0de/k8s-manifests.git
-        targetRevision: main
-        helm:
-          releaseName: "{{name}}-code-server"
-          valueFiles:
-            - values.yaml
-            - values.secret.yaml
-          values: |-
-            persistence:
-              size: {{diskSize}}
-            password: {{password}}
-            ingress:
-                hosts:
-                  - host: {{name}}.code.av0.de
-                    paths:
-                      - /
-                tls:
-                  - secretName: {{name}}-code-server-tls-secret
-                    hosts:
-                      - {{name}}.code.av0.de
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+#apiVersion: argoproj.io/v1alpha1
+#kind: ApplicationSet
+#metadata:
+#  name: code-server
+#  namespace: argocd
+#spec:
+#  generators:
+#    - list:
+#        elements:
+#          - name: "cedi"
+#            password: Y29kZQ==
+#            diskSize: 10Gi
+#  template:
+#    metadata:
+#      name: "{{name}}-code-server"
+#      namespace: argocd
+#      finalizers:
+#        - resources-finalizer.argocd.argoproj.io
+#    spec:
+#      destination:
+#        namespace: "{{name}}-code-server"
+#        server: https://kubernetes.default.svc
+#      project: default
+#      source:
+#        path: charts/code-server
+#        repoURL: https://github.com/av0de/k8s-manifests.git
+#        targetRevision: main
+#        helm:
+#          releaseName: "{{name}}-code-server"
+#          valueFiles:
+#            - values.yaml
+#            - values.secret.yaml
+#          values: |-
+#            persistence:
+#              size: {{diskSize}}
+#            password: {{password}}
+#            ingress:
+#                hosts:
+#                  - host: {{name}}.code.av0.de
+#                    paths:
+#                      - /
+#                tls:
+#                  - secretName: {{name}}-code-server-tls-secret
+#                    hosts:
+#                      - {{name}}.code.av0.de
+#      syncPolicy:
+#        automated:
+#          prune: true
+#          selfHeal: true
+#        syncOptions:
+#          - CreateNamespace=true
