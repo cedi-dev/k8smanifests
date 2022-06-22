@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/node-problem-detector
-    repoURL: https://github.com/av0de/k8s-manifests.git
+    repoURL: https://github.com/av0de/k8smanifests.git
     targetRevision: main
   syncPolicy:
     automated:
