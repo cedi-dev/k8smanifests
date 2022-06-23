@@ -8,4 +8,9 @@ resources:
 generators:
   - ./secret-generator.yaml
 
-patchesStrategicMerge: []
+patches:
+  - target:
+      kind: Deployment
+      namespace: argocd
+      name: argocd-server
+    path: tailscale-sidecar.patch.yaml
