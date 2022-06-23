@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: argo-apps
-    repoURL: https://github.com/av0de/k8smanifests.git
+    repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
     automated:

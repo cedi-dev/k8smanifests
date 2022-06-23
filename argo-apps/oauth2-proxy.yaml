@@ -25,7 +25,7 @@ spec:
       project: default
       source:
         path: kustomize/overlays/oauth2-proxy/{{name}}
-        repoURL: https://github.com/av0de/k8smanifests.git
+        repoURL: https://github.com/cedi-dev/k8smanifests.git
         targetRevision: main
       syncPolicy:
         automated:

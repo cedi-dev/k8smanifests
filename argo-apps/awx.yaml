@@ -10,7 +10,7 @@
 #  project: default
 #  source:
 #    path: kustomize/overlays/awx
-#    repoURL: https://github.com/av0de/k8smanifests.git
+#    repoURL: https://github.com/cedi-dev/k8smanifests.git
 #    targetRevision: main
 #  syncPolicy:
 #    automated:
