@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export SOPS_AGE_KEY_FILE="$HOME/.age/sops/keys.txt"
+export SOPS_AGE_KEY_FILE="$HOME/.age/sops/keys_mae.txt"
 
 dir=$(pwd)
 if [[ $dir =~ "(.*)(hack)$" ]]; then

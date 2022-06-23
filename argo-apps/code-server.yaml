@@ -23,7 +23,7 @@
 #      project: default
 #      source:
 #        path: charts/code-server
-#        repoURL: https://github.com/av0de/k8s-manifests.git
+#        repoURL: https://github.com/av0de/k8smanifests.git
 #        targetRevision: main
 #        helm:
 #          releaseName: "{{name}}-code-server"

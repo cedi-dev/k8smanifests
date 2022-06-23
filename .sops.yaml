@@ -1,7 +1,7 @@
 creation_rules:
   - path_regex: charts\/.*\/.*secret\.yaml
-    age: 'age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq,age1293lfsn5whmk4pyc7w69yzqkr8agkykt2z6xu3g25y2pl62ukpvqmlazsm'
+    age: 'age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq,age1y0a34ky5xmhda096mds5r2nk9gek2vy0jk7xepzjps9c3yauzy5sup3jde'
   - path_regex: kustomize\/.*\/.*secret\.yaml
     encrypted_regex: '^(data|stringData|spec)$'
-    age: 'age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq,age1293lfsn5whmk4pyc7w69yzqkr8agkykt2z6xu3g25y2pl62ukpvqmlazsm'
-  - age: 'age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq,age1293lfsn5whmk4pyc7w69yzqkr8agkykt2z6xu3g25y2pl62ukpvqmlazsm'
+    age: 'age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq,age1y0a34ky5xmhda096mds5r2nk9gek2vy0jk7xepzjps9c3yauzy5sup3jde'
+  - age: 'age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq,age1y0a34ky5xmhda096mds5r2nk9gek2vy0jk7xepzjps9c3yauzy5sup3jde'

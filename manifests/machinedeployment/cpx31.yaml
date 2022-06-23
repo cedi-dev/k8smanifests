@@ -1,14 +1,14 @@
 apiVersion: "cluster.k8s.io/v1alpha1"
 kind: MachineDeployment
 metadata:
-  name: "av0-cpx31"
+  name: "cedi-dev-cpx31"
   namespace: "kube-system"
   annotations:
-    cluster.k8s.io/cluster-api-autoscaler-node-group-min-size: "3"
+    cluster.k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
     cluster.k8s.io/cluster-api-autoscaler-node-group-max-size: "3"
 spec:
   paused: false
-  replicas: 3
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -17,11 +17,11 @@ spec:
   minReadySeconds: 0
   selector:
     matchLabels:
-      node: "av0"
+      node: "cedi-dev"
   template:
     metadata:
       labels:
-        node: "av0"
+        node: "cedi-dev"
     spec:
       providerSpec:
         value:
@@ -35,12 +35,12 @@ spec:
                 key: HZ_TOKEN
             labels:
               role: worker
-              cluster: "av0"
+              cluster: "cedi-dev"
             serverType: "cpx31"
             location: "nbg1"
             image: "ubuntu-20.04"
             networks:
-              - "1322744"
+              - "1766884"
           operatingSystem: "ubuntu"
           operatingSystemSpec:
             distUpgradeOnBoot: false
