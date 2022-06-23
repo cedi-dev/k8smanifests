@@ -9,13 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/argocd
+    path: kustomize/overlays/argocd
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
-    helm:
-      valueFiles:
-        - values.yaml
-        - values.secret.yaml
   syncPolicy:
     automated:
       prune: true

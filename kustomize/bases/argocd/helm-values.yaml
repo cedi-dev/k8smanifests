@@ -1,0 +1,133 @@
+fullnameOverride: argocd
+dex:
+  enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
+redis:
+  serviceAccount:
+    create: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
+
+repoServer:
+  image:
+    repository: "ghcr.io/cedi-dev/argocd-custom-container"
+    imagePullPolicy: "Always"
+  volumes:
+    - name: helm-secrets
+      secret:
+        secretName: helm-secrets
+  volumeMounts:
+    - mountPath: /helm-secrets/
+      name: helm-secrets
+  env:
+    - name: XDG_CONFIG_HOME
+      value: /home/argocd/.config
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
+
+server:
+  image:
+    repository: "ghcr.io/cedi-dev/argocd-custom-container"
+    imagePullPolicy: "Always"
+  certificate:
+    enabled: false
+    domain: argocd.cedi.dev
+  config:
+    url: https://argocd.cedi.dev
+    kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: $dex.oauth.github.clientID
+            clientSecret: $dex.oauth.github.clientSecret
+            orgs:
+              - name: cedi-dev
+  ingress:
+    enabled: true
+    https: true
+    pathType: ImplementationSpecific
+    hosts:
+      - argocd.cedi.dev
+    tls:
+      - secretName: argocd-secret
+        hosts:
+          - argocd.cedi.dev
+
+    annotations:
+      "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+      "kubernetes.io/ingress.class": nginx
+      "nginx.ingress.kubernetes.io/backend-protocol": HTTPS
+      "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
+  rbacConfig:
+    policy.default: role:readonly
+    policy.csv: |
+      p, role:org-admin, *, *, *, allow
+      p, role:viewer, *, get, *, allow
+
+      g, cedi-dev:argocd, role:viewer
+      g, cedi-dev:admin, role:org-admin
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
+
+controller:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
+
+configs:
+  secret:
+    extra:
+      dex.oauth.github.clientID: foobar1234
+      dex.oauth.github.clientSecret: fooobar2345
+  repositories:
+    bitnami:
+      name: bitnami
+      type: helm
+      url: https://charts.bitnami.com/bitnami
+    grafana:
+      name: grafana
+      type: helm
+      url: https://grafana.github.io/helm-charts
+    argo:
+      name: Argo
+      type: helm
+      url: https://argoproj.github.io/argo-helm
+    jetstack:
+      name: jetstack
+      type: helm
+      url: https://charts.jetstack.io
+    ingress-nginx:
+      name: ingress-nginx
+      type: helm
+      url: https://kubernetes.github.io/ingress-nginx
+    deliveryhero:
+      name: deliveryhero
+      type: helm
+      url: https://charts.deliveryhero.io/
+    prometheus:
+      name: prometheus
+      type: helm
+      url: https://prometheus-community.github.io/helm-charts

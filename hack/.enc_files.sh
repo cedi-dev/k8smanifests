@@ -11,3 +11,4 @@ encrypted_files+=('kustomize/overlays/oauth2-proxy/prometheus/oauth-credentials.
 encrypted_files+=('kustomize/overlays/kube-prometheus-stack/grafana.secret.yaml')
 encrypted_files+=('kustomize/overlays/kube-prometheus-stack/additional-scrape-configs.secret.yaml')
 encrypted_files+=('kustomize/overlays/kube-prometheus-stack/oauth-credentials.secret.yaml')
+encrypted_files+=('kustomize/overlays/argocd/oauth-credentials.secret.yaml')
