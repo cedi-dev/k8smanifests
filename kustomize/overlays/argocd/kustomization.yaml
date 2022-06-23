@@ -13,4 +13,10 @@ patches:
       kind: Deployment
       namespace: argocd
       name: argocd-server
-    path: tailscale-sidecar.patch.yaml
+    path: argo-server-sidecar.patch.yaml
+
+  - target:
+      kind: Deployment
+      namespace: argocd
+      name: argocd-repo-server
+    path: repo-server-sidecar.patch.yaml
