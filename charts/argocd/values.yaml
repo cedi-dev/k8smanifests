@@ -41,7 +41,8 @@ argo-cd:
 
   server:
     image:
-      repository: "ghcr.io/cedi-dev/argocd-custom-container"
+      repository: "ghcr.io/cedi-dev/argocd-server-custom-container"
+      tag: "main"
       imagePullPolicy: "Always"
     certificate:
       enabled: false
