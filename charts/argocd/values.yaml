@@ -7,7 +7,7 @@ argo-cd:
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-av0-de
+          scope: k8s-cedi-dev
   redis:
     serviceAccount:
       create: true
@@ -16,7 +16,7 @@ argo-cd:
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-av0-de
+          scope: k8s-cedi-dev
 
   repoServer:
     image:
@@ -37,7 +37,7 @@ argo-cd:
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-av0-de
+          scope: k8s-cedi-dev
 
   server:
     image:
@@ -45,9 +45,9 @@ argo-cd:
       imagePullPolicy: "Always"
     certificate:
       enabled: false
-      domain: argocd.av0.de
+      domain: argocd.cedi.dev
     config:
-      url: https://argocd.av0.de
+      url: https://argocd.cedi.dev
       kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
       dex.config: |
         connectors:
@@ -58,17 +58,17 @@ argo-cd:
               clientID: $dex.oauth.github.clientID
               clientSecret: $dex.oauth.github.clientSecret
               orgs:
-                - name: av0de
+                - name: cedi-dev
     ingress:
       enabled: true
       https: true
       pathType: ImplementationSpecific
       hosts:
-        - argocd.av0.de
+        - argocd.cedi.dev
       tls:
         - secretName: argocd-secret
           hosts:
-            - argocd.av0.de
+            - argocd.cedi.dev
 
       annotations:
         "cert-manager.io/cluster-issuer": "letsencrypt-prod"
@@ -81,14 +81,14 @@ argo-cd:
         p, role:org-admin, *, *, *, allow
         p, role:viewer, *, get, *, allow
 
-        g, av0de:argocd, role:viewer
-        g, av0de:admin, role:org-admin
+        g, cedi-dev:argocd, role:viewer
+        g, cedi-dev:admin, role:org-admin
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-av0-de
+          scope: k8s-cedi-dev
 
   controller:
     metrics:
@@ -96,7 +96,7 @@ argo-cd:
       serviceMonitor:
         enabled: true
         selector:
-          scope: k8s-av0-de
+          scope: k8s-cedi-dev
 
   configs:
     repositories:

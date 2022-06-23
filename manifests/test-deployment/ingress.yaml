@@ -8,12 +8,12 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
-    - secretName: test-av0-de-tls
+    - secretName: test-cedi-dev-tls
       hosts:
-        - test.av0.de
+        - test.cedi.dev
 
   rules:
-    - host: test.av0.de
+    - host: test.cedi.dev
       http:
         paths:
           - path: /

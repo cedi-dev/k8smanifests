@@ -74,4 +74,4 @@
   path: "/spec/template/spec/containers/2/env/-"
   value:
     name: GF_SERVER_ROOT_URL
-    value: https://grafana.av0.de/
+    value: https://grafana.cedi.dev/

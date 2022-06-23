@@ -1,15 +1,15 @@
 ingress:
   enabled: true
   tls: true
-  hostname: auth.av0.de
+  hostname: auth.cedi.dev
   certManager: true
   annotations:
     "cert-manager.io/cluster-issuer": "letsencrypt-prod"
 extraArgs:
   - --provider=github
-  - --github-org=av0de
-  - --cookie-domain=av0.de
-  - --whitelist-domain=.av0.de
+  - --github-org=cedi-dev
+  - --cookie-domain=cedi.dev
+  - --whitelist-domain=.cedi.dev
 redis:
   auth:
     enabled: false

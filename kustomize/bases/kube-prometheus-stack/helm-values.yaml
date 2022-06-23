@@ -36,20 +36,20 @@ alertmanager:
     annotations:
       kubernetes.io/ingress.class: "nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      nginx.ingress.kubernetes.io/auth-signin: https://auth-prometheus.av0.de/oauth2/start
+      nginx.ingress.kubernetes.io/auth-signin: https://auth-prometheus.cedi.dev/oauth2/start
       nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy-prometheus.svc.cluster.local/oauth2/auth
     hosts:
-      - alertmanager.av0.de
+      - alertmanager.cedi.dev
     pathType: ImplementationSpecific
     paths:
       - /
     tls:
       - secretName: alertmanager-tls-secret
         hosts:
-          - alertmanager.av0.de
+          - alertmanager.cedi.dev
 
   alertmanagerSpec:
-    externalUrl: "https://alertmgr.av0.de"
+    externalUrl: "https://alertmgr.cedi.dev"
     replicas: 1
     storage:
       volumeClaimTemplate:
@@ -66,13 +66,13 @@ grafana:
       kubernetes.io/ingress.class: "nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
     hosts:
-      - grafana.av0.de
+      - grafana.cedi.dev
     paths:
       - /
     tls:
       - secretName: grafana-tls-secret
         hosts:
-          - grafana.av0.de
+          - grafana.cedi.dev
 
 prometheusOperator:
   namespaces: ''
@@ -87,20 +87,20 @@ prometheus:
     annotations:
       kubernetes.io/ingress.class: "nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
-      nginx.ingress.kubernetes.io/auth-signin: https://auth-prometheus.av0.de/oauth2/start
+      nginx.ingress.kubernetes.io/auth-signin: https://auth-prometheus.cedi.dev/oauth2/start
       nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy-prometheus.svc.cluster.local/oauth2/auth
     hosts:
-      - prometheus.av0.de
+      - prometheus.cedi.dev
     pathType: ImplementationSpecific
     paths:
       - /
     tls:
       - secretName: prometheus-tls-secret
         hosts:
-          - prometheus.av0.de
+          - prometheus.cedi.dev
 
   prometheusSpec:
-    externalUrl: "https://prometheus.av0.de"
+    externalUrl: "https://prometheus.cedi.dev"
     replicas: 1
     retention: 30d
     resources:

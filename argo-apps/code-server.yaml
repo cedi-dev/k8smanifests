@@ -36,13 +36,13 @@
 #            password: {{password}}
 #            ingress:
 #                hosts:
-#                  - host: {{name}}.code.av0.de
+#                  - host: {{name}}.code.cedi.dev
 #                    paths:
 #                      - /
 #                tls:
 #                  - secretName: {{name}}-code-server-tls-secret
 #                    hosts:
-#                      - {{name}}.code.av0.de
+#                      - {{name}}.code.cedi.dev
 #      syncPolicy:
 #        automated:
 #          prune: true

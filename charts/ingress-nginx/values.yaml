@@ -11,7 +11,7 @@ ingress-nginx:
       healthCheckNodePort: 32596
       annotations:
         load-balancer.hetzner.cloud/location: "nbg1"
-        load-balancer.hetzner.cloud/name: "av0-ingress-lb"
+        load-balancer.hetzner.cloud/name: "cedi-dev-ingress-lb"
         load-balancer.hetzner.cloud/type: "lb11"
         load-balancer.hetzner.cloud/algorithm-type: "least_connections"
         load-balancer.hetzner.cloud/health-check-protocol: "http"
