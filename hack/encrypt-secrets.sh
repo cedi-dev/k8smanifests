@@ -11,7 +11,7 @@ source ./hack/.enc_files.sh
 
 
 age_keys=('age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq') # cedi
-age_keys+=('age1293lfsn5whmk4pyc7w69yzqkr8agkykt2z6xu3g25y2pl62ukpvqmlazsm') # argocd
+age_keys+=('age1y0a34ky5xmhda096mds5r2nk9gek2vy0jk7xepzjps9c3yauzy5sup3jde') # k8s_cedi_dev.txt
 
 
 function join_by { 
