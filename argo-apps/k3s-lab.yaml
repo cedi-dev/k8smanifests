@@ -1,20 +1,20 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: k3s-lab
-  namespace: argocd
-spec:
-  destination:
-    namespace: argocd
-    name: admin@labk3s-tailnet
-  project: default
-  source:
-    path: argo-apps
-    repoURL: https://github.com/av0de/k8s-manifests.git
-    targetRevision: main
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: k3s-lab
+#  namespace: argocd
+#spec:
+#  destination:
+#    namespace: argocd
+#    name: admin@labk3s-tailnet
+#  project: default
+#  source:
+#    path: argo-apps
+#    repoURL: https://github.com/av0de/k8s-manifests.git
+#    targetRevision: main
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
+#    syncOptions:
+#    - CreateNamespace=true
