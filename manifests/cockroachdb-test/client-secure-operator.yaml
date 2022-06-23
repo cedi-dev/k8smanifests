@@ -15,38 +15,38 @@
 # Generated, do not edit. Please edit this file instead: config/templates/client-secure-operator.yaml.in
 #
 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: cockroachdb-client-secure
-  namespace: cockroachdb-test
-spec:
-  serviceAccountName: cockroachdb-sa
-  restartPolicy: Always
-  containers:
-    - name: cockroachdb-client-secure
-      image: cockroachdb/cockroach:v22.1.1
-      imagePullPolicy: IfNotPresent
-      volumeMounts:
-        - name: client-certs
-          mountPath: /cockroach/cockroach-certs/
-      command:
-        - sleep
-        - "2147483648" # 2^31
-  volumes:
-    - name: client-certs
-      projected:
-        sources:
-          - secret:
-            name: cockroachdb-node
-            items:
-              - key: ca.crt
-                path: ca.crt
-          - secret:
-            name: cockroachdb-root
-            items:
-              - key: tls.crt
-                path: client.root.crt
-              - key: tls.key
-                path: client.root.key
-        defaultMode: 256
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: cockroachdb-client-secure
+#  namespace: cockroachdb-test
+#spec:
+#  serviceAccountName: cockroachdb-sa
+#  restartPolicy: Always
+#  containers:
+#    - name: cockroachdb-client-secure
+#      image: cockroachdb/cockroach:v22.1.1
+#      imagePullPolicy: IfNotPresent
+#      volumeMounts:
+#        - name: client-certs
+#          mountPath: /cockroach/cockroach-certs/
+#      command:
+#        - sleep
+#        - "2147483648" # 2^31
+#  volumes:
+#    - name: client-certs
+#      projected:
+#        sources:
+#          - secret:
+#            name: cockroachdb-node
+#            items:
+#              - key: ca.crt
+#                path: ca.crt
+#          - secret:
+#            name: cockroachdb-root
+#            items:
+#              - key: tls.crt
+#                path: client.root.crt
+#              - key: tls.key
+#                path: client.root.key
+#        defaultMode: 256
