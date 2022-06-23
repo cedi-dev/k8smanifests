@@ -20,3 +20,6 @@ patches:
       namespace: argocd
       name: argocd-repo-server
     path: repo-server-sidecar.patch.yaml
+
+patchesStrategicMerge:
+  - role-repo-server.patch.yaml
