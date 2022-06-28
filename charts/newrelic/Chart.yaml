@@ -1,0 +1,7 @@
+apiVersion: v2
+name: addon-newrelic
+version: 4.6.2
+dependencies:
+  - name: nri-bundle
+    version: 4.6.2
+    repository: https://helm-charts.newrelic.com
