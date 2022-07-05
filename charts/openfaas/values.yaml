@@ -1,0 +1,28 @@
+openfaas:
+  kubernetesDNSDomain: cluster.local
+  functionNamespace: openfaas
+  generateBasicAuth: true
+
+  operator:
+    create: true
+
+  dashboard:
+    publicURL: https://openfaas.cedi.dev
+
+  ingress:
+    enabled: true
+    pathType: ImplementationSpecific
+
+    # Used to create Ingress record (should be used with exposeServices: false).
+    hosts:
+      - host: openfaas.cedi.dev  # Replace with gateway.example.com if public-facing
+        serviceName: gateway
+        servicePort: 8080
+        path: /
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - secretName: openfaas-tls
+        hosts: 
+          - openfaas.cedi.dev

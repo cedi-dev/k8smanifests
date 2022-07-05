@@ -1,0 +1,7 @@
+apiVersion: v2
+name: addon-openfaas
+version: 10.1.3
+dependencies:
+  - name: openfaas
+    version: 10.1.3
+    repository: https://openfaas.github.io/faas-netes/
