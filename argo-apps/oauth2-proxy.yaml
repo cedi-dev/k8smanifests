@@ -10,6 +10,7 @@ spec:
           - name: general
           - name: prometheus
           - name: code-server
+          - name: openfaas
   template:
     metadata:
       name: oauth2-proxy-{{name}}
