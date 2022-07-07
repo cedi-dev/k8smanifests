@@ -1,6 +1,7 @@
 openfaas:
   kubernetesDNSDomain: cluster.local
   functionNamespace: openfaas
+  clusterRole: true
   
   # disable basic auth, as we do OIDC login via GitHub using the OAuth2 Proxy in the Ingress
   generateBasicAuth: false
