@@ -25,3 +25,6 @@ patches:
 patchesStrategicMerge:
   - prometheus.patch.yaml
   - grafana.patch.yaml
+  - delete-system-scheduler.yaml
+  - delete-system-kube-proxy.yaml
+  - delete-system-controller-manager.patch.yaml
