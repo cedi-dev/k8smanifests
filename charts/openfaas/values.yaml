@@ -2,7 +2,7 @@ openfaas:
   kubernetesDNSDomain: cluster.local
   functionNamespace: openfaas
   clusterRole: true
-  
+
   # disable basic auth, as we do OIDC login via GitHub using the OAuth2 Proxy in the Ingress
   generateBasicAuth: false
   basic_auth: false
@@ -30,5 +30,5 @@ openfaas:
       nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy-openfaas.svc.cluster.local/oauth2/auth
     tls:
       - secretName: openfaas-tls
-        hosts: 
+        hosts:
           - openfaas.cedi.dev
