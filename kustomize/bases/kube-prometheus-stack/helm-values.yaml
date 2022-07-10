@@ -48,20 +48,6 @@ alertmanager:
         hosts:
           - alertmanager.cedi.dev
 
-  config:
-    route:
-      receiver: 'telegram'
-      routes:
-      - match:
-          alertname: Watchdog
-        receiver: 'telegram'
-    receivers:
-      - name: 'telegram'
-        telegram_configs:
-          - bot_token: 'foobar2342' 
-            chat_id: 'foobar2342'
-            parse_mode: 'HTML'
-
   alertmanagerSpec:
     externalUrl: "https://alertmgr.cedi.dev"
     replicas: 1
