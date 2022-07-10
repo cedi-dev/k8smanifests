@@ -111,6 +111,13 @@ spec:
         app: hcloud-csi-controller
     spec:
       serviceAccount: hcloud-csi
+      tolerations:
+        - key: "CriticalAddonsOnly"
+          operator: "Exists"
+        - key: "node-role.kubernetes.io/master"
+          effect: NoSchedule
+        - key: "node-role.kubernetes.io/control-plane"
+          effect: NoSchedule
       containers:
         - name: csi-attacher
           image: k8s.gcr.io/sig-storage/csi-attacher:v3.2.1
@@ -163,8 +170,8 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: hcloud-csi
-                  key: token
+                  name: kubeone-ccm-credentials
+                  key: HZ_TOKEN
           volumeMounts:
             - name: socket-dir
               mountPath: /run/csi
@@ -261,8 +268,8 @@ spec:
             - name: HCLOUD_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: hcloud-csi
-                  key: token
+                  name: kubeone-ccm-credentials
+                  key: HZ_TOKEN
             - name: KUBE_NODE_NAME
               valueFrom:
                 fieldRef:
