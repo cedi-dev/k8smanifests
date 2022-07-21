@@ -1,4 +1,4 @@
-name: "Lint"
+name: "Pullrequest"
 
 on:
   pull_request:
