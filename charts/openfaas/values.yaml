@@ -32,3 +32,20 @@ openfaas:
       - secretName: openfaas-tls
         hosts:
           - openfaas.cedi.dev
+
+  nats:
+    enableMonitoring: true
+    metrics:
+      enabled: true
+
+  gateway:
+    replicas: 2
+
+  queueWorker:
+    replicas: 2
+
+  prometheus:
+    create: false
+
+  alertmanager:
+    create: false
