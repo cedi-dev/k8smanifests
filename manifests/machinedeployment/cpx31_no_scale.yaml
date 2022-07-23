@@ -1,0 +1,53 @@
+apiVersion: "cluster.k8s.io/v1alpha1"
+kind: MachineDeployment
+metadata:
+  name: "cedi-dev-cpx31-new"
+  namespace: "kube-system"
+  annotations:
+    #cluster.k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
+    #cluster.k8s.io/cluster-api-autoscaler-node-group-max-size: "3"
+spec:
+  paused: false
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 0
+  selector:
+    matchLabels:
+      node: "cedi-dev"
+  template:
+    metadata:
+      labels:
+        node: "cedi-dev"
+    spec:
+      providerSpec:
+        value:
+          cloudProvider: "hetzner"
+          cloudProviderSpec:
+            # If empty, can be set via HZ_TOKEN env var
+            token:
+              secretKeyRef:
+                namespace: kube-system
+                name: cloud-provider-credentials
+                key: HZ_TOKEN
+            labels:
+              role: worker
+              cluster: "cedi-dev"
+            serverType: "cpx31"
+            location: "nbg1"
+            image: "ubuntu-20.04"
+            networks:
+              - "1766884"
+          operatingSystem: "ubuntu"
+          operatingSystemSpec:
+            distUpgradeOnBoot: false
+          sshPublicKeys:
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKKQwlVWSGICyOiVryEdEp8bR+ltCxSeikxPTRRgSssL cedi@ivy
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOO9DMiwRjCCWvMA9TKYxRApgQx3g+owxkq9jy1YyjGN cedi@mae
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBW7KOtsdmhDszm0qaKdtxExNQqNnl6zJLz1vKRmmod2 cedi@liv
+            - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFd4lpqMI7I9fPboMNhGzVrel0cir3D7bHLHADqE1Kmf cedi@devpi
+      versions:
+        kubelet: "1.23.1"
