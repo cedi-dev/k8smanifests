@@ -30,6 +30,12 @@ kubeScheduler:
   serviceMonitor:
     enabled: false
 
+defaultRules:
+  create: true
+  rules:
+    kubeProxy: false
+    kubeScheduler: false
+
 alertmanager:
   ingress:
     enabled: true
@@ -101,7 +107,8 @@ prometheus:
 
   prometheusSpec:
     externalUrl: "https://prometheus.cedi.dev"
-    replicas: 1
+    replicas: 2
+    podAntiAffinity: "hard"
     retention: 30d
     resources:
       limits:
