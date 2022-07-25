@@ -17,4 +17,4 @@ configuration:
   clientID: MTIzNA==
   clientSecret: MTIzNA==
   cookieSecret: MTIzNA==
-replicaCount: 2
+replicaCount: 1
