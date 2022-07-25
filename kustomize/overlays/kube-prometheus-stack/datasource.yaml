@@ -9,4 +9,4 @@ datasources:
       timeInterval: 30s
   - name: Loki
     type: loki
-    url: loki-stack.loki.svc.cluster.local:3100
+    url: http://loki-stack.loki.svc.cluster.local:3100
