@@ -1,13 +1,14 @@
-loki:
-  persistence:
-    enabled: false
-    accessModes:
-      - ReadWriteOnce
-    size: 30Gi
+loki-stack:
+  loki:
+    persistence:
+      enabled: false
+      accessModes:
+        - ReadWriteOnce
+      size: 30Gi
 
-  serviceMonitor:
-    enabled: true
+    serviceMonitor:
+      enabled: true
 
-promtail:
-  serviceMonitor:
-    enabled: true
+  promtail:
+    serviceMonitor:
+      enabled: true

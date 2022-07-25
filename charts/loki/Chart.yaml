@@ -1,20 +1,7 @@
-apiVersion: "v1"
-name: loki-stack
-version: 2.6.6
-appVersion: v2.4.2
-kubeVersion: "^1.10.0-0"
-description: "Loki: like Prometheus, but for logs."
-home: https://grafana.com/loki
-icon: https://raw.githubusercontent.com/grafana/loki/master/docs/sources/logo.png
-sources:
-- https://github.com/grafana/loki
-maintainers:
-- name: Loki Maintainers
-  email: lokiproject@googlegroups.com
+apiVersion: v2
+name: addon-loki-stack
+version: 2.6.5
 dependencies:
-- name: "loki"
-  repository: "https://grafana.github.io/helm-charts"
-  version: "^2.12.2"
-- name: "promtail"
-  repository: "https://grafana.github.io/helm-charts"
-  version: "^3.11.0"
+  - name: loki-stack
+    version: 2.6.5
+    repository: https://grafana.github.io/helm-charts
