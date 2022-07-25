@@ -124,6 +124,15 @@ prometheus:
           resources:
             requests:
               storage: 64Gi
+    additionalScrapeConfigs:
+      - job_name: "node-exporter"
+        static_configs:
+          - targets:
+            - "hole.elbschloss.xyz:9100"
+      - job_name: "adguard-exporter"
+        static_configs:
+          - targets:
+            - "hole.elbschloss.xyz:9617"
 
     serviceMonitorNamespaceSelector: {}
     serviceMonitorSelector: {}

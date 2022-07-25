@@ -23,6 +23,5 @@ patches:
     path: grafana-env.patch.yaml
 
 patchesStrategicMerge:
-  - prometheus.patch.yaml
   - grafana.patch.yaml
   - delete-system-controller-manager.patch.yaml
