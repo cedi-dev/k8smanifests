@@ -1,6 +1,6 @@
 apiVersion: "v1"
 name: loki-stack
-version: 2.6.4
+version: 2.6.6
 appVersion: v2.4.2
 kubeVersion: "^1.10.0-0"
 description: "Loki: like Prometheus, but for logs."
@@ -14,7 +14,7 @@ maintainers:
 dependencies:
 - name: "loki"
   repository: "https://grafana.github.io/helm-charts"
-  version: "^2.10.1"
+  version: "^2.12.2"
 - name: "promtail"
   repository: "https://grafana.github.io/helm-charts"
   version: "^3.11.0"
