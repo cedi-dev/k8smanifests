@@ -35,7 +35,7 @@ repoServer:
     - name: XDG_CONFIG_HOME
       value: /home/argocd/.config
 
-  replicas: 2
+  replicas: 1
 
   metrics:
     enabled: true
@@ -52,7 +52,7 @@ server:
     enabled: false
     domain: argocd.cedi.dev
 
-  replicas: 2
+  replicas: 1
 
   config:
     url: https://argocd.cedi.dev
