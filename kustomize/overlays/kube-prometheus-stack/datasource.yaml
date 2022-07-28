@@ -15,6 +15,6 @@ datasources:
     editable: false
   - name: Tempo
     type: tempo
-    url: http://grafana-tempo.tempo.svc.cluster.local:3100
+    url: http://grafana-tempo-tempo-distributed-query-frontend.tempo.svc.cluster.local:3100
     access: proxy
     editable: false
