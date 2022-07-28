@@ -13,8 +13,15 @@ datasources:
     url: http://grafana-loki.loki.svc.cluster.local:3100
     access: proxy
     editable: false
+    jsonData:
+      derivedFields:
+        - datasourceUid: tempo
+          matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
+          name: TraceID
+          url: $${__value.raw}
+      maxLines: 1000
   - name: Tempo
     type: tempo
-    url: http://grafana-tempo-tempo-distributed-query-frontend.tempo.svc.cluster.local:3100
+    url: http://tempo-query-frontend.tempo.svc.cluster.local:3100
     access: proxy
     editable: false

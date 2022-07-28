@@ -39,7 +39,7 @@ data:
                 grpc:
                 http:
           remote_write:
-            - endpoint: grafana-tempo-tempo-distributed-distributor.tempo.svc.cluster.local:4317
+            - endpoint: tempo-distributor.tempo.svc.cluster.local:4317
               insecure: true
           scrape_configs:
             - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
