@@ -20,21 +20,10 @@ tempo-distributed:
   # enable autoscaling for distributor
   distributor:
     replicas: 2
-    autoscaling:
-      enabled: true
-      minReplicas: 2
-      maxReplicas: 5
 
   # enable metricsGenerator
   metricsGenerator:
     enabled: true
-
-  # enable autoscaling for queryFrontend
-  queryFrontend:
-    autoscaling:
-      enabled: true
-      minReplicas: 1
-      maxReplicas: 3
 
   traces:
     jaeger:
