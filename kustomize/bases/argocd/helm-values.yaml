@@ -36,10 +36,6 @@ repoServer:
       value: /home/argocd/.config
 
   replicas: 2
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 5
 
   metrics:
     enabled: true
@@ -57,10 +53,6 @@ server:
     domain: argocd.cedi.dev
 
   replicas: 2
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 5
 
   config:
     url: https://argocd.cedi.dev
