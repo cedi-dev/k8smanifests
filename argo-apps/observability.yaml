@@ -17,7 +17,7 @@ spec:
             path: charts/grafana-vulture
   template:
     metadata:
-      name: "o11y-{{name}}"
+      name: "{{name}}"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
