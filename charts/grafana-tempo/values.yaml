@@ -18,15 +18,16 @@ tempo-distributed:
     replicas: 2
     autoscaling:
       enabled: true
-      minReplicas: 1
+      minReplicas: 2
       maxReplicas: 5
 
   # enable autoscaling for distributor
   distributor:
+    replicas: 2
     autoscaling:
       enabled: true
-      minReplicas: 1
-      maxReplicas: 3
+      minReplicas: 2
+      maxReplicas: 5
 
   # enable metricsGenerator
   metricsGenerator:
