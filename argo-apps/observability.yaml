@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: observability
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: grafana-agent
+            path: manifests/grafana-agent
+          - name: grafana-dashboards
+            path: manifests/grafana-dashboards
+          - name: grafana-loki
+            path: charts/grafana-loki
+          - name: grafana-vulture
+            path: charts/grafana-vulture
+  template:
+    metadata:
+      name: "o11y-{{name}}"
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        namespace: observability
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: "{{path}}"
+        repoURL: https://github.com/cedi-dev/k8smanifests.git
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
