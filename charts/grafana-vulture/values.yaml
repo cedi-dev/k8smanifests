@@ -1,0 +1,7 @@
+tempo-vulture:
+  nameOverride: "vulture"
+  serviceMonitor:
+    enabled: true
+  tempoAddress:
+    push: ttempo-distributor.tempo.svc.cluster.local
+    query: http://tempo-query-frontend.tempo.svc.cluster.local:3100
