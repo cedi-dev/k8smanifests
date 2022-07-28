@@ -15,11 +15,7 @@ tempo-distributed:
 
   # enable autoscaling for ingester
   ingester:
-    replicas: 2
-    autoscaling:
-      enabled: true
-      minReplicas: 2
-      maxReplicas: 5
+    replicas: 1
 
   # enable autoscaling for distributor
   distributor:
