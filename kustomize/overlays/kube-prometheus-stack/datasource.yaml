@@ -22,6 +22,7 @@ datasources:
       maxLines: 1000
   - name: Tempo
     type: tempo
+    uid: tempo
     url: http://tempo-query-frontend.tempo.svc.cluster.local:3100
     access: proxy
     editable: false
