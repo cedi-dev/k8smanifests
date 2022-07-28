@@ -9,10 +9,10 @@ spec:
         elements:
           - name: grafana-agent
             path: manifests/grafana-agent
-          - name: grafana-dashboards
-            path: manifests/grafana-dashboards
           - name: grafana-loki
             path: charts/grafana-loki
+          - name: grafana-tempo
+            path: charts/grafana-tempo
           - name: grafana-vulture
             path: charts/grafana-vulture
   template:
