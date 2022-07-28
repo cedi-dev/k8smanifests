@@ -23,6 +23,6 @@ datasources:
   - name: Tempo
     type: tempo
     uid: tempo
-    url: http://tempo-query-frontend.tempo.svc.cluster.local:3100
+    url: http://tempo-query-frontend.observability.svc.cluster.local:3100
     access: proxy
     editable: false
