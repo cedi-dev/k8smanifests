@@ -101,10 +101,7 @@ server:
 controller:
   # -- The number of application controller pods to run.
   # If changing the number of replicas you must pass the number as `ARGOCD_CONTROLLER_REPLICAS` as an environment variable
-  replicas: 2
-  env:
-    - name: "ARGOCD_CONTROLLER_REPLICAS"
-      value: "2"
+  replicas: 1
   metrics:
     enabled: true
     serviceMonitor:
