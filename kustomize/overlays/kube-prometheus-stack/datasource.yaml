@@ -4,9 +4,17 @@ datasources:
     type: prometheus
     url: http://prom-stack-prometheus.monitoring:9090/
     access: proxy
+    editable: false
     isDefault: true
     jsonData:
       timeInterval: 30s
   - name: Loki
     type: loki
     url: http://grafana-loki.loki.svc.cluster.local:3100
+    access: proxy
+    editable: false
+  - name: Tempo
+    type: tempo
+    url: http://grafana-tempo.tempo.svc.cluster.local:3100
+    access: proxy
+    editable: false
