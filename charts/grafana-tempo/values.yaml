@@ -1,6 +1,21 @@
 tempo-distributed:
+  fullnameOverride: tempo
+
+  gateway:
+    enabled: true
+
+  memcachedExporter:
+    enabled: true
+
+  serviceMonitor:
+    enabled: true
+
+  prometheusRule:
+    enabled: true
+
   # enable autoscaling for ingester
   ingester:
+    replicas: 2
     autoscaling:
       enabled: true
       minReplicas: 1
@@ -67,14 +82,5 @@ tempo-distributed:
       enabled: true
       # -- Open Census receiver config
       receiverConfig: {}
-    # -- Enable Tempo to ingest traces from Kafka. Reference: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkareceiver
-    kafka: {}
-
-  memcachedExporter:
-    enabled: true
-
-  serviceMonitor:
-    enabled: true
-
-  prometheusRule:
+  search:
     enabled: true
