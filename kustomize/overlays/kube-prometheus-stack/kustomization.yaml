@@ -5,7 +5,7 @@ namespace: monitoring
 bases:
   - ../../bases/kube-prometheus-stack
 
-ressources:
+resources:
   - ./grafana-dashboards/adguardhome_exporter.yaml
   - ./grafana-dashboards/argocd-dashboard.yaml
   - ./grafana-dashboards/cert-manager-dashboard.yaml
