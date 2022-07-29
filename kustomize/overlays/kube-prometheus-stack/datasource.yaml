@@ -10,7 +10,7 @@ datasources:
       timeInterval: 30s
   - name: Loki
     type: loki
-    url: http://grafana-loki.observability.svc.cluster.local:3100
+    url: http://grafana-loki.monitoring.svc.cluster.local:3100
     access: proxy
     editable: false
     jsonData:
