@@ -9,12 +9,16 @@ spec:
         elements:
           - name: grafana-agent
             path: manifests/grafana-agent
+            namespace: monitoring
           - name: grafana-loki
             path: charts/grafana-loki
+            namespace: monitoring
           - name: grafana-tempo
             path: charts/grafana-tempo
+            namespace: observability
           - name: grafana-vulture
             path: charts/grafana-vulture
+            namespace: observability
   template:
     metadata:
       name: "{{name}}"
@@ -23,7 +27,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: observability
+        namespace: "{{namespace}}"
         server: https://kubernetes.default.svc
       project: default
       source:
