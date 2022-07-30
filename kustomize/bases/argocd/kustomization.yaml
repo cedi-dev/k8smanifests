@@ -4,7 +4,7 @@ namespace: argocd
 helmChartInflationGenerator:
   - chartName: argo-cd
     chartRepoUrl: https://argoproj.github.io/argo-helm
-    chartVersion: 4.10.0
+    chartVersion: 4.10.2
     releaseName: argocd
     releaseNamespace: argocd
     values: helm-values.yaml

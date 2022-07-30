@@ -1,7 +1,7 @@
 apiVersion: v2
 name: addon-cert-manager
-version: v1.9.0
+version: v1.9.1
 dependencies:
   - name: cert-manager
-    version: v1.9.0
+    version: v1.9.1
     repository: https://charts.jetstack.io
