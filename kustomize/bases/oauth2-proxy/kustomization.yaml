@@ -4,7 +4,7 @@ namespace: oauth2-proxy
 helmChartInflationGenerator:
   - chartName: oauth2-proxy
     chartRepoUrl: https://charts.bitnami.com/bitnami
-    chartVersion: 3.0.2
+    chartVersion: 2.0.20
     releaseName: oauth2-proxy
     releaseNamespace: oauth2-proxy
     values: helm-values.yaml
