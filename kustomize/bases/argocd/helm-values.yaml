@@ -21,12 +21,12 @@ repoServer:
   image:
     repository: "ghcr.io/cedi-dev/argocd-custom-container"
     imagePullPolicy: "Always"
-  
+
   volumes:
     - name: helm-secrets
       secret:
         secretName: helm-secrets
-  
+
   volumeMounts:
     - mountPath: /helm-secrets/
       name: helm-secrets
