@@ -8,17 +8,23 @@ datasources:
     isDefault: true
     jsonData:
       timeInterval: 30s
+      manageAlerts: true
+      alertmanagerUid: alertmanager
   - name: Alertmanager
     type: alertmanager
+    uid: alertmanager
     url: http://alertmanager-operated.monitoring.svc.cluster.local:9093/
     access: proxy
     editable: false
+    jsonData:
+      implementation: prometheus
   - name: Loki
     type: loki
     url: http://grafana-loki.monitoring.svc.cluster.local:3100
     access: proxy
     editable: false
     jsonData:
+      manageAlerts: false
       derivedFields:
         - datasourceUid: tempo
           matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
