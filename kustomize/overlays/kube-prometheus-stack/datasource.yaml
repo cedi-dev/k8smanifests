@@ -30,6 +30,10 @@ datasources:
           matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
           name: TraceID
           url: $${__value.raw}
+        - name: "traceID"
+          matcherRegex: "traceID=(\\w+)"
+          url: "$${__value.raw}"
+          datasourceUid: tempo
       maxLines: 1000
   - name: Tempo
     type: tempo
