@@ -8,6 +8,11 @@ datasources:
     isDefault: true
     jsonData:
       timeInterval: 30s
+  - name: Alertmanager
+    type: alertmanager
+    url: http://prom-stack-alertmanager.monitoring:9093/
+    access: proxy
+    editable: false
   - name: Loki
     type: loki
     url: http://grafana-loki.monitoring.svc.cluster.local:3100
