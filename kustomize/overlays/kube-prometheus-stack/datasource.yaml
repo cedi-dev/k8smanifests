@@ -16,6 +16,7 @@ datasources:
     url: http://alertmanager-operated.monitoring:9093/
     access: proxy
     editable: false
+    isDefault: true
     jsonData:
       implementation: prometheus
   - name: Loki
@@ -26,10 +27,6 @@ datasources:
     jsonData:
       manageAlerts: false
       derivedFields:
-        - datasourceUid: tempo
-          matcherRegex: ((\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+)(\d+|[a-z]+))
-          name: TraceID
-          url: $${__value.raw}
         - name: "traceID"
           matcherRegex: "traceID=(\\w+)"
           url: "$${__value.raw}"
