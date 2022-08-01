@@ -13,7 +13,7 @@ datasources:
   - name: Alertmanager
     type: alertmanager
     uid: alertmanager
-    url: http://alertmanager-operated.monitoring:9093/
+    url: http://prom-stack-alertmanager.monitoring:9093/
     access: proxy
     editable: false
     isDefault: true
