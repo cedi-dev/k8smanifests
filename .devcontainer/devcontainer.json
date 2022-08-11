@@ -24,6 +24,7 @@
 		"editor.bracketPairColorization.enabled": true,
 		"editor.guides.highlightActiveIndentation": true,
 		"editor.guides.bracketPairsHorizontal": "active",
+		"editor.experimental.stickyScroll.enabled": true,
 		"indentRainbow.includedLanguages": [
 			"yaml"
 		],
