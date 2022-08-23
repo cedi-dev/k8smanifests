@@ -5,4 +5,4 @@ metadata:
 spec:
   alias: "cedi"
   target: "https://cedi.dev"
-  after: 0
+  after: 3
