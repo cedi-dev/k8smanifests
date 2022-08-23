@@ -1,0 +1,8 @@
+apiVersion: urlshortener.av0.de/v1alpha1
+kind: ShortLink
+metadata:
+  name: home
+spec:
+  alias: "cedi"
+  target: "https://cedi.dev"
+  after: 0
