@@ -3,7 +3,7 @@
   value:
     name: ts-sidecar
     imagePullPolicy: Always
-    image: ghcr.io/tailscale/tailscale:v1.29.20
+    image: ghcr.io/tailscale/tailscale:v1.29.18
     env:
       - name: TS_KUBE_SECRET
         value: arocd-server-tailscale-auth
