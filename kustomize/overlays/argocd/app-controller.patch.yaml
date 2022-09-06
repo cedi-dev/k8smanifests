@@ -3,7 +3,11 @@
   value:
     name: ts-sidecar
     imagePullPolicy: Always
-    image: ghcr.io/tailscale/tailscale:stable
+    image: ghcr.io/tailscale/tailscale:v1.28
+    command:
+      - tailscale
+    args:
+      - web
     env:
       - name: TS_KUBE_SECRET
         value: app-controller-tailscale-auth
