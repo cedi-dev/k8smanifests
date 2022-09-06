@@ -8,7 +8,7 @@
       - name: TS_KUBE_SECRET
         value: app-controller-tailscale-auth
       - name: TS_USERSPACE
-        value: "false"
+        value: "true"
       - name: TS_AUTH_KEY
         valueFrom:
           secretKeyRef:
