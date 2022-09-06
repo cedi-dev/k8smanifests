@@ -3,12 +3,12 @@
   value:
     name: ts-sidecar
     imagePullPolicy: Always
-    image: ghcr.io/tailscale/tailscale:latest
+    image: ghcr.io/tailscale/tailscale:stable
     env:
       - name: TS_KUBE_SECRET
         value: repo-server-tailscale-auth
       - name: TS_USERSPACE
-        value: 'false'
+        value: "false"
       - name: TS_AUTH_KEY
         valueFrom:
           secretKeyRef:
