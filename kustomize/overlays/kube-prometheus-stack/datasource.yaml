@@ -17,7 +17,7 @@ datasources:
     url: http://prom-stack-alertmanager.monitoring:9093/
     access: proxy
     editable: false
-    isDefault: true
+    isDefault: false
     jsonData:
       implementation: prometheus
   - name: Loki
