@@ -8,6 +8,8 @@
       - name: TS_KUBE_SECRET
         value: repo-server-tailscale-auth
       - name: TS_USERSPACE
+        value: "false"
+      - name: TS_FORCE_REAUTH
         value: "true"
       - name: TS_AUTH_KEY
         valueFrom:
