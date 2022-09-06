@@ -3,7 +3,7 @@
   value:
     name: ts-sidecar
     imagePullPolicy: Always
-    image: ghcr.io/tailscale/tailscale:v1.28
+    image: ghcr.io/tailscale/tailscale:v1.29
     command:
       - tailscale
     args:
