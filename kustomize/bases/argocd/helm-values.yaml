@@ -57,16 +57,27 @@ server:
   config:
     url: https://argocd.cedi.dev
     kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
-    dex.config: |
-      connectors:
-        - type: github
-          id: github
-          name: GitHub
-          config:
-            clientID: $dex.oauth.github.clientID
-            clientSecret: $dex.oauth.github.clientSecret
-            orgs:
-              - name: cedi-dev
+    oidc.config: |
+      name: Auth0
+      issuer: https://cedi.eu.auth0.com/
+      clientID: $oidc.auth0.clientID
+      clientSecret: $oidc.auth0.clientSecret
+      requestedScopes:
+        - openid
+        - profile
+        - email
+        # not strictly necessary - but good practice:
+        - 'https://claims.cedi.dev/groups'
+    #dex.config: |
+    #  connectors:
+    #    - type: github
+    #      id: github
+    #      name: GitHub
+    #      config:
+    #        clientID: $dex.oauth.github.clientID
+    #        clientSecret: $dex.oauth.github.clientSecret
+    #        orgs:
+    #          - name: cedi-dev
   ingress:
     enabled: true
     https: true
@@ -85,12 +96,16 @@ server:
       "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
   rbacConfig:
     policy.default: role:readonly
+    scopes: "['https://claims.cedi.dev/groups', email]"
     policy.csv: |
-      p, role:org-admin, *, *, *, allow
+      p, role:admin, *, *, *, allow
       p, role:viewer, *, get, *, allow
 
       g, cedi-dev:argocd, role:viewer
-      g, cedi-dev:admin, role:org-admin
+      g, cedi-dev:admin, role:admin
+
+      g, argo-admin, role:admin
+      g, github@cedric-kienzler.de, role:admin
   metrics:
     enabled: true
     serviceMonitor:
@@ -112,8 +127,10 @@ controller:
 configs:
   secret:
     extra:
-      dex.oauth.github.clientID: foobar1234
-      dex.oauth.github.clientSecret: fooobar2345
+      #dex.oauth.github.clientID: foobar1234
+      #dex.oauth.github.clientSecret: fooobar2345
+      oidc.auth0.clientID: foobar1234
+      oidc.auth0.clientSecret: fooobar2345
   repositories:
     bitnami:
       name: bitnami
