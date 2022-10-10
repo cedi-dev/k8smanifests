@@ -5,6 +5,14 @@ metadata:
 spec:
   target: "https://cedi.dev"
   code: 307
+---
+apiVersion: urlshortener.av0.de/v1alpha1
+kind: ShortLink
+metadata:
+  name: swag
+spec:
+  target: "https://short.cedi.dev/swagger/index.html"
+  code: 307
 
 ---
 apiVersion: urlshortener.av0.de/v1alpha1
