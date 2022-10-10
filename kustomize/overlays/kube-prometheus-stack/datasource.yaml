@@ -6,7 +6,6 @@ datasources:
     url: http://prom-stack-prometheus.monitoring:9090/
     access: proxy
     editable: false
-    isDefault: true
     jsonData:
       timeInterval: 30s
       manageAlerts: true
@@ -17,7 +16,6 @@ datasources:
     url: http://prom-stack-alertmanager.monitoring:9093/
     access: proxy
     editable: false
-    isDefault: false
     jsonData:
       implementation: prometheus
   - name: Loki
