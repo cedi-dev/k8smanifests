@@ -8,7 +8,7 @@ metadata:
     #cluster.k8s.io/cluster-api-autoscaler-node-group-max-size: "3"
 spec:
   paused: false
-  replicas: 4
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
