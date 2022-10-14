@@ -1,3 +1,5 @@
+global:
+  storageClass: "hcloud-volumes"
 ingress:
   enabled: true
   tls: true
