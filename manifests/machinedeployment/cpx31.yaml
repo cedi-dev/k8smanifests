@@ -40,7 +40,7 @@ spec:
             location: "nbg1"
             image: "ubuntu-20.04"
             networks:
-              - "1766884"
+              - "2112930"
           operatingSystem: "ubuntu"
           operatingSystemSpec:
             distUpgradeOnBoot: true
