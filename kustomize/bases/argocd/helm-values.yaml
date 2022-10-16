@@ -7,6 +7,10 @@ dex:
       enabled: true
       selector:
         scope: k8s-cedi-dev
+
+redis-ha:
+  enabled: true
+
 redis:
   serviceAccount:
     create: true
@@ -18,6 +22,7 @@ redis:
         scope: k8s-cedi-dev
 
 repoServer:
+  replicas: 2
   image:
     repository: "ghcr.io/cedi-dev/argocd-custom-container"
     imagePullPolicy: "Always"
@@ -35,8 +40,6 @@ repoServer:
     - name: XDG_CONFIG_HOME
       value: /home/argocd/.config
 
-  replicas: 1
-
   metrics:
     enabled: true
     serviceMonitor:
@@ -45,14 +48,13 @@ repoServer:
         scope: k8s-cedi-dev
 
 server:
+  replicas: 2
   image:
     repository: "ghcr.io/cedi-dev/argocd-custom-container"
     imagePullPolicy: "Always"
   certificate:
     enabled: false
     domain: argocd.cedi.dev
-
-  replicas: 1
 
   config:
     url: https://argocd.cedi.dev
@@ -108,6 +110,18 @@ controller:
       enabled: true
       selector:
         scope: k8s-cedi-dev
+
+applicationSet:
+  replicas: 2
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
+
+notifications:
+  enabled: false
 
 configs:
   secret:
