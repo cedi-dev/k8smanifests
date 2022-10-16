@@ -117,6 +117,9 @@ controller:
       selector:
         scope: k8s-cedi-dev
 
+notifications:
+  enabled: false
+
 configs:
   secret:
     extra:
