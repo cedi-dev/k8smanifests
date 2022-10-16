@@ -8,18 +8,15 @@ dex:
       selector:
         scope: k8s-cedi-dev
 
-redis-ha:
-  enabled: true
-
-#redis:
-#  serviceAccount:
-#    create: true
-#  metrics:
-#    enabled: true
-#    serviceMonitor:
-#      enabled: true
-#      selector:
-#        scope: k8s-cedi-dev
+redis:
+  serviceAccount:
+    create: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
 
 repoServer:
   # ! README: Dear future cedi, please don't try to increase the replica count!
