@@ -22,7 +22,12 @@ redis-ha:
 #        scope: k8s-cedi-dev
 
 repoServer:
-  replicas: 2
+  # ! README: Dear future cedi, please don't try to increase the replica count!
+  # Short explanation:
+  # You dumb ass idiot thought it's a good idea to connect the ArgoCD pods to Tailscale in order
+  # to access your lab k3s cluster from ArgoCD. If you increase replicas to >1 Tailscale will complain
+  # about a "duplicate node key"
+  replicas: 1
 
   image:
     repository: "ghcr.io/cedi-dev/argocd-custom-container"
@@ -49,7 +54,12 @@ repoServer:
         scope: k8s-cedi-dev
 
 server:
-  replicas: 2
+  # ! README: Dear future cedi, please don't try to increase the replica count!
+  # Short explanation:
+  # You dumb ass idiot thought it's a good idea to connect the ArgoCD pods to Tailscale in order
+  # to access your lab k3s cluster from ArgoCD. If you increase replicas to >1 Tailscale will complain
+  # about a "duplicate node key"
+  replicas: 1
 
   image:
     repository: "ghcr.io/cedi-dev/argocd-custom-container"
