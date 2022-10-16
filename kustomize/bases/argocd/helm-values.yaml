@@ -98,6 +98,14 @@ server:
       selector:
         scope: k8s-cedi-dev
 
+applicationSet:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      selector:
+        scope: k8s-cedi-dev
+
 controller:
   # -- The number of application controller pods to run.
   # If changing the number of replicas you must pass the number as `ARGOCD_CONTROLLER_REPLICAS` as an environment variable
