@@ -38,7 +38,7 @@ spec:
               cluster: "cedi-dev"
             serverType: "cpx31"
             location: "nbg1"
-            image: "ubuntu-20.04"
+            image: "ubuntu-22.04"
             networks:
               - "2113249"
           operatingSystem: "ubuntu"
