@@ -50,7 +50,7 @@ kubectl apply -f manifests/deploy-secrets/helm.secret.yaml -n argocd
 4. Apply the "meta" ArgoCD Application which will then do the rest
 
 ```bash
-kubectl apply -f ./argo-apps/1-meta-deploy.yaml
+kubectl apply -f ./argo-apps/1-meta.yaml
 ```
 
 ## Initial contact with ArgoCD
