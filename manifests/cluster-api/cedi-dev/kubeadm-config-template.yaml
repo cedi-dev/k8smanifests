@@ -53,17 +53,17 @@ spec:
           path: /etc/sysctl.d/99-kubelet.conf
           permissions: "0744"
         - content: |
+            fs.inotify.max_user_instances = 1280
+            fs.inotify.max_user_watches   = 655360
+          owner: root:root
+          path: /etc/sysctl.d/99-local.conf
+          permissions: "0744"
+        - content: |
             nameserver 1.1.1.1
             nameserver 1.0.0.1
             nameserver 2606:4700:4700::1111
           owner: root:root
           path: /etc/kubernetes/resolv.conf
-          permissions: "0744"
-        - content: |
-            fs.inotify.max_user_instances = 1280
-            fs.inotify.max_user_watches   = 655360
-          owner: root:root
-          path: /etc/kubernetes/99-local.conf
           permissions: "0744"
       joinConfiguration:
         nodeRegistration:
@@ -82,7 +82,7 @@ spec:
       preKubeadmCommands:
         - export CRUN=1.6
         - export CONTAINERD=1.6.8
-        - export KUBERNETES_VERSION=$(echo v1.25.2 | sed 's/^v//')
+        - export KUBERNETES_VERSION=$(echo v1.25.3 | sed 's/^v//')
         - localectl set-locale LANG=en_US.UTF-8
         - localectl set-locale LANGUAGE=en_US.UTF-8
         - apt-get update -y

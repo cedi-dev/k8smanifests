@@ -16,7 +16,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: oauth2-proxy-{{name}}
+        namespace: default
         server: https://kubernetes.default.svc
       project: default
       source:
