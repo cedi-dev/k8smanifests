@@ -1,0 +1,6 @@
+dependencies:
+- name: csi-hcloud
+  repository: https://charts.syself.com
+  version: 0.2.0
+digest: sha256:bfed95b073bcfd4edc302df5e81d28475c12763655b478198a26ef4cb7a3dd92
+generated: "2022-10-21T16:44:50.028726+02:00"

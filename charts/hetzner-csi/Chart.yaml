@@ -1,0 +1,7 @@
+apiVersion: v2
+name: addon-csi-hcloud
+version: 0.2.0
+dependencies:
+  - name: csi-hcloud
+    version: 0.2.0
+    repository: https://charts.syself.com
