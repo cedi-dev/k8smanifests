@@ -1,7 +1,7 @@
 apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
 kind: KubeadmConfigTemplate
 metadata:
-  name: cedi-dev-md-0
+  name: cedi-dev-worker-template
   namespace: default
 spec:
   template:
@@ -58,6 +58,12 @@ spec:
             nameserver 2606:4700:4700::1111
           owner: root:root
           path: /etc/kubernetes/resolv.conf
+          permissions: "0744"
+        - content: |
+            fs.inotify.max_user_instances = 1280
+            fs.inotify.max_user_watches   = 655360
+          owner: root:root
+          path: /etc/kubernetes/99-local.conf
           permissions: "0744"
       joinConfiguration:
         nodeRegistration:

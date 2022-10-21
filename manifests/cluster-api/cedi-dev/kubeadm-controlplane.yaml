@@ -144,6 +144,12 @@ spec:
         owner: root:root
         path: /etc/kubernetes/resolv.conf
         permissions: "0744"
+      - content: |
+          fs.inotify.max_user_instances = 1280
+          fs.inotify.max_user_watches   = 655360
+        owner: root:root
+        path: /etc/kubernetes/99-local.conf
+        permissions: "0744"
     initConfiguration:
       nodeRegistration:
         kubeletExtraArgs:

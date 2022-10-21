@@ -1,9 +1,12 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
+  annotations:
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "4"
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "2"
   labels:
-    nodepool: cedi-dev-md-0
-  name: cedi-dev-md-0
+    nodepool: cedi-dev-cxp31
+  name: cedi-dev-cxp31
   namespace: default
 spec:
   clusterName: cedi-dev
@@ -13,17 +16,17 @@ spec:
   template:
     metadata:
       labels:
-        nodepool: cedi-dev-md-0
+        nodepool: cedi-dev-cxp31
     spec:
       bootstrap:
         configRef:
           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
           kind: KubeadmConfigTemplate
-          name: cedi-dev-md-0
+          name: cedi-dev-worker-template
       clusterName: cedi-dev
       failureDomain: fsn1
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
-        name: cedi-dev-md-0
+        name: cedi-dev-worker-cxp31
       version: v1.25.2
