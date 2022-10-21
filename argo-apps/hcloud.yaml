@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: hcloud
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: csi
+            path: charts/hetzner-csi
+          - name: ccm
+            path: charts/hetzner-ccm
+  template:
+    metadata:
+      name: "hcloud-{{name}}"
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        namespace: "kube-system"
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: "{{path}}"
+        repoURL: https://github.com/cedi-dev/k8smanifests.git
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
