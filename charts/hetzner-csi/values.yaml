@@ -2,7 +2,7 @@ csi-hcloud:
   storageClasses:
     - name: hcloud-volumes
       defaultStorageClass: true
-      reclaimPolicy: Retain
+      reclaimPolicy: Delete
 
   prometheus:
     serviceMonitor:
