@@ -1,0 +1,7 @@
+apiVersion: v2
+name: addon-ccm-hcloud
+version: 1.0.11
+dependencies:
+  - name: ccm-hcloud
+    version: 1.0.11
+    repository: https://charts.syself.com

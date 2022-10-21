@@ -1,0 +1,9 @@
+ccm-hcloud:
+  secret:
+    create: false
+    name: hetzner # Name of an existing secret
+    tokenKeyName: hcloud # Name of an existing key for the hcloud-token in the above specified secret
+    networkKeyName: network # Name of an existing key for the hcloud-network in the above specified secret
+  privateNetwork:
+    enabled: true
+    clusterSubnet: 10.244.0.0/16 # Pod CIDR

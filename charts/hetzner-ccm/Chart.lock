@@ -1,0 +1,6 @@
+dependencies:
+- name: ccm-hcloud
+  repository: https://charts.syself.com
+  version: 1.0.11
+digest: sha256:8837581bcb9827b4ef5d303f9d19f67d636de0ee5e086358f80cc5916d43842b
+generated: "2022-10-21T16:37:47.812539+02:00"
