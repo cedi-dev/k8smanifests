@@ -3,12 +3,12 @@
   value:
     name: ts-sidecar
     imagePullPolicy: Always
-    image: ghcr.io/tailscale/tailscale:v1.30.1
+    image: ghcr.io/tailscale/tailscale:v1.32.1
     env:
       - name: TS_KUBE_SECRET
         value: app-controller-tailscale-auth
       - name: TS_USERSPACE
-        value: "false"
+        value: "true"
       - name: TS_AUTH_KEY
         valueFrom:
           secretKeyRef:
@@ -16,6 +16,8 @@
             key: AUTH_KEY
             optional: true
     securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
       capabilities:
         add:
           - NET_ADMIN
