@@ -1,0 +1,14 @@
+- op: remove
+  path: "/spec/template/spec/containers/0/env/2"
+
+- op: add
+  path: "/spec/template/spec/containers/0/env/-"
+  value:
+    name: MINIO_DISTRIBUTED_NODES
+    value: "minio-{0...3}.minio-headless.minio.svc.cluster.local:9000/data"
+
+- op: add
+  path: "/spec/template/spec/containers/0/env/-"
+  value:
+    name: MINIO_PROMETHEUS_URL
+    value: "prom-stack-prometheus.monitoring.svc.cluster.local"

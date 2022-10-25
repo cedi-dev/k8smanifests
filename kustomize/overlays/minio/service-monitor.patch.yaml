@@ -1,0 +1,6 @@
+- op: remove
+  path: "/spec/namespaceSelector/matchNames/0"
+
+- op: add
+  path: "/spec/namespaceSelector/matchNames/-"
+  value: "minio"

@@ -1,0 +1,28 @@
+namespaceOverride: minio
+
+Release:
+  Namespace: minio1234
+
+mode: distributed
+auth:
+  existingSecret: "minio-root-user"
+
+ingress:
+  enabled: true
+  ingressClassName: "nginx"
+  hostname: minio.cedi.dev
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/auth-signin: https://auth.cedi.dev/oauth2/start
+    nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy-general.svc.cluster.local/oauth2/auth
+
+statefulset:
+  replicaCount: 4
+
+metrics:
+  serviceMonitor:
+    enabled: true
+
+  prometheusRule:
+    enabled: true

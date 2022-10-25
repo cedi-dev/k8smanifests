@@ -19,6 +19,7 @@ resources:
   - ./grafana-dashboards/tempo_resources.yaml
   - ./grafana-dashboards/tempo_rollout_progress.yaml
   - ./grafana-dashboards/tempo_writes.yaml
+  - ./grafana-dashboards/minio.yaml
 
 generators:
   - ./secret-generator.yaml
