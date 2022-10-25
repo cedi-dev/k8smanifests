@@ -19,9 +19,9 @@ spec:
           - name: grafana-vulture
             path: charts/grafana-vulture
             namespace: observability
-          #- name: grafana-mimir
-          #  path: charts/grafana-mimir
-          #  namespace: observability
+          - name: grafana-mimir
+            path: charts/grafana-mimir
+            namespace: observability
   template:
     metadata:
       name: "{{name}}"
