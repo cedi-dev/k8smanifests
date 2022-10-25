@@ -2,13 +2,13 @@
   path: "/spec/template/spec/containers/-"
   value:
     name: ts-sidecar
-    imagePullPolicy: Always
+    imagePullPolicy: IfNotPresent
     image: ghcr.io/tailscale/tailscale:v1.32.1
     env:
       - name: TS_KUBE_SECRET
         value: arocd-server-tailscale-auth
       - name: TS_USERSPACE
-        value: "true"
+        value: "false"
       - name: TS_AUTH_KEY
         valueFrom:
           secretKeyRef:
@@ -16,8 +16,7 @@
             key: AUTH_KEY
             optional: true
     securityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
+      privileged: true
       capabilities:
         add:
           - NET_ADMIN
