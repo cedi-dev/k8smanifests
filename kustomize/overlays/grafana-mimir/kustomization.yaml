@@ -10,3 +10,74 @@ generators:
 
 patches:
   - nginx-config.yaml
+  - alertmanager-sm.yaml
+  - compactor-sm.yaml
+  - distributor-sm.yaml
+  - ingester-sm.yaml
+  - overrides-exporter-sm.yaml
+  - querier-sm.yaml
+  - query-frontend-sm.yaml
+  - query-scheduler-sm.yaml
+  - ruler-sm.yaml
+  - store-gateway-sm.yaml
+
+patchesJson6902:
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-alertmanager
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-compactor
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-distributor
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-ingester
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-overrides-exporter
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-querier
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-query-frontend
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-query-scheduler
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-ruler
+    path: service-monitor.patch.yaml
+
+  - target:
+      kind: ServiceMonitor
+      namespace: observability
+      name: mimir-store-gateway
+    path: service-monitor.patch.yaml

@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    kustomize.config.k8s.io/behavior: replace
+  name: mimir-alertmanager
+  namespace: observability
+spec:
+  endpoints:
+    - port: http-metrics
+      relabelings:
+        - replacement: observability/alertmanager
+          sourceLabels:
+            - job
+          targetLabel: job
+        - replacement: mimir
+          targetLabel: cluster
+      scheme: http
+  namespaceSelector:
+    matchNames:
+      - observability
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: alertmanager
+      app.kubernetes.io/instance: grafana-mimir
+      app.kubernetes.io/name: mimir
