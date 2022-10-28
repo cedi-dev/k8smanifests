@@ -17,7 +17,7 @@ patches:
   - overrides-exporter-sm.yaml
   - querier-sm.yaml
   - query-frontend-sm.yaml
-  - query-scheduler-sm.yaml
+  #- query-scheduler-sm.yaml
   - ruler-sm.yaml
   - store-gateway-sm.yaml
 
@@ -64,11 +64,11 @@ patchesJson6902:
       name: mimir-query-frontend
     path: service-monitor.patch.yaml
 
-  - target:
-      kind: ServiceMonitor
-      namespace: observability
-      name: mimir-query-scheduler
-    path: service-monitor.patch.yaml
+  #- target:
+  #    kind: ServiceMonitor
+  #    namespace: observability
+  #    name: mimir-query-scheduler
+  #  path: service-monitor.patch.yaml
 
   - target:
       kind: ServiceMonitor
