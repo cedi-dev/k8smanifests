@@ -1,0 +1,5 @@
+serviceMonitor:
+  enabled: true
+
+minio:
+  enabled: false

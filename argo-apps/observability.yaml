@@ -20,7 +20,7 @@ spec:
             path: charts/grafana-vulture
             namespace: observability
           - name: grafana-mimir
-            path: charts/grafana-mimir
+            path: kustomize/overlays/grafana-mimir
             namespace: observability
   template:
     metadata:
