@@ -1,5 +1,6 @@
-serviceMonitor:
-  enabled: true
+metaMonitoring:
+  serviceMonitor:
+    enabled: true
 
 minio:
   enabled: false
