@@ -1,5 +1,23 @@
 apiVersion: 1
 datasources:
+  - name: Mimir
+    type: prometheus
+    uid: mimir
+    url: http://mimir-nginx.observability.svc.cluster.local/prometheus
+    access: proxy
+    editable: false
+    jsonData:
+      timeInterval: 10s
+      manageAlerts: true
+      alertmanagerUid: mimir-alertmanager
+  - name: Mimir-Alertmanager
+    type: alertmanager
+    uid: mimir-alertmanager
+    url: http://prom-stack-alertmanager.monitoring:9093/
+    access: proxy
+    editable: false
+    jsonData:
+      implementation: mimir
   - name: Prometheus
     type: prometheus
     uid: prometheus
