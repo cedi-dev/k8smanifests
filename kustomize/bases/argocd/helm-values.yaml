@@ -78,6 +78,14 @@ server:
             clientSecret: $dex.oauth.github.clientSecret
             orgs:
               - name: cedi-dev
+    resource.exclusions: |
+      - apiGroups:
+          - cilium.io
+        kinds:
+          - CiliumIdentity
+        clusters:
+          - "*"
+
   ingress:
     enabled: true
     https: true

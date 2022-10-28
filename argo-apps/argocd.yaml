@@ -18,3 +18,8 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  ignoreDifferences:
+    - kind: CiliumIdentity
+      group: cilium.io
+      jsonPointers:
+        - /
