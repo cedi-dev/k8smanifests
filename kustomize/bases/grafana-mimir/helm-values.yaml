@@ -4,3 +4,6 @@ metaMonitoring:
 
 minio:
   enabled: false
+
+query_scheduler:
+  enabled: false
