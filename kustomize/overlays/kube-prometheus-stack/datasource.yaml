@@ -68,7 +68,7 @@ datasources:
         filterByTraceID: false
         filterBySpanID: false
       serviceMap:
-        datasourceUid: "prometheus"
+        datasourceUid: "mimir"
       search:
         hide: false
       nodeGraph:
