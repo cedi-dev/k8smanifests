@@ -583,10 +583,18 @@ spec:
       otlphttp:
         endpoint: http://tempo-distributor.observability:4318
 
+      prometheusremotewrite:
+        endpoint: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
+
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: []
           exporters: [otlphttp]
+
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [prometheusremotewrite]
   mode: sidecar
