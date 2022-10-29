@@ -534,7 +534,7 @@ data:
                 "uid": "prometheus"
               },
               "exemplar": true,
-              "expr": "topk(25,adguard_top_queried_domains{hostname=~'$node'})",
+              "expr": "topk(10,adguard_top_queried_domains{hostname=~'$node'})",
               "format": "time_series",
               "instant": false,
               "interval": "",
@@ -598,7 +598,7 @@ data:
                 "uid": "prometheus"
               },
               "exemplar": true,
-              "expr": "topk(25, adguard_top_blocked_domains{hostname=~'$node'})",
+              "expr": "topk(10, adguard_top_blocked_domains{hostname=~'$node'})",
               "format": "time_series",
               "instant": false,
               "interval": "",
