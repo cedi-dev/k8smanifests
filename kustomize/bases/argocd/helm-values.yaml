@@ -117,6 +117,16 @@ server:
       selector:
         scope: k8s-cedi-dev
 
+  additionalProjects:
+    - name: observability
+      namespace: observability
+      description: Observability Project
+      sourceRepos:
+        - "*"
+      destinations:
+        - namespace: observability
+          server: https://kubernetes.default.svc
+
 applicationSet:
   replicas: 2
   metrics:
