@@ -1,10 +1,7 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: monitoring
-helmChartInflationGenerator:
-  - chartName: kube-prometheus-stack
-    chartRepoUrl: https://prometheus-community.github.io/helm-charts
-    chartVersion: 41.5.1
+helmCharts:
+  - name: kube-prometheus-stack
+    repo: https://prometheus-community.github.io/helm-charts
+    version: 41.5.1
     releaseName: prometheus-stack
-    releaseNamespace: monitoring
-    values: helm-values.yaml
+    namespace: monitoring
+    valuesFile: helm-values.yaml
