@@ -8,7 +8,7 @@ data:
             "builtIn": 1,
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "${datasource}"
             },
             "enable": true,
             "hide": true,
@@ -30,7 +30,7 @@ data:
           "collapsed": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "gridPos": {
             "h": 1,
@@ -44,7 +44,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "refId": "A"
             }
@@ -55,7 +55,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -122,7 +122,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "adguard_running{hostname=~'$node'}",
@@ -139,7 +139,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -206,7 +206,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "expr": "adguard_protection_enabled{hostname=~'$node'}",
               "format": "time_series",
@@ -222,7 +222,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -284,7 +284,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "expr": "adguard_avg_processing_time{hostname=~'$node'}",
               "format": "time_series",
@@ -300,7 +300,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -349,7 +349,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "expr": "rate(adguard_num_dns_queries{hostname=~'$node'}[$__rate_interval])*60",
@@ -367,7 +367,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -417,7 +417,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "builder",
               "expr": "adguard_num_blocked_filtering{hostname=\"$node\"}",
@@ -435,7 +435,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -495,7 +495,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "expr": "adguard_num_blocked_filtering{hostname=~'$node'} / adguard_num_dns_queries{hostname=~'$node'} * 100",
               "format": "time_series",
@@ -512,7 +512,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -540,7 +540,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "none"
@@ -608,7 +608,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -627,7 +627,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -655,7 +655,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "none"
@@ -723,7 +723,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "expr": "rate(adguard_num_blocked_filtering[$__rate_interval])*60",
@@ -741,7 +741,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -769,7 +769,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "none"
@@ -837,7 +837,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "expr": "adguard_num_blocked_filtering{hostname=~'$node'} / adguard_num_dns_queries{hostname=~'$node'} * 100",
               "format": "time_series",
@@ -853,7 +853,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -881,7 +881,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "none"
@@ -949,7 +949,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -964,7 +964,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "expr": "adguard_num_blocked_filtering{hostname=~'$node'}",
@@ -976,7 +976,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "expr": "adguard_num_dns_queries{hostname=~'$node'}",
@@ -992,7 +992,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1020,7 +1020,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "none"
@@ -1088,7 +1088,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "expr": "adguard_num_blocked_filtering{hostname=~'$node'}",
@@ -1106,7 +1106,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1134,7 +1134,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "normal"
@@ -1187,7 +1187,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "expr": "adguard_query_types{hostname=~'$node'}",
               "interval": "",
@@ -1201,7 +1201,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1250,7 +1250,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "adguard_query_types{hostname=~'$node'}",
@@ -1268,7 +1268,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1322,7 +1322,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "expr": "adguard_query_types{hostname=~'$node'}",
               "interval": "",
@@ -1336,7 +1336,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1364,7 +1364,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "normal"
@@ -1418,7 +1418,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "builder",
               "expr": "topk(10, sum by(domain, hostname) (adguard_top_blocked_domains{hostname=\"$node\"}))",
@@ -1436,7 +1436,7 @@ data:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1464,7 +1464,7 @@ data:
                   "type": "linear"
                 },
                 "showPoints": "auto",
-                "spanNulls": false,
+                "spanNulls": 60000,
                 "stacking": {
                   "group": "A",
                   "mode": "none"
@@ -1518,7 +1518,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "prometheus"
+                "uid": "${datasource}"
               },
               "editorMode": "code",
               "expr": "topk(10, sum by(client, hostname) (adguard_top_clients{hostname=\"$node\"}))",
@@ -1544,13 +1544,13 @@ data:
         "list": [
           {
             "current": {
-              "selected": true,
+              "selected": false,
               "text": "hole.elbschloss.xyz",
               "value": "hole.elbschloss.xyz"
             },
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "${datasource}"
             },
             "definition": "label_values(adguard_num_dns_queries, hostname)",
             "hide": 0,
@@ -1570,6 +1570,25 @@ data:
             "tagsQuery": "",
             "type": "query",
             "useTags": false
+          },
+          {
+            "current": {
+              "selected": false,
+              "text": "Mimir",
+              "value": "Mimir"
+            },
+            "hide": 0,
+            "includeAll": false,
+            "label": "datasource",
+            "multi": false,
+            "name": "datasource",
+            "options": [],
+            "query": "prometheus",
+            "queryValue": "",
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "type": "datasource"
           }
         ]
       },
@@ -1604,11 +1623,11 @@ data:
           "30d"
         ]
       },
-      "timezone": "",
+      "timezone": "utc",
       "title": "Adguard Exporter",
       "uid": "MIBVglomg",
       "version": 1,
-      "weekStart": ""
+      "weekStart": "monday"
     }
 kind: ConfigMap
 metadata:
