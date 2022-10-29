@@ -1,6 +1,0 @@
-mimir-distributed:
-  serviceMonitor:
-    enabled: true
-
-  minio:
-    enabled: false

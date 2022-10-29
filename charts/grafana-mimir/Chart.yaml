@@ -1,7 +1,0 @@
-apiVersion: v2
-name: addon-mimir
-version: 3.1.0
-dependencies:
-  - name: mimir-distributed
-    version: 3.1.0
-    repository: https://grafana.github.io/helm-charts
