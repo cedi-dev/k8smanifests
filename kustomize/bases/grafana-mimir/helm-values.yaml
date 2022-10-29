@@ -7,3 +7,17 @@ minio:
 
 query_scheduler:
   enabled: false
+
+nginx:
+  replicas: 1
+  resources:
+    limits:
+      cpu: 250m
+      memory: 2048Mi
+    requests:
+      cpu: 125m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
