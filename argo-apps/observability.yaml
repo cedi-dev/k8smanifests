@@ -10,9 +10,6 @@ spec:
           - name: grafana-agent
             path: manifests/grafana-agent
             namespace: monitoring
-          - name: grafana-loki
-            path: charts/grafana-loki
-            namespace: monitoring
           - name: grafana-promtail
             path: charts/grafana-promtail
             namespace: observability
