@@ -1,4 +1,3 @@
-fullnameOverride: argocd
 dex:
   enabled: true
   metrics:
@@ -68,6 +67,7 @@ server:
   config:
     url: https://argocd.cedi.dev
     kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
+    exec.enabled: "true"
     dex.config: |
       connectors:
         - type: github

@@ -2,13 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 
-resources:
+bases:
   - ../../bases/argocd/
 
 generators:
   - ./secret-generator.yaml
 
-patches:
+patchesJson6902:
   - target:
       kind: Deployment
       namespace: argocd
@@ -24,6 +24,13 @@ patches:
       namespace: argocd
       name: argocd-application-controller
     path: app-controller.patch.yaml
-
-patchesStrategicMerge:
-  - role-repo-server.patch.yaml
+  - target:
+      kind: Role
+      namespace: argocd
+      name: argocd-repo-server
+    path: role-repo-server.patch.yaml
+  - target:
+      kind: Role
+      namespace: argocd
+      name: argocd-server
+    path: webterminal-role.patch.yaml

@@ -1,22 +1,17 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  annotations:
-    kustomize.config.k8s.io/behavior: replace
-  name: argocd-repo-server
-  namespace: argocd
-rules:
-  - apiGroups:
-      - ""
-    resourceNames:
-      - repo-server-tailscale-auth
-    resources:
-      - secrets
-    verbs:
-      - create
-      - get
-      - list
-      - watch
-      - update
-      - patch
-      - delete
+- op: add
+  path: "/roles"
+  value:
+    - apiGroups:
+        - ""
+      resourceNames:
+        - repo-server-tailscale-auth
+      resources:
+        - secrets
+      verbs:
+        - create
+        - get
+        - list
+        - watch
+        - update
+        - patch
+        - delete
