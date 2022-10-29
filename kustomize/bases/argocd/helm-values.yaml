@@ -126,8 +126,6 @@ server:
       destinations:
         - namespace: observability
           server: https://kubernetes.default.svc
-        - namespace: monitoring
-          server: https://kubernetes.default.svc
 
 applicationSet:
   replicas: 2
