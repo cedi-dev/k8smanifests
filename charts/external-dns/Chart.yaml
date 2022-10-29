@@ -1,7 +1,0 @@
-apiVersion: v2
-name: addon-external-dns
-version: 6.10.2
-dependencies:
-  - name: external-dns
-    version: 6.10.2
-    repository: https://charts.bitnami.com/bitnami
