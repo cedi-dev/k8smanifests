@@ -12,7 +12,7 @@ spec:
             namespace: monitoring
           - name: grafana-loki
             path: charts/grafana-loki
-            namespace: monitoring
+            namespace: observability
           - name: grafana-tempo
             path: charts/grafana-tempo
             namespace: observability
