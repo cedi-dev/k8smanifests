@@ -13,6 +13,9 @@ spec:
           - name: grafana-loki
             path: charts/grafana-loki
             namespace: monitoring
+          - name: grafana-promtail
+            path: charts/grafana-promtail
+            namespace: observability
           - name: grafana-loki-distributed
             path: kustomize/overlays/grafana-loki
             namespace: observability
