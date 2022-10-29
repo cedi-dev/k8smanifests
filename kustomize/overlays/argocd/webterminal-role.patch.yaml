@@ -1,9 +1,9 @@
 - op: add
-  path: "/roles"
+  path: "/rules/-"
   value:
-    - apiGroups:
-        - ""
-      resources:
-        - pods/exec
-      verbs:
-        - create
+    apiGroups:
+      - ""
+    resources:
+      - pods/exec
+    verbs:
+      - create
