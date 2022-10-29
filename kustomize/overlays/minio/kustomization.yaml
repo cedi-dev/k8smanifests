@@ -7,16 +7,3 @@ bases:
 
 generators:
   - ./secret-generator.yaml
-
-patches:
-  - target:
-      kind: StatefulSet
-      namespace: minio
-      name: minio
-    path: minio-env.patch.yaml
-
-  - target:
-      kind: ServiceMonitor
-      namespace: minio
-      name: minio
-    path: service-monitor.patch.yaml
