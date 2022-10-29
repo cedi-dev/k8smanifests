@@ -29,8 +29,9 @@ spec:
     metadata:
       name: "{{name}}"
       namespace: argocd
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
+      # No finalizers here on purpose! This stuff is critical and shouldn't be finalized easily^^
+      #finalizers:
+      #  - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
         namespace: "{{namespace}}"
