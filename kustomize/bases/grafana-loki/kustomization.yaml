@@ -1,0 +1,7 @@
+helmCharts:
+  - name: loki-distributed
+    repo: https://grafana.github.io/helm-charts
+    version: 0.63.2
+    releaseName: loki
+    namespace: observability
+    valuesFile: helm-values.yaml

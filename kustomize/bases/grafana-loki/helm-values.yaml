@@ -1,0 +1,27 @@
+fullnameOverride: loki
+
+loki:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 30Gi
+
+  serviceMonitor:
+    enabled: true
+
+ingester:
+  autoscaling:
+    enabled: true
+
+distributor:
+  autoscaling:
+    enabled: true
+
+querier:
+  autoscaling:
+    enabled: true
+
+queryFrontend:
+  autoscaling:
+    enabled: true
