@@ -6,7 +6,7 @@ metadata:
   name: urlshortener
 spec:
   endpoints:
-    - interval: 5s
+    - interval: 10s
       path: /metrics
       port: metrics
   namespaceSelector:
