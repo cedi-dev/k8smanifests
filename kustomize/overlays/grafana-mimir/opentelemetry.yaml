@@ -40,4 +40,4 @@ spec:
           receivers: [otlp]
           processors: []
           exporters: [prometheusremotewrite]
-  mode: Deployment
+  mode: deployment
