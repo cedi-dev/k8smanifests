@@ -12,6 +12,7 @@ loki:
 
 ingester:
   replicas: 1
+
   resources:
     limits:
       cpu: 250m
@@ -19,10 +20,21 @@ ingester:
     requests:
       cpu: 125m
       memory: 512Mi
+
   autoscaling:
     enabled: true
     minReplicas: 1
     maxReplicas: 3
+
+  extraVolumes:
+    - name: loki-chunks
+      hostPath:
+        path: "/var/loki/chunks"
+        type: Directory
+
+  extraVolumeMounts:
+    - name: loki-chunks
+      mountPath: "/var/loki/chunks"
 
 distributor:
   replicas: 1
@@ -40,6 +52,7 @@ distributor:
 
 querier:
   replicas: 1
+
   resources:
     limits:
       cpu: 250m
@@ -47,10 +60,20 @@ querier:
     requests:
       cpu: 125m
       memory: 512Mi
+
   autoscaling:
     enabled: true
     minReplicas: 1
     maxReplicas: 3
+
+  extraVolumes:
+    - name: loki-chunks
+      hostPath:
+        path: "/var/loki/chunks"
+        type: Directory
+  extraVolumeMounts:
+    - name: loki-chunks
+      mountPath: "/var/loki/chunks"
 
 queryFrontend:
   replicas: 1
