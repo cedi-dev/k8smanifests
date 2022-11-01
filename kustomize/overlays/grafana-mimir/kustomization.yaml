@@ -5,6 +5,9 @@ namespace: observability
 bases:
   - ../../bases/grafana-mimir
 
+resources:
+  - opentelemetry.yaml
+
 generators:
   - ./secret-generator.yaml
 
