@@ -10,7 +10,7 @@ metadata:
   namespace: default
 spec:
   clusterName: cedi-dev
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels: null
   template:
