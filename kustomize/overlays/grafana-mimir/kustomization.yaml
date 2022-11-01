@@ -22,6 +22,12 @@ patchesJson6902:
     path: service-monitor.patch.yaml
 
   - target:
+      kind: Deployment
+      namespace: observability
+      name: mimir-query-frontend
+    path: jaeger-tracing-env.patch.yaml
+
+  - target:
       kind: HorizontalPodAutoscaler
       group: autoscaling
       version: v2beta1

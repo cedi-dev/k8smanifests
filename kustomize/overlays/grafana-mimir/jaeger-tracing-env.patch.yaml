@@ -1,0 +1,5 @@
+- op: add
+  path: "/spec/template/spec/containers/0/env"
+  value:
+    - name: JAEGER_AGENT_HOST
+      value: "mimir-alertmanager-headless.observability.svc.cluster.local:14250"
