@@ -24,3 +24,6 @@ patchesJson6902:
         value:
           type: Utilization
           averageUtilization: 60
+
+patches:
+  - pdb.patch.yaml

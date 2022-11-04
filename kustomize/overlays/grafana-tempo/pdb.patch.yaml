@@ -1,0 +1,14 @@
+$patch: delete
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: tempo-distributor
+  namespace: observability
+
+---
+$patch: delete
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: tempo-ingester
+  namespace: observability
