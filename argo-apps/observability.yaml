@@ -12,13 +12,10 @@ spec:
           #  namespace: monitoring
           - name: grafana-promtail
             path: charts/grafana-promtail
-            namespace: observability
           - name: grafana-loki
             path: kustomize/overlays/grafana-loki
-            namespace: observability
-          #- name: grafana-tempo
-          #  path: charts/grafana-tempo
-          #  namespace: observability
+          - name: grafana-tempo
+            path: kustomize/overlays/grafana-tempo
           #- name: grafana-vulture
           #  path: charts/grafana-vulture
           #  namespace: observability
@@ -34,7 +31,7 @@ spec:
       #  - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: "{{namespace}}"
+        namespace: "observability"
         server: https://kubernetes.default.svc
       project: default
       source:

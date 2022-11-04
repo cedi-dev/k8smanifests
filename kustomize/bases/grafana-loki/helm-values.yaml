@@ -41,12 +41,6 @@ distributor:
     maxReplicas: 2
 
 querier:
-  persistence:
-    enabled: false
-    accessModes:
-      - ReadWriteOnce
-    size: 10Gi
-
   replicas: 1
 
   resources:
