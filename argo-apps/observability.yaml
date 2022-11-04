@@ -1,49 +1,49 @@
-#apiVersion: argoproj.io/v1alpha1
-#kind: ApplicationSet
-#metadata:
-#  name: observability
-#  namespace: argocd
-#spec:
-#  generators:
-#    - list:
-#        elements:
-#          #- name: grafana-agent
-#          #  path: manifests/grafana-agent
-#          #  namespace: monitoring
-#          #- name: grafana-promtail
-#          #  path: charts/grafana-promtail
-#          #  namespace: observability
-#          #- name: grafana-loki
-#          #  path: kustomize/overlays/grafana-loki
-#          #  namespace: observability
-#          #- name: grafana-tempo
-#          #  path: charts/grafana-tempo
-#          #  namespace: observability
-#          #- name: grafana-vulture
-#          #  path: charts/grafana-vulture
-#          #  namespace: observability
-#          #- name: grafana-mimir
-#          #  path: kustomize/overlays/grafana-mimir
-#          #  namespace: observability
-#  template:
-#    metadata:
-#      name: "{{name}}"
-#      namespace: argocd
-#      # No finalizers here on purpose! This stuff is critical and shouldn't be finalized easily^^
-#      #finalizers:
-#      #  - resources-finalizer.argocd.argoproj.io
-#    spec:
-#      destination:
-#        namespace: "{{namespace}}"
-#        server: https://kubernetes.default.svc
-#      project: default
-#      source:
-#        path: "{{path}}"
-#        repoURL: https://github.com/cedi-dev/k8smanifests.git
-#        targetRevision: main
-#      syncPolicy:
-#        automated:
-#          prune: true
-#          selfHeal: true
-#        syncOptions:
-#          - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: observability
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          #- name: grafana-agent
+          #  path: manifests/grafana-agent
+          #  namespace: monitoring
+          - name: grafana-promtail
+            path: charts/grafana-promtail
+            namespace: observability
+          #- name: grafana-loki
+          #  path: kustomize/overlays/grafana-loki
+          #  namespace: observability
+          #- name: grafana-tempo
+          #  path: charts/grafana-tempo
+          #  namespace: observability
+          #- name: grafana-vulture
+          #  path: charts/grafana-vulture
+          #  namespace: observability
+          #- name: grafana-mimir
+          #  path: kustomize/overlays/grafana-mimir
+          #  namespace: observability
+  template:
+    metadata:
+      name: "{{name}}"
+      namespace: argocd
+      # No finalizers here on purpose! This stuff is critical and shouldn't be finalized easily^^
+      #finalizers:
+      #  - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        namespace: "{{namespace}}"
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: "{{path}}"
+        repoURL: https://github.com/cedi-dev/k8smanifests.git
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
