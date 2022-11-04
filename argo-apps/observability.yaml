@@ -16,8 +16,8 @@ spec:
             path: kustomize/overlays/grafana-loki
           - name: grafana-tempo
             path: kustomize/overlays/grafana-tempo
-          #- name: grafana-vulture
-          #  path: charts/grafana-vulture
+          - name: grafana-vulture
+            path: charts/grafana-vulture
           - name: grafana-mimir
             path: kustomize/overlays/grafana-mimir
   template:
