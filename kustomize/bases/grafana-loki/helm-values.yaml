@@ -42,7 +42,7 @@ distributor:
 
 querier:
   persistence:
-    enabled: true
+    enabled: false
     accessModes:
       - ReadWriteOnce
     size: 10Gi
