@@ -1,16 +1,16 @@
 fullnameOverride: loki
 
 loki:
+  serviceMonitor:
+    enabled: true
+
+ingester:
   persistence:
     enabled: true
     accessModes:
       - ReadWriteOnce
     size: 30Gi
 
-  serviceMonitor:
-    enabled: true
-
-ingester:
   replicas: 1
 
   resources:
@@ -25,16 +25,6 @@ ingester:
     enabled: true
     minReplicas: 1
     maxReplicas: 3
-
-  extraVolumes:
-    - name: loki-chunks
-      hostPath:
-        path: "/var/loki/chunks"
-        type: Directory
-
-  extraVolumeMounts:
-    - name: loki-chunks
-      mountPath: "/var/loki/chunks"
 
 distributor:
   replicas: 1
@@ -51,6 +41,12 @@ distributor:
     maxReplicas: 2
 
 querier:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+
   replicas: 1
 
   resources:
@@ -65,15 +61,6 @@ querier:
     enabled: true
     minReplicas: 1
     maxReplicas: 3
-
-  extraVolumes:
-    - name: loki-chunks
-      hostPath:
-        path: "/var/loki/chunks"
-        type: Directory
-  extraVolumeMounts:
-    - name: loki-chunks
-      mountPath: "/var/loki/chunks"
 
 queryFrontend:
   replicas: 1
