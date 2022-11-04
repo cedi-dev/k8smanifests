@@ -13,18 +13,18 @@ spec:
           - name: grafana-promtail
             path: charts/grafana-promtail
             namespace: observability
-          - name: grafana-loki
-            path: kustomize/overlays/grafana-loki
-            namespace: observability
+          #- name: grafana-loki
+          #  path: kustomize/overlays/grafana-loki
+          #  namespace: observability
           - name: grafana-tempo
             path: charts/grafana-tempo
             namespace: observability
           - name: grafana-vulture
             path: charts/grafana-vulture
             namespace: observability
-          - name: grafana-mimir
-            path: kustomize/overlays/grafana-mimir
-            namespace: observability
+          #- name: grafana-mimir
+          #  path: kustomize/overlays/grafana-mimir
+          #  namespace: observability
   template:
     metadata:
       name: "{{name}}"
