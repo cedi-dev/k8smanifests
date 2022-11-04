@@ -18,10 +18,8 @@ spec:
             path: kustomize/overlays/grafana-tempo
           #- name: grafana-vulture
           #  path: charts/grafana-vulture
-          #  namespace: observability
-          #- name: grafana-mimir
-          #  path: kustomize/overlays/grafana-mimir
-          #  namespace: observability
+          - name: grafana-mimir
+            path: kustomize/overlays/grafana-mimir
   template:
     metadata:
       name: "{{name}}"
