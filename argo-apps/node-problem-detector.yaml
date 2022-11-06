@@ -1,22 +1,22 @@
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: node-problem-detector
-#  namespace: argocd
-#  finalizers:
-#    - resources-finalizer.argocd.argoproj.io
-#spec:
-#  destination:
-#    namespace: node-problem-detector
-#    server: https://kubernetes.default.svc
-#  project: default
-#  source:
-#    path: charts/node-problem-detector
-#    repoURL: https://github.com/cedi-dev/k8smanifests.git
-#    targetRevision: main
-#  syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
-#    syncOptions:
-#      - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: node-problem-detector
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: node-problem-detector
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/node-problem-detector
+    repoURL: https://github.com/cedi-dev/k8smanifests.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
