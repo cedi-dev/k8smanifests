@@ -11,9 +11,4 @@ patches:
       version: v1
       name: metrics-server
       namespace: kube-system
-    patch: |-
-      - op: replace
-        path: "/kind"
-        value: DaemonSet
-      - op: remove
-        path: "/spec/replicas"
+    path: metrics-server.ds.patch.yaml
