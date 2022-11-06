@@ -79,6 +79,8 @@ grafana:
       - secretName: grafana-tls-secret
         hosts:
           - grafana.cedi.dev
+  plugins:
+    - grafana-polystat-panel
 
 prometheusOperator:
   namespaces: ""

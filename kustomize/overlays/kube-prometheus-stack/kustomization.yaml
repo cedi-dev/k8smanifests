@@ -10,16 +10,10 @@ resources:
   - ./grafana-dashboards/argocd-dashboard.yaml
   - ./grafana-dashboards/cert-manager-dashboard.yaml
   - ./grafana-dashboards/etcd-enhanced-dashboard.yaml
-  - ./grafana-dashboards/external-dns-dashboard.yaml
   - ./grafana-dashboards/ingress-nginx-dashboard.yaml
-  - ./grafana-dashboards/loki-promtail.yaml
   - ./grafana-dashboards/node_exporter.yaml
-  - ./grafana-dashboards/tempo_operational.yaml
-  - ./grafana-dashboards/tempo_reads.yaml
-  - ./grafana-dashboards/tempo_resources.yaml
-  - ./grafana-dashboards/tempo_rollout_progress.yaml
-  - ./grafana-dashboards/tempo_writes.yaml
   - ./grafana-dashboards/minio.yaml
+  - ./grafana-dashboards/node-problem-detector.yaml
 
 generators:
   - ./secret-generator.yaml
