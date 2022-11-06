@@ -9,3 +9,4 @@ ignore: |
   charts/*/charts/
   charts/*/templates/
   kustomize/bases/*/charts/
+  kustomize/*/*/*.secret.yaml
