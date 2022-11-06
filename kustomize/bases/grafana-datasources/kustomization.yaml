@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: observability
 
 configMapGenerator:
-  - name: grafana
+  - name: grafana-datasources
     namespace: observability
     files:
       - grafana.yaml
