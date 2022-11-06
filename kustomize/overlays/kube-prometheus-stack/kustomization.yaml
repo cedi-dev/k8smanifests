@@ -18,20 +18,5 @@ resources:
 generators:
   - ./secret-generator.yaml
 
-configMapGenerator:
-  - name: prom-stack-grafana-datasource
-    namespace: monitoring
-    behavior: replace
-    files:
-      - datasource.yaml
-
-patches:
-  - target:
-      kind: Deployment
-      namespace: monitoring
-      name: prometheus-stack-grafana
-    path: grafana-env.patch.yaml
-
 patchesStrategicMerge:
-  - grafana.patch.yaml
   - delete-system-controller-manager.patch.yaml

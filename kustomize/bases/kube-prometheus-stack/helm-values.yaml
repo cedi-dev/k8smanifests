@@ -68,7 +68,7 @@ alertmanager:
               storage: 1Gi
 
 grafana:
-  enabled: true
+  enabled: false
   ingress:
     enabled: true
     annotations:
