@@ -1,7 +1,7 @@
 apiVersion: v2
 name: addon-node-problem-detector
-version: 2.2.6
+version: 2.3.0
 dependencies:
   - name: node-problem-detector
-    version: 2.2.6
+    version: 2.3.0
     repository: https://charts.deliveryhero.io/
