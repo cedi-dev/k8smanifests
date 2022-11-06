@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/metrics-server
+    path: kustomize/overlays/metrics-server
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
