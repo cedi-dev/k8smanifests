@@ -43,8 +43,6 @@ datasources:
     access: proxy
     editable: false
     jsonData:
-      manageAlerts: true
-      alertmanagerUid: mimir-alertmanager
       derivedFields:
         - name: "traceID"
           matcherRegex: "traceID=(\\w+)"
