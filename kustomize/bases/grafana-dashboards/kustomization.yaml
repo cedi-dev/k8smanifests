@@ -1,0 +1,49 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: observability
+
+configMapGenerator:
+  - name: adguardhome
+    namespace: observability
+    files:
+      - adguardhome_exporter.json
+
+  - name: argocd-dashboard
+    namespace: observability
+    files:
+      - argocd-dashboard.json
+
+  - name: cert-manager-dashboard
+    namespace: observability
+    files:
+      - cert-manager-dashboard.json
+
+  - name: etcd-enhanced-dashboard
+    namespace: observability
+    files:
+      - etcd-enhanced-dashboard.json
+
+  - name: ingress-nginx-dashboard
+    namespace: observability
+    files:
+      - ingress-nginx-dashboard.json
+
+  - name: minio
+    namespace: observability
+    files:
+      - minio.json
+
+  - name: node-problem-detector
+    namespace: observability
+    files:
+      - node-problem-detector.json
+
+  - name: node-exporter
+    namespace: observability
+    files:
+      - node_exporter.json
+
+  - name: urlshortener
+    namespace: observability
+    files:
+      - urlshortener.json

@@ -22,6 +22,8 @@ spec:
             path: kustomize/overlays/grafana-mimir
           - name: grafana
             path: kustomize/overlays/grafana
+          - name: grafana-dashboards
+            path: kustomize/overlays/grafana-dashboards
   template:
     metadata:
       name: "{{name}}"
