@@ -36,6 +36,9 @@ defaultRules:
     kubeProxy: false
     kubeScheduler: false
 
+nodeExporter:
+  enabled: false
+
 alertmanager:
   ingress:
     enabled: true
