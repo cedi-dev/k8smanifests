@@ -7,6 +7,3 @@ bases:
 
 generators:
   - ./secret-generator.yaml
-
-resources:
-  - datasource.yaml

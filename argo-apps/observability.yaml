@@ -24,6 +24,8 @@ spec:
             path: kustomize/overlays/grafana
           - name: grafana-dashboards
             path: kustomize/overlays/grafana-dashboards
+          - name: grafana-datasources
+            path: kustomize/overlays/grafana-datasources
   template:
     metadata:
       name: "{{name}}"
