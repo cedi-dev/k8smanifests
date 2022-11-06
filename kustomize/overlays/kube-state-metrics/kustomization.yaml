@@ -7,3 +7,4 @@ bases:
 
 resources:
   - ksm-hpa.yaml
+  - service-monitor.yaml
