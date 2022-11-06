@@ -8,27 +8,27 @@ kubelet:
 
 kubeControllerManager:
   service:
-    enabled: true
+    enabled: false
   serviceMonitor:
-    enabled: true
+    enabled: false
 
 kubeEtcd:
   service:
-    enabled: true
+    enabled: false
   serviceMonitor:
-    enabled: true
+    enabled: false
 
 kubeProxy:
   service:
-    enabled: true
+    enabled: false
   serviceMonitor:
-    enabled: true
+    enabled: false
 
 kubeScheduler:
   service:
-    enabled: true
+    enabled: false
   serviceMonitor:
-    enabled: true
+    enabled: false
 
 defaultRules:
   create: true
