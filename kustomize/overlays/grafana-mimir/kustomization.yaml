@@ -36,10 +36,8 @@ patchesJson6902:
       - op: replace
         path: "/apiVersion"
         value: "autoscaling/v2"
-
       - op: remove
         path: "/spec/metrics/0/resource/targetAverageUtilization"
-
       - op: add
         path: /spec/metrics/0/resource/target
         value:
