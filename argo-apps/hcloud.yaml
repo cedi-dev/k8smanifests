@@ -8,7 +8,7 @@ spec:
     - list:
         elements:
           - name: hcloud-csi
-            path: kustomize/overlays/hcloud-csi
+            path: kustomize/overlays/hcloud-csi2
           - name: hcloud-ccm
             path: charts/hcloud-ccm
   template:
