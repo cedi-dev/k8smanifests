@@ -18,8 +18,50 @@ patches:
             - ""
           resources:
             - nodes
+          verbs:
+            - create
+            - get
+            - list
+            - watch
+            - update
+            - patch
+            - delete
+      - op: add
+        path: "/rules/-"
+        value:
+          apiGroups:
+            - ""
+          resources:
             - csinodes
+          verbs:
+            - create
+            - get
+            - list
+            - watch
+            - update
+            - patch
+            - delete
+      - op: add
+        path: "/rules/-"
+        value:
+          apiGroups:
+            - ""
+          resources:
             - storageclasses
+          verbs:
+            - create
+            - get
+            - list
+            - watch
+            - update
+            - patch
+            - delete
+      - op: add
+        path: "/rules/-"
+        value:
+          apiGroups:
+            - ""
+          resources:
             - volumeattachments
           verbs:
             - create
