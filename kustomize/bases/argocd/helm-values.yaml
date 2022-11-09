@@ -49,6 +49,9 @@ repoServer:
       selector:
         scope: k8s-cedi-dev
 
+  containerSecurityContext:
+    runAsUser: 1000
+
 server:
   # ! README: Dear future cedi, please don't try to increase the replica count!
   # Short explanation:
@@ -102,6 +105,7 @@ server:
       "kubernetes.io/ingress.class": nginx
       "nginx.ingress.kubernetes.io/backend-protocol": HTTPS
       "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
+
   rbacConfig:
     policy.default: role:readonly
     policy.csv: |
@@ -110,12 +114,16 @@ server:
 
       g, cedi-dev:argocd, role:viewer
       g, cedi-dev:admin, role:org-admin
+
   metrics:
     enabled: true
     serviceMonitor:
       enabled: true
       selector:
         scope: k8s-cedi-dev
+
+  containerSecurityContext:
+    runAsUser: 1000
 
 applicationSet:
   replicas: 2
