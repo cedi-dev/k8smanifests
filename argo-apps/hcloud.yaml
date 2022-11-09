@@ -7,13 +7,13 @@ spec:
   generators:
     - list:
         elements:
-          - name: csi
-            path: charts/hetzner-csi
-          - name: ccm
-            path: charts/hetzner-ccm
+          - name: hcloud-csi
+            path: kustomize/overlays/hcloud-csi
+          - name: hcloud-ccm
+            path: charts/hcloud-ccm
   template:
     metadata:
-      name: "hcloud-{{name}}"
+      name: "{{name}}"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
