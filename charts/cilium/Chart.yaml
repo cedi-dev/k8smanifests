@@ -1,7 +1,7 @@
 apiVersion: v2
 name: addon-cilium
-version: 1.12.2
+version: 1.12.3
 dependencies:
   - name: cilium
-    version: 1.12.2
+    version: 1.12.3
     repository: https://helm.cilium.io/
