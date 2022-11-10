@@ -1,6 +1,0 @@
-dependencies:
-- name: node-problem-detector
-  repository: https://charts.deliveryhero.io/
-  version: 2.3.0
-digest: sha256:c7a068d50425bd7600d422a011f4f1fe4fa9c4519f15327b36c9a6432a74132a
-generated: "2022-11-06T17:52:12.01815+01:00"
