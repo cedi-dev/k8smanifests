@@ -47,7 +47,7 @@ spec:
           bind-address: 0.0.0.0
           cloud-provider: external
           cluster-signing-cert-file: /etc/kubernetes/pki/ca.crt
-          cluster-signing-duration: 6h0m0s
+          cluster-signing-duration: 8760h0m0s # this is 365 * 24h (1 year)
           cluster-signing-key-file: /etc/kubernetes/pki/ca.key
           kubeconfig: /etc/kubernetes/controller-manager.conf
           pod-eviction-timeout: 2m
@@ -185,7 +185,7 @@ spec:
       - localectl set-locale LANG=en_US.UTF-8
       - localectl set-locale LANGUAGE=en_US.UTF-8
       - apt-get update -y
-      - apt-get -y install at jq unzip wget socat mtr logrotate apt-transport-https
+      - apt-get -y install at jq unzip wget socat mtr logrotate apt-transport-httpsq bat
       - sed -i '/swap/d' /etc/fstab
       - swapoff -a
       - modprobe overlay && modprobe br_netfilter && sysctl --system
