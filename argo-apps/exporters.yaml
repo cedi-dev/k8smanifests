@@ -9,6 +9,8 @@ spec:
         elements:
           - name: node-exporter
             path: charts/node-exporter
+          - name: hcloud-exporter
+            path: kustomize/overlays/hcloud-exporter
   template:
     metadata:
       name: "{{name}}"

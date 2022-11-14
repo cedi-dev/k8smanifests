@@ -1,0 +1,5 @@
+serviceMonitor:
+  enabled: true
+
+config:
+  token: "foobar2342"
