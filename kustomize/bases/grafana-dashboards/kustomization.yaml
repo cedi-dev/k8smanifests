@@ -28,6 +28,11 @@ configMapGenerator:
     files:
       - ingress-nginx-dashboard.json
 
+  - name: hcloud-server-dashboard
+    namespace: observability
+    files:
+      - hcloud-server-dashboard.json
+
   - name: minio
     namespace: observability
     files:
