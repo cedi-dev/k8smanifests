@@ -1,25 +1,25 @@
 {
     "annotations": {
-        "list": [
-            {
-                "builtIn": 1,
-                "datasource": {
-                    "type": "datasource",
-                    "uid": "grafana"
-                },
-                "enable": true,
-                "hide": true,
-                "iconColor": "rgba(0, 211, 255, 1)",
-                "name": "Annotations & Alerts",
-                "target": {
-                    "limit": 100,
-                    "matchAny": false,
-                    "tags": [],
-                    "type": "dashboard"
-                },
-                "type": "dashboard"
-            }
-        ]
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
     },
     "description": "Dashboard for listing information about servers in the Hetzner Cloud using metrics from https://promhippie.github.io/hcloud_exporter/",
     "editable": true,
@@ -29,842 +29,913 @@
     "links": [],
     "liveNow": false,
     "panels": [
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
-            },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "currencyEUR"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 5,
-                "x": 0,
-                "y": 0
-            },
-            "id": 98,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "center",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.4",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "sum by(vat) (hcloud_server_price_monthly{vat=\"gross\"}) > 0",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Monthly cost",
-            "type": "stat"
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
-        {
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "currencyEUR"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 5,
+          "x": 0,
+          "y": 0
+        },
+        "id": 98,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.4",
+        "targets": [
+          {
             "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
+              "type": "prometheus",
+              "uid": "${datasource}"
             },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "mappings": [
-                        {
-                            "options": {
-                                "0": {
-                                    "index": 0,
-                                    "text": "Off"
-                                },
-                                "1": {
-                                    "index": 1,
-                                    "text": "On"
-                                }
-                            },
-                            "type": "value"
-                        }
-                    ]
+            "editorMode": "code",
+            "expr": "sum by(vat) (hcloud_server_price_monthly{vat=\"gross\"}) > 0",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Monthly cost",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
                 },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 19,
-                "x": 5,
-                "y": 0
-            },
-            "id": 96,
-            "options": {
-                "autoSizeColumns": true,
-                "autoSizePolygons": true,
-                "autoSizeRows": true,
-                "compositeConfig": {
-                    "animationSpeed": "1500",
-                    "composites": [],
-                    "enabled": true
+                {
+                  "color": "#EAB839",
+                  "value": 7
                 },
-                "ellipseCharacters": 18,
-                "ellipseEnabled": false,
-                "globalAutoScaleFonts": true,
-                "globalClickthrough": "",
-                "globalClickthroughNewTabEnabled": true,
-                "globalClickthroughSanitizedEnabled": true,
-                "globalDisplayMode": "all",
-                "globalDisplayTextTriggeredEmpty": "OK",
-                "globalFillColor": "rgba(10, 85, 161, 1)",
-                "globalFontSize": 12,
-                "globalGradientsEnabled": true,
-                "globalOperator": "last",
-                "globalPolygonBorderColor": "rgba(0, 0, 0, 0)",
-                "globalPolygonBorderSize": 2,
-                "globalPolygonSize": 25,
-                "globalRegexPattern": "",
-                "globalShape": "hexagon_pointed_top",
-                "globalShowValueEnabled": true,
-                "globalTextFontAutoColorEnabled": true,
-                "globalTextFontColor": "#000000",
-                "globalThresholdsConfig": [
-                    {
-                        "color": "#f53636",
-                        "state": 2,
-                        "value": 0
-                    },
-                    {
-                        "color": "#299c46",
-                        "state": 0,
-                        "value": 1
-                    }
+                {
+                  "color": "red",
+                  "value": 10
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 5,
+          "x": 5,
+          "y": 0
+        },
+        "id": 140,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.4",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "builder",
+            "expr": "count(hcloud_server_running)",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Servers running",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "index": 0,
+                    "text": "Off"
+                  },
+                  "1": {
+                    "index": 1,
+                    "text": "On"
+                  }
+                },
+                "type": "value"
+              }
+            ]
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 14,
+          "x": 10,
+          "y": 0
+        },
+        "id": 96,
+        "options": {
+          "autoSizeColumns": true,
+          "autoSizePolygons": true,
+          "autoSizeRows": true,
+          "compositeConfig": {
+            "animationSpeed": "1500",
+            "composites": [],
+            "enabled": true
+          },
+          "ellipseCharacters": 18,
+          "ellipseEnabled": false,
+          "globalAutoScaleFonts": true,
+          "globalClickthrough": "",
+          "globalClickthroughNewTabEnabled": true,
+          "globalClickthroughSanitizedEnabled": true,
+          "globalDecimals": 2,
+          "globalDisplayMode": "all",
+          "globalDisplayTextTriggeredEmpty": "OK",
+          "globalFillColor": "rgba(10, 85, 161, 1)",
+          "globalFontSize": 12,
+          "globalGradientsEnabled": true,
+          "globalOperator": "last",
+          "globalPolygonBorderColor": "rgba(0, 0, 0, 0)",
+          "globalPolygonBorderSize": 2,
+          "globalPolygonSize": 25,
+          "globalRegexPattern": "",
+          "globalShape": "hexagon_pointed_top",
+          "globalShowValueEnabled": true,
+          "globalTextFontAutoColorEnabled": true,
+          "globalTextFontColor": "#000000",
+          "globalThresholdsConfig": [
+            {
+              "color": "#f53636",
+              "state": 2,
+              "value": 0
+            },
+            {
+              "color": "#299c46",
+              "state": 0,
+              "value": 1
+            }
+          ],
+          "globalTooltipsEnabled": true,
+          "globalTooltipsShowTimestampEnabled": true,
+          "globalUnitFormat": "short",
+          "layoutDisplayLimit": 100,
+          "layoutNumColumns": 8,
+          "layoutNumRows": 8,
+          "overrideConfig": {
+            "overrides": [
+              {
+                "alias": "",
+                "clickThrough": "",
+                "clickThroughOpenNewTab": true,
+                "clickThroughSanitize": true,
+                "colors": [
+                  "#299c46",
+                  "#ed8128",
+                  "#f53636",
+                  "#0a55a1"
                 ],
-                "globalTooltipsEnabled": true,
-                "globalTooltipsShowTimestampEnabled": true,
-                "globalUnitFormat": "short",
-                "layoutDisplayLimit": 100,
-                "layoutNumColumns": 8,
-                "layoutNumRows": 8,
-                "overrideConfig": {
-                    "overrides": [
-                        {
-                            "alias": "",
-                            "clickThrough": "",
-                            "clickThroughOpenNewTab": true,
-                            "clickThroughSanitize": true,
-                            "colors": [
-                                "#299c46",
-                                "#ed8128",
-                                "#f53636",
-                                "#0a55a1"
-                            ],
-                            "decimals": "2",
-                            "enabled": true,
-                            "label": "Override-0",
-                            "metricName": "",
-                            "operatorName": "mean",
-                            "order": 0,
-                            "prefix": "",
-                            "suffix": "",
-                            "thresholds": [],
-                            "unitFormat": "short"
-                        }
-                    ]
-                },
-                "sortByDirection": 1,
-                "sortByField": "name",
-                "tooltipDisplayMode": "all",
-                "tooltipDisplayTextTriggeredEmpty": "Running",
-                "tooltipPrimarySortByField": "thresholdLevel",
-                "tooltipPrimarySortDirection": 1,
-                "tooltipSecondarySortByField": "value",
-                "tooltipSecondarySortDirection": 1
-            },
-            "pluginVersion": "2.0.3",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_running",
-                    "legendFormat": "{{name}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Servers Running",
-            "type": "grafana-polystat-panel"
+                "decimals": "2",
+                "enabled": true,
+                "label": "Override-0",
+                "metricName": "",
+                "operatorName": "mean",
+                "order": 0,
+                "prefix": "",
+                "suffix": "",
+                "thresholds": [],
+                "unitFormat": "short"
+              }
+            ]
+          },
+          "sortByDirection": 1,
+          "sortByField": "name",
+          "tooltipDisplayMode": "all",
+          "tooltipDisplayTextTriggeredEmpty": "Running",
+          "tooltipPrimarySortByField": "thresholdLevel",
+          "tooltipPrimarySortDirection": 1,
+          "tooltipSecondarySortByField": "value",
+          "tooltipSecondarySortDirection": 1
         },
-        {
-            "collapsed": false,
+        "pluginVersion": "2.0.3",
+        "targets": [
+          {
             "datasource": {
-                "type": "datasource",
-                "uid": "grafana"
+              "type": "prometheus",
+              "uid": "${datasource}"
             },
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 8
-            },
-            "id": 2,
-            "panels": [],
-            "repeat": "servers",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "datasource",
-                        "uid": "grafana"
-                    },
-                    "refId": "A"
-                }
-            ],
-            "title": "$servers Status",
-            "type": "row"
+            "editorMode": "code",
+            "expr": "hcloud_server_running",
+            "legendFormat": "{{name}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Servers Running",
+        "type": "grafana-polystat-panel"
+      },
+      {
+        "collapsed": false,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
         },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
-            },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [
-                        {
-                            "options": {
-                                "0": {
-                                    "text": "NO"
-                                },
-                                "1": {
-                                    "text": "YES"
-                                }
-                            },
-                            "type": "value"
-                        }
-                    ],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 0
-                            },
-                            {
-                                "color": "green",
-                                "value": 1
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 3,
-                "x": 0,
-                "y": 9
-            },
-            "id": 46,
-            "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.4",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_running{name=~\"$servers\"}",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Running",
-            "type": "stat"
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 8
         },
-        {
+        "id": 2,
+        "panels": [],
+        "repeat": "servers",
+        "targets": [
+          {
             "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
+              "type": "datasource",
+              "uid": "grafana"
             },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            }
-                        ]
-                    },
-                    "unit": "kbytes"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 3,
-                "y": 9
-            },
-            "id": 45,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.4",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_memory_bytes{name=~\"$servers\"}",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Memory Size",
-            "type": "stat"
+            "refId": "A"
+          }
+        ],
+        "title": "$servers Status",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
             },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "unit": "bytes"
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "text": "NO"
+                  },
+                  "1": {
+                    "text": "YES"
+                  }
                 },
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 6,
-                "w": 9,
-                "x": 6,
-                "y": 9
-            },
-            "hiddenSeries": false,
-            "id": 26,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "9.2.4",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_incoming_traffic_bytes{name=~\"$servers\"}",
-                    "legendFormat": "{{name}}/{{datacenter}}",
-                    "range": true,
-                    "refId": "A"
-                }
+                "type": "value"
+              }
             ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Incoming Traffic",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
                 {
-                    "format": "bytes",
-                    "logBase": 1,
-                    "show": true
+                  "color": "green",
+                  "value": null
                 },
                 {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "green",
+                  "value": 1
                 }
-            ],
-            "yaxis": {
-                "align": false
+              ]
             }
+          },
+          "overrides": []
         },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
-            },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "unit": "bytes"
-                },
-                "overrides": []
-            },
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 6,
-                "w": 9,
-                "x": 15,
-                "y": 9
-            },
-            "hiddenSeries": false,
-            "id": 43,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "nullPointMode": "null",
-            "options": {
-                "alertThreshold": true
-            },
-            "percentage": false,
-            "pluginVersion": "9.2.4",
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_outgoing_traffic_bytes{name=~\"$servers\"}",
-                    "legendFormat": "{{name}}/{{datacenter}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeRegions": [],
-            "title": "Outgoing Traffic",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "bytes",
-                    "logBase": 1,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "logBase": 1,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false
-            }
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 0,
+          "y": 9
         },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
-            },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            }
-                        ]
-                    },
-                    "unit": "kbytes"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 3,
-                "y": 11
-            },
-            "id": 44,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.4",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_disk_bytes{name=~\"$servers\"}",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
+        "id": 46,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
             ],
-            "title": "Disk Size",
-            "type": "stat"
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
         },
-        {
+        "pluginVersion": "9.2.4",
+        "targets": [
+          {
             "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
+              "type": "prometheus",
+              "uid": "${datasource}"
             },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [
-                        {
-                            "options": {
-                                "0": {
-                                    "text": "NO"
-                                },
-                                "1": {
-                                    "text": "YES"
-                                }
-                            },
-                            "type": "value"
-                        }
-                    ],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 0
-                            },
-                            {
-                                "color": "green",
-                                "value": 1
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 3,
-                "x": 0,
-                "y": 12
-            },
-            "id": 13,
-            "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.4",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_backup{name=~\"$servers\"}",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Backup Enabled",
-            "type": "stat"
+            "editorMode": "code",
+            "expr": "hcloud_server_running{name=~\"$servers\"}",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Running",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
             },
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 3,
-                "y": 13
-            },
-            "id": 4,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.2.4",
-            "targets": [
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
                 {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "hcloud_server_cores{name=~\"$servers\"}",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
+                  "color": "green",
+                  "value": null
                 }
+              ]
+            },
+            "unit": "kbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 3,
+          "y": 9
+        },
+        "id": 45,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
             ],
-            "title": "Cores",
-            "type": "stat"
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.4",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "hcloud_server_memory_bytes{name=~\"$servers\"}",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Memory Size",
+        "type": "stat"
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 9,
+          "x": 6,
+          "y": 9
+        },
+        "hiddenSeries": false,
+        "id": 26,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.2.4",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "hcloud_server_incoming_traffic_bytes{name=~\"$servers\"}",
+            "legendFormat": "{{name}}/{{datacenter}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Incoming Traffic",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
         }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 9,
+          "x": 15,
+          "y": 9
+        },
+        "hiddenSeries": false,
+        "id": 43,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "9.2.4",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "hcloud_server_outgoing_traffic_bytes{name=~\"$servers\"}",
+            "legendFormat": "{{name}}/{{datacenter}}",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeRegions": [],
+        "title": "Outgoing Traffic",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "mode": "time",
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "format": "bytes",
+            "logBase": 1,
+            "show": true
+          },
+          {
+            "format": "short",
+            "logBase": 1,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false
+        }
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "kbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 3,
+          "y": 11
+        },
+        "id": 44,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.4",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "hcloud_server_disk_bytes{name=~\"$servers\"}",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Disk Size",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "options": {
+                  "0": {
+                    "text": "NO"
+                  },
+                  "1": {
+                    "text": "YES"
+                  }
+                },
+                "type": "value"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 3,
+          "x": 0,
+          "y": 12
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.4",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "hcloud_server_backup{name=~\"$servers\"}",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Backup Enabled",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 3,
+          "x": 3,
+          "y": 13
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "9.2.4",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "${datasource}"
+            },
+            "editorMode": "code",
+            "expr": "hcloud_server_cores{name=~\"$servers\"}",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Cores",
+        "type": "stat"
+      }
     ],
     "refresh": "1h",
     "schemaVersion": 37,
     "style": "dark",
     "tags": [],
     "templating": {
-        "list": [
-            {
-                "current": {
-                    "selected": false,
-                    "text": "Mimir-Metrics",
-                    "value": "Mimir-Metrics"
-                },
-                "hide": 0,
-                "includeAll": false,
-                "multi": false,
-                "name": "datasource",
-                "options": [],
-                "query": "prometheus",
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "type": "datasource"
-            },
-            {
-                "current": {
-                    "selected": true,
-                    "text": [
-                        "All"
-                    ],
-                    "value": [
-                        "$__all"
-                    ]
-                },
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "mimir"
-                },
-                "definition": "label_values(hcloud_server_running, name)",
-                "hide": 0,
-                "includeAll": true,
-                "multi": true,
-                "name": "servers",
-                "options": [],
-                "query": {
-                    "query": "label_values(hcloud_server_running, name)",
-                    "refId": "StandardVariableQuery"
-                },
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "sort": 1,
-                "tagValuesQuery": "",
-                "tagsQuery": "",
-                "type": "query",
-                "useTags": false
-            }
-        ]
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "Mimir-Metrics",
+            "value": "Mimir-Metrics"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "datasource",
+          "options": [],
+          "query": "prometheus",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "mimir"
+          },
+          "definition": "label_values(hcloud_server_running, name)",
+          "hide": 0,
+          "includeAll": true,
+          "multi": true,
+          "name": "servers",
+          "options": [],
+          "query": {
+            "query": "label_values(hcloud_server_running, name)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
     },
     "time": {
-        "from": "now-6h",
-        "to": "now"
+      "from": "now-6h",
+      "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Hetzner Cloud Servers",
     "uid": "nK6i5Ewnz",
-    "version": 1,
+    "version": 2,
     "weekStart": ""
-}
+  }
