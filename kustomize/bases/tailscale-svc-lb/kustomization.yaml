@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: tailscale-svc-lb
+
+helmCharts:
+  - name: tailscale-svc-lb
+    repo: https://clrxbl.github.io/tailscale-svc-lb/
+    version: 1.0.0
+    releaseName: tailnet-svc-lb
+    namespace: tailscale-svc-lb
+    valuesFile: helm-values.yaml
