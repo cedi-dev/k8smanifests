@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: ingress
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: ingress-nginx
+            path: kustomize/overlays/ingress-nginx
+  template:
+    metadata:
+      name: "{{name}}"
+      namespace: argocd
+    spec:
+      destination:
+        namespace: "{{name}}"
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: "{{path}}"
+        repoURL: https://github.com/cedi-dev/k8smanifests.git
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
