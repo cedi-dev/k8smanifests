@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: ingress-nginx
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: ingress-nginx
