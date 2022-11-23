@@ -9,8 +9,8 @@ spec:
         elements:
           - name: ingress-nginx
             path: kustomize/overlays/ingress-nginx
-          - name: tailscale-ingress
-            path: kustomize/overlays/ts-ingress-nginx
+          #- name: tailscale-ingress
+          #  path: kustomize/overlays/ts-ingress-nginx
   template:
     metadata:
       name: "{{name}}"
