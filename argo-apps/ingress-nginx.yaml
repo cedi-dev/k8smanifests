@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/ingress-nginx
+    path: kustomize/overlays/ingress-nginx
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
