@@ -9,8 +9,8 @@ spec:
         elements:
           - name: tailscale-svc-lb
             path: kustomize/overlays/tailscale-svc-lb
-          #- name: tailscale-ingress
-          #  path: kustomize/overlays/tailscale-ingress
+          - name: tailscale-ingress
+            path: kustomize/overlays/tailscale-ingress
   template:
     metadata:
       name: "{{name}}"
