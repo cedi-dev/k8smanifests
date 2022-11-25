@@ -3,7 +3,7 @@ fullnameOverride: tailscale-ingress
 controller:
   extraArgs:
     enable-ssl-passthrough: ''
-  
+
   kind: DaemonSet
   watchIngressWithoutClass: false
   ingressClassByName: true
@@ -12,7 +12,7 @@ controller:
   ingressClassResource:
     name: tailnet-nginx
     controllerValue: "k8s.io/tailnet-ingress-nginx"
-  
+
   service:
     enabled: true
     externalTrafficPolicy: "Local"

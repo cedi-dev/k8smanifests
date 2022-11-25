@@ -20,6 +20,6 @@ spec:
                 port:
                   number: 8080
   tls:
-  - hosts:
-    - test.ts.cedi.dev
-    secretName: test-ts-secret
+    - secretName: test-ts-secret
+      hosts:
+        - test.ts.cedi.dev
