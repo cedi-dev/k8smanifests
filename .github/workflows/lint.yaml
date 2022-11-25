@@ -73,6 +73,16 @@ jobs:
         run: |
           for kust in ./kustomize/overlays/*/
           do
-            echo "$kust"
-            kustomize build --enable-alpha-plugins --enable-helm $kust | kubeval --ignore-missing-schemas --strict
+            if [[ $kust != "./kustomize/overlays/oauth2-proxy/" ]]; then
+              echo "$kust"
+              kustomize build --enable-alpha-plugins --enable-helm $kust | kubeval --ignore-missing-schemas --strict
+              echo "\n"
+            else
+              for oauth in ./kustomize/overlays/oauth2-proxy/*/
+              do
+                echo "$oauth"
+                kustomize build --enable-alpha-plugins --enable-helm $oauth | kubeval --ignore-missing-schemas --strict
+                echo "\n"
+              done
+            fi
           done
