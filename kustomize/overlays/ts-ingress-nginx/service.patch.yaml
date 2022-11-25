@@ -1,7 +1,0 @@
-- op: remove
-  path: "/metadata/annotations"
-
-- op: add
-  path: "/spec/"
-  value:
-    loadBalancerClass: svc-lb.tailscale.iptables.sh/lb
