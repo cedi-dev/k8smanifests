@@ -5,6 +5,9 @@ namespace: argocd
 bases:
   - ../../bases/argocd/
 
+resources:
+  - tailscale-ingress.yaml
+
 generators:
   - ./secret-generator.yaml
 
