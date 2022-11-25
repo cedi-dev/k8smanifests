@@ -16,9 +16,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: foo-svc
+                name: kuard-service
                 port:
-                  number: 5678
+                  number: 8080
   tls:
   - hosts:
     - test.ts.cedi.dev
