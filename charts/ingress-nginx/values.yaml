@@ -1,14 +1,19 @@
 ingress-nginx:
   fullnameOverride: ingress-nginx
+
   controller:
     extraArgs:
       enable-ssl-passthrough: ''
+
     kind: DaemonSet
-    watchIngressWithoutClass: true
+    ingressClassByName: true
+    watchIngressWithoutClass: false
+  
     service:
       enabled: true
       externalTrafficPolicy: "Local"
       healthCheckNodePort: 32596
+  
       annotations:
         load-balancer.hetzner.cloud/location: "nbg1"
         load-balancer.hetzner.cloud/name: "cedi-dev-ingress-lb"
@@ -18,6 +23,7 @@ ingress-nginx:
         load-balancer.hetzner.cloud/health-check-port: "32596"
         load-balancer.hetzner.cloud/disable-private-ingress: true
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  
     metrics:
       enabled: true
       serviceMonitor:
