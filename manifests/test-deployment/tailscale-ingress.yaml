@@ -19,4 +19,7 @@ spec:
                 name: foo-svc
                 port:
                   number: 5678
-
+  tls:
+  - hosts:
+    - test.ts.cedi.dev
+    secretName: test-ts-secret
