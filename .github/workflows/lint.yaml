@@ -55,7 +55,7 @@ jobs:
             echo "$chart"
               for app in $stage*/
               do
-                  helm template $chart --values $chart/values.yaml | kubeval --ignore-missing-schemas --strict
+                  helm template $chart --values $chart/values.yaml | kubeval --ignore-missing-schemas --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/
               done
           done
 
@@ -75,13 +75,13 @@ jobs:
           do
             if [[ $kust != "./kustomize/overlays/oauth2-proxy/" ]]; then
               echo "$kust"
-              kustomize build --enable-alpha-plugins --enable-helm $kust | kubeval --ignore-missing-schemas --strict
+              kustomize build --enable-alpha-plugins --enable-helm $kust | kubeval --ignore-missing-schemas --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/
               echo "\n"
             else
               for oauth in ./kustomize/overlays/oauth2-proxy/*/
               do
                 echo "$oauth"
-                kustomize build --enable-alpha-plugins --enable-helm $oauth | kubeval --ignore-missing-schemas --strict
+                kustomize build --enable-alpha-plugins --enable-helm $oauth | kubeval --ignore-missing-schemas --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/
                 echo "\n"
               done
             fi
