@@ -75,7 +75,7 @@ urlshortener:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: short-cedi-dev-tls
+      - secretName: short-av-de-tls
         hosts:
           - short.av0.de
   
@@ -234,7 +234,7 @@ apiServer:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: short-cedi-dev-tls
+      - secretName: api-short-av0-de-tls
         hosts:
           - api.short.av0.de
   
