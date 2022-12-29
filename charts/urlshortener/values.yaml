@@ -1,131 +1,131 @@
 urlshortener:
-  replicaCount: 1
-  autoscaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    targetMemoryUtilizationPercentage: 80
-
-  image:
-    repository: ghcr.io/cedi/urlshortener
-    pullPolicy: Always
-    tag: main
-
-  ingress:
-    enabled: true
-    className: "nginx"
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    hosts:
-      - host: short.cedi.dev
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: short-cedi-dev-tls
-        hosts:
-          - short.cedi.dev
-  
-  resources:
-    limits:
-      cpu: 500m
-      memory: 128Mi
-    requests:
-      cpu: 10m
-      memory: 64Mi
-
-  pdb:
-    enabled: true
-    minAvailable: 1
-
-  metrics:
-    enabled: true
-    serviceMonitor:
+  urlshortener:
+    replicaCount: 1
+    autoscaling:
       enabled: true
-      interval: 30s
-    rules:
-      enabled: false
-      # -- PrometheusRule.Spec for the application controller
-      # spec:
-      #   - alert: UrlShortenerHighVolume
-      #     expr: |
-      #       irate(urlshortener_shortlink_invocation[1m]) > 5
-      #     for: 15m
-      #     labels:
-      #       severity: critical
-      #     annotations:
-      #       summary: "[URL Shortener] High rps to shortlink {{`{{$labels.name}}`}}"
-      #       description: The urlshortener saw an intense amount of calls to the {{`{{$labels.name}}`}} shortlink over a period of 15 minutes
-      # selector:
-      #   prometheus: kube-prometheus
-      # namespace: monitoring
-      # additionalLabels: {}
-      # annotations: {}
+      minReplicas: 1
+      maxReplicas: 3
+      targetCPUUtilizationPercentage: 80
+      targetMemoryUtilizationPercentage: 80
 
-apiServer:
-  replicaCount: 1
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 5
-    targetCPUUtilizationPercentage: 80
-    targetMemoryUtilizationPercentage: 80
+    image:
+      repository: ghcr.io/cedi/urlshortener
+      pullPolicy: Always
+      tag: main
 
-  image:
-    repository: ghcr.io/cedi/urlshortener-api
-    pullPolicy: Always
-    tag: main
-
-  ingress:
-    enabled: true
-    className: "nginx"
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    hosts:
-      #- host: chart-example.local
-      - host: api.short.cedi.dev
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: api-short-cedi-dev-tls
-        hosts:
-          - api.short.cedi.dev
-  
-  resources:
-    limits:
-      cpu: 500m
-      memory: 128Mi
-    requests:
-      cpu: 10m
-      memory: 64Mi
-
-  pdb:
-    enabled: true
-    minAvailable: 1
-
-  metrics:
-    enabled: true
-    serviceMonitor:
+    ingress:
       enabled: true
-      interval: 30s
-    rules:
-      # -- Deploy a PrometheusRule for the application controller
+      className: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: short.cedi.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: short-cedi-dev-tls
+          hosts:
+            - short.cedi.dev
+    
+    resources:
+      limits:
+        cpu: 500m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+
+    pdb:
+      enabled: true
+      minAvailable: 1
+
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        interval: 30s
+      rules:
+        enabled: false
+        # -- PrometheusRule.Spec for the application controller
+        # spec:
+        #   - alert: UrlShortenerHighVolume
+        #     expr: |
+        #       irate(urlshortener_shortlink_invocation[1m]) > 5
+        #     for: 15m
+        #     labels:
+        #       severity: critical
+        #     annotations:
+        #       summary: "[URL Shortener] High rps to shortlink {{`{{$labels.name}}`}}"
+        #       description: The urlshortener saw an intense amount of calls to the {{`{{$labels.name}}`}} shortlink over a period of 15 minutes
+        # selector:
+        #   prometheus: kube-prometheus
+        # namespace: monitoring
+        # additionalLabels: {}
+        # annotations: {}
+
+  apiServer:
+    replicaCount: 1
+    autoscaling:
       enabled: false
-      # -- PrometheusRule.Spec for the application controller
-      # spec:
-      #   - alert: UrlShortenerHighVolume
-      #     expr: |
-      #       irate(urlshortener_shortlink_invocation[1m]) > 5
-      #     for: 15m
-      #     labels:
-      #       severity: critical
-      #     annotations:
-      #       summary: "[URL Shortener] High rps to shortlink {{`{{$labels.name}}`}}"
-      #       description: The urlshortener saw an intense amount of calls to the {{`{{$labels.name}}`}} shortlink over a period of 15 minutes
-      # selector:
-      #   prometheus: kube-prometheus
-      # namespace: monitoring
-      # additionalLabels: {}
-      # annotations: {}
+      minReplicas: 1
+      maxReplicas: 5
+      targetCPUUtilizationPercentage: 80
+      targetMemoryUtilizationPercentage: 80
+
+    image:
+      repository: ghcr.io/cedi/urlshortener-api
+      pullPolicy: Always
+      tag: main
+
+    ingress:
+      enabled: true
+      className: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: api.short.cedi.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: api-short-cedi-dev-tls
+          hosts:
+            - api.short.cedi.dev
+    
+    resources:
+      limits:
+        cpu: 500m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+
+    pdb:
+      enabled: true
+      minAvailable: 1
+
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        interval: 30s
+      rules:
+        # -- Deploy a PrometheusRule for the application controller
+        enabled: false
+        # -- PrometheusRule.Spec for the application controller
+        # spec:
+        #   - alert: UrlShortenerHighVolume
+        #     expr: |
+        #       irate(urlshortener_shortlink_invocation[1m]) > 5
+        #     for: 15m
+        #     labels:
+        #       severity: critical
+        #     annotations:
+        #       summary: "[URL Shortener] High rps to shortlink {{`{{$labels.name}}`}}"
+        #       description: The urlshortener saw an intense amount of calls to the {{`{{$labels.name}}`}} shortlink over a period of 15 minutes
+        # selector:
+        #   prometheus: kube-prometheus
+        # namespace: monitoring
+        # additionalLabels: {}
+        # annotations: {}
