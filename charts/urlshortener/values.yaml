@@ -2,7 +2,7 @@ urlshortener:
   urlshortener:
     replicaCount: 1
     autoscaling:
-      enabled: true
+      enabled: false
       minReplicas: 1
       maxReplicas: 3
       targetCPUUtilizationPercentage: 80
