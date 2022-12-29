@@ -11,7 +11,7 @@ kind: ShortLink
 metadata:
   name: swag
 spec:
-  target: "https://short.cedi.dev/swagger/index.html"
+  target: "https://api.short.cedi.dev/swagger/index.html"
   code: 307
 
 ---
