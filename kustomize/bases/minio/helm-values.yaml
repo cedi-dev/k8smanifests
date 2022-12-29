@@ -21,3 +21,6 @@ metrics:
 
   prometheusRule:
     enabled: true
+
+persistence:
+  size: 100Gi
