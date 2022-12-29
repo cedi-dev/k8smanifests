@@ -142,7 +142,7 @@ urlshortener:
       portName: http-metrics
     serviceMonitor:
       # -- Enable a prometheus ServiceMonitor
-      enabled: true
+      enabled: false
       # -- Prometheus ServiceMonitor interval
       interval: 30s
       # -- Prometheus [RelabelConfigs] to apply to samples before scraping
