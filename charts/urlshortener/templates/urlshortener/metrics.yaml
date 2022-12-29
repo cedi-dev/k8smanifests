@@ -1,0 +1,23 @@
+{{- if .Values.urlshortener.metrics.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "urlshortener.fullname" . }}-metrics
+  labels:
+    {{- include "urlshortener.labels" . | nindent 6 }}
+    {{- with .Values.urlshortener.metrics.service.labels }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+  {{- with .Values.urlshortener.metrics.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 6 }}
+  {{- end }}
+spec:
+  ports:
+  - name: {{ .Values.urlshortener.metrics.service.portName }}
+    protocol: TCP
+    port: {{ .Values.urlshortener.metrics.service.servicePort }}
+    targetPort: {{ .Values.urlshortener.metrics.service.portName }}
+  selector:
+    {{- include "urlshortener.selectorLabels" . | nindent 6 }}
+{{- end }}

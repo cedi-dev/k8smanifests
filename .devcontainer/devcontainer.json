@@ -28,7 +28,7 @@
 		"indentRainbow.includedLanguages": [
 			"yaml"
 		],
-		"files.trimTrailingWhitespace": true,
+		"files.trimTrailingWhitespace": true
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
@@ -39,7 +39,8 @@
 		"eamodio.gitlens",
 		"oderwat.indent-rainbow", // I hate to install this plugin only to show colors in yaml documents... I would prefer to use `"editor.bracketPairColorization.enabled": true,` like everywhere else...
 		"aaron-bond.better-comments",
-	],
+		"ms-kubernetes-tools.vscode-kubernetes-tools"
+	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [9000],
 	// Use 'postCreateCommand' to run commands after the container is created.

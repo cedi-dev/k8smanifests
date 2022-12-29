@@ -1,0 +1,184 @@
+# -- Override the Kubernetes version, which is used to evaluate certain manifests
+kubeVersionOverride: ""
+# Override APIVersions
+# If you want to template helm charts but cannot access k8s API server
+# you can set api versions here
+apiVersionOverrides:
+  # -- String to override apiVersion of cert-manager resources rendered by this helm chart
+  certmanager: "" # cert-manager.io/v1
+  # -- String to override apiVersion of GKE resources rendered by this helm chart
+  cloudgoogle: "" # cloud.google.com/v1
+  # -- String to override apiVersion of autoscaling rendered by this helm chart
+  autoscaling: "" # autoscaling/v2
+  # -- String to override apiVersion of ingresses rendered by this helm chart
+  ingress: "" # networking.k8s.io/v1beta1
+  # -- String to override apiVersion of pod disruption budgets rendered by this helm chart
+  pdb: "" # policy/v1
+
+## Custom resource configuration
+crds:
+  # -- Install and upgrade CRDs
+  install: true
+  # -- Keep CRDs on chart uninstall
+  keep: true
+  # -- Annotations to be added to all CRDs
+  annotations: {}
+
+urlshortener:
+  nameOverride: ""
+
+  replicaCount: 1
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+
+  image:
+    repository: ghcr.io/cedi/urlshortener
+    # TODO: Re-enable pullPolicy: IfNotPresent
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: main
+
+  imagePullSecrets: []
+
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: ""
+  
+  podAnnotations: {}
+  
+  podSecurityContext:
+    runAsNonRoot: true
+  
+  securityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+    # capabilities:
+    #   drop:
+    #   - ALL
+  
+  service:
+    type: ClusterIP
+    port: 8123
+  
+  # TODO: empty for release
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      #- host: chart-example.local
+      - host: short.cedi.dev
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: short-cedi-dev-tls
+        hosts:
+          - short.cedi.dev
+  
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+      cpu: 500m
+      memory: 128Mi
+    requests:
+      cpu: 10m
+      memory: 64Mi
+
+  terminationGracePeriodSeconds: 10
+  
+  # -- Additional command line arguments to pass to application controller
+  extraArgs: []
+
+  ## Application controller Pod Disruption Budget
+  ## Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+  pdb:
+    # -- Deploy a [PodDisruptionBudget] for the application controller
+    enabled: true
+    # -- Labels to be added to application controller pdb
+    labels: {}
+    # -- Annotations to be added to application controller pdb
+    annotations: {}
+    # -- Number of pods that are available after eviction as number or percentage (eg.: 50%)
+    # @default -- `""` (defaults to 0 if not specified)
+    minAvailable: 1
+    # -- Number of pods that are unavailble after eviction as number or percentage (eg.: 50%).
+    ## Has higher precedence over `controller.pdb.minAvailable`
+    maxUnavailable: ""
+
+  nodeSelector: {}
+  
+  tolerations: []
+  
+  affinity: {}
+
+  ## Application controller metrics configuration
+  metrics:
+    # -- Deploy metrics service
+    enabled: true
+    service:
+      # -- Metrics service annotations
+      annotations: {}
+      # -- Metrics service labels
+      labels: {}
+      # -- Metrics service port
+      servicePort: 8082
+      # -- Metrics service port name
+      portName: http-metrics
+    serviceMonitor:
+      # -- Enable a prometheus ServiceMonitor
+      enabled: true
+      # -- Prometheus ServiceMonitor interval
+      interval: 30s
+      # -- Prometheus [RelabelConfigs] to apply to samples before scraping
+      relabelings: []
+      # -- Prometheus [MetricRelabelConfigs] to apply to samples before ingestion
+      metricRelabelings: []
+      # -- Prometheus ServiceMonitor selector
+      selector: {}
+        # prometheus: kube-prometheus
+
+      # -- Prometheus ServiceMonitor scheme
+      scheme: ""
+      # -- Prometheus ServiceMonitor tlsConfig
+      tlsConfig: {}
+      # -- Prometheus ServiceMonitor namespace
+      namespace: "" # "monitoring"
+      # -- Prometheus ServiceMonitor labels
+      additionalLabels: {}
+      # -- Prometheus ServiceMonitor annotations
+      annotations: {}
+    rules:
+      # -- Deploy a PrometheusRule for the application controller
+      enabled: false
+      # -- PrometheusRule.Spec for the application controller
+      # spec:
+      #   - alert: UrlShortenerHighVolume
+      #     expr: |
+      #       irate(urlshortener_shortlink_invocation[1m]) > 5
+      #     for: 15m
+      #     labels:
+      #       severity: critical
+      #     annotations:
+      #       summary: "[URL Shortener] High rps to shortlink {{`{{$labels.name}}`}}"
+      #       description: The urlshortener saw an intense amount of calls to the {{`{{$labels.name}}`}} shortlink over a period of 15 minutes
+      # selector:
+      #   prometheus: kube-prometheus
+      # namespace: monitoring
+      # additionalLabels: {}
+      # annotations: {}

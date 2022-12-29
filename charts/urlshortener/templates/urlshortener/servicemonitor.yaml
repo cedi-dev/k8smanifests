@@ -1,0 +1,50 @@
+{{- if and .Values.urlshortener.metrics.enabled .Values.urlshortener.metrics.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "urlshortener.fullname" . }}
+  {{- if .Values.urlshortener.metrics.serviceMonitor.namespace }}
+  namespace: {{ .Values.urlshortener.metrics.serviceMonitor.namespace }}
+  {{- end }}
+  labels:
+    {{- include "urlshortener.labels" . | nindent 6 }}
+    {{- with .Values.urlshortener.metrics.serviceMonitor.selector }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .Values.urlshortener.metrics.serviceMonitor.additionalLabels }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+
+  {{- with .Values.urlshortener.metrics.serviceMonitor.annotations }}
+  annotations:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+spec:
+  endpoints:
+    - port: {{ .Values.urlshortener.metrics.service.portName }}
+      {{- with .Values.urlshortener.metrics.serviceMonitor.interval }}
+      interval: {{ . }}
+      {{- end }}
+      path: /metrics
+      {{- with .Values.urlshortener.metrics.serviceMonitor.relabelings }}
+      relabelings:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.urlshortener.metrics.serviceMonitor.metricRelabelings }}
+      metricRelabelings:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.urlshortener.metrics.serviceMonitor.scheme }}
+      scheme: {{ . }}
+      {{- end }}
+      {{- with .Values.urlshortener.metrics.serviceMonitor.tlsConfig }}
+      tlsConfig:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      {{- include "urlshortener.selectorLabels" . | nindent 8 }}
+{{- end }}

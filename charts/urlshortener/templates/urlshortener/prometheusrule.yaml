@@ -1,0 +1,26 @@
+{{- if and .Values.urlshortener.metrics.enabled .Values.urlshortener.metrics.rules.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "urlshortener.fullname" . }}
+  {{- if .Values.urlshortener.metrics.rules.namespace }}
+  namespace: {{ .Values.urlshortener.metrics.rules.namespace }}
+  {{- end }}
+  labels:
+    {{- include "urlshortener.labels" . | nindent 4 }}
+    {{- if .Values.urlshortener.metrics.rules.selector }}
+{{- toYaml .Values.urlshortener.metrics.rules.selector | nindent 4 }}
+    {{- end }}
+    {{- if .Values.urlshortener.metrics.rules.additionalLabels }}
+{{- toYaml .Values.urlshortener.metrics.rules.additionalLabels | nindent 4 }}
+    {{- end }}
+  {{- with .Values.urlshortener.metrics.rules.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  groups:
+  - name: argocd
+    rules:
+{{- toYaml .Values.urlshortener.metrics.rules.spec | nindent 6 }}
+{{- end }}

@@ -1,4 +1,4 @@
-apiVersion: urlshortener.av0.de/v1alpha1
+apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: ShortLink
 metadata:
   name: home
@@ -6,7 +6,7 @@ spec:
   target: "https://cedi.dev"
   code: 307
 ---
-apiVersion: urlshortener.av0.de/v1alpha1
+apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: ShortLink
 metadata:
   name: swag
@@ -15,7 +15,7 @@ spec:
   code: 307
 
 ---
-apiVersion: urlshortener.av0.de/v1alpha1
+apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: ShortLink
 metadata:
   name: cedi

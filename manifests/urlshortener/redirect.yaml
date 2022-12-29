@@ -1,4 +1,4 @@
-apiVersion: urlshortener.av0.de/v1alpha1
+apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: Redirect
 metadata:
   name: redirect-to-shortlink
