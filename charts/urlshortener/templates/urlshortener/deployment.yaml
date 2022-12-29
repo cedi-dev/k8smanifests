@@ -59,8 +59,9 @@ spec:
             - /urlshortener
           args:
             - --health-probe-bind-address=:8081
-            - --metrics-bind-address=:9110
             - --bind-address=:8123
+            - --metrics-bind-address=:{{ .Values.apiServer.metrics.service.servicePort }}
+
           {{- with .Values.urlshortener.extraArgs }}
             {{- toYaml . | nindent 12 }}
           {{- end }}

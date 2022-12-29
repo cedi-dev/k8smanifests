@@ -56,11 +56,12 @@ spec:
           image: "{{ .Values.apiServer.image.repository }}:{{ .Values.apiServer.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.apiServer.image.pullPolicy }}
           command:
-            - /urlshortener
+            - /urlshortener-api
           args:
             - --health-probe-bind-address=:8081
-            - --metrics-bind-address=:9110
-            - --bind-address=:8123
+            - --bind-address=:8443
+            - --metrics-bind-address=:{{ .Values.apiServer.metrics.service.servicePort }}
+            
           {{- with .Values.apiServer.extraArgs }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
