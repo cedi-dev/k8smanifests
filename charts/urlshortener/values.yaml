@@ -15,15 +15,6 @@ apiVersionOverrides:
   # -- String to override apiVersion of pod disruption budgets rendered by this helm chart
   pdb: "" # policy/v1
 
-## Custom resource configuration
-crds:
-  # -- Install and upgrade CRDs
-  install: true
-  # -- Keep CRDs on chart uninstall
-  keep: true
-  # -- Annotations to be added to all CRDs
-  annotations: {}
-
 urlshortener:
   nameOverride: ""
 
