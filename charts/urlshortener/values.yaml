@@ -79,14 +79,14 @@ urlshortener:
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
       #- host: chart-example.local
-      - host: short.av0.de
+      - host: short2.av0.de
         paths:
           - path: /
             pathType: ImplementationSpecific
     tls:
       - secretName: short-cedi-dev-tls
         hosts:
-          - short.av0.de
+          - short2.av0.de
   
   resources:
     # We usually recommend not to specify default resources and to leave this as a conscious
