@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: oauth2-proxy-shortlink
+namespace: oauth2-proxy-shortlink-api
 
 resources:
   - ../../../bases/oauth2-proxy
@@ -11,12 +11,12 @@ generators:
 patchesJson6902:
   - target:
       kind: Deployment
-      namespace: oauth2-proxy-shortlink
+      namespace: oauth2-proxy-shortlink-api
       name: oauth2-proxy
     path: deployment.patch.yaml
 
   - target:
       kind: Ingress
-      namespace: oauth2-proxy-shortlink
+      namespace: oauth2-proxy-shortlink-api
       name: oauth2-proxy
     path: ingress.patch.yaml

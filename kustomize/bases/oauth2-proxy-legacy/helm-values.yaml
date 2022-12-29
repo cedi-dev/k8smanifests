@@ -5,15 +5,13 @@ ingress:
   tls: true
   hostname: auth.cedi.dev
   certManager: true
-  ingressClassName: nginx
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    "cert-manager.io/cluster-issuer": "letsencrypt-prod"
 extraArgs:
   - --provider=github
   - --github-org=cedi-dev
   - --cookie-domain=cedi.dev
-  - --email-domain=*
-  - --metrics-address=:9111
+  - --whitelist-domain=.cedi.dev
 redis:
   auth:
     enabled: false
@@ -21,9 +19,4 @@ configuration:
   clientID: MTIzNA==
   clientSecret: MTIzNA==
   cookieSecret: MTIzNA==
-  content: |
-    email_domains = [ "*" ]
-    upstreams = [ "file:///dev/null" ]
-    scope = "user:email read:user read:org"
-
 replicaCount: 1
