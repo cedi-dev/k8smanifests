@@ -17,7 +17,7 @@ metadata:
   name: goldschmiede-metallglanz
 spec:
   source: goldschmiede-metallglanz.de
-  target: metallglanz.com
+  target: https://metallglanz.com
   code: 308
   tls:
     enable: true
