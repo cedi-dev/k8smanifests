@@ -55,6 +55,8 @@ spec:
             {{- toYaml .Values.urlshortener.securityContext | nindent 12 }}
           image: "{{ .Values.urlshortener.image.repository }}:{{ .Values.urlshortener.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.urlshortener.image.pullPolicy }}
+          command:
+            - /urlshortener
           args:
             - --health-probe-bind-address=:8081
             - --metrics-bind-address=:9110
