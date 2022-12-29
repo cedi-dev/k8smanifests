@@ -22,4 +22,4 @@ keywords:
   - shortlink
   - tinyurl
 
-kubeVersion: '>=v1.25.0-0'
+kubeVersion: '>=v1.23.0-0'
