@@ -21,3 +21,7 @@ nginx:
     enabled: true
     minReplicas: 1
     maxReplicas: 3
+
+ingester:
+  persistentVolume:
+    size: 15Gi
