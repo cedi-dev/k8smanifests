@@ -1,25 +1,7 @@
-name: urlshortener
-description: A Helm chart for urlshortener, a Kubernetes native URL Shortening and redirection service.
-type: application
-
 apiVersion: v2
-version: 0.0.1
-appVersion: "0.0.1"
-
-maintainers:
-  - name: cedi
-    url: https://cedi.dev
-
-sources: 
-  - https://github.com/cedi/urlshortener
-  - https://github.com/cedi/urlshortener-api
-
-home: https://github.com/cedi/urlshortener
-
-keywords:
-  - urlshortener
-  - redirection
-  - shortlink
-  - tinyurl
-
-kubeVersion: '>=v1.23.0-0'
+name: addon-urlshortener
+version: 0.0.2
+dependencies:
+  - name: urlshortener
+    version: 0.0.2
+    repository: https://urlshortener-cedi-dev.github.io/urlshortener-helm/

@@ -1,0 +1,6 @@
+dependencies:
+- name: urlshortener
+  repository: https://urlshortener-cedi-dev.github.io/urlshortener-helm/
+  version: 0.0.2
+digest: sha256:c799a709715c227384780b4d8f4cb48b42f5a8334ffe9ccb7077a5ed5e39ef55
+generated: "2022-12-29T18:40:37.187089+01:00"
