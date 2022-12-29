@@ -24,4 +24,4 @@ nginx:
 
 ingester:
   persistentVolume:
-    size: 15Gi
+    size: 30Gi
