@@ -10,3 +10,4 @@ generators:
 
 patchesStrategicMerge:
   - delete-system-controller-manager.patch.yaml
+  - delete-rule-kube-system-scheduler.patch.yaml
