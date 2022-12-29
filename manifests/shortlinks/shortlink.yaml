@@ -23,3 +23,12 @@ spec:
   target: "https://cedi.dev"
   after: 3
   code: 200
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: thies
+spec:
+  target: "https://thiesmueller.de/"
+  code: 307
