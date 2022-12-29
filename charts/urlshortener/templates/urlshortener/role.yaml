@@ -26,7 +26,7 @@ rules:
       - patch
       - update
   - apiGroups:
-      - urlshortener.av0.de
+      - urlshortener.cedi.dev
     resources:
       - redirects
     verbs:
@@ -38,13 +38,13 @@ rules:
       - update
       - watch
   - apiGroups:
-      - urlshortener.av0.de
+      - urlshortener.cedi.dev
     resources:
       - redirects/finalizers
     verbs:
       - update
   - apiGroups:
-      - urlshortener.av0.de
+      - urlshortener.cedi.dev
     resources:
       - redirects/status
     verbs:
@@ -52,7 +52,7 @@ rules:
       - patch
       - update
   - apiGroups:
-      - urlshortener.av0.de
+      - urlshortener.cedi.dev
     resources:
       - shortlinks
     verbs:
@@ -64,13 +64,13 @@ rules:
       - update
       - watch
   - apiGroups:
-      - urlshortener.av0.de
+      - urlshortener.cedi.dev
     resources:
       - shortlinks/finalizers
     verbs:
       - update
   - apiGroups:
-      - urlshortener.av0.de
+      - urlshortener.cedi.dev
     resources:
       - shortlinks/status
     verbs:
