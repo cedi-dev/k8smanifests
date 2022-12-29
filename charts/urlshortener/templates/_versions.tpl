@@ -1,17 +1,17 @@
 {{/*
 Return the target Kubernetes version
 */}}
-{{- define "urlshortener.kubeVersion" -}}
+{{- define "kubeVersion" -}}
 {{- default .Capabilities.KubeVersion.Version .Values.kubeVersionOverride }}
 {{- end }}
 
 {{/*
 Return the appropriate apiVersion for autoscaling
 */}}
-{{- define "urlshortener.apiVersion.autoscaling" -}}
+{{- define "apiVersion.autoscaling" -}}
 {{- if .Values.apiVersionOverrides.autoscaling -}}
 {{- print .Values.apiVersionOverrides.autoscaling -}}
-{{- else if semverCompare "<1.23-0" (include "urlshortener.kubeVersion" .) -}}
+{{- else if semverCompare "<1.23-0" (include "kubeVersion" .) -}}
 {{- print "autoscaling/v2beta1" -}}
 {{- else -}}
 {{- print "autoscaling/v2" -}}
@@ -21,12 +21,12 @@ Return the appropriate apiVersion for autoscaling
 {{/*
 Return the appropriate apiVersion for ingress
 */}}
-{{- define "urlshortener.apiVersion.ingress" -}}
+{{- define "apiVersion.ingress" -}}
 {{- if .Values.apiVersionOverrides.ingress -}}
 {{- print .Values.apiVersionOverrides.ingress -}}
-{{- else if semverCompare "<1.14-0" (include "urlshortener.kubeVersion" .) -}}
+{{- else if semverCompare "<1.14-0" (include "kubeVersion" .) -}}
 {{- print "extensions/v1beta1" -}}
-{{- else if semverCompare "<1.19-0" (include "urlshortener.kubeVersion" .) -}}
+{{- else if semverCompare "<1.19-0" (include "kubeVersion" .) -}}
 {{- print "networking.k8s.io/v1beta1" -}}
 {{- else -}}
 {{- print "networking.k8s.io/v1" -}}
@@ -36,10 +36,10 @@ Return the appropriate apiVersion for ingress
 {{/*
 Return the appropriate apiVersion for pod disruption budget
 */}}
-{{- define "urlshortener.apiVersion.pdb" -}}
+{{- define "apiVersion.pdb" -}}
 {{- if .Values.apiVersionOverrides.pdb -}}
 {{- print .Values.apiVersionOverrides.pdb -}}
-{{- else if semverCompare "<1.21-0" (include "urlshortener.kubeVersion" .) -}}
+{{- else if semverCompare "<1.21-0" (include "kubeVersion" .) -}}
 {{- print "policy/v1beta1" -}}
 {{- else -}}
 {{- print "policy/v1" -}}
@@ -49,7 +49,7 @@ Return the appropriate apiVersion for pod disruption budget
 {{/*
 Return the appropriate apiVersion for cert-manager
 */}}
-{{- define "urlshortener.apiVersion.cert-manager" -}}
+{{- define "apiVersion.cert-manager" -}}
 {{- if .Values.apiVersionOverrides.certmanager -}}
 {{- print .Values.apiVersionOverrides.certmanager -}}
 {{- else if .Capabilities.APIVersions.Has "cert-manager.io/v1" -}}
@@ -68,7 +68,7 @@ Return the appropriate apiVersion for cert-manager
 {{/*
 Return the appropriate apiVersion for GKE resources
 */}}
-{{- define "urlshortener.apiVersions.cloudgoogle" -}}
+{{- define "apiVersions.cloudgoogle" -}}
 {{- if .Values.apiVersionOverrides.cloudgoogle -}}
 {{- print .Values.apiVersionOverrides.cloudgoogle -}}
 {{- else if .Capabilities.APIVersions.Has "cloud.google.com/v1" -}}

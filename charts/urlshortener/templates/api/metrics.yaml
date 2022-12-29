@@ -1,0 +1,23 @@
+{{- if .Values.apiServer.metrics.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "apiServer.fullname" . }}-metrics
+  labels:
+    {{- include "apiServer.labels" . | nindent 6 }}
+    {{- with .Values.apiServer.metrics.service.labels }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+  {{- with .Values.apiServer.metrics.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 6 }}
+  {{- end }}
+spec:
+  ports:
+  - name: {{ .Values.apiServer.metrics.service.portName }}
+    protocol: TCP
+    port: {{ .Values.apiServer.metrics.service.servicePort }}
+    targetPort: {{ .Values.apiServer.metrics.service.portName }}
+  selector:
+    {{- include "apiServer.selectorLabels" . | nindent 6 }}
+{{- end }}
