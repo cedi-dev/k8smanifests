@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: kube-system
 
 bases:
-  - ../../bases/hcloud-csi2
+  - ../../bases/hcloud-csi
 
 patches:
   - target:
