@@ -11,6 +11,7 @@ spec:
           - name: prometheus
           - name: code-server
           - name: openfaas
+          - name: shortlink-api
   template:
     metadata:
       name: oauth2-proxy-{{name}}
