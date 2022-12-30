@@ -1507,7 +1507,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 12,
         "x": 0,
         "y": 14
@@ -1580,7 +1580,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 12,
         "x": 12,
         "y": 14
@@ -1631,7 +1631,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "id": 98,
       "panels": [],
@@ -1656,7 +1656,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 60,
@@ -1748,7 +1748,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 71,
@@ -1885,7 +1885,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 30
       },
       "id": 90,
       "options": {
@@ -1985,7 +1985,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 29
+        "y": 30
       },
       "id": 92,
       "options": {
@@ -2038,7 +2038,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 39
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 86,
@@ -2130,7 +2130,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 39
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 88,
@@ -2230,7 +2230,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 49
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 17,
@@ -2335,7 +2335,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 49
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 84,
@@ -2447,7 +2447,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 58
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 77,
@@ -2535,7 +2535,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 58
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 76,
@@ -2623,7 +2623,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 67
+        "y": 68
       },
       "hiddenSeries": false,
       "id": 74,
@@ -2713,7 +2713,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 67
+        "y": 68
       },
       "hiddenSeries": false,
       "id": 82,
@@ -2813,7 +2813,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 75
+        "y": 76
       },
       "hiddenSeries": false,
       "id": 11,
@@ -2930,7 +2930,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 75
+        "y": 76
       },
       "hiddenSeries": false,
       "id": 8,
@@ -3022,7 +3022,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 84
+        "y": 85
       },
       "hiddenSeries": false,
       "id": 73,
@@ -3109,7 +3109,7 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "1m",
   "schemaVersion": 37,
   "style": "dark",
   "tags": [
@@ -3119,9 +3119,9 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "selected": false,
+          "text": "Mimir-Metrics",
+          "value": "Mimir-Metrics"
         },
         "hide": 0,
         "includeAll": false,
@@ -3138,7 +3138,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "minio"
           ],
@@ -3169,7 +3169,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -3199,6 +3199,6 @@
   "timezone": "",
   "title": "MinIO Dashboard",
   "uid": "TgmJnqnnk",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }
