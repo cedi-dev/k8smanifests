@@ -1,4 +1,11 @@
 ccm-hcloud:
+  replicaCount: 3
+
+  # keep one CCM always available, to communicate with Hetzner
+  pdb:
+    enabled: true
+    minAvailable: 1
+  
   secret:
     create: false
     name: hetzner # Name of an existing secret
