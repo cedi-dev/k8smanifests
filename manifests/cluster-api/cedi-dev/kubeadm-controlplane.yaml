@@ -216,4 +216,8 @@ spec:
       kind: HCloudMachineTemplate
       name: cedi-dev-control-plane
   replicas: 3
+  rolloutStrategy:
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxSurge: 1
   version: v1.25.5

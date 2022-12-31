@@ -11,6 +11,11 @@ metadata:
 spec:
   clusterName: cedi-dev
   replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0
   selector:
     matchLabels: null
   template:
