@@ -181,7 +181,7 @@ spec:
     preKubeadmCommands:
       - export CRUN=1.6
       - export CONTAINERD=1.6.8
-      - export KUBERNETES_VERSION=$(echo v1.25.3 | sed 's/^v//')
+      - export KUBERNETES_VERSION=$(echo v1.25.5 | sed 's/^v//')
       - localectl set-locale LANG=en_US.UTF-8
       - localectl set-locale LANGUAGE=en_US.UTF-8
       - apt-get update -y
@@ -216,4 +216,4 @@ spec:
       kind: HCloudMachineTemplate
       name: cedi-dev-control-plane
   replicas: 3
-  version: v1.25.3
+  version: v1.25.5
