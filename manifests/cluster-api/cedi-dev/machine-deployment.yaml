@@ -22,6 +22,7 @@ spec:
     metadata:
       labels:
         nodepool: cedi-dev-cxp31
+        svc-lb.tailscale.iptables.sh/deploy: true
     spec:
       bootstrap:
         configRef:
