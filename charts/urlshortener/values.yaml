@@ -26,7 +26,6 @@ urlshortener:
         - secretName: short-cedi-dev-tls
           hosts:
             - short.cedi.dev
-    
     resources:
       limits:
         cpu: 500m
@@ -92,7 +91,7 @@ urlshortener:
         - secretName: api-short-cedi-dev-tls
           hosts:
             - api.short.cedi.dev
-    
+
     resources:
       limits:
         cpu: 500m
