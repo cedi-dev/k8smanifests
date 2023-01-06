@@ -29,3 +29,5 @@ ingester:
 compactor:
   persistentVolume:
     size: 90Gi
+distributor:
+  replicas: 2
