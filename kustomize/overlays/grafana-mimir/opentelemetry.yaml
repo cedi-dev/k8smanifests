@@ -34,10 +34,6 @@ spec:
         traces:
           receivers: [jaeger]
           processors: []
-          exporters: [otlphttp]
+          exporters: [otlphttp, logging]
 
-        metrics:
-          receivers: [otlp]
-          processors: []
-          exporters: [prometheusremotewrite]
   mode: deployment
