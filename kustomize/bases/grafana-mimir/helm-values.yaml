@@ -23,7 +23,8 @@ nginx:
     maxReplicas: 3
 
 ingester:
-  replicas: 6
+  # TODO: when re-enabling zoneAwareReplication, increase this to double the amount of zomes
+  replicas: 3
   persistentVolume:
     size: 30Gi
   zoneAwareReplication:
