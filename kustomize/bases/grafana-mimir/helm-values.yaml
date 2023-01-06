@@ -43,6 +43,14 @@ ingester:
     #  nodeSelector:
     #    topology.kubernetes.io/region: fsn1
 
+store_gateway:
+  replicas: 3
+  persistentVolume:
+    size: 2Gi
+  # TODO: One-day re-enable this with multiple hcloud zones
+  zoneAwareReplication:
+    enabled: false
+
 compactor:
   persistentVolume:
     size: 90Gi
