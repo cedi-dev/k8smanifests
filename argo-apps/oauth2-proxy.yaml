@@ -7,10 +7,6 @@ spec:
   generators:
     - list:
         elements:
-          - name: general
-          - name: prometheus
-          - name: code-server
-          - name: openfaas
           - name: shortlink-api
   template:
     metadata:

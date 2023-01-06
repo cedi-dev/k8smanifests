@@ -7,9 +7,4 @@ if [[ $dir =~ "(.*)(hack)$" ]]; then
   cd ..
 fi
 
-source ./hack/.enc_files.sh
-
-for enc_file in "${encrypted_files[@]}"; do
-  echo "* decrypting $enc_file"
-  sops -d -i $enc_file
-done
+find . -name "*.secret.yaml" | xargs -n1 sops -d -i

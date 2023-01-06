@@ -6,6 +6,7 @@ rules:
 
 ignore: |
   .yamllint.yml
+  manifests/deploy-secrets/*.secret.yaml
   charts/*/charts/
   charts/*/templates/
   kustomize/bases/*/charts/
