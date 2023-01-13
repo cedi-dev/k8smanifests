@@ -80,6 +80,7 @@ jobs:
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@0.9.0
+        if: steps.kubeval.outcome != 'success'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -136,6 +137,7 @@ jobs:
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@0.9.0
+        if: steps.kubeval.outcome != 'success'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -187,6 +189,7 @@ jobs:
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@0.9.0
+        if: steps.kubeval.outcome != 'success'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
