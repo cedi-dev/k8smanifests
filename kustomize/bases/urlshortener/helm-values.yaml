@@ -1,7 +1,9 @@
 global:
   extraEnv:
     - name: OTLP_ENDPOINT
-      value: "http://tempo-distributor.observability:4318"
+      value: "urlshortener-otel-collector:4318"
+    - name: OTLP_INSECURE
+      value: "true"
 
 urlshortener:
   replicaCount: 1

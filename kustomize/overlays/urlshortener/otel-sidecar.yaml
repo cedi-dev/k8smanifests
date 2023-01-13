@@ -1,7 +1,7 @@
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
-  name: urlshortener-collector
+  name: urlshortener-otel
   namespace: urlshortener
 spec:
   mode: deployment
