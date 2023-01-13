@@ -41,7 +41,8 @@ grafana.ini:
     auth_url: https://github.com/login/oauth/authorize
     token_url: https://github.com/login/oauth/access_token
     api_url: https://api.github.com/user
-    role_attribute_path: contains(groups[*], '@av0de/admin') && 'Admin' || contains(groups[*], '@av0de/grafana') && 'Editor' || 'Viewer'
+    allowed_organizations: cedi-dev
+    role_attribute_path: contains(groups[*], '@cedi-dev/admin') && 'Admin' || contains(groups[*], '@cedi-dev/grafana') && 'Editor' || 'Viewer'
   feature_toggles:
     enable: tempoSearch tempoBackendSearch
 
