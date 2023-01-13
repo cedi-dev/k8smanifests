@@ -5,8 +5,16 @@
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": "patch",
+      "matchUpdateTypes": [
+        "patch",
+        "bump"
+      ],
       "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["update/major"]
     }
   ]
 }
