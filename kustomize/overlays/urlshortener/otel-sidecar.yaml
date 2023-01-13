@@ -31,7 +31,7 @@ spec:
           processors: []
           exporters:
             - otlphttp
-            - logging
+            #- logging
 
         metrics:
           receivers:
