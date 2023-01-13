@@ -3,9 +3,9 @@ kind: Kustomization
 namespace: observability
 
 helmCharts:
-  - name: loki-distributed
+  - name: loki
     repo: https://grafana.github.io/helm-charts
-    version: 0.69.0
+    version: 3.10.0
     releaseName: loki
     namespace: observability
     valuesFile: helm-values.yaml

@@ -22,7 +22,7 @@ datasources:
   - name: "Loki-Logs"
     type: loki
     uid: loki
-    url: http://loki-query-frontend.observability.svc.cluster.local:3100
+    url: http://loki-gateway.observability.svc.cluster.local
     access: proxy
     editable: false
     jsonData:
