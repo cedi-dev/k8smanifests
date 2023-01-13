@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
-    - host: test.ts.cedi.dev
+    - host: test.mgmt.cedi.dev
       http:
         paths:
           - path: /
@@ -22,4 +22,4 @@ spec:
   tls:
     - secretName: test-ts-secret
       hosts:
-        - test.ts.cedi.dev
+        - test.mgmt.cedi.dev
