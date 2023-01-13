@@ -1,0 +1,41 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: urlshortener-collector
+  namespace: urlshortener
+spec:
+  mode: sidecar
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+    processors:
+
+    exporters:
+      logging:
+        loglevel: debug
+
+      otlphttp:
+        endpoint: http://tempo-distributor.observability.svc.cluster.local:4318
+
+      prometheusremotewrite:
+        endpoint: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
+
+    service:
+      pipelines:
+        traces:
+          receivers:
+            - otlp
+          processors: []
+          exporters:
+            - otlphttp
+            - logging
+
+        metrics:
+          receivers:
+            - otlp
+          processors: []
+          exporters:
+            - prometheusremotewrite

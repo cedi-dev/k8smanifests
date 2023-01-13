@@ -1,7 +1,0 @@
-apiVersion: v2
-name: addon-urlshortener
-version: 0.0.4
-dependencies:
-  - name: urlshortener
-    version: 0.0.4
-    repository: https://urlshortener-cedi-dev.github.io/urlshortener-helm/
