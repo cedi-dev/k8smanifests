@@ -32,3 +32,40 @@ metadata:
 spec:
   target: "https://thiesmueller.de/"
   code: 307
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: gh-cedi-dev
+spec:
+  target: "https://github.com/cedi-dev"
+  code: 307
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: gh-urlshortener
+spec:
+  target: "https://github.com/urlshortener-cedi-dev/"
+  code: 307
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: gh-cedi
+spec:
+  target: "https://github.com/cedi"
+  code: 307
+
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: cf
+spec:
+  target: "https://dash.cloudflare.com"
+  code: 307
