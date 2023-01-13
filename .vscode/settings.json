@@ -3,6 +3,7 @@
         "automerge",
         "finalizers",
         "ingester",
+        "minio",
         "otel",
         "tolerations",
         "urlshortener"

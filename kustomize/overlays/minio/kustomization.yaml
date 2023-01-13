@@ -7,3 +7,21 @@ bases:
 
 generators:
   - ./secret-generator.yaml
+
+patchesJson6902:
+  - target:
+      kind: StatefulSet
+      group: apps
+      version: v1
+      name: minio
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: MINIO_PROMETHEUS_URL
+          value: "http://prom-stack-prometheus.monitoring.svc.cluster.local:9090"
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: MINIO_PROMETHEUS_JOB_ID
+          value: "minio"

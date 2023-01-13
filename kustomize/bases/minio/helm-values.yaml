@@ -21,4 +21,29 @@ metrics:
     enabled: true
 
 persistence:
+  enabled: true
+  storageClass: hcloud-volumes
   size: 100Gi
+
+provisioning:
+  enabled: true
+
+  usersExistingSecrets:
+    - minio-users
+
+  buckets:
+    - name: mimir-tsdb
+      versioning: false
+      withLock: false
+      tags:
+        app: mimir
+    - name: mimir-ruler
+      versioning: false
+      withLock: false
+      tags:
+        app: mimir
+    - name: mimir-alert
+      versioning: false
+      withLock: false
+      tags:
+        app: mimir
