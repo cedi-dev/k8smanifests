@@ -18,7 +18,6 @@ urlshortener:
 
   podAnnotations:
     kubectl.kubernetes.io/default-container: urlshortener
-    sidecar.opentelemetry.io/inject: "true"
 
   resources:
     limits:
@@ -69,8 +68,7 @@ apiServer:
     tag: main
 
   podAnnotations:
-    kubectl.kubernetes.io/default-container: urlshortener
-    sidecar.opentelemetry.io/inject: "true"
+    kubectl.kubernetes.io/default-container: urlshortener-api
 
   resources:
     limits:

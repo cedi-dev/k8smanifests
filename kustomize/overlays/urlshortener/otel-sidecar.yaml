@@ -4,7 +4,7 @@ metadata:
   name: urlshortener-collector
   namespace: urlshortener
 spec:
-  mode: sidecar
+  mode: deployment
   config: |
     receivers:
       otlp:
