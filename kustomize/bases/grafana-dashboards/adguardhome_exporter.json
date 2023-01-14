@@ -114,7 +114,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "9.1.7",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
           "datasource": {
@@ -198,7 +198,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.1.7",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
           "datasource": {
@@ -276,7 +276,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.1.7",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
           "datasource": {
@@ -341,7 +341,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.1.7",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
           "datasource": {
@@ -409,7 +409,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.1.7",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
           "datasource": {
@@ -487,7 +487,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.1.7",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
           "datasource": {
@@ -503,7 +503,7 @@
           "refId": "A"
         }
       ],
-      "title": "Percent of ads blocked",
+      "title": "% of requests blocked as ad",
       "type": "stat"
     },
     {
@@ -844,7 +844,7 @@
           "refId": "A"
         }
       ],
-      "title": "% of ads blocked",
+      "title": "% of requests blocked as ad",
       "type": "timeseries"
     },
     {
@@ -1097,7 +1097,7 @@
           "refId": "A"
         }
       ],
-      "title": "Ads blocked",
+      "title": "Requests blocked as ad",
       "type": "timeseries"
     },
     {
@@ -1134,7 +1134,7 @@
             "spanNulls": 60000,
             "stacking": {
               "group": "A",
-              "mode": "normal"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -1242,13 +1242,14 @@
         },
         "showUnfilled": false
       },
-      "pluginVersion": "9.1.7",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "adguard_query_types{hostname=~'$node'}",
           "format": "time_series",
@@ -1321,9 +1322,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "expr": "adguard_query_types{hostname=~'$node'}",
           "interval": "",
           "legendFormat": "{{ type }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1408,7 +1411,7 @@
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "desc"
+          "sort": "asc"
         }
       },
       "targets": [
@@ -1570,9 +1573,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "Mimir",
-          "value": "Mimir"
+          "selected": true,
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "hide": 0,
         "includeAll": false,
@@ -1590,7 +1593,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
