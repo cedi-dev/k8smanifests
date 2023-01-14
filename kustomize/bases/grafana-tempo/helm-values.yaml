@@ -51,7 +51,6 @@ gateway:
 
 ingester:
   replicas: 2
-  
   autoscaling:
     enabled: true
     minReplicas: 2

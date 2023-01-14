@@ -33,7 +33,7 @@ mimir:
           access_key_id: mimir
           secret_access_key: supersecure123
           insecure: true
-    
+
     memberlist:
       abort_if_cluster_join_fails: true
 
@@ -73,15 +73,15 @@ ingester:
     enabled: false
     topologyKey: 'kubernetes.io/hostname'
     zones:
-    - name: fsn1-a
-      nodeSelector:
-        topology.kubernetes.io/region: fsn1
-    - name: fsn1-b
-      nodeSelector:
-        topology.kubernetes.io/region: fsn1
-    - name: fsn1-c
-      nodeSelector:
-        topology.kubernetes.io/region: fsn1
+      - name: fsn1-a
+        nodeSelector:
+          topology.kubernetes.io/region: fsn1
+      - name: fsn1-b
+        nodeSelector:
+          topology.kubernetes.io/region: fsn1
+      - name: fsn1-c
+        nodeSelector:
+          topology.kubernetes.io/region: fsn1
 
     topologySpreadConstraints:
       maxSkew: 3
@@ -98,15 +98,15 @@ store_gateway:
     enabled: false
     topologyKey: 'kubernetes.io/hostname'
     zones:
-    - name: fsn1-a
-      nodeSelector:
-        topology.kubernetes.io/region: fsn1
-    - name: fsn1-b
-      nodeSelector:
-        topology.kubernetes.io/region: fsn1
-    - name: fsn1-c
-      nodeSelector:
-        topology.kubernetes.io/region: fsn1
+      - name: fsn1-a
+        nodeSelector:
+          topology.kubernetes.io/region: fsn1
+      - name: fsn1-b
+        nodeSelector:
+          topology.kubernetes.io/region: fsn1
+      - name: fsn1-c
+        nodeSelector:
+          topology.kubernetes.io/region: fsn1
 
     topologySpreadConstraints:
       maxSkew: 3

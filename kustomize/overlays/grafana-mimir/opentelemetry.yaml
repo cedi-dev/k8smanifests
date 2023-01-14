@@ -37,7 +37,7 @@ spec:
             - jaeger
 
           processors: []
-          
+
           exporters:
             - otlphttp
             - logging
