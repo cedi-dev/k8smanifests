@@ -29,3 +29,19 @@ spec:
         - name: cedi@mae
         - name: cedi@ivy
         - name: cedi@devpi
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: cedi-dev-worker-cx41
+  namespace: default
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: worker-nodes-1
+      type: cx41
+      sshKeys:
+        - name: cedi@mae
+        - name: cedi@ivy
+        - name: cedi@devpi
