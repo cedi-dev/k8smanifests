@@ -1,59 +1,154 @@
+fullnameOverride: mimir
+
 metaMonitoring:
   serviceMonitor:
     enabled: true
+
+  grafanaAgent:
+    enabled: true
+
+continuous_test:
+  enabled: true
 
 minio:
   enabled: false
 
 query_scheduler:
   enabled: false
+  installOperator: false
+
+global:
+  extraEnv:
+    - name: JAEGER_AGENT_HOST
+      value: "mimir-otel-collector.observability.svc.cluster.local"
+
+mimir:
+  structuredConfig:
+    common:
+      storage:
+        backend: s3
+        s3:
+          endpoint: minio.minio.svc.cluster.local:9000
+          region: us-east
+          access_key_id: mimir
+          secret_access_key: supersecure123
+          insecure: true
+    
+    memberlist:
+      abort_if_cluster_join_fails: true
+
+    ingester:
+      ring:
+        unregister_on_shutdown: true
+
+    blocks_storage:
+      s3:
+        bucket_name: mimir-tsdb
+
+    alertmanager_storage:
+      s3:
+        bucket_name: mimir-alert
+
+    ruler_storage:
+      s3:
+        bucket_name: mimir-ruler
 
 nginx:
   replicas: 1
-  resources:
-    limits:
-      cpu: 250m
-      memory: 2048Mi
-    requests:
-      cpu: 125m
-      memory: 512Mi
   autoscaling:
     enabled: false
     minReplicas: 1
     maxReplicas: 3
 
 ingester:
-  # TODO: when re-enabling zoneAwareReplication, increase this to double the amount of zomes
   replicas: 3
+
   persistentVolume:
-    size: 30Gi
+    size: 50Gi
+
+
+  # TODO: Deploy nodes to different zones
   zoneAwareReplication:
     enabled: false
-    # TODO: One-day re-enable this with multiple hcloud zones
-    #maxUnavailable: 1
-    #topologyKey: 'kubernetes.io/hostname'
-    #zones:
-    #- name: fsn1-a
-    #  nodeSelector:
-    #    topology.kubernetes.io/region: fsn1
-    #- name: fsn1-b
-    #  nodeSelector:
-    #    topology.kubernetes.io/region: fsn1
-    #- name: fsn1-c
-    #  nodeSelector:
-    #    topology.kubernetes.io/region: fsn1
+    topologyKey: 'kubernetes.io/hostname'
+    zones:
+    - name: fsn1-a
+      nodeSelector:
+        topology.kubernetes.io/region: fsn1
+    - name: fsn1-b
+      nodeSelector:
+        topology.kubernetes.io/region: fsn1
+    - name: fsn1-c
+      nodeSelector:
+        topology.kubernetes.io/region: fsn1
+
+    topologySpreadConstraints:
+      maxSkew: 3
+      topologyKey: kubernetes.io/hostname
+      whenUnsatisfiable: ScheduleAnyway
 
 store_gateway:
   replicas: 3
+
   persistentVolume:
-    size: 2Gi
-  # TODO: One-day re-enable this with multiple hcloud zones
+    size: 10Gi
+
   zoneAwareReplication:
     enabled: false
+    topologyKey: 'kubernetes.io/hostname'
+    zones:
+    - name: fsn1-a
+      nodeSelector:
+        topology.kubernetes.io/region: fsn1
+    - name: fsn1-b
+      nodeSelector:
+        topology.kubernetes.io/region: fsn1
+    - name: fsn1-c
+      nodeSelector:
+        topology.kubernetes.io/region: fsn1
+
+    topologySpreadConstraints:
+      maxSkew: 3
+      topologyKey: kubernetes.io/hostname
+      whenUnsatisfiable: ScheduleAnyway
+
+alertmanager:
+  persistentVolume:
+    enabled: true
+  replicas: 2
+  statefulSet:
+    enabled: true
 
 compactor:
   persistentVolume:
-    size: 90Gi
+    size: 20Gi
 
 distributor:
+  replicas: 2
+
+overrides_exporter:
+  replicas: 2
+
+querier:
+  replicas: 2
+
+query_frontend:
+  replicas: 2
+
+ruler:
+  replicas: 2
+
+chunks-cache:
+  enabled: true
+  replicas: 2
+
+index-cache:
+  enabled: true
+  replicas: 3
+
+metadata-cache:
+  enabled: true
+
+results-cache:
+  enabled: true
   replicas: 2

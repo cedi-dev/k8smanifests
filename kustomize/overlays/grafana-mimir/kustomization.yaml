@@ -8,25 +8,7 @@ bases:
 resources:
   - opentelemetry.yaml
 
-generators:
-  - ./secret-generator.yaml
-
-patches:
-  - nginx-config.yaml
-
 patchesJson6902:
-  - target:
-      kind: ServiceMonitor
-      namespace: observability
-      name: "mimir-.*"
-    path: service-monitor.patch.yaml
-
-  - target:
-      kind: Deployment
-      namespace: observability
-      name: mimir-query-frontend
-    path: jaeger-tracing-env.patch.yaml
-
   - target:
       kind: HorizontalPodAutoscaler
       group: autoscaling

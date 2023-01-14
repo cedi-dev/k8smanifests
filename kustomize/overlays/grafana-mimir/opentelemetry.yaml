@@ -1,9 +1,10 @@
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
-  name: mimir-collector
+  name: mimir-otel
   namespace: observability
 spec:
+  mode: deployment
   config: |
     receivers:
       otlp:
@@ -32,8 +33,11 @@ spec:
     service:
       pipelines:
         traces:
-          receivers: [jaeger]
-          processors: []
-          exporters: [otlphttp, logging]
+          receivers:
+            - jaeger
 
-  mode: deployment
+          processors: []
+          
+          exporters:
+            - otlphttp
+            - logging
