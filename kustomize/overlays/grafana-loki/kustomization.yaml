@@ -5,6 +5,9 @@ namespace: observability
 bases:
   - ../../bases/grafana-loki
 
+resources:
+  - servicemonitor.yaml
+
 patchesJson6902:
   - target:
       kind: StatefulSet
