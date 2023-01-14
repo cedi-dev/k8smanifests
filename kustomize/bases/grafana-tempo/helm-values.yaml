@@ -1,14 +1,5 @@
 fullnameOverride: tempo
 
-gateway:
-  enabled: true
-  verboseLogging: true # TODO: Set to false
-  replicas: 1
-  autoscaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
-
 memcachedExporter:
   enabled: true
 
@@ -18,32 +9,13 @@ serviceMonitor:
 prometheusRule:
   enabled: true
 
-# enable autoscaling for ingester
-ingester:
-  persistence:
-    enabled: true
-    accessModes:
-      - ReadWriteOnce
-    size: 30Gi
-
-  replicas: 2
-
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 3
-
-# enable autoscaling for distributor
-distributor:
-  replicas: 2
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 3
+grafanaAgent:
+  enabled: true
+  installOperator: false
 
 # enable metricsGenerator
 metricsGenerator:
-  enabled: true
+  enabled: false # TODO: Re-enable once mimir works again
 
 traces:
   jaeger:
@@ -65,21 +37,52 @@ traces:
   opencensus:
     enabled: true
 
+gateway:
+  enabled: true
+  verboseLogging: false
+  replicas: 1
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+
+ingester:
+  replicas: 2
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 3
+
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 30Gi
+
+# enable autoscaling for distributor
+distributor:
+  replicas: 2
+
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 3
+
+
 search:
   enabled: true
 
-# To configure a different storage backend instead of local storage:
-# storage:
-#   trace:
-#     backend: azure
-#     azure:
-#       container-name:
-#       storage-account-name:
-#       storage-account-key:
 storage:
   trace:
-    # -- The supported storage backends are gcs, s3 and azure, as specified in https://grafana.com/docs/tempo/latest/configuration/#storage
-    backend: local
+    backend: s3
+    s3:
+      bucket: tempo
+      endpoint: minio.minio.svc.cluster.local:9000
+      access_key: tempo
+      secret_key: supersicher123
+      insecure: true
+      forcepathstyle: true
 
 minio:
   enabled: false
