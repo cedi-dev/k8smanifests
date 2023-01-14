@@ -15,10 +15,11 @@ grafanaAgent:
 
 # enable metricsGenerator
 metricsGenerator:
-  enabled: false # TODO: Re-enable once mimir works again
+  enabled: true
   config:
     storage:
-      remote_write: [] # add mimir endpoint here
+      remote_write:
+        - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
 
 traces:
   jaeger:
