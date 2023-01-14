@@ -44,7 +44,7 @@ grafana.ini:
     allowed_organizations: cedi-dev
     role_attribute_path: contains(groups[*], '@cedi-dev/admin') && 'Admin' || contains(groups[*], '@cedi-dev/grafana') && 'Editor' || 'Viewer'
   feature_toggles:
-    enable: tempoSearch tempoBackendSearch
+    enable: tempoSearch tempoBackendSearch tempoApmTable
 
 ingress:
   enabled: true
