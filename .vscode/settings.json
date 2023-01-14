@@ -1,10 +1,12 @@
 {
     "cSpell.words": [
         "automerge",
+        "Autoscaler",
         "finalizers",
         "ingester",
         "minio",
         "otel",
+        "tailscale",
         "tolerations",
         "urlshortener"
     ]
