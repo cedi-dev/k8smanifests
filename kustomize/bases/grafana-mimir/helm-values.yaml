@@ -44,7 +44,7 @@ mimir:
     ingester:
       ring:
         unregister_on_shutdown: true
-        replication_factor: 3
+        #replication_factor: 3
 
     blocks_storage:
       s3:
