@@ -1,0 +1,7 @@
+apiVersion: v2
+name: addon-grafana-agent-operator
+version: 0.2.8
+dependencies:
+  - name: grafana-agent-operator
+    repository: "https://grafana.github.io/helm-charts"
+    version: 0.2.8
