@@ -69,7 +69,7 @@ spec:
           kind: KubeadmConfigTemplate
           name: cedi-dev-worker-template
       clusterName: cedi-dev
-      failureDomain: fsn
+      failureDomain: fsn1
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
