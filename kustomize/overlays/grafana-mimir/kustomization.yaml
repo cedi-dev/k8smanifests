@@ -5,9 +5,6 @@ namespace: observability
 bases:
   - ../../bases/grafana-mimir
 
-resources:
-  - opentelemetry.yaml
-
 patchesJson6902:
   - target:
       kind: HorizontalPodAutoscaler
