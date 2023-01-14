@@ -1,7 +1,9 @@
 tempo-vulture:
-  nameOverride: "vulture"
+  fullnameOverride: "vulture"
+
   serviceMonitor:
     enabled: true
+
   tempoAddress:
     push: tempo-distributor.observability.svc.cluster.local
     query: http://tempo-query-frontend.observability.svc.cluster.local:3100
