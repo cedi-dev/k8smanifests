@@ -40,6 +40,7 @@ mimir:
     ingester:
       ring:
         unregister_on_shutdown: true
+        replication_factor: 3
 
     blocks_storage:
       s3:
@@ -124,31 +125,31 @@ compactor:
     size: 20Gi
 
 distributor:
-  replicas: 2
+  replicas: 3
 
 overrides_exporter:
-  replicas: 2
+  replicas: 1
 
 querier:
-  replicas: 2
+  replicas: 1
 
 query_frontend:
-  replicas: 2
+  replicas: 1
 
 ruler:
   replicas: 2
 
 chunks-cache:
-  enabled: true
+  enabled: false
   replicas: 2
 
 index-cache:
-  enabled: true
+  enabled: false
   replicas: 3
 
 metadata-cache:
-  enabled: true
+  enabled: false
 
 results-cache:
-  enabled: true
+  enabled: false
   replicas: 2
