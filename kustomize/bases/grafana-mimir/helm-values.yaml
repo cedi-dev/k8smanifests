@@ -52,6 +52,7 @@ mimir:
       # With sharding we can further shard each day another 16 times. 14 days * 16 shards = 224 subqueries.
       max_query_parallelism: 224
       max_global_series_per_user: 0
+      ingestion_rate: 0
 
     blocks_storage:
       s3:
