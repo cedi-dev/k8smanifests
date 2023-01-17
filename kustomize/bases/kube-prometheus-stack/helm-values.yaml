@@ -121,6 +121,8 @@ prometheus:
               - "hole.elbschloss.xyz:9617"
     remoteWrite:
       - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
+        headers:
+          X-Scope-OrgID: cedi-dev
 
     serviceMonitorNamespaceSelector: {}
     serviceMonitorSelector: {}
