@@ -7,6 +7,7 @@ bases:
 
 resources:
   - tailscale-ingress.yaml
+  - prometheus-rules.yaml
 
 patchesJson6902:
   - target:

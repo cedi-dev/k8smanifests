@@ -6,6 +6,7 @@ metaMonitoring:
 
   grafanaAgent:
     enabled: true
+    installOperator: false
 
 continuous_test:
   enabled: true
