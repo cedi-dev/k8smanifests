@@ -154,10 +154,12 @@ ruler:
 chunks-cache:
   enabled: true
   replicas: 3
+  allocatedMemory: 2048
 
 index-cache:
   enabled: true
   replicas: 3
+  allocatedMemory: 2048
 
 metadata-cache:
   enabled: true
