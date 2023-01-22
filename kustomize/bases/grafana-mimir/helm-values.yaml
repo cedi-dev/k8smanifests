@@ -14,10 +14,6 @@ continuous_test:
 minio:
   enabled: false
 
-query_scheduler:
-  enabled: false
-  installOperator: false
-
 global:
   extraEnv:
     - name: JAEGER_AGENT_HOST
@@ -164,7 +160,7 @@ index-cache:
   replicas: 3
 
 metadata-cache:
-  enabled: false
+  enabled: true
 
 results-cache:
   enabled: false
