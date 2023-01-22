@@ -163,5 +163,5 @@ metadata-cache:
   enabled: true
 
 results-cache:
-  enabled: false
-  replicas: 2
+  enabled: true
+  replicas: 3
