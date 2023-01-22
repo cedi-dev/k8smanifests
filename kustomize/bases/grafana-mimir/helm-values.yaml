@@ -152,8 +152,8 @@ ruler:
   replicas: 2
 
 chunks-cache:
-  enabled: false
-  replicas: 2
+  enabled: true
+  replicas: 3
 
 index-cache:
   enabled: true
