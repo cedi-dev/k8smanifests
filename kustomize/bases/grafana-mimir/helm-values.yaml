@@ -66,6 +66,11 @@ mimir:
       s3:
         bucket_name: mimir-ruler
 
+    distributor:
+      remote_timeout: 4s
+      forwarding:
+        request_timeout: 4s
+
 nginx:
   replicas: 1
   autoscaling:
