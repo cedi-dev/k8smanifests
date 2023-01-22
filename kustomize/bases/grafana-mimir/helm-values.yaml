@@ -156,7 +156,7 @@ chunks-cache:
   replicas: 2
 
 index-cache:
-  enabled: false
+  enabled: true
   replicas: 3
 
 metadata-cache:
