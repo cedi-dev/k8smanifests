@@ -32,5 +32,8 @@ monitoring:
       installOperator: false
 
 test:
-  enabled: false
+  enabled: true
   prometheusAddress: "http://prom-stack-prometheus.monitoring.svc.cluster.local:9090"
+
+tracing:
+  jaegerAgentHost: "http://tempo-distributor.observability.svc.cluster.local"
