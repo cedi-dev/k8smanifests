@@ -141,7 +141,7 @@ compactor:
     size: 20Gi
 
 distributor:
-  replicas: 3
+  replicas: 6
 
 overrides_exporter:
   replicas: 1
