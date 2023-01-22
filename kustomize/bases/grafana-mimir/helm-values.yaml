@@ -51,8 +51,8 @@ mimir:
       ingestion_rate: 0
       # Delete from storage metrics data older than 1 year.
       compactor_blocks_retention_period: 1y
-      # Allow ingestion of out-of-order samples up to 5 minutes since the latest received sample for the series.
-      out_of_order_time_window: 5m
+      # Allow ingestion of out-of-order samples up to 30 minutes since the latest received sample for the series.
+      out_of_order_time_window: 30m
 
     blocks_storage:
       s3:
