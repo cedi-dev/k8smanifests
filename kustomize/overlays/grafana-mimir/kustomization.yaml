@@ -5,6 +5,10 @@ namespace: observability
 bases:
   - ../../bases/grafana-mimir
 
+generators:
+  - ./secret-generator.yaml
+
+
 resources:
   - tailscale-ingress.yaml
   - prometheus-rules.yaml
