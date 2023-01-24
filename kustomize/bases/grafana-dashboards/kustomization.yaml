@@ -52,127 +52,127 @@ configMapGenerator:
     namespace: observability
     files:
       - urlshortener.json
-  
+
   - name: mimir-alertmanager-resources
     namespace: observability
     files:
       - mimir-alertmanager-resources.json
-  
+
   - name: mimir-alertmanager
     namespace: observability
     files:
       - mimir-alertmanager.json
-  
+
   - name: mimir-compactor-resources
     namespace: observability
     files:
       - mimir-compactor-resources.json
-  
+
   - name: mimir-compactor
     namespace: observability
     files:
       - mimir-compactor.json
-  
+
   - name: mimir-config
     namespace: observability
     files:
       - mimir-config.json
-  
+
   - name: mimir-object-store
     namespace: observability
     files:
       - mimir-object-store.json
-  
+
   - name: mimir-overrides
     namespace: observability
     files:
       - mimir-overrides.json
-  
+
   - name: mimir-overview-networking
     namespace: observability
     files:
       - mimir-overview-networking.json
-  
+
   - name: mimir-overview-resources
     namespace: observability
     files:
       - mimir-overview-resources.json
-  
+
   - name: mimir-overview
     namespace: observability
     files:
       - mimir-overview.json
-  
+
   - name: mimir-queries
     namespace: observability
     files:
       - mimir-queries.json
-  
+
   - name: mimir-reads-networking
     namespace: observability
     files:
       - mimir-reads-networking.json
-  
+
   - name: mimir-reads-resources
     namespace: observability
     files:
       - mimir-reads-resources.json
-  
+
   - name: mimir-reads
     namespace: observability
     files:
       - mimir-reads.json
-  
+
   - name: mimir-remote-ruler-reads-resources
     namespace: observability
     files:
       - mimir-remote-ruler-reads-resources.json
-  
+
   - name: mimir-remote-ruler-reads
     namespace: observability
     files:
       - mimir-remote-ruler-reads.json
-  
+
   - name: mimir-rollout-progress
     namespace: observability
     files:
       - mimir-rollout-progress.json
-  
+
   - name: mimir-ruler
     namespace: observability
     files:
       - mimir-ruler.json
-  
+
   - name: mimir-scaling
     namespace: observability
     files:
       - mimir-scaling.json
-  
+
   - name: mimir-slow-queries
     namespace: observability
     files:
       - mimir-slow-queries.json
-  
+
   - name: mimir-tenants
     namespace: observability
     files:
       - mimir-tenants.json
-  
+
   - name: mimir-top-tenants
     namespace: observability
     files:
       - mimir-top-tenants.json
-  
+
   - name: mimir-writes-networking
     namespace: observability
     files:
       - mimir-writes-networking.json
-  
+
   - name: mimir-writes-resources
     namespace: observability
     files:
       - mimir-writes-resources.json
-  
+
   - name: mimir-writes
     namespace: observability
     files:
