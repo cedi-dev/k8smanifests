@@ -35,4 +35,4 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: cedi-dev-worker-cx41
-      version: v1.26.0
+      version: v1.26.1
