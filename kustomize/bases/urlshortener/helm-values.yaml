@@ -21,14 +21,6 @@ urlshortener:
   podAnnotations:
     kubectl.kubernetes.io/default-container: urlshortener
 
-  resources:
-    limits:
-      cpu: 500m
-      memory: 128Mi
-    requests:
-      cpu: 10m
-      memory: 64Mi
-
   pdb:
     enabled: false
     minAvailable: 1
@@ -71,14 +63,6 @@ apiServer:
 
   podAnnotations:
     kubectl.kubernetes.io/default-container: urlshortener-api
-
-  resources:
-    limits:
-      cpu: 500m
-      memory: 128Mi
-    requests:
-      cpu: 10m
-      memory: 64Mi
 
   pdb:
     enabled: false

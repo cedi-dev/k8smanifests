@@ -97,13 +97,6 @@ prometheus:
     podAntiAffinity: "hard"
     retention: 30d
     walCompression: true
-    resources:
-      limits:
-        cpu: "2"
-        memory: 4Gi
-      requests:
-        cpu: 200m
-        memory: 1Gi
     storageSpec:
       volumeClaimTemplate:
         spec:

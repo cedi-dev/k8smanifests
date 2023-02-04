@@ -10,14 +10,6 @@ replica: 1
 autoscaling:
   enabled: false
 
-resources:
-  limits:
-    cpu: 100m
-    memory: 2Gi
-  requests:
-    cpu: 100m
-    memory: 1Gi
-
 grafana.ini:
   paths:
     data: /var/lib/grafana/
