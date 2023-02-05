@@ -5,6 +5,8 @@ metadata:
 spec:
   target: "https://cedi.dev"
   code: 307
+  owner: 1952599
+
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: ShortLink
@@ -13,6 +15,7 @@ metadata:
 spec:
   target: "https://api.short.cedi.dev/swagger/index.html"
   code: 307
+  owner: 1952599
 
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
@@ -23,6 +26,7 @@ spec:
   target: "https://cedi.dev"
   after: 3
   code: 200
+  owner: 1952599
 
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
@@ -32,6 +36,9 @@ metadata:
 spec:
   target: "https://thiesmueller.de/"
   code: 307
+  owner: 10527500
+  owners:
+    - 1952599
 
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
@@ -41,6 +48,7 @@ metadata:
 spec:
   target: "https://github.com/cedi-dev"
   code: 307
+  owner: 1952599
 
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
@@ -50,6 +58,7 @@ metadata:
 spec:
   target: "https://github.com/urlshortener-cedi-dev/"
   code: 307
+  owner: 1952599
 
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
@@ -59,7 +68,7 @@ metadata:
 spec:
   target: "https://github.com/cedi"
   code: 307
-
+  owner: 1952599
 
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
@@ -69,3 +78,4 @@ metadata:
 spec:
   target: "https://dash.cloudflare.com"
   code: 307
+  owner: 1952599
