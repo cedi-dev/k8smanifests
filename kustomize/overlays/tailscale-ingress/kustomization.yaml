@@ -5,6 +5,9 @@ namespace: tailscale-ingress
 bases:
   - ../../bases/tailscale-ingress
 
+generators:
+  - ./secret-generator.yaml
+
 patches:
   - target:
       kind: Service

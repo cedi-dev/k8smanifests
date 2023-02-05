@@ -8,4 +8,11 @@ helmCharts:
     version: 4.4.2
     releaseName: tailscale-ingress
     namespace: tailscale-ingress
-    valuesFile: helm-values.yaml
+    valuesFile: ingress-nginx.values.yaml
+
+  - name: tailscale-svc-lb
+    repo: https://clrxbl.github.io/tailscale-svc-lb/
+    version: 1.0.0
+    releaseName: tailnet-svc-lb
+    namespace: tailscale-ingress
+    valuesFile: tailscale-svc-lb.values.yaml

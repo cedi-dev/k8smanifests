@@ -1,32 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: ingress
+  name: tailscale-ingress
   namespace: argocd
 spec:
-  generators:
-    - list:
-        elements:
-          - name: tailscale-svc-lb
-            path: kustomize/overlays/tailscale-svc-lb
-          - name: tailscale-ingress
-            path: kustomize/overlays/tailscale-ingress
-  template:
-    metadata:
-      name: "{{name}}"
-      namespace: argocd
-    spec:
-      destination:
-        namespace: "tailscale-ingress"
-        server: https://kubernetes.default.svc
-      project: default
-      source:
-        path: "{{path}}"
-        repoURL: https://github.com/cedi-dev/k8smanifests.git
-        targetRevision: main
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+  destination:
+    namespace: "tailscale-ingress"
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: "kustomize/overlays/tailscale-ingress"
+    repoURL: https://github.com/cedi-dev/k8smanifests.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
