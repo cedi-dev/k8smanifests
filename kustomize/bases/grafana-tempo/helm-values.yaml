@@ -9,9 +9,21 @@ serviceMonitor:
 prometheusRule:
   enabled: true
 
-grafanaAgent:
-  enabled: true
-  installOperator: false
+metaMonitoring:
+  serviceMonitor:
+    enabled: true
+
+  grafanaAgent:
+    enabled: true
+    installOperator: false
+
+    logs:
+      remote:
+        url: loki-gateway.observability.cluster.local/loki/api/v1/push
+
+    metrics:
+      remote:
+        url: http://mimir-nginx.observability.svc.cluster.local/api/v1/push
 
 # enable metricsGenerator
 metricsGenerator:
@@ -45,17 +57,9 @@ gateway:
   enabled: true
   verboseLogging: false
   replicas: 1
-  autoscaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
 
 ingester:
-  replicas: 2
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 3
+  replicas: 3
 
   persistence:
     enabled: true
@@ -64,28 +68,13 @@ ingester:
     size: 30Gi
 
 distributor:
-  replicas: 2
-
-  autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 3
+  replicas: 3
 
 querier:
   replicas: 1
 
-  autoscaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
-
 queryFrontend:
   replicas: 1
-
-  autoscaling:
-    enabled: true
-    minReplicas: 1
-    maxReplicas: 3
 
 search:
   enabled: true
