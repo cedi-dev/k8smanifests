@@ -3,7 +3,7 @@ auth:
   existingSecret: "minio-root-user"
 
 ingress:
-  enabled: true
+  enabled: false
   ingressClassName: "tailnet-nginx"
   hostname: minio.mgmt.cedi.dev
   tls: true
