@@ -41,7 +41,7 @@ nodeExporter:
 
 alertmanager:
   ingress:
-    enabled: true
+    enabled: false
     annotations:
       kubernetes.io/ingress.class: "tailnet-nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -77,7 +77,7 @@ prometheusOperator:
 
 prometheus:
   ingress:
-    enabled: true
+    enabled: false
     annotations:
       kubernetes.io/ingress.class: "tailnet-nginx"
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -92,7 +92,7 @@ prometheus:
           - prometheus.mgmt.cedi.dev
 
   prometheusSpec:
-    externalUrl: "https://prometheus.mgmt.cedi.dev"
+    #externalUrl: "https://prometheus.mgmt.cedi.dev"
     replicas: 1
     podAntiAffinity: "hard"
     retention: 30d
