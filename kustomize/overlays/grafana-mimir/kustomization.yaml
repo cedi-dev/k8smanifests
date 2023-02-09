@@ -10,7 +10,7 @@ generators:
 
 
 resources:
-  - tailscale-ingress.yaml
+#  - tailscale-ingress.yaml
   - prometheus-rules.yaml
 
 patchesJson6902:
