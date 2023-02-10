@@ -5,7 +5,7 @@ namespace: minio
 helmCharts:
   - name: minio
     repo: https://charts.bitnami.com/bitnami
-    version: 12.1.4
+    version: 12.1.5
     releaseName: minio
     namespace: minio
     valuesFile: helm-values.yaml
