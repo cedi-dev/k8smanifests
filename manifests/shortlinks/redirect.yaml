@@ -23,3 +23,16 @@ spec:
     enable: true
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: Redirect
+metadata:
+  name: cedric-kienzler
+spec:
+  source: cedric-kienzler.de
+  target: https://cedi.dev
+  code: 308
+  tls:
+    enable: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
