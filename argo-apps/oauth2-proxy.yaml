@@ -1,31 +1,31 @@
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: oauth2-proxy
-  namespace: argocd
-spec:
-  generators:
-    - list:
-        elements:
-          - name: shortlink-api
-  template:
-    metadata:
-      name: oauth2-proxy-{{name}}
-      namespace: argocd
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
-    spec:
-      destination:
-        namespace: oauth2-proxy-{{name}}
-        server: https://kubernetes.default.svc
-      project: default
-      source:
-        path: kustomize/overlays/oauth2-proxy/{{name}}
-        repoURL: https://github.com/cedi-dev/k8smanifests.git
-        targetRevision: main
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: oauth2-proxy
+#   namespace: argocd
+# spec:
+#   generators:
+#     - list:
+#         elements:
+#           - name: shortlink-api
+#   template:
+#     metadata:
+#       name: oauth2-proxy-{{name}}
+#       namespace: argocd
+#       finalizers:
+#         - resources-finalizer.argocd.argoproj.io
+#     spec:
+#       destination:
+#         namespace: oauth2-proxy-{{name}}
+#         server: https://kubernetes.default.svc
+#       project: default
+#       source:
+#         path: kustomize/overlays/oauth2-proxy/{{name}}
+#         repoURL: https://github.com/cedi-dev/k8smanifests.git
+#         targetRevision: main
+#       syncPolicy:
+#         automated:
+#           prune: true
+#           selfHeal: true
+#         syncOptions:
+#           - CreateNamespace=true
