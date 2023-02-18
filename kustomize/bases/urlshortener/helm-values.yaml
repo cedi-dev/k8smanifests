@@ -107,6 +107,10 @@ dashboard:
   podAnnotations:
     kubectl.kubernetes.io/default-container: urlshortener-ui
 
+  extraEnvFrom:
+    - secretRef:
+      name: urlshortener-oidc
+
   pdb:
     enabled: false
     minAvailable: 1

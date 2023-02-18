@@ -5,5 +5,8 @@ namespace: urlshortener
 bases:
   - ../../bases/urlshortener
 
+generators:
+  - ./secret-generator.yaml
+
 resources:
   - otel-sidecar.yaml
