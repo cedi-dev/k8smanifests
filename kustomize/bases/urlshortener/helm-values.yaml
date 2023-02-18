@@ -107,6 +107,10 @@ dashboard:
   podAnnotations:
     kubectl.kubernetes.io/default-container: urlshortener-ui
 
+  env:
+    - name: redirect_url
+      value: https://dash.short.cedi.dev/oauth/redirect
+
   extraEnvFrom:
     - secretRef:
         name: urlshortener-oidc
