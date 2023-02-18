@@ -109,7 +109,7 @@ dashboard:
 
   extraEnvFrom:
     - secretRef:
-      name: urlshortener-oidc
+        name: urlshortener-oidc
 
   pdb:
     enabled: false
