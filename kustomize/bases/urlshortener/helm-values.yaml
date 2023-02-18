@@ -110,6 +110,8 @@ dashboard:
   env:
     - name: REDIRECT_URL
       value: https://dash.short.cedi.dev/oauth/redirect
+    - name: HOSTNAME
+      value: dash.short.cedi.dev
 
   extraEnvFrom:
     - secretRef:
