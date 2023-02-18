@@ -108,7 +108,7 @@ dashboard:
     kubectl.kubernetes.io/default-container: urlshortener-ui
 
   env:
-    - name: redirect_url
+    - name: REDIRECT_URL
       value: https://dash.short.cedi.dev/oauth/redirect
 
   extraEnvFrom:
