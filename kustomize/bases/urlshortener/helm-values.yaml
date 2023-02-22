@@ -112,6 +112,8 @@ dashboard:
       value: https://dash.short.cedi.dev/oauth/redirect
     - name: HOSTNAME
       value: dash.short.cedi.dev
+    - name: SHORTLINK_URL
+      value: https://ccl.pw
 
   extraEnvFrom:
     - secretRef:
