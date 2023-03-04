@@ -149,10 +149,14 @@ notifications:
   enabled: false
 
 configs:
+  params:
+    otlp.address: 'tempo-distributor.observability.svc.cluster.local:4317'
+
   secret:
     extra:
       dex.oauth.github.clientID: foobar1234
       dex.oauth.github.clientSecret: fooobar2345
+
   repositories:
     bitnami:
       name: bitnami
