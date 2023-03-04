@@ -8,5 +8,4 @@ bases:
 generators:
   - ./secret-generator.yaml
 
-resources:
-  - otel-sidecar.yaml
+resources: []

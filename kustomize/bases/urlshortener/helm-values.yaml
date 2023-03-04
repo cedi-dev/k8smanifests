@@ -1,7 +1,7 @@
 global:
   extraEnv:
     - name: OTLP_ENDPOINT
-      value: "urlshortener-otel-collector:4318"
+      value: "tempo-distributor.observability.svc.cluster.local:4317"
     - name: OTLP_INSECURE
       value: "true"
 
