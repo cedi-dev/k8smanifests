@@ -51,14 +51,6 @@ configMapGenerator:
     files:
       - dashboards/hcloud-server-dashboard.json
 
-  - name: minio
-    namespace: observability
-    options:
-      labels:
-        grafana_dashboard: '1'
-    files:
-      - dashboards/minio.json
-
   - name: node-problem-detector
     namespace: observability
     options:
