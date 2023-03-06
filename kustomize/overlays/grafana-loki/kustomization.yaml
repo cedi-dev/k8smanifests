@@ -5,8 +5,11 @@ namespace: observability
 bases:
   - ../../bases/grafana-loki
 
-resources:
-  - servicemonitor.yaml
+generators:
+  - ./secret-generator.yaml
+
+#resources:
+#  - servicemonitor.yaml
 
 patchesJson6902:
   - target:
