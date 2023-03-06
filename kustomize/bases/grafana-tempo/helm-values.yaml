@@ -124,8 +124,6 @@ storage:
       bucket: tempo-traces
       endpoint: s3.eu-central-003.backblazeb2.com
       region: eu-central-003
-      access_key: ${S3_ACCESS_KEY_ID}
-      secret_key: ${S3_ACCESS_KEY}
       forcepathstyle: true
       insecure: false
 
