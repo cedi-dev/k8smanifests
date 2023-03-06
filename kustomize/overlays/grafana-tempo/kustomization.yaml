@@ -5,6 +5,9 @@ namespace: observability
 bases:
   - ../../bases/grafana-tempo
 
+generators:
+  - ./secret-generator.yaml
+
 patchesJson6902:
   - target:
       kind: HorizontalPodAutoscaler
