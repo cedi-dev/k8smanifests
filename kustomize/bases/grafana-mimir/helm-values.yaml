@@ -51,7 +51,7 @@ mimir:
           region: eu-central-003
           access_key_id: ${S3_ACCESS_KEY_ID}
           secret_access_key: ${S3_ACCESS_KEY}
-          insecure: true
+          insecure: false
 
     memberlist:
       abort_if_cluster_join_fails: true
