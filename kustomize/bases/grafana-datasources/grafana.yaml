@@ -1,6 +1,6 @@
 apiVersion: 1
 datasources:
-  - name: "Mimir-Metrics"
+  - name: "Mimir (Anonymous)"
     type: prometheus
     uid: mimir
     url: http://mimir-nginx.observability.svc.cluster.local/prometheus
@@ -11,7 +11,8 @@ datasources:
       manageAlerts: true
       alertmanagerUid: mimir-alertmanager
       prometheusType: mimir
-  - name: "Mimir-Alertmanager"
+
+  - name: "Mimir Alert (Anonymous)"
     type: alertmanager
     uid: mimir-alertmanager
     url: http://mimir-nginx.observability.svc.cluster.local
@@ -19,19 +20,62 @@ datasources:
     editable: false
     jsonData:
       implementation: mimir
-  - name: "Loki-Logs"
-    type: loki
-    uid: loki
-    url: http://loki-gateway.observability.svc.cluster.local
+
+  - name: "Mimir (cedi.dev)"
+    type: prometheus
+    uid: mimir-cedi
+    url: http://mimir-nginx.observability.svc.cluster.local/prometheus
     access: proxy
     editable: false
     jsonData:
-      derivedFields:
-        - name: "traceID"
-          matcherRegex: "traceID=(\\w+)"
-          url: "$${__value.raw}"
-          datasourceUid: tempo
-      maxLines: 1000
+      timeInterval: 10s
+      manageAlerts: true
+      alertmanagerUid: mimir-alertmanager
+      prometheusType: mimir
+      customQueryParameters: 
+      httpHeaderName1: X-Scope-OrgID
+    secureJsonData:
+      httpHeaderValue1: cedi-dev
+
+  - name: "Mimir Alert (cedi.dev)"
+    type: alertmanager
+    uid: mimir-alert-cedi
+    url: http://mimir-nginx.observability.svc.cluster.local
+    access: proxy
+    editable: false
+    jsonData:
+      implementation: mimir
+      httpHeaderName1: X-Scope-OrgID
+    secureJsonData:
+      httpHeaderValue1: cedi-dev
+
+  - name: "Mimir (Meta Monitoring)"
+    type: prometheus
+    uid: mimir-meta
+    url: http://mimir-nginx.observability.svc.cluster.local/prometheus
+    access: proxy
+    editable: false
+    jsonData:
+      timeInterval: 10s
+      manageAlerts: true
+      alertmanagerUid: mimir-alertmanager
+      prometheusType: mimir
+      httpHeaderName1: X-Scope-OrgID
+    secureJsonData:
+      httpHeaderValue1: metamonitoring
+
+  - name: "Mimir Alert (Meta Monitoring)"
+    type: alertmanager
+    uid: mimir-alert-meta
+    url: http://mimir-nginx.observability.svc.cluster.local
+    access: proxy
+    editable: false
+    jsonData:
+      implementation: mimir
+      httpHeaderName1: X-Scope-OrgID
+    secureJsonData:
+      httpHeaderValue1: metamonitoring
+
   - name: "Tempo-Traces"
     type: tempo
     uid: tempo
@@ -47,10 +91,24 @@ datasources:
         filterByTraceID: true
         filterBySpanID: true
       serviceMap:
-        datasourceUid: mimir
+        datasourceUid: mimir-cedi
       search:
         hide: false
       nodeGraph:
         enabled: true
       lokiSearch:
         datasourceUid: loki
+
+  - name: "Loki-Logs"
+    type: loki
+    uid: loki
+    url: http://loki-gateway.observability.svc.cluster.local
+    access: proxy
+    editable: false
+    jsonData:
+      derivedFields:
+        - name: "traceID"
+          matcherRegex: "traceID=(\\w+)"
+          url: "$${__value.raw}"
+          datasourceUid: tempo
+      maxLines: 1000

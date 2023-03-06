@@ -124,7 +124,7 @@ ingester:
       whenUnsatisfiable: ScheduleAnyway
 
 store_gateway:
-  replicas: 3
+  replicas: 1
 
   persistentVolume:
     size: 10Gi

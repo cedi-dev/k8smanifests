@@ -5,10 +5,16 @@ namespace: observability
 configMapGenerator:
   - name: grafana-datasources
     namespace: observability
+    options:
+      labels:
+        grafana_datasource: '1'
     files:
       - grafana.yaml
 
   - name: prom-operator
     namespace: observability
+    options:
+      labels:
+        grafana_datasource: '1'
     files:
       - prom-operator.yaml
