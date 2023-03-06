@@ -22,6 +22,11 @@ global:
       value: "6831"
     - name: JAEGER_SAMPLER_TYPE
       value: "const"
+    - name: JAEGER_DISABLED
+      value: "false"
+    - name: JAEGER_SERVICE_NAME
+      value: "mimir"
+    
 
   extraEnvFrom:
     - secretRef:
