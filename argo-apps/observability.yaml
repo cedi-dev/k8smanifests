@@ -14,10 +14,10 @@ spec:
             path: charts/grafana-agent-operator
           - name: grafana-promtail
             path: charts/grafana-promtail
-          - name: grafana-loki
-            path: kustomize/overlays/grafana-loki
-          - name: grafana-tempo
-            path: kustomize/overlays/grafana-tempo
+          #- name: grafana-loki
+          #  path: kustomize/overlays/grafana-loki
+          #- name: grafana-tempo
+          #  path: kustomize/overlays/grafana-tempo
           - name: grafana-vulture
             path: charts/grafana-vulture
           - name: grafana-mimir
