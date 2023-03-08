@@ -28,10 +28,14 @@ metaMonitoring:
 # enable metricsGenerator
 metricsGenerator:
   enabled: true
+
   config:
     storage:
       remote_write:
         - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
+
+  extraArgs:
+    - "-config.expand-env=true"
 
   extraEnvFrom:
     - secretRef:
@@ -62,18 +66,17 @@ gateway:
   verboseLogging: false
   replicas: 1
 
-  extraEnvFrom:
-    - secretRef:
-        name: tempo-s3-secret
-
 ingester:
   replicas: 3
 
   persistence:
     enabled: true
+    size: 30Gi
     accessModes:
       - ReadWriteOnce
-    size: 30Gi
+
+  extraArgs:
+    - "-config.expand-env=true"
 
   extraEnvFrom:
     - secretRef:
@@ -87,12 +90,18 @@ distributor:
         name: tempo-s3-secret
 
 compactor:
+  extraArgs:
+    - "-config.expand-env=true"
+
   extraEnvFrom:
     - secretRef:
         name: tempo-s3-secret
 
 querier:
   replicas: 1
+
+  extraArgs:
+    - "-config.expand-env=true"
 
   extraEnvFrom:
     - secretRef:
@@ -102,20 +111,21 @@ queryFrontend:
   replicas: 1
 
   query:
+    extraArgs:
+      - "-config.expand-env=true"
+
     extraEnvFrom:
       - secretRef:
           name: tempo-s3-secret
+
+  extraArgs:
+    - "-config.expand-env=true"
 
   extraEnvFrom:
     - secretRef:
         name: tempo-s3-secret
 search:
   enabled: true
-
-memcached:
-  extraEnvFrom:
-    - secretRef:
-        name: tempo-s3-secret
 
 storage:
   trace:
@@ -124,6 +134,8 @@ storage:
       bucket: tempo-traces
       endpoint: s3.eu-central-003.backblazeb2.com
       region: eu-central-003
+      access_key: ${S3_ACCESS_KEY_ID}
+      secret_key: ${S3_ACCESS_KEY}
       forcepathstyle: true
       insecure: false
 
