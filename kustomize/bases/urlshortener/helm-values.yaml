@@ -139,9 +139,9 @@ dashboard:
           - dash.short.cedi.dev
 
   metrics:
-    enabled: true
+    enabled: false
     serviceMonitor:
-      enabled: true
+      enabled: false
       interval: 30s
     rules:
       enabled: false
