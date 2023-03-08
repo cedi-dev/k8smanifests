@@ -24,6 +24,7 @@ datasources:
   - name: "Mimir (cedi.dev)"
     type: prometheus
     uid: mimir-cedi
+    isDefault: true
     url: http://mimir-nginx.observability.svc.cluster.local/prometheus
     access: proxy
     editable: false
