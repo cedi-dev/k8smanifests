@@ -85,6 +85,9 @@ ingester:
 distributor:
   replicas: 3
 
+  extraArgs:
+    - "-config.expand-env=true"
+
   extraEnvFrom:
     - secretRef:
         name: tempo-s3-secret
