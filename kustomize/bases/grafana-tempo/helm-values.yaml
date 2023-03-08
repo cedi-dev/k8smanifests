@@ -33,6 +33,8 @@ metricsGenerator:
     storage:
       remote_write:
         - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
+          headers:
+            X-Scope-OrgID: cedi-dev
 
   extraArgs:
     - "-config.expand-env=true"
