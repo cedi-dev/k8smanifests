@@ -13,7 +13,7 @@ kind: ShortLink
 metadata:
   name: swag
 spec:
-  target: "https://api.short.cedi.dev/swagger/index.html"
+  target: "https://ccl.pw/swagger/index.html"
   code: 307
   owner: cedi
 

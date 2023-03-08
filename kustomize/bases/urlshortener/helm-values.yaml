@@ -6,11 +6,11 @@ global:
       value: "true"
 
 urlshortener:
-  replicaCount: 1
+  replicaCount: 2
   autoscaling:
     enabled: false
-    minReplicas: 1
-    maxReplicas: 3
+    minReplicas: 2
+    maxReplicas: 5
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
 
@@ -31,63 +31,20 @@ urlshortener:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
-      - host: short.cedi.dev
+      - host: ccl.pw
         paths:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: short-cedi-dev-tls
+      - secretName: ccl-pw-tls
         hosts:
-          - short.cedi.dev
+          - ccl.pw
 
   metrics:
     enabled: true
     serviceMonitor:
       enabled: true
-      interval: 30s
-    rules:
-      enabled: false
-
-apiServer:
-  replicaCount: 1
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 5
-    targetCPUUtilizationPercentage: 80
-    targetMemoryUtilizationPercentage: 80
-
-  image:
-    pullPolicy: Always
-    tag: main
-
-  podAnnotations:
-    kubectl.kubernetes.io/default-container: urlshortener-api
-
-  pdb:
-    enabled: false
-    minAvailable: 1
-
-  ingress:
-    enabled: true
-    className: "nginx"
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    hosts:
-      - host: api.short.cedi.dev
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: api-short-cedi-dev-tls
-        hosts:
-          - api.short.cedi.dev
-
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-      interval: 30s
+      interval: 10s
     rules:
       enabled: false
 
@@ -109,9 +66,9 @@ dashboard:
 
   env:
     - name: REDIRECT_URL
-      value: https://dash.short.cedi.dev/oauth/redirect
-    - name: HOSTNAME
-      value: dash.short.cedi.dev
+      value: https://dash.ccl.pw/oauth/redirect
+    - name: DASHBOARD_URL
+      value: dash.ccl.pw
     - name: SHORTLINK_URL
       value: https://ccl.pw
 
@@ -129,19 +86,19 @@ dashboard:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
-      - host: dash.short.cedi.dev
+      - host: dash.ccl.pw
         paths:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - secretName: dash-short-cedi-dev-tls
+      - secretName: dash-ccl-pw-tls
         hosts:
-          - dash.short.cedi.dev
+          - dash.ccl.pw
 
   metrics:
     enabled: false
     serviceMonitor:
       enabled: false
-      interval: 30s
+      interval: 10s
     rules:
       enabled: false

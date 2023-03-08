@@ -3,8 +3,8 @@ kind: Redirect
 metadata:
   name: redirect-to-shortlink
 spec:
-  source: ccl.pw
-  target: short.cedi.dev
+  source: short.cedi.dev
+  target: ccl.pw
   code: 308
   tls:
     enable: true
