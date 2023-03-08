@@ -44,6 +44,8 @@ monitoring:
 
   selfMonitoring:
     enabled: true
+    tenant:
+      name: fake
     grafanaAgent:
       installOperator: false
 
