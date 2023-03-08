@@ -28,5 +28,18 @@ patchesJson6902:
           type: Utilization
           averageUtilization: 60
 
+  - target:
+      kind: Deployment
+      group: apps
+      version: v1
+      name: "tempo-distributor"
+    patch: |-
+      - op: add
+        path: /spec/strategy
+        value:
+          rollingUpdate:
+            maxSurge: 0
+            maxUnavailable: 1
+
 patches:
   - pdb.patch.yaml
