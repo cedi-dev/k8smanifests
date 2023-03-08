@@ -17,31 +17,17 @@ loki:
       insecure: false
 
 write:
-  extraEnvFrom:
-    - secretRef:
-        name: loki-s3-secret
-
-tableManager:
+  extraArgs:
+    - "-config.expand-env=true"
+  
   extraEnvFrom:
     - secretRef:
         name: loki-s3-secret
 
 read:
-  extraEnvFrom:
-    - secretRef:
-        name: loki-s3-secret
+  extraArgs:
+    - "-config.expand-env=true"
 
-backend:
-  extraEnvFrom:
-    - secretRef:
-        name: loki-s3-secret
-
-singleBinary:
-  extraEnvFrom:
-    - secretRef:
-        name: loki-s3-secret
-
-gateway:
   extraEnvFrom:
     - secretRef:
         name: loki-s3-secret
