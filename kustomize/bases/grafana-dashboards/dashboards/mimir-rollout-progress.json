@@ -548,7 +548,7 @@
             "steppedLine": false,
             "targets": [
                {
-                  "expr": "histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((distributor|cortex|mimir|mimir-write.*))\", route=~\"api_(v1|prom)_push|otlp_v1_metrics\"}))\n",
+                  "expr": "histogram_quantile(0.99, sum by (le) (cortex_request_duration_seconds_bucket{cluster=~\"$cluster\", job=~\"($namespace)/((distributor|cortex|mimir|mimir-write.*))\", route=~\"api_(v1|prom)_push|otlp_v1_metrics\"}))\n",
                   "format": null,
                   "instant": false,
                   "interval": "",
@@ -984,7 +984,7 @@
             "steppedLine": false,
             "targets": [
                {
-                  "expr": "histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((query-frontend.*|cortex|mimir|mimir-read.*))\", route=~\"(prometheus|api_prom)_api_v1_.+\"}))\n",
+                  "expr": "histogram_quantile(0.99, sum by (le) (cortex_request_duration_seconds_bucket{cluster=~\"$cluster\", job=~\"($namespace)/((query-frontend.*|cortex|mimir|mimir-read.*))\", route=~\"(prometheus|api_prom)_api_v1_.+\"}))\n",
                   "format": null,
                   "instant": false,
                   "interval": "",
@@ -1259,7 +1259,7 @@
             "steppedLine": false,
             "targets": [
                {
-                  "expr": "1 - (\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((distributor|cortex|mimir|mimir-write.*))\", route=~\"api_(v1|prom)_push|otlp_v1_metrics\"} offset 24h))[1h:])\n  /\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((distributor|cortex|mimir|mimir-write.*))\", route=~\"api_(v1|prom)_push|otlp_v1_metrics\"}))[1h:])\n)\n",
+                  "expr": "1 - (\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((distributor|cortex|mimir|mimir-write.*))\", route=~\"api_(v1|prom)_push|otlp_v1_metrics\"} offset 24h))[1h:])\n  /\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket{cluster=~\"$cluster\", job=~\"($namespace)/((distributor|cortex|mimir|mimir-write.*))\", route=~\"api_(v1|prom)_push|otlp_v1_metrics\"}))[1h:])\n)\n",
                   "format": "time_series",
                   "intervalFactor": 2,
                   "legendFormat": "writes",
@@ -1267,7 +1267,7 @@
                   "step": 10
                },
                {
-                  "expr": "1 - (\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((query-frontend.*|cortex|mimir|mimir-read.*))\", route=~\"(prometheus|api_prom)_api_v1_.+\"} offset 24h))[1h:])\n  /\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((query-frontend.*|cortex|mimir|mimir-read.*))\", route=~\"(prometheus|api_prom)_api_v1_.+\"}))[1h:])\n)\n",
+                  "expr": "1 - (\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cortex_request_duration_seconds_bucket:sum_rate{cluster=~\"$cluster\", job=~\"($namespace)/((query-frontend.*|cortex|mimir|mimir-read.*))\", route=~\"(prometheus|api_prom)_api_v1_.+\"} offset 24h))[1h:])\n  /\n  avg_over_time(histogram_quantile(0.99, sum by (le) (cluster_job_route:cortex_request_duration_seconds_bucket{cluster=~\"$cluster\", job=~\"($namespace)/((query-frontend.*|cortex|mimir|mimir-read.*))\", route=~\"(prometheus|api_prom)_api_v1_.+\"}))[1h:])\n)\n",
                   "format": "time_series",
                   "intervalFactor": 2,
                   "legendFormat": "reads",
