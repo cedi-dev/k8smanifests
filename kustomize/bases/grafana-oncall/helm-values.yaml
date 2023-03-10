@@ -1,0 +1,51 @@
+# Grafana is included into this release for the convenience.
+# It is recommended to host it separately from this release
+grafana:
+  enabled: false
+
+# Whether to install ingress controller
+ingress-nginx:
+  enabled: false
+
+# Install cert-manager as a part of the release
+cert-manager:
+  enabled: false
+
+base_url: oncall.grafana.cedi.dev
+
+externalGrafana:
+  url: grafana.cedi.dev
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
+migrate:
+  enabled: true
+
+oncall:
+  # Override default MIRAGE_CIPHER_IV (must be 16 bytes long)
+  # For existing installation, this should not be changed.
+  # mirageCipherIV: 1234567890abcdef
+  # oncall secrets
+  secrets:
+    # Use existing secret. (secretKey and mirageSecretKey is required)
+    existingSecret: "grafana-oncall"
+    # the key in the secret containing secret key
+    secretKey: "SECRET_KEY"
+    # the key in the secret containing mirage secret key
+    mirageSecretKey: "MIRAGE_SECRET_KEY"
+
+database:
+  # can be either mysql or postgresql
+  type: postgresql
+
+# MySQL is included into this release for the convenience.
+# It is recommended to host it separately from this release
+# Set mariadb.enabled = false and configure externalMysql
+mariadb:
+  enabled: false
+
+postgresql:
+  enabled: true
