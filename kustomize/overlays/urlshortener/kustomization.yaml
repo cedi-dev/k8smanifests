@@ -8,4 +8,5 @@ bases:
 generators:
   - ./secret-generator.yaml
 
-resources: []
+resources:
+  - otel-collector.yaml
