@@ -68,6 +68,9 @@ sidecar:
     label: grafana_plugin
     labelValue: "1"
 
+env:
+  GF_INSTALL_PLUGINS: "grafana-polystat-panel"
+
 envValueFrom:
   GF_AUTH_GITHUB_CLIENT_ID:
     secretKeyRef:

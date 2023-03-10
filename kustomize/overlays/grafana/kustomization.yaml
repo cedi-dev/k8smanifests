@@ -6,6 +6,7 @@ bases:
   - ../../bases/grafana
   - ../../bases/grafana-dashboards
   - ../../bases/grafana-datasources
+  #- ../../bases/grafana-plugins
 
 generators:
   - ./secret-generator.yaml
