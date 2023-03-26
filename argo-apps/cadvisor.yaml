@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cadvisor
+  namespace: argocd
+spec:
+  destination:
+    namespace: cadvisor
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: kustomize/bases/cadvisor
+    repoURL: https://github.com/cedi-dev/k8smanifests.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
