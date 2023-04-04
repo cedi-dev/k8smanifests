@@ -17,7 +17,7 @@ spec:
             - job_name: otel-collector
               scrape_interval: 5s
               static_configs:
-                - targets: 
+                - targets:
                   - localhost:8888
 
     processors:
@@ -69,7 +69,7 @@ spec:
           level: info
           initial_fields:
             service: urlshortener
-        
+
         metrics:
           level: detailed
           address: 0.0.0.0:8888

@@ -19,7 +19,7 @@ loki:
 write:
   extraArgs:
     - "-config.expand-env=true"
-  
+
   extraEnvFrom:
     - secretRef:
         name: loki-s3-secret

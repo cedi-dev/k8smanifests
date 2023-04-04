@@ -33,7 +33,7 @@ datasources:
       manageAlerts: true
       alertmanagerUid: mimir-alertmanager
       prometheusType: mimir
-      customQueryParameters: 
+      customQueryParameters:
       httpHeaderName1: X-Scope-OrgID
     secureJsonData:
       httpHeaderValue1: cedi-dev

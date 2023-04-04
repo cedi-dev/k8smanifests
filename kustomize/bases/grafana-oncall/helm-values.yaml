@@ -95,13 +95,13 @@ redis:
     password: "foobar2342"
 
   master:
-    persistence: 
+    persistence:
       enabled: true
       storageClass: hcloud-volumes
       size: 10Gi
 
   replica:
-    persistence: 
+    persistence:
       enabled: true
       storageClass: hcloud-volumes
       size: 10Gi
@@ -153,8 +153,8 @@ rabbitmq:
   auth:
     username: user
     password: foobar2342
-  
-  persistence: 
+
+  persistence:
     enabled: true
     storageClass: hcloud-volumes
     size: 10Gi
