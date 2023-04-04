@@ -5,7 +5,7 @@ namespace: tailscale-ingress
 helmCharts:
   - name: ingress-nginx
     repo: https://kubernetes.github.io/ingress-nginx
-    version: 4.5.2
+    version: 4.6.0
     releaseName: tailscale-ingress
     namespace: tailscale-ingress
     valuesFile: ingress-nginx.values.yaml
