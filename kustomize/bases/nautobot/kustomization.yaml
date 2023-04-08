@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nautobot
+
+helmCharts:
+  - name: nautobot
+    repo: https://nautobot.github.io/helm-charts/
+    version: 1.3.14
+    releaseName: nautobot
+    namespace: nautobot
+    valuesFile: helm-values.yaml

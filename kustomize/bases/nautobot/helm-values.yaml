@@ -1,0 +1,44 @@
+nautobot:
+  extraVars:
+    - name: "SECURE_SSL_REDIRECT"
+      value: "True"
+    - name: "SESSION_COOKIE_SECURE"
+      value: "True"
+    - name: "CSRF_COOKIE_SECURE"
+      value: "True"
+
+ingress:
+  enabled: true
+  ingressClassName: "nginx"
+  hostname: nautobot.cedi.dev
+  tls: true
+  secretName: "nautobot-tls"
+  backendProtocol: "http"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
+metrics:
+  enabled: true
+
+  capacityMetrics:
+    enabled: true
+
+  prometheusRule:
+    enabled: true
+    rules:
+      - alert: "NautobotAbsent"
+        annotations:
+          description: "Nautobot has disappeared from Prometheus service discovery."
+          summary: "Nautobot is down."
+        expr: |
+          absent(up{job=~".*nautobot.*"} == 1)
+        for: "5m"
+        labels:
+          severity: "critical"
+
+postgresql:
+  postgresqlPassword: "foobar2342"
+
+redis:
+  auth:
+    password: "foobar2342"
