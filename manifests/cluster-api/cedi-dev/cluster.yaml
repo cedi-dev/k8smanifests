@@ -37,7 +37,11 @@ spec:
   hcloudPlacementGroups:
     - name: control-plane
       type: spread
-    - name: worker-nodes-1
+    - name: worker-nodes-fsn
+      type: spread
+    - name: worker-nodes-nbg
+      type: spread
+    - name: worker-nodes-hel
       type: spread
   hetznerSecretRef:
     key:

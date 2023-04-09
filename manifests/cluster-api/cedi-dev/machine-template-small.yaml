@@ -1,46 +1,48 @@
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
-  name: cedi-dev-control-plane
+  name: worker-small-fsn
   namespace: default
 spec:
   template:
     spec:
       imageName: ubuntu-22.04
-      placementGroupName: control-plane
+      placementGroupName: worker-nodes-fsn
       type: cpx21
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy
         - name: cedi@devpi
+
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
-  name: cedi-dev-worker-cxp31
+  name: worker-small-nbg
   namespace: default
 spec:
   template:
     spec:
       imageName: ubuntu-22.04
-      placementGroupName: worker-nodes-1
-      type: cpx31
+      placementGroupName: worker-nodes-nbg
+      type: cpx21
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy
         - name: cedi@devpi
+
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
-  name: cedi-dev-worker-cx41
+  name: worker-small-hel
   namespace: default
 spec:
   template:
     spec:
       imageName: ubuntu-22.04
-      placementGroupName: worker-nodes-1
-      type: cx41
+      placementGroupName: worker-nodes-hel
+      type: cpx21
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy

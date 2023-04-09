@@ -1,0 +1,15 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: control-plane
+  namespace: default
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: control-plane
+      type: cpx21
+      sshKeys:
+        - name: cedi@mae
+        - name: cedi@ivy
+        - name: cedi@devpi

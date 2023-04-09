@@ -1,0 +1,49 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: worker-large-fsn
+  namespace: default
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: worker-nodes-fsn
+      type: cx41
+      sshKeys:
+        - name: cedi@mae
+        - name: cedi@ivy
+        - name: cedi@devpi
+
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: worker-large-nbg
+  namespace: default
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: worker-nodes-nbg
+      type: cx41
+      sshKeys:
+        - name: cedi@mae
+        - name: cedi@ivy
+        - name: cedi@devpi
+
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: worker-large-hel
+  namespace: default
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: worker-nodes-hel
+      type: cx41
+      sshKeys:
+        - name: cedi@mae
+        - name: cedi@ivy
+        - name: cedi@devpi

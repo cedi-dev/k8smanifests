@@ -103,24 +103,23 @@ ingester:
     size: 50Gi
 
 
-  # TODO: Deploy nodes to different zones
   zoneAwareReplication:
-    enabled: false
-    topologyKey: 'kubernetes.io/hostname'
+    enabled: true
+    topologyKey: 'topology.kubernetes.io/region'
     zones:
-      - name: fsn1-a
+      - name: fsn
         nodeSelector:
           topology.kubernetes.io/region: fsn1
-      - name: fsn1-b
+      - name: nbg
         nodeSelector:
-          topology.kubernetes.io/region: fsn1
-      - name: fsn1-c
+          topology.kubernetes.io/region: nbg1
+      - name: hel
         nodeSelector:
-          topology.kubernetes.io/region: fsn1
+          topology.kubernetes.io/region: hel1
 
     topologySpreadConstraints:
       maxSkew: 3
-      topologyKey: kubernetes.io/hostname
+      topologyKey: topology.kubernetes.io/region
       whenUnsatisfiable: ScheduleAnyway
 
 store_gateway:
@@ -130,22 +129,22 @@ store_gateway:
     size: 10Gi
 
   zoneAwareReplication:
-    enabled: false
-    topologyKey: 'kubernetes.io/hostname'
+    enabled: true
+    topologyKey: 'topology.kubernetes.io/region'
     zones:
-      - name: fsn1-a
+      - name: fsn
         nodeSelector:
           topology.kubernetes.io/region: fsn1
-      - name: fsn1-b
+      - name: nbg
         nodeSelector:
-          topology.kubernetes.io/region: fsn1
-      - name: fsn1-c
+          topology.kubernetes.io/region: nbg1
+      - name: hel
         nodeSelector:
-          topology.kubernetes.io/region: fsn1
+          topology.kubernetes.io/region: hel1
 
     topologySpreadConstraints:
       maxSkew: 3
-      topologyKey: kubernetes.io/hostname
+      topologyKey: topology.kubernetes.io/region
       whenUnsatisfiable: ScheduleAnyway
 
 alertmanager:
@@ -155,12 +154,34 @@ alertmanager:
   statefulSet:
     enabled: true
 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/component: alertmanager
+            app.kubernetes.io/instance: mimir
+            app.kubernetes.io/name: mimir
+        topologyKey: topology.kubernetes.io/region
+
 compactor:
   persistentVolume:
     size: 20Gi
 
 distributor:
   replicas: 6
+
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: distributor
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
+        weight: 100
 
 overrides_exporter:
   replicas: 1
@@ -174,19 +195,69 @@ query_frontend:
 ruler:
   replicas: 2
 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/component: ruler
+            app.kubernetes.io/instance: mimir
+            app.kubernetes.io/name: mimir
+        topologyKey: topology.kubernetes.io/region
+
 chunks-cache:
   enabled: true
-  replicas: 3
+  replicas: 2
   allocatedMemory: 2048
+
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/component: chunks-cache
+            app.kubernetes.io/instance: mimir
+            app.kubernetes.io/name: mimir
+        topologyKey: topology.kubernetes.io/region
 
 index-cache:
   enabled: true
   replicas: 3
   allocatedMemory: 2048
 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/component: index-cache
+            app.kubernetes.io/instance: mimir
+            app.kubernetes.io/name: mimir
+        topologyKey: topology.kubernetes.io/region
+
 metadata-cache:
   enabled: true
+
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/component: metadata-cache
+            app.kubernetes.io/instance: mimir
+            app.kubernetes.io/name: mimir
+        topologyKey: topology.kubernetes.io/region
 
 results-cache:
   enabled: true
   replicas: 3
+
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/component: results-cache
+            app.kubernetes.io/instance: mimir
+            app.kubernetes.io/name: mimir
+        topologyKey: topology.kubernetes.io/region

@@ -1,3 +1,9 @@
+global:
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+
 dex:
   enabled: true
   metrics:

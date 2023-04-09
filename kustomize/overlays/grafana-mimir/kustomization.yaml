@@ -30,3 +30,12 @@ patchesJson6902:
         value:
           type: Utilization
           averageUtilization: 60
+
+  - target:
+      kind: StatefulSet
+      group: apps
+      version: v1
+      name: "mimir-index-cache"
+    patch: |-
+      - op: remove
+        path: /spec/template/spec/containers/0/resources/requests/cpu
