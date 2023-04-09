@@ -1,0 +1,17 @@
+storage:
+  persistentVolume:
+    enabled: yes
+    size: 30Gi
+    storageClass: "hcloud-volumes"
+
+conf:
+  cluster-name: "cedi-dev"
+  disable-cluster-name-verification: yes
+
+statefulset:
+  args:
+    - --listen-addr 0.0.0.0
+    - --insecure
+
+tls:
+  enabled: false

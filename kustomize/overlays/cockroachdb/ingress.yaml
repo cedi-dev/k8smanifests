@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/auth-signin: https://auth-cockroachdb.cedi.dev/oauth2/start
+    nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy-cockroachdb.svc.cluster.local/oauth2/auth
+  name: cockroachdb
+  namespace: cockroachdb
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: status.roach.cedi.dev
+      http:
+        paths:
+          - backend:
+              service:
+                name: cockroachdb-public
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - status.roach.cedi.dev
+      secretName: status-roach-cedi-dev-tls

@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: cockroachdb
+  namespace: cockroachdb
+spec:
+  endpoints:
+  - honorLabels: true
+    interval: 1m
+    path: /_status/vars
+    port: service
+    scheme: http
+    scrapeTimeout: 30s
+  jobLabel: grafana
+  namespaceSelector:
+    matchNames:
+    - cockroachdb
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cockroachdb
+      app.kubernetes.io/name: cockroachdb
