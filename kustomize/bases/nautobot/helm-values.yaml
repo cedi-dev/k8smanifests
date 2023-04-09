@@ -7,17 +7,6 @@ nautobot:
     - name: "CSRF_COOKIE_SECURE"
       value: "True"
 
-  db:
-    engine: "django.db.backends.postgresql"
-    #existingSecret: "nautobot-env"
-    #existingSecretPasswordKey: "NAUTOBOT_DB_PASSWORD"
-    host: "cockroachdb-public.cockroachdb.svc.cluster.local"
-    name: "nautobot"
-    port: 26257
-    timeout: 300
-    user: "nautobot"
-    password: "foobar2342"
-
 ingress:
   enabled: true
   ingressClassName: "nginx"
@@ -53,6 +42,3 @@ postgresql:
 redis:
   auth:
     password: "foobar2342"
-
-postgresql:
-  enabled: false
