@@ -1,7 +1,7 @@
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
-  name: control-plane
+  name: control-plane-arm
   namespace: default
   labels:
     cluster.x-k8s.io/cluster-name: "cedi-dev"
@@ -10,8 +10,11 @@ spec:
     spec:
       imageName: ubuntu-22.04
       placementGroupName: control-plane
-      type: cpx21
+      type: cax11
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy
         - name: cedi@devpi
+#      publicNetwork:
+#        enableIPv4: false
+#        enableIPv6: false

@@ -3,6 +3,8 @@ kind: HCloudMachineTemplate
 metadata:
   name: worker-large-fsn
   namespace: default
+  labels:
+    cluster.x-k8s.io/cluster-name: "cedi-dev"
 spec:
   template:
     spec:
@@ -20,6 +22,8 @@ kind: HCloudMachineTemplate
 metadata:
   name: worker-large-nbg
   namespace: default
+  labels:
+    cluster.x-k8s.io/cluster-name: "cedi-dev"
 spec:
   template:
     spec:
@@ -37,6 +41,8 @@ kind: HCloudMachineTemplate
 metadata:
   name: worker-large-hel
   namespace: default
+  labels:
+    cluster.x-k8s.io/cluster-name: "cedi-dev"
 spec:
   template:
     spec:
