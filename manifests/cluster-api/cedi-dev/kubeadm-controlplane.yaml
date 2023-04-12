@@ -214,7 +214,7 @@ spec:
     infrastructureRef:
       apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
       kind: HCloudMachineTemplate
-      name: control-plane-arm
+      name: control-plane
   replicas: 3
   rolloutStrategy:
     type: "RollingUpdate"
