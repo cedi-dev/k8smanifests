@@ -7,6 +7,15 @@ nautobot:
     - name: "CSRF_COOKIE_SECURE"
       value: "True"
 
+  db:
+    engine: "django.db.backends.postgresql"
+    host: "pgadmin-postgresql-ha-postgresql.postgresql.svc.cluster.local"
+    name: "nautobot"
+    user: "nautobot"
+    password: "foobar2342"
+    port: 5432
+    timeout: 300
+
 ingress:
   enabled: true
   ingressClassName: "nginx"
@@ -37,6 +46,7 @@ metrics:
           severity: "critical"
 
 postgresql:
+  enabled: false
   postgresqlPassword: "foobar2342"
 
   primary:
@@ -68,16 +78,16 @@ redis:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/component: primary
-                app.kubernetes.io/instance: nautobot
-                app.kubernetes.io/name: redis
-            namespaces:
-            - nautobot
-            topologyKey: topology.kubernetes.io/region
-          weight: 1
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/component: primary
+                  app.kubernetes.io/instance: nautobot
+                  app.kubernetes.io/name: redis
+              namespaces:
+                - nautobot
+              topologyKey: topology.kubernetes.io/region
+            weight: 1
 
     topologySpreadConstraints:
       - maxSkew: 1
@@ -88,16 +98,16 @@ redis:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/component: primary
-                app.kubernetes.io/instance: nautobot
-                app.kubernetes.io/name: redis
-            namespaces:
-            - nautobot
-            topologyKey: topology.kubernetes.io/region
-          weight: 1
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/component: primary
+                  app.kubernetes.io/instance: nautobot
+                  app.kubernetes.io/name: redis
+              namespaces:
+                - nautobot
+              topologyKey: topology.kubernetes.io/region
+            weight: 1
 
     topologySpreadConstraints:
       - maxSkew: 1
