@@ -1,0 +1,48 @@
+cert-checker:
+
+  replicaCount: 1
+
+  ## Config
+  certchecker:
+    loglevel: info
+    intervalminutes: 1
+    certificates:
+      - dns: bbb.rottweil.schule
+      - dns: cedi.dev
+      - dns: metallglanz.com
+      - dns: argocd.cedi.dev
+      - dns: cert-checker.cedi.dev
+      - dns: nautobot.cedi.dev
+      - dns: auth-postgresql.cedi.dev
+      - dns: grafana.cedi.dev
+      - dns: oncall.grafana.cedi.dev
+      - dns: pgadmin.cedi.dev
+      - dns: cedric-kienzler.de
+      - dns: goldschmiede-metallglanz.de
+      - dns: short.cedi.dev
+      - dns: ccl.pw
+      - dns: dash.ccl.pw
+
+  serviceMonitor:
+    enabled: true
+    additionalLabels: {}
+
+  grafanaDashboard:
+    enabled: true
+
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    hosts:
+      - host: cert-checker.cedi.dev
+        paths:
+        - path: /
+          backend:
+            serviceName: cert-checker.local
+            servicePort: 8081
+    tls:
+      - secretName: cert-checker-cedi-dev-tls
+        hosts:
+          - cert-checker.cedi.dev
