@@ -25,10 +25,9 @@ cert-checker:
 
   serviceMonitor:
     enabled: true
-    additionalLabels: {}
 
   grafanaDashboard:
-    enabled: true
+    enabled: false # can be found in kustomize/bases/grafana-dashboards/dashboards/cert-checker.json
 
   ingress:
     enabled: true

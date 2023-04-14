@@ -274,3 +274,11 @@ configMapGenerator:
         grafana_dashboard: '1'
     files:
       - dashboards/mimir-writes.json
+
+  - name: cert-checker
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - dashboards/cert-checker.json
