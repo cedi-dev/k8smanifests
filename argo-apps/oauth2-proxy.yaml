@@ -8,6 +8,7 @@ spec:
     - list:
         elements:
           - name: postgresql
+          - name: cert-checker
   template:
     metadata:
       name: oauth2-proxy-{{name}}

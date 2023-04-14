@@ -34,6 +34,8 @@ cert-checker:
     annotations:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/auth-signin: https://auth-cert-checker.cedi.dev/oauth2/start
+      nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy-cert-checker.svc.cluster.local/oauth2/auth
     hosts:
       - host: cert-checker.cedi.dev
         paths:
