@@ -9,26 +9,26 @@ generators:
   - ./secret-generator.yaml
 
 patchesJson6902:
-  - target:
-      kind: Deployment
-      namespace: argocd
-      name: argocd-server
-    path: argo-server-sidecar.patch.yaml
-  - target:
-      kind: Deployment
-      namespace: argocd
-      name: argocd-repo-server
-    path: repo-server-sidecar.patch.yaml
-  - target:
-      kind: StatefulSet
-      namespace: argocd
-      name: argocd-application-controller
-    path: app-controller.patch.yaml
-  - target:
-      kind: Role
-      namespace: argocd
-      name: argocd-repo-server
-    path: role-repo-server.patch.yaml
+  # - target:
+  #     kind: Deployment
+  #     namespace: argocd
+  #     name: argocd-server
+  #   path: argo-server-sidecar.patch.yaml
+  # - target:
+  #     kind: Deployment
+  #     namespace: argocd
+  #     name: argocd-repo-server
+  #   path: repo-server-sidecar.patch.yaml
+  # - target:
+  #     kind: StatefulSet
+  #     namespace: argocd
+  #     name: argocd-application-controller
+  #   path: app-controller.patch.yaml
+  # - target:
+  #     kind: Role
+  #     namespace: argocd
+  #     name: argocd-repo-server
+  #   path: role-repo-server.patch.yaml
   - target:
       kind: Role
       namespace: argocd
