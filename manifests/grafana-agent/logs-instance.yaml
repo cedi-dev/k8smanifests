@@ -1,7 +1,7 @@
 apiVersion: monitoring.grafana.com/v1alpha1
 kind: LogsInstance
 metadata:
-  name: primary
+  name: logs
   namespace: observability
   labels:
     agent: grafana-agent-logs

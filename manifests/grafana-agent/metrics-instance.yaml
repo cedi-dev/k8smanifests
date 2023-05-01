@@ -1,15 +1,15 @@
 apiVersion: monitoring.grafana.com/v1alpha1
 kind: MetricsInstance
 metadata:
-  name: primary
+  name: metrics
   namespace: observability
   labels:
     agent: grafana-agent-metrics
 spec:
   remoteWrite:
-  - url: http://mimir-nginx.observability.svc.cluster.local/api/v1/push
-    headers:
-      X-Scope-OrgID: cedi-dev
+    - url: http://mimir-nginx.observability.svc.cluster.local/api/v1/push
+      headers:
+        X-Scope-OrgID: cedi-dev
 
   # Supply an empty namespace selector to look in all namespaces. Remove
   # this to only look in the same namespace as the MetricsInstance CR
@@ -31,3 +31,7 @@ spec:
   probeSelector: {}
     # matchLabels:
     #   instance: primary
+
+  additionalScrapeConfigs:
+    name: extra-jobs
+    key: jobs.yaml

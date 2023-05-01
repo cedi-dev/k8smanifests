@@ -3,7 +3,7 @@ kind: PodLogs
 metadata:
   labels:
     instance: primary
-  name: kubernetes-pods
+  name: pod-logs
   namespace: observability
 spec:
   pipelineStages:
