@@ -102,7 +102,7 @@ server:
     hosts:
       - argocd.cedi.dev
     tls:
-      - secretName: argocd-secret
+      - secretName: argocd-secret-tls
         hosts:
           - argocd.cedi.dev
 
