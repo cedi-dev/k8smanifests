@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    name: grafana-agent
+  name: grafana-agent
+  namespace: NAMESPACE
+spec:
+  endpoints:
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      port: http-metrics
+      path: /metrics
+      tlsConfig:
+        insecureSkipVerify: true
+  selector:
+    matchLabels:
+      operator.agent.grafana.com/name: grafana-agent
