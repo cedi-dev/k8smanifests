@@ -14,23 +14,23 @@ spec:
   # Supply an empty namespace selector to look in all namespaces. Remove
   # this to only look in the same namespace as the MetricsInstance CR
   serviceMonitorNamespaceSelector: {}
-  serviceMonitorSelector:
-    matchLabels:
-      instance: primary
+  serviceMonitorSelector: {}
+    # matchLabels:
+    #   instance: primary
 
   # Supply an empty namespace selector to look in all namespaces. Remove
   # this to only look in the same namespace as the MetricsInstance CR.
   podMonitorNamespaceSelector: {}
-  podMonitorSelector:
-    matchLabels:
-      instance: primary
+  podMonitorSelector: {}
+    # matchLabels:
+    #   instance: primary
 
   # Supply an empty namespace selector to look in all namespaces. Remove
   # this to only look in the same namespace as the MetricsInstance CR.
   probeNamespaceSelector: {}
-  probeSelector:
-    matchLabels:
-      instance: primary
+  probeSelector: {}
+    # matchLabels:
+    #   instance: primary
 
   additionalScrapeConfigs:
     name: extra-jobs
