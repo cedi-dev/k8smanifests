@@ -7,13 +7,12 @@ spec:
   generators:
     - list:
         elements:
-          #- name: grafana-agent
-          #  path: manifests/grafana-agent
-          #  namespace: monitoring
+          - name: grafana-agent
+            path: manifests/grafana-agent
           - name: grafana-agent-operator
             path: charts/grafana-agent-operator
-          - name: grafana-promtail
-            path: charts/grafana-promtail
+          # - name: grafana-promtail
+          #   path: charts/grafana-promtail
           - name: grafana-loki
             path: kustomize/overlays/grafana-loki
           - name: grafana-tempo
