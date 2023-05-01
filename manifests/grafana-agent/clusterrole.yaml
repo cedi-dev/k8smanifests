@@ -20,7 +20,14 @@ rules:
   - endpoints
   - pods
   - events
-  - servicemonitor
+  - alertmanagers
+  - alertmanagerconfigs
+  - prometheuses
+  - thanosrulers
+  - servicemonitors
+  - podmonitors
+  - probes
+  - prometheusrules
   verbs:
   - get
   - list
