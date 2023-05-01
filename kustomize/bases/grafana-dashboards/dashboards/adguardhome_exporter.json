@@ -1198,9 +1198,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "adguard_query_types{hostname=~'$node'}",
+          "editorMode": "code",
+          "expr": "sum by (type) (adguard_query_types{hostname=~'$node'})",
           "interval": "",
           "legendFormat": "{{ type }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1264,7 +1266,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "adguard_query_types{hostname=~'$node'}",
+          "expr": "sum by (type) (adguard_query_types{hostname=~'$node'})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1336,7 +1338,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "adguard_query_types{hostname=~'$node'}",
+          "expr": "sum by (type) (adguard_query_types{hostname=~'$node'})",
           "interval": "",
           "legendFormat": "{{ type }}",
           "range": true,
@@ -1586,7 +1588,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Mimir (cedi.dev)",
           "value": "Mimir (cedi.dev)"
         },
