@@ -34,7 +34,7 @@ spec:
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
-        name: worker-large-arm-fsn
+        name: worker-large-fsn
       version: v1.27.0
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
