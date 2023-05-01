@@ -4,7 +4,7 @@ metadata:
   labels:
     name: grafana-agent
   name: grafana-agent
-  namespace: NAMESPACE
+  namespace: observability
 spec:
   endpoints:
     - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
