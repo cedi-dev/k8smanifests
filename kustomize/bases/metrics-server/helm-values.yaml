@@ -4,3 +4,6 @@ metrics:
 serviceMonitor:
   enabled: true
   interval: 10s
+
+  additionalLabels:
+    instance: primary

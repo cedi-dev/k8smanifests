@@ -74,6 +74,9 @@ postgresql:
     serviceMonitor:
       enabled: true
 
+      additionalLabels:
+        instance: primary
+
     prometheusRule:
       enabled: true
       rules:
@@ -111,6 +114,9 @@ redis:
 
     serviceMonitor:
       enabled: true
+
+      additionalLabels:
+        instance: primary
 
     prometheusRule:
       enabled: true
@@ -164,6 +170,9 @@ rabbitmq:
 
     serviceMonitor:
       enabled: true
+
+      additionalLabels:
+        instance: primary
 
     prometheusRule:
       enabled: true

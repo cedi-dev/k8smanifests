@@ -36,6 +36,9 @@ monitoring:
   serviceMonitor:
     enabled: true
 
+    additionalLabels:
+      instance: primary
+
   dashboards:
     enabled: true
     namespace: observability

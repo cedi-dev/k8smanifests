@@ -6,12 +6,18 @@ memcachedExporter:
 serviceMonitor:
   enabled: true
 
+  additionalLabels:
+    instance: primary
+
 prometheusRule:
   enabled: true
 
 metaMonitoring:
   serviceMonitor:
     enabled: true
+
+    additionalLabels:
+      instance: primary
 
   grafanaAgent:
     enabled: true

@@ -95,3 +95,6 @@ envValueFrom:
 serviceMonitor:
   enabled: true
   scrapeTimeout: 30s
+
+  additionalLabels:
+    instance: primary

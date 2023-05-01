@@ -45,6 +45,10 @@ urlshortener:
     serviceMonitor:
       enabled: true
       interval: 10s
+      
+      additionalLabels:
+        instance: primary
+
     rules:
       enabled: false
 
@@ -100,5 +104,9 @@ dashboard:
     serviceMonitor:
       enabled: false
       interval: 10s
+
+      additionalLabels:
+        instance: primary
+
     rules:
       enabled: false

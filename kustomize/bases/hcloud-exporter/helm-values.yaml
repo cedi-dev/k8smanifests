@@ -1,5 +1,8 @@
 serviceMonitor:
   enabled: true
 
+  additionalLabels:
+    instance: primary
+
 config:
   token: "foobar2342"

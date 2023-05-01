@@ -22,5 +22,8 @@ controller:
     serviceMonitor:
       enabled: true
 
+      additionalLabels:
+        instance: primary
+
 serviceAccount:
   name: "tailscale-ingress-nginx"

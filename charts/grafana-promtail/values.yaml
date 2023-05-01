@@ -8,6 +8,9 @@ promtail:
   serviceMonitor:
     enabled: true
 
+    additionalLabels:
+      instance: primary
+
     prometheusRule:
       enabled: false
       rules:

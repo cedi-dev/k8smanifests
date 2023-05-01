@@ -26,5 +26,9 @@ ingress-nginx:
 
     metrics:
       enabled: true
+
       serviceMonitor:
         enabled: true
+
+        additionalLabels:
+          instance: primary

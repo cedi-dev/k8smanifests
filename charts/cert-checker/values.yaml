@@ -26,6 +26,9 @@ cert-checker:
   serviceMonitor:
     enabled: true
 
+    additionalLabels:
+      instance: primary
+
   grafanaDashboard:
     enabled: false # can be found in kustomize/bases/grafana-dashboards/dashboards/cert-checker.json
 

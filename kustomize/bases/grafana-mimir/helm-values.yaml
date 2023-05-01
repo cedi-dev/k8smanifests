@@ -4,6 +4,9 @@ metaMonitoring:
   serviceMonitor:
     enabled: true
 
+    additionalLabels:
+      instance: primary
+
   grafanaAgent:
     enabled: true
     installOperator: false
