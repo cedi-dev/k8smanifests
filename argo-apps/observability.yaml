@@ -11,8 +11,8 @@ spec:
             path: manifests/grafana-agent
           - name: grafana-agent-operator
             path: charts/grafana-agent-operator
-          # - name: grafana-promtail
-          #   path: charts/grafana-promtail
+          - name: grafana-promtail
+            path: charts/grafana-promtail
           - name: grafana-loki
             path: kustomize/overlays/grafana-loki
           - name: grafana-tempo

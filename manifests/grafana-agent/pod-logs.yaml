@@ -1,15 +1,15 @@
-apiVersion: monitoring.grafana.com/v1alpha1
-kind: PodLogs
-metadata:
-  labels:
-    instance: primary
-  name: pod-logs
-  namespace: observability
-spec:
-  pipelineStages:
-    - docker: {}
-  namespaceSelector:
-    matchNames:
-      - "*"
-  selector:
-    matchLabels: {}
+# apiVersion: monitoring.grafana.com/v1alpha1
+# kind: PodLogs
+# metadata:
+#   labels:
+#     instance: primary
+#   name: pod-logs
+#   namespace: observability
+# spec:
+#   pipelineStages:
+#     - docker: {}
+#   namespaceSelector:
+#     matchNames:
+#       - "*"
+#   selector:
+#     matchLabels: {}
