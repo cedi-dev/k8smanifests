@@ -2,6 +2,79 @@ namespaceOverride: "monitoring"
 kubeTargetVersionOverride: "1.20.6"
 fullnameOverride: "prom-stack"
 
+alertmanager:
+  ingress:
+    enabled: false
+    annotations:
+      kubernetes.io/ingress.class: "tailnet-nginx"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    hosts:
+      - alertmanager.mgmt.cedi.dev
+    pathType: ImplementationSpecific
+    paths:
+      - /
+    tls:
+      - secretName: alertmanager-tls-secret
+        hosts:
+          - alertmanager.mgmt.cedi.dev
+
+  alertmanagerSpec:
+    externalUrl: "https://alertmanager.mgmt.cedi.dev"
+    replicas: 1
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 1Gi
+
+prometheus:
+  ingress:
+    enabled: false
+    annotations:
+      kubernetes.io/ingress.class: "tailnet-nginx"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    hosts:
+      - prometheus.mgmt.cedi.dev
+    pathType: ImplementationSpecific
+    paths:
+      - /
+    tls:
+      - secretName: prometheus-tls-secret
+        hosts:
+          - prometheus.mgmt.cedi.dev
+
+  prometheusSpec:
+    #externalUrl: "https://prometheus.mgmt.cedi.dev"
+    replicas: 1
+    podAntiAffinity: "hard"
+    retention: 7d
+
+    additionalScrapeConfigs:
+      - job_name: "node-exporter"
+        static_configs:
+          - targets:
+              - "hole.elbschloss.xyz:9100"
+
+      - job_name: "adguard-exporter"
+        static_configs:
+          - targets:
+              - "hole.elbschloss.xyz:9617"
+
+    remoteWrite:
+      - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
+        headers:
+          X-Scope-OrgID: cedi-dev
+
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector: {}
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+    ruleNamespaceSelector: {}
+    ruleSelector: {}
+    ruleSelectorNilUsesHelmValues: false
+
+
 kubelet:
   serviceMonitor:
     resourcePath: "/metrics/resource"
@@ -39,32 +112,6 @@ defaultRules:
 nodeExporter:
   enabled: false
 
-alertmanager:
-  ingress:
-    enabled: false
-    annotations:
-      kubernetes.io/ingress.class: "tailnet-nginx"
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    hosts:
-      - alertmanager.mgmt.cedi.dev
-    pathType: ImplementationSpecific
-    paths:
-      - /
-    tls:
-      - secretName: alertmanager-tls-secret
-        hosts:
-          - alertmanager.mgmt.cedi.dev
-
-  alertmanagerSpec:
-    externalUrl: "https://alertmanager.mgmt.cedi.dev"
-    replicas: 1
-    storage:
-      volumeClaimTemplate:
-        spec:
-          resources:
-            requests:
-              storage: 1Gi
-
 grafana:
   enabled: false
 
@@ -74,54 +121,3 @@ prometheusOperator:
   prometheusInstanceNamespaces: ""
   alertmanagerInstanceNamespaces: ""
   thanosRulerInstanceNamespaces: ""
-
-prometheus:
-  ingress:
-    enabled: false
-    annotations:
-      kubernetes.io/ingress.class: "tailnet-nginx"
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    hosts:
-      - prometheus.mgmt.cedi.dev
-    pathType: ImplementationSpecific
-    paths:
-      - /
-    tls:
-      - secretName: prometheus-tls-secret
-        hosts:
-          - prometheus.mgmt.cedi.dev
-
-  prometheusSpec:
-    #externalUrl: "https://prometheus.mgmt.cedi.dev"
-    replicas: 1
-    podAntiAffinity: "hard"
-    retention: 30d
-    walCompression: true
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          resources:
-            requests:
-              storage: 64Gi
-    additionalScrapeConfigs:
-      - job_name: "node-exporter"
-        static_configs:
-          - targets:
-              - "hole.elbschloss.xyz:9100"
-      - job_name: "adguard-exporter"
-        static_configs:
-          - targets:
-              - "hole.elbschloss.xyz:9617"
-
-    remoteWrite:
-      - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
-        headers:
-          X-Scope-OrgID: cedi-dev
-
-    serviceMonitorNamespaceSelector: {}
-    serviceMonitorSelector: {}
-    serviceMonitorSelectorNilUsesHelmValues: false
-
-    ruleNamespaceSelector: {}
-    ruleSelector: {}
-    ruleSelectorNilUsesHelmValues: false
