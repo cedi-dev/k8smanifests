@@ -12,15 +12,6 @@ datasources:
       alertmanagerUid: mimir-alertmanager
       prometheusType: mimir
 
-  - name: "Mimir Alert (Anonymous)"
-    type: alertmanager
-    uid: mimir-alertmanager
-    url: http://mimir-nginx.observability.svc.cluster.local
-    access: proxy
-    editable: false
-    jsonData:
-      implementation: mimir
-
   - name: "Mimir (cedi.dev)"
     type: prometheus
     uid: mimir-cedi
@@ -38,18 +29,6 @@ datasources:
     secureJsonData:
       httpHeaderValue1: cedi-dev
 
-  - name: "Mimir Alert (cedi.dev)"
-    type: alertmanager
-    uid: mimir-alert-cedi
-    url: http://mimir-nginx.observability.svc.cluster.local
-    access: proxy
-    editable: false
-    jsonData:
-      implementation: mimir
-      httpHeaderName1: X-Scope-OrgID
-    secureJsonData:
-      httpHeaderValue1: cedi-dev
-
   - name: "Mimir (Meta Monitoring)"
     type: prometheus
     uid: mimir-meta
@@ -61,18 +40,6 @@ datasources:
       manageAlerts: true
       alertmanagerUid: mimir-alertmanager
       prometheusType: mimir
-      httpHeaderName1: X-Scope-OrgID
-    secureJsonData:
-      httpHeaderValue1: metamonitoring
-
-  - name: "Mimir Alert (Meta Monitoring)"
-    type: alertmanager
-    uid: mimir-alert-meta
-    url: http://mimir-nginx.observability.svc.cluster.local
-    access: proxy
-    editable: false
-    jsonData:
-      implementation: mimir
       httpHeaderName1: X-Scope-OrgID
     secureJsonData:
       httpHeaderValue1: metamonitoring
