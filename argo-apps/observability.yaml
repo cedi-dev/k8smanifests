@@ -7,8 +7,6 @@ spec:
   generators:
     - list:
         elements:
-          - name: grafana-agent
-            path: manifests/grafana-agent
           - name: grafana-agent-operator
             path: charts/grafana-agent-operator
           - name: grafana-promtail
