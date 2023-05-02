@@ -21,12 +21,6 @@ alertmanager:
   alertmanagerSpec:
     externalUrl: "https://alertmanager.mgmt.cedi.dev"
     replicas: 1
-    storage:
-      volumeClaimTemplate:
-        spec:
-          resources:
-            requests:
-              storage: 1Gi
 
 prometheus:
   ingress:
