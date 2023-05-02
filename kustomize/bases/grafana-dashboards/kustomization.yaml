@@ -81,7 +81,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-alertmanager-resources.json
+      - mimir/mimir-alertmanager-resources.json
 
   - name: mimir-alertmanager
     namespace: observability
@@ -89,7 +89,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-alertmanager.json
+      - mimir/mimir-alertmanager.json
 
   - name: mimir-compactor-resources
     namespace: observability
@@ -97,7 +97,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-compactor-resources.json
+      - mimir/mimir-compactor-resources.json
 
   - name: mimir-compactor
     namespace: observability
@@ -105,7 +105,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-compactor.json
+      - mimir/mimir-compactor.json
 
   - name: mimir-config
     namespace: observability
@@ -113,7 +113,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-config.json
+      - mimir/mimir-config.json
 
   - name: mimir-object-store
     namespace: observability
@@ -121,7 +121,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-object-store.json
+      - mimir/mimir-object-store.json
 
   - name: mimir-overrides
     namespace: observability
@@ -129,7 +129,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-overrides.json
+      - mimir/mimir-overrides.json
 
   - name: mimir-overview-networking
     namespace: observability
@@ -137,7 +137,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-overview-networking.json
+      - mimir/mimir-overview-networking.json
 
   - name: mimir-overview-resources
     namespace: observability
@@ -145,7 +145,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-overview-resources.json
+      - mimir/mimir-overview-resources.json
 
   - name: mimir-overview
     namespace: observability
@@ -153,7 +153,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-overview.json
+      - mimir/mimir-overview.json
 
   - name: mimir-queries
     namespace: observability
@@ -161,7 +161,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-queries.json
+      - mimir/mimir-queries.json
 
   - name: mimir-reads-networking
     namespace: observability
@@ -169,7 +169,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-reads-networking.json
+      - mimir/mimir-reads-networking.json
 
   - name: mimir-reads-resources
     namespace: observability
@@ -177,7 +177,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-reads-resources.json
+      - mimir/mimir-reads-resources.json
 
   - name: mimir-reads
     namespace: observability
@@ -185,7 +185,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-reads.json
+      - mimir/mimir-reads.json
 
   - name: mimir-remote-ruler-reads-resources
     namespace: observability
@@ -193,7 +193,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-remote-ruler-reads-resources.json
+      - mimir/mimir-remote-ruler-reads-resources.json
 
   - name: mimir-remote-ruler-reads
     namespace: observability
@@ -201,7 +201,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-remote-ruler-reads.json
+      - mimir/mimir-remote-ruler-reads.json
 
   - name: mimir-rollout-progress
     namespace: observability
@@ -209,7 +209,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-rollout-progress.json
+      - mimir/mimir-rollout-progress.json
 
   - name: mimir-ruler
     namespace: observability
@@ -217,7 +217,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-ruler.json
+      - mimir/mimir-ruler.json
 
   - name: mimir-scaling
     namespace: observability
@@ -225,7 +225,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-scaling.json
+      - mimir/mimir-scaling.json
 
   - name: mimir-slow-queries
     namespace: observability
@@ -233,7 +233,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-slow-queries.json
+      - mimir/mimir-slow-queries.json
 
   - name: mimir-tenants
     namespace: observability
@@ -241,7 +241,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-tenants.json
+      - mimir/mimir-tenants.json
 
   - name: mimir-top-tenants
     namespace: observability
@@ -249,7 +249,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-top-tenants.json
+      - mimir/mimir-top-tenants.json
 
   - name: mimir-writes-networking
     namespace: observability
@@ -257,7 +257,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-writes-networking.json
+      - mimir/mimir-writes-networking.json
 
   - name: mimir-writes-resources
     namespace: observability
@@ -265,7 +265,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-writes-resources.json
+      - mimir/mimir-writes-resources.json
 
   - name: mimir-writes
     namespace: observability
@@ -273,7 +273,7 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
     files:
-      - dashboards/mimir-writes.json
+      - mimir/mimir-writes.json
 
   - name: cert-checker
     namespace: observability
@@ -282,3 +282,140 @@ configMapGenerator:
         grafana_dashboard: '1'
     files:
       - dashboards/cert-checker.json
+
+
+  - name: apiserver
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/apiserver.json
+
+  - name: cluster-total
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/cluster-total.json
+
+  - name: controller-manager
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/controller-manager.json
+
+  - name: k8s-resources-cluster
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/k8s-resources-cluster.json
+
+  - name: k8s-resources-namespace
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/k8s-resources-namespace.json
+
+  - name: k8s-resources-node
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/k8s-resources-node.json
+
+  - name: k8s-resources-pod
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/k8s-resources-pod.json
+
+  - name: k8s-resources-workload
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/k8s-resources-workload.json
+
+  - name: k8s-resources-workloads-namespace
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/k8s-resources-workloads-namespace.json
+
+  - name: kubelet
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/kubelet.json
+
+  - name: namespace-by-pod
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/namespace-by-pod.json
+
+  - name: namespace-by-workload
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/namespace-by-workload.json
+
+  - name: persistentvolumesusage
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/persistentvolumesusage.json
+
+  - name: pod-total
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/pod-total.json
+
+  - name: proxy
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/proxy.json
+
+  - name: scheduler
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/scheduler.json
+
+  - name: workload-total
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+    files:
+      - kubernetes/workload-total.json
