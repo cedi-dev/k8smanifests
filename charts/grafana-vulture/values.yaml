@@ -5,7 +5,7 @@ tempo-vulture:
     enabled: true
 
     additionalLabels:
-        instance: primary
+      instance: primary
 
   tempoAddress:
     push: tempo-distributor.observability.svc.cluster.local

@@ -42,10 +42,10 @@ cert-checker:
     hosts:
       - host: cert-checker.cedi.dev
         paths:
-        - path: /
-          backend:
-            serviceName: cert-checker.local
-            servicePort: 8081
+          - path: /
+            backend:
+              serviceName: cert-checker.local
+              servicePort: 8081
     tls:
       - secretName: cert-checker-cedi-dev-tls
         hosts:

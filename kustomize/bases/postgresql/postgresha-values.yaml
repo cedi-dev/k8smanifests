@@ -31,12 +31,12 @@ postgresql:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/component: postgresql
-            app.kubernetes.io/instance: pgadmin
-            app.kubernetes.io/name: postgresql-ha
-        topologyKey: topology.kubernetes.io/region
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: postgresql
+              app.kubernetes.io/instance: pgadmin
+              app.kubernetes.io/name: postgresql-ha
+          topologyKey: topology.kubernetes.io/region
 
 metrics:
   securityContext:

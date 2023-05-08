@@ -43,16 +43,16 @@ postgresql:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/component: primary
-                app.kubernetes.io/instance: nautobot
-                app.kubernetes.io/name: postgresql
-            namespaces:
-            - nautobot
-            topologyKey: topology.kubernetes.io/region
-          weight: 1
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/component: primary
+                  app.kubernetes.io/instance: nautobot
+                  app.kubernetes.io/name: postgresql
+              namespaces:
+                - nautobot
+              topologyKey: topology.kubernetes.io/region
+            weight: 1
 
   readReplicas:
     topologySpreadConstraints:
@@ -68,16 +68,16 @@ redis:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/component: primary
-                app.kubernetes.io/instance: nautobot
-                app.kubernetes.io/name: redis
-            namespaces:
-            - nautobot
-            topologyKey: topology.kubernetes.io/region
-          weight: 1
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/component: primary
+                  app.kubernetes.io/instance: nautobot
+                  app.kubernetes.io/name: redis
+              namespaces:
+                - nautobot
+              topologyKey: topology.kubernetes.io/region
+            weight: 1
 
     topologySpreadConstraints:
       - maxSkew: 1
@@ -88,16 +88,16 @@ redis:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/component: primary
-                app.kubernetes.io/instance: nautobot
-                app.kubernetes.io/name: redis
-            namespaces:
-            - nautobot
-            topologyKey: topology.kubernetes.io/region
-          weight: 1
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/component: primary
+                  app.kubernetes.io/instance: nautobot
+                  app.kubernetes.io/name: redis
+              namespaces:
+                - nautobot
+              topologyKey: topology.kubernetes.io/region
+            weight: 1
 
     topologySpreadConstraints:
       - maxSkew: 1

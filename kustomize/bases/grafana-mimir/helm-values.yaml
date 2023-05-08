@@ -160,12 +160,12 @@ alertmanager:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/component: alertmanager
-            app.kubernetes.io/instance: mimir
-            app.kubernetes.io/name: mimir
-        topologyKey: topology.kubernetes.io/region
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: alertmanager
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
 compactor:
   persistentVolume:
@@ -177,14 +177,14 @@ distributor:
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
-      - podAffinityTerm:
-          labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: distributor
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
-        weight: 100
+        - podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/component: distributor
+                app.kubernetes.io/instance: mimir
+                app.kubernetes.io/name: mimir
+            topologyKey: topology.kubernetes.io/region
+          weight: 100
 
 overrides_exporter:
   replicas: 1
@@ -201,12 +201,12 @@ ruler:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/component: ruler
-            app.kubernetes.io/instance: mimir
-            app.kubernetes.io/name: mimir
-        topologyKey: topology.kubernetes.io/region
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: ruler
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
 chunks-cache:
   enabled: true
@@ -216,12 +216,12 @@ chunks-cache:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/component: chunks-cache
-            app.kubernetes.io/instance: mimir
-            app.kubernetes.io/name: mimir
-        topologyKey: topology.kubernetes.io/region
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: chunks-cache
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
 index-cache:
   enabled: true
@@ -231,12 +231,12 @@ index-cache:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/component: index-cache
-            app.kubernetes.io/instance: mimir
-            app.kubernetes.io/name: mimir
-        topologyKey: topology.kubernetes.io/region
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: index-cache
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
 metadata-cache:
   enabled: true
@@ -244,12 +244,12 @@ metadata-cache:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/component: metadata-cache
-            app.kubernetes.io/instance: mimir
-            app.kubernetes.io/name: mimir
-        topologyKey: topology.kubernetes.io/region
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: metadata-cache
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
 results-cache:
   enabled: true
@@ -258,9 +258,9 @@ results-cache:
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchLabels:
-            app.kubernetes.io/component: results-cache
-            app.kubernetes.io/instance: mimir
-            app.kubernetes.io/name: mimir
-        topologyKey: topology.kubernetes.io/region
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: results-cache
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
