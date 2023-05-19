@@ -1,4 +1,6 @@
 nautobot:
+  enabled: true
+
   extraVars:
     - name: "SECURE_SSL_REDIRECT"
       value: "True"
@@ -37,7 +39,9 @@ metrics:
           severity: "critical"
 
 postgresql:
-  postgresqlPassword: "foobar2342"
+  enabled: true
+  auth:
+    password: "foobar2342"
 
   primary:
     affinity:
