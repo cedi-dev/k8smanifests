@@ -55,6 +55,11 @@ prometheus:
           - targets:
               - "hole.elbschloss.xyz:9617"
 
+      - job_name: "bbb-exporter"
+        static_configs:
+          - targets:
+              - "bbb.rottweil.schule"
+
     remoteWrite:
       - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"
         headers:
