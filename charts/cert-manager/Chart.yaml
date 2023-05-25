@@ -3,5 +3,5 @@ name: addon-cert-manager
 version: v1.10.1
 dependencies:
   - name: cert-manager
-    version: v1.12.0
+    version: v1.12.1
     repository: https://charts.jetstack.io
