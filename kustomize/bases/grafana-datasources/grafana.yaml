@@ -54,7 +54,7 @@ datasources:
       httpMethod: GET
       tracesToLogs:
         datasourceUid: loki
-        spanStartTimeShift: "1h"
+        spanStartTimeShift: "-1h"
         spanEndTimeShift: "1h"
         filterByTraceID: true
         filterBySpanID: false
