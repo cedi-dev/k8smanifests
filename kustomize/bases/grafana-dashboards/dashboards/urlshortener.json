@@ -87,7 +87,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -153,7 +153,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -218,7 +218,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -289,7 +289,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -360,7 +360,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -421,7 +421,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.4.7",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -562,6 +562,12 @@
               "mode": "off"
             }
           },
+          "links": [
+            {
+              "title": "Show traces",
+              "url": "https://grafana.cedi.dev/explore?orgId=1&left=%7B%22datasource%22:%22tempo%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22datasource%22:%7B%22type%22:%22tempo%22,%22uid%22:%22tempo%22%7D,%22queryType%22:%22traceql%22,%22limit%22:20,%22query%22:%22%7B.service.name%20%3D%20%5C%22urlshortener%5C%22%20%26%26%20name%20%3D%20%5C%22%2F:shortlink%5C%22%7D%22,%22serviceName%22:%22urlshortener%22,%22spanName%22:%22%2F:shortlink%22%7D%5D,%22range%22:%7B%22from%22:%22now-30m%22,%22to%22:%22now%22%7D%7D"
+            }
+          ],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -587,6 +593,7 @@
         "y": 7
       },
       "id": 20,
+      "links": [],
       "options": {
         "legend": {
           "calcs": [
@@ -1020,8 +1027,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1105,7 +1111,7 @@
     ]
   },
   "time": {
-    "from": "now-14d",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
