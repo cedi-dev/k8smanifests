@@ -57,7 +57,7 @@ datasources:
         spanStartTimeShift: "1h"
         spanEndTimeShift: "1h"
         filterByTraceID: true
-        filterBySpanID: true
+        filterBySpanID: false
       serviceMap:
         datasourceUid: mimir-cedi
       search:
