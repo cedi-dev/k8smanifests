@@ -5,11 +5,11 @@ metadata:
   name: tailnet-ingress
   annotations:
     ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: tailnet-nginx
+    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
-    - host: test.mgmt.cedi.dev
+    - host: test.cedi.dev
       http:
         paths:
           - path: /
@@ -18,8 +18,8 @@ spec:
               service:
                 name: kuard-service
                 port:
-                  number: 8080
+                  number: 80
   tls:
     - secretName: test-ts-secret
       hosts:
-        - test.mgmt.cedi.dev
+        - test.cedi.dev
