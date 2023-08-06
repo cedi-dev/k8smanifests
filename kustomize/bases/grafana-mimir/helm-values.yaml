@@ -89,8 +89,6 @@ mimir:
 
     distributor:
       remote_timeout: 4s
-      forwarding:
-        request_timeout: 4s
 
 nginx:
   replicas: 1
