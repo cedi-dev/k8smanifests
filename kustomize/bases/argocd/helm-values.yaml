@@ -112,11 +112,11 @@ server:
     https: true
     pathType: ImplementationSpecific
     hosts:
-      - argocd.cedi.dev
+      - argocd2.cedi.dev
     tls:
-      - secretName: argocd-secret-tls
+      - secretName: argocd2-secret-tls
         hosts:
-          - argocd.cedi.dev
+          - argocd2.cedi.dev
 
     annotations:
       "cert-manager.io/cluster-issuer": "letsencrypt-prod"
