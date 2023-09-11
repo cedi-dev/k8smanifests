@@ -50,3 +50,6 @@ cert-checker:
       - secretName: cert-checker-cedi-dev-tls
         hosts:
           - cert-checker.cedi.dev
+
+  nodeSelector:
+    kubernetes.io/arch: amd64
