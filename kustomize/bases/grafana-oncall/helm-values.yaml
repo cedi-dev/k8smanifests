@@ -59,6 +59,10 @@ postgresql:
   enabled: true
   architecture: standalone
 
+  primary:
+    nodeSelector:
+      kubernetes.io/arch: amd64
+
   auth:
     database: oncall
 
