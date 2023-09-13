@@ -178,9 +178,9 @@ spec:
           rotate-server-certificates: "true"
           tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
     preKubeadmCommands:
-      - export CRUN=1.9
-      - export CONTAINERD=1.7.5
-      - export KUBERNETES_VERSION=$(echo v1.28.1 | sed 's/^v//')
+      - export CRUN=1.6
+      - export CONTAINERD=1.6.8
+      - export KUBERNETES_VERSION=$(echo v1.27.5 | sed 's/^v//')
       - localectl set-locale LANG=en_US.UTF-8
       - localectl set-locale LANGUAGE=en_US.UTF-8
       - apt-get update -y
@@ -219,4 +219,4 @@ spec:
     type: "RollingUpdate"
     rollingUpdate:
       maxSurge: 1
-  version: v1.28.1
+  version: v1.27.5
