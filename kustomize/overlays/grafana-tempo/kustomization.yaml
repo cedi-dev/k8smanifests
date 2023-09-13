@@ -71,5 +71,22 @@ patchesJson6902:
         path: /spec/template/spec/affinity/podAntiAffinity/preferredDuringSchedulingIgnoredDuringExecution/1/topologyKey
         value: topology.kubernetes.io/zone
 
-patches:
-  - pdb.patch.yaml
+  - target:
+      kind: PodDisruptionBudget
+      group: policy
+      version: v1beta1
+      name: tempo-ingester
+    patch: |-
+      - op: replace
+        path: /apiVersion
+        value: policy/v1
+
+  - target:
+      kind: PodDisruptionBudget
+      group: policy
+      version: v1beta1
+      name: tempo-distributor
+    patch: |-
+      - op: replace
+        path: /apiVersion
+        value: policy/v1
