@@ -216,3 +216,7 @@ configs:
       name: prometheus
       type: helm
       url: https://prometheus-community.github.io/helm-charts
+    syself:
+      name: syself 
+      type: helm
+      url: https://charts.syself.com
