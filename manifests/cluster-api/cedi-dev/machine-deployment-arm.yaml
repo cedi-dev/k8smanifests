@@ -35,7 +35,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: worker-large-arm-fsn
-      version: v1.28.1
+      version: v1.27.5
 # ---
 # apiVersion: cluster.x-k8s.io/v1beta1
 # kind: MachineDeployment
@@ -74,7 +74,7 @@ spec:
 #         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 #         kind: HCloudMachineTemplate
 #         name: worker-large-arm-nbg
-#       version: v1.28.1
+#       version: v1.27.5
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
@@ -113,4 +113,4 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: worker-large-arm-hel
-      version: v1.28.1
+      version: v1.27.5
