@@ -1,48 +1,6 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineHealthCheck
 metadata:
-  name: control-plane-unhealthy-5m
-  namespace: default
-spec:
-  clusterName: cedi-dev
-  maxUnhealthy: 100%
-  nodeStartupTimeout: 20m0s
-  selector:
-    matchLabels:
-      cluster.x-k8s.io/control-plane: ""
-  unhealthyConditions:
-    - status: Unknown
-      timeout: 5m0s
-      type: Ready
-    - status: "False"
-      timeout: 5m0s
-      type: Ready
-
----
-apiVersion: cluster.x-k8s.io/v1beta1
-kind: MachineHealthCheck
-metadata:
-  name: worker-fsn-unhealthy-5m
-  namespace: default
-spec:
-  clusterName: cedi-dev
-  maxUnhealthy: 100%
-  nodeStartupTimeout: 20m0s
-  selector:
-    matchLabels:
-      nodepool: worker-fsn
-  unhealthyConditions:
-    - status: Unknown
-      timeout: 5m0s
-      type: Ready
-    - status: "False"
-      timeout: 5m0s
-      type: Ready
-
----
-apiVersion: cluster.x-k8s.io/v1beta1
-kind: MachineHealthCheck
-metadata:
   name: worker-nbg-unhealthy-5m
   namespace: default
 spec:
@@ -51,28 +9,7 @@ spec:
   nodeStartupTimeout: 20m0s
   selector:
     matchLabels:
-      nodepool: worker-nbg
-  unhealthyConditions:
-    - status: Unknown
-      timeout: 5m0s
-      type: Ready
-    - status: "False"
-      timeout: 5m0s
-      type: Ready
-
----
-apiVersion: cluster.x-k8s.io/v1beta1
-kind: MachineHealthCheck
-metadata:
-  name: worker-hel-unhealthy-5m
-  namespace: default
-spec:
-  clusterName: cedi-dev
-  maxUnhealthy: 100%
-  nodeStartupTimeout: 20m0s
-  selector:
-    matchLabels:
-      nodepool: worker-hel
+      nodepool: worker
   unhealthyConditions:
     - status: Unknown
       timeout: 5m0s

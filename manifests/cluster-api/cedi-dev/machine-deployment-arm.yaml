@@ -5,7 +5,7 @@ metadata:
     cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "2"
     cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "2"
   labels:
-    nodepool: worker-arm-fsn
+    nodepool: worker-arm
   name: worker-arm-fsn
   namespace: default
 spec:
@@ -21,8 +21,7 @@ spec:
   template:
     metadata:
       labels:
-        nodepool: worker-arm-fsn
-        svc-lb.tailscale.iptables.sh/deploy: "true"
+        nodepool: worker-arm
     spec:
       bootstrap:
         configRef:
@@ -36,45 +35,7 @@ spec:
         kind: HCloudMachineTemplate
         name: worker-large-arm-fsn
       version: v1.28.1
-# ---
-# apiVersion: cluster.x-k8s.io/v1beta1
-# kind: MachineDeployment
-# metadata:
-#   annotations:
-#     cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "2"
-#     cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "2"
-#   labels:
-#     nodepool: worker-arm-nbg
-#   name: worker-arm-nbg
-#   namespace: default
-# spec:
-#   clusterName: cedi-dev
-#   replicas: 1
-#   strategy:
-#     type: RollingUpdate
-#     rollingUpdate:
-#       maxSurge: 1
-#       maxUnavailable: 0
-#   selector:
-#     matchLabels: null
-#   template:
-#     metadata:
-#       labels:
-#         nodepool: worker-arm-nbg
-#         svc-lb.tailscale.iptables.sh/deploy: "true"
-#     spec:
-#       bootstrap:
-#         configRef:
-#           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
-#           kind: KubeadmConfigTemplate
-#           name: worker-template-arm
-#       clusterName: cedi-dev
-#       failureDomain: nbg1
-#       infrastructureRef:
-#         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-#         kind: HCloudMachineTemplate
-#         name: worker-large-arm-nbg
-#       version: v1.28.1
+
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
@@ -83,7 +44,7 @@ metadata:
     cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "2"
     cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "2"
   labels:
-    nodepool: worker-arm-hel
+    nodepool: worker-arm
   name: worker-arm-hel
   namespace: default
 spec:
@@ -99,8 +60,7 @@ spec:
   template:
     metadata:
       labels:
-        nodepool: worker-arm-hel
-        svc-lb.tailscale.iptables.sh/deploy: "true"
+        nodepool: worker-arm
     spec:
       bootstrap:
         configRef:
@@ -114,3 +74,42 @@ spec:
         kind: HCloudMachineTemplate
         name: worker-large-arm-hel
       version: v1.28.1
+
+# ---
+# apiVersion: cluster.x-k8s.io/v1beta1
+# kind: MachineDeployment
+# metadata:
+#   annotations:
+#     cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "2"
+#     cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "2"
+#   labels:
+#     nodepool: worker-arm
+#   name: worker-arm-nbg
+#   namespace: default
+# spec:
+#   clusterName: cedi-dev
+#   replicas: 1
+#   strategy:
+#     type: RollingUpdate
+#     rollingUpdate:
+#       maxSurge: 1
+#       maxUnavailable: 0
+#   selector:
+#     matchLabels: null
+#   template:
+#     metadata:
+#       labels:
+#         nodepool: worker-arm
+#     spec:
+#       bootstrap:
+#         configRef:
+#           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+#           kind: KubeadmConfigTemplate
+#           name: worker-template-arm
+#       clusterName: cedi-dev
+#       failureDomain: nbg1
+#       infrastructureRef:
+#         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+#         kind: HCloudMachineTemplate
+#         name: worker-large-arm-nbg
+#       version: v1.28.1

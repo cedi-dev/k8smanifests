@@ -1,7 +1,7 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineHealthCheck
 metadata:
-  name: worker-arm-unhealthy-5m
+  name: control-plane-unhealthy-5m
   namespace: default
 spec:
   clusterName: cedi-dev
@@ -9,7 +9,7 @@ spec:
   nodeStartupTimeout: 20m0s
   selector:
     matchLabels:
-      nodepool: worker-arm
+      cluster.x-k8s.io/control-plane: ""
   unhealthyConditions:
     - status: Unknown
       timeout: 5m0s
