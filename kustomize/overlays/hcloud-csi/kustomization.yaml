@@ -7,19 +7,7 @@ bases:
 
 patches:
   - target:
-      kind: DaemonSet
-      name: hcloud-csi-node
-      namespace: kube-system
-      version: v1
-    patch: |-
-      - op: replace
-        path: "/spec/template/spec/containers/1/env/3/valueFrom/secretKeyRef/name"
-        value: hetzner
-      - op: replace
-        path: "/spec/template/spec/containers/1/env/3/valueFrom/secretKeyRef/key"
-        value: hcloud
-  - target:
-      kind: StatefulSet
+      kind: Deployment
       name: hcloud-csi-controller
       namespace: kube-system
       version: v1
