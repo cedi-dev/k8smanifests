@@ -1,11 +1,11 @@
-# apiVersion: hugo-hoster.cedi.dev/v1alpha1
-# kind: HugoPage
-# metadata:
-#   name: cedi
-#   namespace: hugo-hoster
-# spec:
-#   branch: main
-#   interval: '0 0 12 ? * SUN *'
-#   repository: https://github.com/cedi/cedi.github.io.git
-#   type: cron
-#   url: test.cedi.dev
+apiVersion: hugo-hoster.cedi.dev/v1alpha1
+kind: HugoPage
+metadata:
+  name: cedi
+  namespace: hugo-hoster
+spec:
+  branch: main
+  interval: '0 0 1 * *'
+  repository: https://github.com/cedi/cedi.github.io.git
+  type: cron
+  url: test.cedi.dev
