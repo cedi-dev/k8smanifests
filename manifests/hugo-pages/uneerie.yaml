@@ -8,4 +8,4 @@ spec:
   interval: '*/5 * * * *'
   repository: https://github.com/uneerie/uneerie.de.git
   type: cron
-  url: uneerie.de
+  url: test.uneerie.de

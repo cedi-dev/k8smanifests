@@ -8,4 +8,4 @@ spec:
   interval: '0 0 12 ? * SUN *'
   repository: https://github.com/cedi/cedi.github.io.git
   type: cron
-  url: cedi.dev
+  url: test.cedi.dev
