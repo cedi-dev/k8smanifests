@@ -5,7 +5,7 @@ metadata:
   namespace: hugo-hoster
 spec:
   branch: main
-  interval: '*/5 * * * *'
+  interval: '0 0 * * *'
   repository: https://github.com/uneerie/uneerie.de.git
   type: cron
-  url: test.uneerie.de
+  url: www.uneerie.de

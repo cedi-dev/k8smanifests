@@ -5,7 +5,7 @@ metadata:
   namespace: hugo-hoster
 spec:
   branch: main
-  interval: '0 0 1 * *'
+  interval: '0 0 */7 * *'
   repository: https://github.com/cedi/cedi.github.io.git
   type: cron
-  url: test.cedi.dev
+  url: www.cedi.dev
