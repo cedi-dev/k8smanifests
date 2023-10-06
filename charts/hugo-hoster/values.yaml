@@ -2,7 +2,7 @@ hugo-hoster:
   hugohoster:
     image:
       pullPolicy: Always # TODO: IfNotPresent
-      tag: "develop"
+      tag: "main"
 
 
     metrics:
