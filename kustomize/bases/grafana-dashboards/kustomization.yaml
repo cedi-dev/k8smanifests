@@ -349,6 +349,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/cluster-total.json
 
@@ -437,6 +439,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/namespace-by-pod.json
 
