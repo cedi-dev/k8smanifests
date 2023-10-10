@@ -80,6 +80,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-alertmanager-resources.json
 
@@ -88,6 +90,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-alertmanager.json
 
@@ -96,6 +100,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-compactor-resources.json
 
@@ -104,6 +110,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-compactor.json
 
@@ -112,6 +120,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-config.json
 
@@ -120,6 +130,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-object-store.json
 
@@ -128,6 +140,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-overrides.json
 
@@ -136,6 +150,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-overview-networking.json
 
@@ -144,6 +160,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-overview-resources.json
 
@@ -152,6 +170,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-overview.json
 
@@ -160,6 +180,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-queries.json
 
@@ -168,6 +190,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-reads-networking.json
 
@@ -176,6 +200,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-reads-resources.json
 
@@ -184,6 +210,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-reads.json
 
@@ -192,6 +220,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-remote-ruler-reads-resources.json
 
@@ -200,6 +230,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-remote-ruler-reads.json
 
@@ -208,6 +240,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-rollout-progress.json
 
@@ -216,6 +250,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-ruler.json
 
@@ -224,6 +260,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-scaling.json
 
@@ -232,6 +270,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-slow-queries.json
 
@@ -240,6 +280,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-tenants.json
 
@@ -248,6 +290,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-top-tenants.json
 
@@ -256,6 +300,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-writes-networking.json
 
@@ -264,6 +310,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-writes-resources.json
 
@@ -272,6 +320,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Mimir'
     files:
       - mimir/mimir-writes.json
 
@@ -289,6 +339,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/apiserver.json
 
@@ -305,6 +357,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/controller-manager.json
 
@@ -313,6 +367,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/k8s-resources-cluster.json
 
@@ -321,6 +377,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/k8s-resources-namespace.json
 
@@ -329,6 +387,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/k8s-resources-node.json
 
@@ -337,6 +397,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/k8s-resources-pod.json
 
@@ -345,6 +407,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/k8s-resources-workload.json
 
@@ -353,6 +417,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/k8s-resources-workloads-namespace.json
 
@@ -361,6 +427,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/kubelet.json
 
@@ -377,6 +445,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/namespace-by-workload.json
 
@@ -385,6 +455,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/persistentvolumesusage.json
 
@@ -393,6 +465,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/pod-total.json
 
@@ -401,6 +475,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/proxy.json
 
@@ -409,6 +485,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/scheduler.json
 
@@ -417,6 +495,8 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes'
     files:
       - kubernetes/workload-total.json
 
