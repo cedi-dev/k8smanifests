@@ -59,9 +59,13 @@ sidecar:
     labelValue: "1"
     folderAnnotation: grafana_folder
     provider:
-      foldersFromFileStructure: true
+      name: sidecarProvider
+      orgId: 1
       folder: ""
       type: file
+      disableDelete: false
+      disableUpdates: false
+      foldersFromFileStructure: true
 
   datasources:
     enabled: true
