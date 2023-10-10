@@ -65,7 +65,7 @@ sidecar:
       type: file
       disableDelete: false
       disableUpdates: false
-      foldersFromFileStructure: true
+      foldersFromFilesStructure: true
 
   datasources:
     enabled: true
