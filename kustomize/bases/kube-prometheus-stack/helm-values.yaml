@@ -49,6 +49,7 @@ prometheus:
         static_configs:
           - targets:
               - "hole.elbschloss.xyz:9100"
+              - "bbb.rottweil.schule:9100"
 
       - job_name: "adguard-exporter"
         static_configs:
