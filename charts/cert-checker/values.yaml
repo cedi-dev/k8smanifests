@@ -22,6 +22,7 @@ cert-checker:
       - dns: short.cedi.dev
       - dns: ccl.pw
       - dns: dash.ccl.pw
+      - dns: hole.elbschloss.xyz
 
   serviceMonitor:
     enabled: true
