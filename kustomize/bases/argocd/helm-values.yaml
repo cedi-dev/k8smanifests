@@ -180,7 +180,7 @@ notifications:
 
 configs:
   params:
-    otlp.address: 'tempo-distributor.observability.svc.cluster.local:4317'
+    otlp.address: "tempo-distributor.observability.svc.cluster.local:4317"
 
   secret:
     extra:
@@ -217,6 +217,6 @@ configs:
       type: helm
       url: https://prometheus-community.github.io/helm-charts
     syself:
-      name: syself 
+      name: syself
       type: helm
       url: https://charts.syself.com
