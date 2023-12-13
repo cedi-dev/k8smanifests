@@ -66,10 +66,10 @@ spec:
 apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: Redirect
 metadata:
-  name: uneerie
+  name: lucyfae
 spec:
-  source: uneerie.de
-  target: https://www.uneerie.de
+  source: lucyfae.de
+  target: https://www.lucyfae.de
   code: 308
   tls:
     enable: true
