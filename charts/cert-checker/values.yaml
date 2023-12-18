@@ -23,6 +23,7 @@ cert-checker:
       - dns: ccl.pw
       - dns: dash.ccl.pw
       - dns: hole.elbschloss.xyz
+      - dns: kienzler.io
 
   serviceMonitor:
     enabled: true
