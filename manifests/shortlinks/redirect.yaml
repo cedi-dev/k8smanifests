@@ -40,6 +40,19 @@ spec:
 apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: Redirect
 metadata:
+  name: rs-rottweil
+spec:
+  source: rottweil.schule
+  target: https://realschule-rottweil.de
+  code: 308
+  tls:
+    enable: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: Redirect
+metadata:
   name: cedi-dev
 spec:
   source: cedi.dev
