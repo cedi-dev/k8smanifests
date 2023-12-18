@@ -149,3 +149,13 @@ spec:
   target: "https://www.youtube.com/watch?v=r8UvWSX3KA8"
   code: 307
   owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: decoding-sre
+spec:
+  target: "https://media.ccc.de/v/gpn21-48-site-reliability-engineering-explained-an-exploration-of-devops-platform-engineering-and-sre"
+  code: 307
+  owner: cedi
