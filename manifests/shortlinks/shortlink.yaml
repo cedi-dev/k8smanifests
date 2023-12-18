@@ -79,3 +79,73 @@ spec:
   target: "https://dash.cloudflare.com"
   code: 307
   owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: hcloud
+spec:
+  target: "https://console.hetzner.cloud/projects"
+  code: 307
+  owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: cluster-api-hetzner
+spec:
+  target: "https://github.com/syself/cluster-api-provider-hetzner"
+  code: 307
+  owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: beyond-monitoring
+spec:
+  target: "https://media.ccc.de/v/gpn19-74-beyond-monitoring"
+  code: 307
+  owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: lgtm-stack
+spec:
+  target: "https://www.youtube.com/watch?v=jB0isDxARio"
+  code: 307
+  owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: modern-o11y
+spec:
+  target: "https://media.ccc.de/v/gpn21-47-modern-observability-scalable-observability-with-the-lgtm-stack-harnessing-the-power-of-loki-grafana-tempo-and-mimir"
+  code: 307
+  owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: understanding-alerting
+spec:
+  target: "https://media.ccc.de/v/gpn20-22-understanding-alerting-how-to-come-up-with-a-good-enough-alerting-strategy"
+  code: 307
+  owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: open-telemetry
+spec:
+  target: "https://www.youtube.com/watch?v=r8UvWSX3KA8"
+  code: 307
+  owner: cedi
