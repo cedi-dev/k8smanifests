@@ -49,17 +49,11 @@ prometheus:
         static_configs:
           - targets:
               - "hole.elbschloss.xyz:9100"
-              - "bbb.rottweil.schule:9100"
 
       - job_name: "adguard-exporter"
         static_configs:
           - targets:
               - "hole.elbschloss.xyz:9617"
-
-      - job_name: "bbb-exporter"
-        static_configs:
-          - targets:
-              - "bbb.rottweil.schule"
 
     remoteWrite:
       - url: "http://mimir-nginx.observability.svc.cluster.local/api/v1/push"

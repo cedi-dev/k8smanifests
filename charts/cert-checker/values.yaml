@@ -7,7 +7,6 @@ cert-checker:
     loglevel: info
     intervalminutes: 1
     certificates:
-      - dns: bbb.rottweil.schule
       - dns: cedi.dev
       - dns: metallglanz.com
       - dns: argocd.cedi.dev
