@@ -503,23 +503,3 @@ configMapGenerator:
         grafana_folder: 'Kubernetes'
     files:
       - kubernetes/workload-total.json
-
-  - name: bbb-all-servers
-    namespace: observability
-    options:
-      labels:
-        grafana_dashboard: '1'
-      annotations:
-        grafana_folder: 'Big Blue Button'
-    files:
-      - bbb/all_servers.json
-
-  - name: bbb-server-instance-netdata
-    namespace: observability
-    options:
-      labels:
-        grafana_dashboard: '1'
-      annotations:
-        grafana_folder: 'Big Blue Button'
-    files:
-      - bbb/server_instance_netdata.json
