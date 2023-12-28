@@ -10,8 +10,7 @@ spec:
     spec:
       imageName: ubuntu-22.04
       placementGroupName: control-plane
-      # type: cax11 # TODO: Enable when ARM available in nbg
-      type: cpx21
+      type: cax21
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy
