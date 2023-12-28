@@ -10,7 +10,7 @@ spec:
     spec:
       imageName: ubuntu-22.04
       placementGroupName: control-plane
-      type: cax21
+      type: cpx21
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy
