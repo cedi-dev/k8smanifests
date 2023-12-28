@@ -7,7 +7,7 @@ spec:
   generators:
     - list:
         elements:
-          - name: postgresql
+          # - name: postgresql
           - name: cert-checker
   template:
     metadata:
