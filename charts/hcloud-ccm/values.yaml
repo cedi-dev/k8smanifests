@@ -1,6 +1,12 @@
 ccm-hcloud:
   replicaCount: 3
 
+  image:
+    repository: docker.io/hetznercloud/hcloud-cloud-controller-manager
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "v1.1.0"
+
   # keep one CCM always available, to communicate with Hetzner
   pdb:
     enabled: true
@@ -14,3 +20,42 @@ ccm-hcloud:
   privateNetwork:
     enabled: true
     clusterSubnet: 10.244.0.0/16 # Pod CIDR
+
+hcloud-cloud-controller-manager:
+  kind: Deployment
+  replicaCount: 3
+
+  env:
+    HCLOUD_TOKEN:
+      valueFrom:
+        secretKeyRef:
+          name: hetzner
+          key: hcloud
+
+  monitoring:
+    # When enabled, the hccm Pod will serve metrics on port :8233
+    enabled: true
+    podMonitor:
+      enabled: true
+      spec:
+        podMetricsEndpoints:
+          - port: metrics
+
+  networking:
+    enabled: true
+    clusterCIDR: 10.244.0.0/16
+    network:
+      valueFrom:
+        secretKeyRef:
+          name: hetzner
+          key: network
+
+  # Resource requests for the deployed hccm Pod.
+  resources:
+    requests:
+      cpu: 100m
+      memory: 50Mi
+
+  robot:
+    # Set to true to enable support for Robot (Dedicated) servers.
+    enabled: false
