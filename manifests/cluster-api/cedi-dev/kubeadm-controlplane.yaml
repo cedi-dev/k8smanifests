@@ -188,12 +188,12 @@ spec:
       - sed -i '/swap/d' /etc/fstab
       - swapoff -a
       - modprobe overlay && modprobe br_netfilter && sysctl --system
-      - wget https://github.com/containerd/containerd/releases/download/v$CONTAINERD/cri-containerd-cni-$CONTAINERD-linux-amd64.tar.gz
-      - wget https://github.com/containerd/containerd/releases/download/v$CONTAINERD/cri-containerd-cni-$CONTAINERD-linux-amd64.tar.gz.sha256sum
-      - sha256sum --check cri-containerd-cni-$CONTAINERD-linux-amd64.tar.gz.sha256sum
-      - tar --no-overwrite-dir -C / -xzf cri-containerd-cni-$CONTAINERD-linux-amd64.tar.gz
-      - rm -f cri-containerd-cni-$CONTAINERD-linux-amd64.tar.gz cri-containerd-cni-$CONTAINERD-linux-amd64.tar.gz.sha256sum
-      - wget https://github.com/containers/crun/releases/download/$CRUN/crun-$CRUN-linux-amd64
+      - wget https://github.com/containerd/containerd/releases/download/v$CONTAINERD/cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz
+      - wget https://github.com/containerd/containerd/releases/download/v$CONTAINERD/cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
+      - sha256sum --check cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
+      - tar --no-overwrite-dir -C / -xzf cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz
+      - rm -f cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
+      - wget https://github.com/containers/crun/releases/download/$CRUN/crun-$CRUN-linux-arm64
         -O /usr/local/sbin/crun && chmod +x /usr/local/sbin/crun
       - rm -f /etc/cni/net.d/10-containerd-net.conflist
       - chmod -R 644 /etc/cni && chown -R root:root /etc/cni
