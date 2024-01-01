@@ -34,7 +34,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: worker-large-arm-fsn
-      version: v1.27.9
+      version: v1.27.6
 
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
@@ -49,7 +49,7 @@ metadata:
   namespace: default
 spec:
   clusterName: cedi-dev
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -73,7 +73,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: worker-large-arm-hel
-      version: v1.27.9
+      version: v1.27.6
 
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
