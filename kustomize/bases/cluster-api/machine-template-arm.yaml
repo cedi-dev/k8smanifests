@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       imageName: ubuntu-22.04
-      placementGroupName: worker-nodes-fsn
+      placementGroupName: worker-nodes
       type: cax21
       sshKeys:
         - name: cedi@mae
