@@ -96,8 +96,8 @@ spec:
         - wget https://github.com/containerd/containerd/releases/download/v$CONTAINERD/cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
         - sha256sum --check cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
         - tar --no-overwrite-dir -C / -xzf cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz
-        - rm -f cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum 
-        - wget https://github.com/containers/crun/releases/download/$CRUN/crun-$CRUN-linux-arm64 -O /usr/local/sbin/crun && chmod +x /usr/local/sbin/crun 
+        - rm -f cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
+        - wget https://github.com/containers/crun/releases/download/$CRUN/crun-$CRUN-linux-arm64 -O /usr/local/sbin/crun && chmod +x /usr/local/sbin/crun
         - rm -f /etc/cni/net.d/10-containerd-net.conflist
         - chmod -R 644 /etc/cni && chown -R root:root /etc/cni
         - systemctl daemon-reload && systemctl enable containerd && systemctl start containerd
@@ -105,7 +105,9 @@ spec:
         - curl -fsSL https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION_MAJOR/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
         - echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION_MAJOR/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
         - apt-get update
-        - apt-get install -y kubelet=$KUBERNETES_VERSION_CLEAN-1.1 kubeadm=$KUBERNETES_VERSION_CLEAN-1.1 kubectl=$KUBERNETES_VERSION_CLEAN-1.1  bash-completion && apt-mark hold kubelet kubectl kubeadm && systemctl enable kubelet
+        - apt-get install -y kubelet=$KUBERNETES_VERSION_CLEAN-1.1 kubeadm=$KUBERNETES_VERSION_CLEAN-1.1 kubectl=$KUBERNETES_VERSION_CLEAN-1.1 bash-completion
+        - apt-mark hold kubelet kubectl kubeadm
+        - systemctl enable kubelet
         - echo "installed kubelet and shit"
         - kubeadm config images pull --kubernetes-version $KUBERNETES_VERSION_CLEAN
         - echo 'source <(kubectl completion bash)' >>~/.bashrc
