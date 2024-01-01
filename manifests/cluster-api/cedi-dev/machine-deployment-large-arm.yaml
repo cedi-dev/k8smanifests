@@ -112,4 +112,4 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: worker-large-arm-nbg
-      version: v1.2826
+      version: v1.28.5
