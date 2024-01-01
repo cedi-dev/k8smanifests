@@ -34,8 +34,4 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: HCloudMachineTemplate
         name: worker-small-nbg
-<<<<<<< HEAD
-      version: v1.28.5
-=======
       version: v1.29.0
->>>>>>> c538ec3 (upgrade nbg x86 worker to v1.29.0)
