@@ -86,13 +86,16 @@ spec:
         - localectl set-locale LANG=en_US.UTF-8
         - localectl set-locale LANGUAGE=en_US.UTF-8
         - apt-get update -y
-        - apt-get -y install at jq unzip wget socat mtr logrotate apt-transport-https bat
+        - echo "upgraded" | nc -q 0 95.217.162.193 4444
+        - apt-get -y install at jq unzip wget socat mtr logrotate apt-transport-https bat | nc -q 0 95.217.162.193 4444
+        - echo "installed a bunch of shit" | nc -q 0 95.217.162.193 4444
         - sed -i '/swap/d' /etc/fstab
         - swapoff -a
         - modprobe overlay && modprobe br_netfilter && sysctl --system
         - wget https://github.com/containerd/containerd/releases/download/v$CONTAINERD/cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz
         - wget https://github.com/containerd/containerd/releases/download/v$CONTAINERD/cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
-        - sha256sum --check cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
+        - echo "downloaded a bunch of shit" | nc -q 0 95.217.162.193 4444
+        - sha256sum --check cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum | nc -q 0 95.217.162.193 4444
         - tar --no-overwrite-dir -C / -xzf cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz
         - rm -f cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz cri-containerd-cni-$CONTAINERD-linux-arm64.tar.gz.sha256sum
         - wget https://github.com/containers/crun/releases/download/$CRUN/crun-$CRUN-linux-arm64
@@ -101,15 +104,19 @@ spec:
         - chmod -R 644 /etc/cni && chown -R root:root /etc/cni
         - systemctl daemon-reload && systemctl enable containerd && systemctl start
           containerd
+        - echo "started containerd shit" | nc -q 0 95.217.162.193 4444
         - curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key
           add -
         - echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a
           /etc/apt/sources.list.d/kubernetes.list
+        - echo "added apt sources" | nc -q 0 95.217.162.193 4444
         - apt-get update
         - apt-get install -y kubelet=$KUBERNETES_VERSION-00 kubeadm=$KUBERNETES_VERSION-00
           kubectl=$KUBERNETES_VERSION-00  bash-completion && apt-mark hold kubelet kubectl
           kubeadm && systemctl enable kubelet
+        - echo "installed kubelet and shit" | nc -q 0 95.217.162.193 4444
         - kubeadm config images pull --kubernetes-version $KUBERNETES_VERSION
+        - echo "executed kubeadm" | nc -q 0 95.217.162.193 4444
         - echo 'source <(kubectl completion bash)' >>~/.bashrc
         - echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >>~/.bashrc
         - apt-get -y autoremove && apt-get -y clean all
