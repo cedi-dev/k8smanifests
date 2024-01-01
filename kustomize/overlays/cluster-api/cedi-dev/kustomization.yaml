@@ -1,0 +1,43 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+
+bases:
+  - ../../../bases/cluster-api/
+
+patchesJson6902:
+  - target:
+      kind: KubeadmConfigTemplate
+      namespace: default
+      name: worker-template
+    path: kubeadm-config-template.patch.yaml
+
+  - target:
+      kind: KubeadmControlPlane
+      namespace: default
+      name: control-plane
+    path: kubeadm-controlplane.patch.yaml
+
+  - target:
+      kind: MachineDeployment
+      namespace: default
+      name: worker-arm-fsn
+    path: machine-deployment-arm.patch.yaml
+
+  - target:
+      kind: MachineDeployment
+      namespace: default
+      name: worker-arm-hel
+    path: machine-deployment-arm.patch.yaml
+
+  - target:
+      kind: MachineDeployment
+      namespace: default
+      name: worker-arm-nbg
+    path: machine-deployment-arm.patch.yaml
+
+  - target:
+      kind: MachineDeployment
+      namespace: default
+      name: worker-x86-nbg
+    path: machine-deployment-x86.patch.yaml

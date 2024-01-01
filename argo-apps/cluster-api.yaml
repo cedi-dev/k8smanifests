@@ -21,7 +21,7 @@ spec:
         server: https://kubernetes.default.svc
       project: default
       source:
-        path: manifests/cluster-api/{{name}}
+        path: kustomize/overlays/cluster-api/{{name}}
         repoURL: https://github.com/cedi-dev/k8smanifests.git
         targetRevision: main
       syncPolicy:

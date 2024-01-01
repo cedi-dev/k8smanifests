@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - cluster.yaml
+  - kubeadm-config-template.yaml
+  - kubeadm-controlplane.yaml
+  - machine-deployment-arm.yaml
+  - machine-deployment-x86.yaml
+  - machine-healthchecks.yaml
+  - machine-template-arm.yaml
+  - machine-template-x86.yaml
