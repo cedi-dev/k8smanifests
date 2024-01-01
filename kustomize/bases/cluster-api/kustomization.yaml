@@ -11,3 +11,4 @@ resources:
   - machine-template-arm.yaml
   - machine-template-x86.yaml
   - machine-template-controlplane.yaml
+  - kubeadm-config-template-x86-taints.yaml

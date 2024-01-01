@@ -1,3 +1,4 @@
+---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
@@ -27,7 +28,7 @@ spec:
         configRef:
           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
           kind: KubeadmConfigTemplate
-          name: worker-template
+          name: worker-template-x86-taints
       clusterName: cedi-dev
       failureDomain: nbg1
       infrastructureRef:
