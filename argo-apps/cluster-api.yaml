@@ -12,8 +12,9 @@ spec:
     metadata:
       name: cluster-{{name}}
       namespace: argocd
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
+      # IMPORTANT: No finalizers by default. If I delete this Argo-App I don't want to purge my cluster...
+      #finalizers:
+      #  - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
         namespace: default
