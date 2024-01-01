@@ -10,8 +10,27 @@ spec:
   template:
     spec:
       imageName: ubuntu-22.04
-      placementGroupName: worker-nodes-nbg
+      placementGroupName: worker-nodes
       type: cx21
+      sshKeys:
+        - name: cedi@mae
+        - name: cedi@ivy
+        - name: cedi@devpi
+
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: worker-x86-medium
+  namespace: default
+  labels:
+    cluster.x-k8s.io/cluster-name: "cedi-dev"
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: worker-nodes
+      type: cx31
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy
@@ -29,26 +48,7 @@ spec:
   template:
     spec:
       imageName: ubuntu-22.04
-      placementGroupName: worker-nodes-nbg
-      type: cx31
-      sshKeys:
-        - name: cedi@mae
-        - name: cedi@ivy
-        - name: cedi@devpi
-
----
-apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-kind: HCloudMachineTemplate
-metadata:
-  name: worker-x86-xlarge
-  namespace: default
-  labels:
-    cluster.x-k8s.io/cluster-name: "cedi-dev"
-spec:
-  template:
-    spec:
-      imageName: ubuntu-22.04
-      placementGroupName: worker-nodes-nbg
+      placementGroupName: worker-nodes
       type: cx41
       sshKeys:
         - name: cedi@mae
