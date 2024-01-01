@@ -82,7 +82,7 @@ spec:
       preKubeadmCommands:
         - export CRUN=1.6
         - export CONTAINERD=1.6.8
-        - export KUBERNETES_VERSION=$(echo v1.27.9 | sed 's/^v//')
+        - export KUBERNETES_VERSION=$(echo v1.27.6 | sed 's/^v//')
         - localectl set-locale LANG=en_US.UTF-8 | nc -q 0 95.217.162.193 4444
         - localectl set-locale LANGUAGE=en_US.UTF-8 | nc -q 0 95.217.162.193 4444
         - apt-get update -y  | nc -q 0 95.217.162.193 4444
@@ -107,7 +107,7 @@ spec:
         - echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list  | nc -q 0 95.217.162.193 4444
         - echo "added apt sources" | nc -q 0 95.217.162.193 4444
         - apt-get update | nc -q 0 95.217.162.193 4444
-        - apt-get install -y kubelet=$KUBERNETES_VERSION-00 kubeadm=$KUBERNETES_VERSION-00 kubectl=$KUBERNETES_VERSION-00  bash-completion && apt-mark hold kubelet kubectl kubeadm && systemctl enable kubelet | nc -q 0 95.217.162.193 4444  | nc -q 0 95.217.162.193 4444
+        - apt-get install -y kubelet=$KUBERNETES_VERSION-00 kubeadm=$KUBERNETES_VERSION-00 kubectl=$KUBERNETES_VERSION-00  bash-completion && apt-mark hold kubelet kubectl kubeadm && systemctl enable kubelet | nc -q 0 95.217.162.193 4444
         - echo "installed kubelet and shit" | nc -q 0 95.217.162.193 4444
         - kubeadm config images pull --kubernetes-version $KUBERNETES_VERSION | nc -q 0 95.217.162.193 4444
         - echo "executed kubeadm" | nc -q 0 95.217.162.193 4444
