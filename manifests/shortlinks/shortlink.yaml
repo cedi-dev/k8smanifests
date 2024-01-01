@@ -159,3 +159,13 @@ spec:
   target: "https://media.ccc.de/v/gpn21-48-site-reliability-engineering-explained-an-exploration-of-devops-platform-engineering-and-sre"
   code: 307
   owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: caph
+spec:
+  target: "https://github.com/syself/cluster-api-provider-hetzner/"
+  code: 307
+  owner: cedi
