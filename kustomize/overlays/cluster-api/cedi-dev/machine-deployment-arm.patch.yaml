@@ -1,15 +1,15 @@
 - op: replace
   path: "/spec/template/spec/version"
-  value: v1.29.1
+  value: v1.29.0
 
 - op: replace
   path: "/spec/replicas"
-  value: 2343
+  value: 2
 
 - op: replace
   path: "/metadata/annotations/cluster.x-k8s.io~1cluster-api-autoscaler-node-group-min-size"
-  value: '2343'
+  value: '2'
 
 - op: replace
   path: "/metadata/annotations/cluster.x-k8s.io~1cluster-api-autoscaler-node-group-max-size"
-  value: '2343'
+  value: '2'
