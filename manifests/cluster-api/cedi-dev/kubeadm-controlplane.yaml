@@ -180,7 +180,7 @@ spec:
     preKubeadmCommands:
       - export CRUN=1.6
       - export CONTAINERD=1.6.8
-      - export KUBERNETES_VERSION="v1.28.2"
+      - export KUBERNETES_VERSION="v1.28.5"
       - export KUBERNETES_VERSION_MAJOR="${KUBERNETES_VERSION%.*}"
       - export KUBERNETES_VERSION_CLEAN=$(echo $KUBERNETES_VERSION | sed 's/^v//')
       - localectl set-locale LANG=en_US.UTF-8
