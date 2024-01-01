@@ -219,4 +219,4 @@ spec:
     type: "RollingUpdate"
     rollingUpdate:
       maxSurge: 1
-  version: v1.28.2
+  version: v1.28.5
