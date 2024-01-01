@@ -15,7 +15,7 @@ patchesJson6902:
   - target:
       kind: KubeadmControlPlane
       namespace: default
-      name: control-plane
+      name: cedi-dev-control-plane
     path: kubeadm-controlplane.patch.yaml
 
   - target:
