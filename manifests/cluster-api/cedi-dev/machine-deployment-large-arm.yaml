@@ -10,7 +10,7 @@ metadata:
   namespace: default
 spec:
   clusterName: cedi-dev
-  replicas: 1
+  replicas: 0
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -49,7 +49,7 @@ metadata:
   namespace: default
 spec:
   clusterName: cedi-dev
-  replicas: 1
+  replicas: 0
   strategy:
     type: RollingUpdate
     rollingUpdate:
