@@ -91,7 +91,7 @@ mimir:
       remote_timeout: 4s
 
 nginx:
-  replicas: 1
+  replicas: 3
   autoscaling:
     enabled: false
     minReplicas: 1
@@ -124,7 +124,7 @@ ingester:
       whenUnsatisfiable: ScheduleAnyway
 
 store_gateway:
-  replicas: 1
+  replicas: 3
 
   persistentVolume:
     size: 10Gi
@@ -151,7 +151,7 @@ store_gateway:
 alertmanager:
   persistentVolume:
     enabled: true
-  replicas: 2
+  replicas: 1
   statefulSet:
     enabled: true
 
@@ -170,7 +170,7 @@ compactor:
     size: 20Gi
 
 distributor:
-  replicas: 6
+  replicas: 3
 
   affinity:
     podAntiAffinity:
@@ -188,13 +188,13 @@ overrides_exporter:
   replicas: 1
 
 querier:
-  replicas: 1
+  replicas: 3
 
 query_frontend:
-  replicas: 1
+  replicas: 3
 
 ruler:
-  replicas: 2
+  replicas: 3
 
   affinity:
     podAntiAffinity:
@@ -208,7 +208,7 @@ ruler:
 
 chunks-cache:
   enabled: true
-  replicas: 2
+  replicas: 3
   allocatedMemory: 2048
 
   affinity:
