@@ -9,6 +9,12 @@ patchesJson6902:
   - target:
       kind: KubeadmConfigTemplate
       namespace: default
+      name: worker-template-x86-taints
+    path: kubeadm-config-template.patch.yaml
+
+  - target:
+      kind: KubeadmConfigTemplate
+      namespace: default
       name: worker-template
     path: kubeadm-config-template.patch.yaml
 
