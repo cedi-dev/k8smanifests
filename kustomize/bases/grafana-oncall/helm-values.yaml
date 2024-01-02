@@ -63,6 +63,12 @@ postgresql:
     nodeSelector:
       kubernetes.io/arch: amd64
 
+    tolerations:
+      - key: "arch"
+        operator: "Equal"
+        value: "amd64"
+        effect: "NoSchedule"
+
   auth:
     database: oncall
 
