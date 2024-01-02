@@ -21,8 +21,8 @@ spec:
             path: kustomize/overlays/grafana-mimir
           - name: grafana
             path: kustomize/overlays/grafana
-          - name: grafana-oncall
-            path: kustomize/overlays/grafana-oncall
+          #- name: grafana-oncall
+          #  path: kustomize/overlays/grafana-oncall
   template:
     metadata:
       name: "{{name}}"
