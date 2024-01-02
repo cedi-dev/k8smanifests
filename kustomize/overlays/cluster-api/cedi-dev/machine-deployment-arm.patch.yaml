@@ -1,6 +1,6 @@
 - op: replace
   path: "/spec/template/spec/version"
-  value: v1.29.0
+  value: v1.28.5
 
 - op: replace
   path: "/spec/replicas"
