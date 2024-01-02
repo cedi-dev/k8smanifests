@@ -48,6 +48,14 @@ write:
     - secretRef:
         name: loki-s3-secret
 
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "40m"
+    limits:
+      memory: "500Mi"
+      cpu: "80m"
+
 read:
   replicas: 3
   extraArgs:
@@ -67,6 +75,14 @@ read:
               app.kubernetes.io/name: mimir
           topologyKey: topology.kubernetes.io/region
 
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "10m"
+    limits:
+      memory: "250Mi"
+      cpu: "45m"
+
 backend:
   replicas: 3
 
@@ -79,6 +95,14 @@ backend:
               app.kubernetes.io/instance: mimir
               app.kubernetes.io/name: mimir
           topologyKey: topology.kubernetes.io/region
+
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "15m"
+    limits:
+      memory: "400Mi"
+      cpu: "40m"
 
 monitoring:
   serviceMonitor:

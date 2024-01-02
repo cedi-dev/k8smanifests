@@ -8,6 +8,18 @@ bases:
 generators:
   - ./secret-generator.yaml
 
+configMapGenerator:
+  - name: loki-fixed-resources-dashboards
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Grafana Loki'
+    files:
+      - loki-writes-resources.json
+      - loki-read-resources.json
+
 resources:
   - servicemonitor.yaml
 
@@ -30,3 +42,14 @@ patchesJson6902:
       - op: replace
         path: /spec/template/spec/affinity/podAntiAffinity/requiredDuringSchedulingIgnoredDuringExecution/0/topologyKey
         value: topology.kubernetes.io/region
+
+  - target:
+      kind: (StatefulSet|Deployment)
+      group: ConfigMap
+      version: v1
+      name: "loki-dashboards-2"
+    patch: |-
+      - op: remove
+        path: "/data/loki-writes-resources.json"
+      - op: remove
+        path: "/data/loki-reads-resources.json"
