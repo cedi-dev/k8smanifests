@@ -4,12 +4,16 @@
 
 - op: replace
   path: "/spec/replicas"
-  value: 2
+  value: 1
 
 - op: replace
   path: "/metadata/annotations/cluster.x-k8s.io~1cluster-api-autoscaler-node-group-min-size"
-  value: '2'
+  value: '1'
 
 - op: replace
   path: "/metadata/annotations/cluster.x-k8s.io~1cluster-api-autoscaler-node-group-max-size"
-  value: '2'
+  value: '1'
+
+- op: replace
+  path: "/spec/template/spec/infrastructureRef/name"
+  value: worker-arm-medium
