@@ -149,6 +149,7 @@ store_gateway:
       whenUnsatisfiable: ScheduleAnyway
 
 alertmanager:
+  enabled: false
   persistentVolume:
     enabled: true
   replicas: 1
