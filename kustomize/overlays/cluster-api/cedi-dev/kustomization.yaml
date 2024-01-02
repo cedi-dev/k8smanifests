@@ -41,18 +41,3 @@ patchesJson6902:
       namespace: default
       name: worker-x86-nbg
     path: machine-deployment-x86.patch.yaml
-  
-  - target:
-      kind: MachineDeployment
-      namespace: default
-      name: worker-arm-nbg
-    patch: |-
-      - op: replace
-        path: "/spec/replicas"
-        value: 1
-      - op: replace
-        path: "/metadata/annotations/cluster.x-k8s.io~1cluster-api-autoscaler-node-group-min-size"
-        value: '1'
-      - op: replace
-        path: "/metadata/annotations/cluster.x-k8s.io~1cluster-api-autoscaler-node-group-max-size"
-        value: '1'
