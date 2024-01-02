@@ -103,6 +103,7 @@ ingester:
   persistentVolume:
     size: 50Gi
 
+
   zoneAwareReplication:
     enabled: true
     topologyKey: 'topology.kubernetes.io/region'
@@ -121,14 +122,6 @@ ingester:
       maxSkew: 3
       topologyKey: topology.kubernetes.io/region
       whenUnsatisfiable: ScheduleAnyway
-
-  resources:
-    requests:
-      memory: "2Gi"
-      cpu: "140m"
-    limits:
-      memory: "4Gi"
-      cpu: "400m"
 
 store_gateway:
   replicas: 3
@@ -154,14 +147,6 @@ store_gateway:
       maxSkew: 3
       topologyKey: topology.kubernetes.io/region
       whenUnsatisfiable: ScheduleAnyway
-
-  resources:
-    requests:
-      memory: "40Mi"
-      cpu: "10m"
-    limits:
-      memory: "500Mi"
-      cpu: "50m"
 
 alertmanager:
   persistentVolume:
@@ -199,58 +184,14 @@ distributor:
             topologyKey: topology.kubernetes.io/region
           weight: 100
 
-  resources:
-    requests:
-      memory: "60Mi"
-      cpu: "40m"
-    limits:
-      memory: "1Gi"
-      cpu: "100m"
-
 overrides_exporter:
   replicas: 1
 
 querier:
   replicas: 3
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: ruler
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
-
-  resources:
-    requests:
-      memory: "200Mi"
-      cpu: "30m"
-    limits:
-      memory: "1500Mi"
-      cpu: "90m"
-
 query_frontend:
   replicas: 3
-
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: ruler
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
-
-  resources:
-    requests:
-      memory: "60Mi"
-      cpu: "1m"
-    limits:
-      memory: "300Mi"
-      cpu: "20m"
 
 ruler:
   replicas: 3
@@ -264,14 +205,6 @@ ruler:
               app.kubernetes.io/instance: mimir
               app.kubernetes.io/name: mimir
           topologyKey: topology.kubernetes.io/region
-
-  resources:
-    requests:
-      memory: "30Mi"
-      cpu: "2m"
-    limits:
-      memory: "40Mi"
-      cpu: "30m"
 
 chunks-cache:
   enabled: true
