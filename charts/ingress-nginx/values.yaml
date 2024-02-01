@@ -9,6 +9,13 @@ ingress-nginx:
     ingressClassByName: true
     watchIngressWithoutClass: false
 
+    resources:
+      requests:
+        cpu: 535m
+        memory: 572Mi
+      limits:
+        memory: 572Mi
+
     service:
       enabled: true
       externalTrafficPolicy: "Local"
