@@ -103,8 +103,8 @@ backend:
 
   resources:
     requests:
-      memory: 22m
-      cpu: 100Mi
+      cpu: 22m
+      memory: 100Mi
     limits:
       memory: 100Mi
 
