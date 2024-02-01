@@ -19,6 +19,13 @@ loki:
 gateway:
   replicas: 3
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
   affinity: |
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -50,11 +57,10 @@ write:
 
   resources:
     requests:
-      memory: "100Mi"
-      cpu: "40m"
+      memory: 313Mi
+      cpu: 35m
     limits:
-      memory: "500Mi"
-      cpu: "80m"
+      memory: 313Mi
 
 read:
   replicas: 3
@@ -77,11 +83,10 @@ read:
 
   resources:
     requests:
-      memory: "100Mi"
-      cpu: "10m"
+      cpu: 27m
+      memory: 137Mi
     limits:
-      memory: "250Mi"
-      cpu: "45m"
+      memory: 137Mi
 
 backend:
   replicas: 3
@@ -98,11 +103,10 @@ backend:
 
   resources:
     requests:
-      memory: "100Mi"
-      cpu: "15m"
+      memory: 22m
+      cpu: 100Mi
     limits:
-      memory: "400Mi"
-      cpu: "40m"
+      memory: 100Mi
 
 monitoring:
   serviceMonitor:
