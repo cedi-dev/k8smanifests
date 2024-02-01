@@ -14,6 +14,13 @@ metaMonitoring:
 continuous_test:
   enabled: true
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
 minio:
   enabled: false
 
@@ -97,12 +104,25 @@ nginx:
     minReplicas: 1
     maxReplicas: 3
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
 ingester:
   replicas: 3
 
   persistentVolume:
     size: 50Gi
 
+  resources:
+    requests:
+      cpu: 139m
+      memory: 2003Mi
+    limits:
+      memory: 2003Mi
 
   zoneAwareReplication:
     enabled: true
@@ -125,6 +145,13 @@ ingester:
 
 store_gateway:
   replicas: 3
+
+  resources:
+    requests:
+      cpu: 48m
+      memory: 461Mi
+    limits:
+      memory: 461Mi
 
   persistentVolume:
     size: 10Gi
@@ -170,8 +197,22 @@ compactor:
   persistentVolume:
     size: 20Gi
 
+  resources:
+    requests:
+      cpu: 944m
+      memory: 335Mi
+    limits:
+      memory: 335Mi
+
 distributor:
   replicas: 3
+
+  resources:
+    requests:
+      cpu: 80m
+      memory: 196Mi
+    limits:
+      memory: 196Mi
 
   affinity:
     podAntiAffinity:
@@ -188,14 +229,42 @@ distributor:
 overrides_exporter:
   replicas: 1
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
 querier:
   replicas: 3
+
+  resources:
+    requests:
+      cpu: 87m
+      memory: 257Mi
+    limits:
+      memory: 257Mi
 
 query_frontend:
   replicas: 3
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
 ruler:
   replicas: 3
+
+  resources:
+    requests:
+      cpu: 18m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
 
   affinity:
     podAntiAffinity:
@@ -212,6 +281,13 @@ chunks-cache:
   replicas: 3
   allocatedMemory: 2048
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -227,6 +303,13 @@ index-cache:
   replicas: 3
   allocatedMemory: 2048
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -239,6 +322,13 @@ index-cache:
 
 metadata-cache:
   enabled: true
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
 
   affinity:
     podAntiAffinity:
@@ -253,6 +343,13 @@ metadata-cache:
 results-cache:
   enabled: true
   replicas: 3
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
 
   affinity:
     podAntiAffinity:
