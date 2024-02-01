@@ -35,6 +35,13 @@ metaMonitoring:
 metricsGenerator:
   enabled: true
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
   config:
     storage:
       remote_write:
@@ -74,8 +81,22 @@ gateway:
   verboseLogging: false
   replicas: 1
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
+
 ingester:
   replicas: 3
+
+  resources:
+    requests:
+      cpu: 14m
+      memory: 421Mi
+    limits:
+      memory: 421Mi
 
   persistence:
     enabled: true
@@ -93,6 +114,13 @@ ingester:
 distributor:
   replicas: 3
 
+  resources:
+    requests:
+      cpu: 10m
+      memory: 1255Mi
+    limits:
+      memory: 1255Mi
+
   extraArgs:
     - "-config.expand-env=true"
 
@@ -108,8 +136,22 @@ compactor:
     - secretRef:
         name: tempo-s3-secret
 
+  resources:
+    requests:
+      cpu: 19m
+      memory: 909Mi
+    limits:
+      memory: 909Mi
+
 querier:
   replicas: 1
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 246Mi
+    limits:
+      memory: 246Mi
 
   extraArgs:
     - "-config.expand-env=true"
@@ -120,6 +162,13 @@ querier:
 
 queryFrontend:
   replicas: 1
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
 
   query:
     extraArgs:

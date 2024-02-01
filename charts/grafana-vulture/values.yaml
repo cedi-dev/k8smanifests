@@ -10,3 +10,10 @@ tempo-vulture:
   tempoAddress:
     push: tempo-distributor.observability.svc.cluster.local
     query: http://tempo-query-frontend.observability.svc.cluster.local:3100
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
