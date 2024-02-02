@@ -120,10 +120,10 @@ ingester:
 
   resources:
     requests:
-      cpu: 139m
-      memory: 2003Mi
+      cpu: 221m
+      memory: 2260Mi
     limits:
-      memory: 2003Mi
+      memory: 2260Mi
 
   zoneAwareReplication:
     enabled: true
@@ -257,6 +257,16 @@ query_frontend:
     limits:
       memory: 100Mi
 
+query_scheduler:
+  enabled: true
+  replicas: 3
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi
 ruler:
   replicas: 3
 
@@ -361,3 +371,11 @@ results-cache:
               app.kubernetes.io/instance: mimir
               app.kubernetes.io/name: mimir
           topologyKey: topology.kubernetes.io/region
+
+rollout_operator:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      memory: 100Mi

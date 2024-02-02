@@ -32,10 +32,10 @@ patchesJson6902:
           averageUtilization: 60
 
   - target:
-      kind: StatefulSet
+      kind: Deployment
       group: apps
       version: v1
-      name: "mimir-index-cache"
+      name: mimir-rollout-operator
     patch: |-
       - op: remove
-        path: /spec/template/spec/containers/0/resources/requests/cpu
+        path: /spec/template/spec/containers/0/resources/limits/cpu
