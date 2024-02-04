@@ -18,8 +18,6 @@ continuous_test:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
 minio:
   enabled: false
@@ -108,8 +106,6 @@ nginx:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
 ingester:
   replicas: 3
@@ -120,8 +116,6 @@ ingester:
   resources:
     requests:
       cpu: 221m
-      memory: 2260Mi
-    limits:
       memory: 2260Mi
 
   zoneAwareReplication:
@@ -149,8 +143,6 @@ store_gateway:
   resources:
     requests:
       cpu: 48m
-      memory: 461Mi
-    limits:
       memory: 461Mi
 
   persistentVolume:
@@ -201,8 +193,6 @@ compactor:
     requests:
       cpu: 944m
       memory: 335Mi
-    limits:
-      memory: 335Mi
 
 distributor:
   replicas: 3
@@ -231,8 +221,6 @@ overrides_exporter:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
 querier:
   replicas: 3
@@ -241,8 +229,6 @@ querier:
     requests:
       cpu: 87m
       memory: 257Mi
-    limits:
-      memory: 257Mi
 
 query_frontend:
   replicas: 3
@@ -250,8 +236,6 @@ query_frontend:
   resources:
     requests:
       cpu: 10m
-      memory: 100Mi
-    limits:
       memory: 100Mi
 
 query_scheduler:
@@ -262,16 +246,13 @@ query_scheduler:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
+
 ruler:
   replicas: 3
 
   resources:
     requests:
       cpu: 18m
-      memory: 100Mi
-    limits:
       memory: 100Mi
 
   affinity:
@@ -293,8 +274,6 @@ chunks-cache:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 200Mi
 
   affinity:
     podAntiAffinity:
@@ -315,8 +294,6 @@ index-cache:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
   affinity:
     podAntiAffinity:
@@ -334,8 +311,6 @@ metadata-cache:
   resources:
     requests:
       cpu: 10m
-      memory: 100Mi
-    limits:
       memory: 100Mi
 
   affinity:
@@ -356,8 +331,6 @@ results-cache:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
   affinity:
     podAntiAffinity:
@@ -373,6 +346,4 @@ rollout_operator:
   resources:
     requests:
       cpu: 10m
-      memory: 100Mi
-    limits:
       memory: 100Mi
