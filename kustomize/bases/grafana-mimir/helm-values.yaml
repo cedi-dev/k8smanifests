@@ -198,6 +198,12 @@ compactor:
 distributor:
   replicas: 3
 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+
   resources:
     requests:
       cpu: 80m
@@ -205,16 +211,13 @@ distributor:
 
   affinity:
     podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/component: distributor
-                app.kubernetes.io/instance: mimir
-                app.kubernetes.io/name: mimir
-            topologyKey: topology.kubernetes.io/region
-          weight: 100
-
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: distributor
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 overrides_exporter:
   replicas: 1
 
