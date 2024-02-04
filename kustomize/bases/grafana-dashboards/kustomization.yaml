@@ -16,16 +16,20 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes Infra Apps'
     files:
-      - dashboards/argocd-dashboard.json
+      - kubernetes-infra-apps/argocd-dashboard.json
 
   - name: cert-manager-dashboard
     namespace: observability
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes Infra Apps'
     files:
-      - dashboards/cert-manager-dashboard.json
+      - kubernetes-infra-apps/cert-manager-dashboard.json
 
   - name: etcd-enhanced-dashboard
     namespace: observability
@@ -40,8 +44,10 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Kubernetes Infra Apps'
     files:
-      - dashboards/ingress-nginx-dashboard.json
+      - kubernetes-infra-apps/ingress-nginx-dashboard.json
 
   - name: hcloud-server-dashboard
     namespace: observability
@@ -340,9 +346,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/apiserver.json
+      - kubernetes-mixin/apiserver.json
 
   - name: cluster-total
     namespace: observability
@@ -350,9 +356,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/cluster-total.json
+      - kubernetes-mixin/cluster-total.json
 
   - name: controller-manager
     namespace: observability
@@ -360,9 +366,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/controller-manager.json
+      - kubernetes-mixin/controller-manager.json
 
   - name: k8s-resources-cluster
     namespace: observability
@@ -370,9 +376,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/k8s-resources-cluster.json
+      - kubernetes-mixin/k8s-resources-cluster.json
 
   - name: k8s-resources-namespace
     namespace: observability
@@ -380,9 +386,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/k8s-resources-namespace.json
+      - kubernetes-mixin/k8s-resources-namespace.json
 
   - name: k8s-resources-node
     namespace: observability
@@ -390,9 +396,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/k8s-resources-node.json
+      - kubernetes-mixin/k8s-resources-node.json
 
   - name: k8s-resources-pod
     namespace: observability
@@ -400,9 +406,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/k8s-resources-pod.json
+      - kubernetes-mixin/k8s-resources-pod.json
 
   - name: k8s-resources-workload
     namespace: observability
@@ -410,9 +416,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/k8s-resources-workload.json
+      - kubernetes-mixin/k8s-resources-workload.json
 
   - name: k8s-resources-workloads-namespace
     namespace: observability
@@ -420,9 +426,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/k8s-resources-workloads-namespace.json
+      - kubernetes-mixin/k8s-resources-workloads-namespace.json
 
   - name: kubelet
     namespace: observability
@@ -430,9 +436,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/kubelet.json
+      - kubernetes-mixin/kubelet.json
 
   - name: namespace-by-pod
     namespace: observability
@@ -440,9 +446,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/namespace-by-pod.json
+      - kubernetes-mixin/namespace-by-pod.json
 
   - name: namespace-by-workload
     namespace: observability
@@ -450,9 +456,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/namespace-by-workload.json
+      - kubernetes-mixin/namespace-by-workload.json
 
   - name: persistentvolumesusage
     namespace: observability
@@ -460,9 +466,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/persistentvolumesusage.json
+      - kubernetes-mixin/persistentvolumesusage.json
 
   - name: pod-total
     namespace: observability
@@ -470,9 +476,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/pod-total.json
+      - kubernetes-mixin/pod-total.json
 
   - name: proxy
     namespace: observability
@@ -480,9 +486,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/proxy.json
+      - kubernetes-mixin/proxy.json
 
   - name: scheduler
     namespace: observability
@@ -490,9 +496,9 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/scheduler.json
+      - kubernetes-mixin/scheduler.json
 
   - name: workload-total
     namespace: observability
@@ -500,6 +506,6 @@ configMapGenerator:
       labels:
         grafana_dashboard: '1'
       annotations:
-        grafana_folder: 'Kubernetes'
+        grafana_folder: 'Kubernetes Mixin'
     files:
-      - kubernetes/workload-total.json
+      - kubernetes-mixin/workload-total.json
