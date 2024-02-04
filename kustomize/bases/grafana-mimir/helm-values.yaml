@@ -211,8 +211,6 @@ distributor:
     requests:
       cpu: 80m
       memory: 196Mi
-    limits:
-      memory: 196Mi
 
   affinity:
     podAntiAffinity:
