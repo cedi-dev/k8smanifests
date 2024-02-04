@@ -254,8 +254,8 @@ ruler:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 15%
-      maxUnavailable: 0
+      maxSurge: 0
+      maxUnavailable: 1
 
   resources:
     requests:
