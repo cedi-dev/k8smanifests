@@ -8,8 +8,10 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Infrastructure'
     files:
-      - dashboards/adguardhome_exporter.json
+      - infrastructure/adguardhome_exporter.json
 
   - name: argocd-dashboard
     namespace: observability
@@ -54,8 +56,10 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Infrastructure'
     files:
-      - dashboards/hcloud-server-dashboard.json
+      - infrastructure/hcloud-server-dashboard.json
 
   - name: node-problem-detector
     namespace: observability
@@ -70,8 +74,10 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Infrastructure'
     files:
-      - dashboards/node_exporter.json
+      - infrastructure/node_exporter.json
 
   - name: urlshortener
     namespace: observability
@@ -336,8 +342,10 @@ configMapGenerator:
     options:
       labels:
         grafana_dashboard: '1'
+      annotations:
+        grafana_folder: 'Infrastructure'
     files:
-      - dashboards/cert-checker.json
+      - infrastructure/cert-checker.json
 
 
   - name: apiserver
