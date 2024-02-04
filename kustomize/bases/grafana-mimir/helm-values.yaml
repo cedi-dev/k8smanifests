@@ -75,6 +75,7 @@ mimir:
       max_query_parallelism: 224
       max_global_series_per_user: 0
       ingestion_rate: 0
+      ingestion_burst_size: 0
       # Delete from storage metrics data older than 1 year.
       compactor_blocks_retention_period: 1y
       # Allow ingestion of out-of-order samples up to 30 minutes since the latest received sample for the series.
