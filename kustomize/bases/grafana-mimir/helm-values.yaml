@@ -218,6 +218,7 @@ distributor:
               app.kubernetes.io/instance: mimir
               app.kubernetes.io/name: mimir
           topologyKey: topology.kubernetes.io/region
+
 overrides_exporter:
   replicas: 1
 
@@ -229,6 +230,22 @@ overrides_exporter:
 querier:
   replicas: 3
 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: querier
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
+
   resources:
     requests:
       cpu: 87m
@@ -236,6 +253,22 @@ querier:
 
 query_frontend:
   replicas: 3
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: query-frontend
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
   resources:
     requests:
@@ -245,6 +278,22 @@ query_frontend:
 query_scheduler:
   enabled: true
   replicas: 3
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: query-scheduler
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
   resources:
     requests:
