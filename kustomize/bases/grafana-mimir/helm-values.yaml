@@ -251,6 +251,12 @@ query_scheduler:
 ruler:
   replicas: 3
 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 15%
+      maxUnavailable: 0
+
   resources:
     requests:
       cpu: 18m
