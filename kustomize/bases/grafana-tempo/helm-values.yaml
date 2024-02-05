@@ -105,8 +105,28 @@ ingester:
     - secretRef:
         name: tempo-s3-secret
 
+  affinity: |
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: query-scheduler
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
+
 distributor:
   replicas: 3
+
+  affinity: |
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app.kubernetes.io/component: query-scheduler
+              app.kubernetes.io/instance: mimir
+              app.kubernetes.io/name: mimir
+          topologyKey: topology.kubernetes.io/region
 
   resources:
     requests:
