@@ -14,7 +14,8 @@ function join_by {
     fi;
 }
 
-age_keys=('age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq') # cedi
-age_keys+=('age10hzpv26wext204acftvf2n8r6hmnnwxdpkngzaysllpwynccjvjsjvhq4z') # k8s_cedi_dev.txt
+age_keys=('age1r9chn8pl3d4msxktw457x3xz2l8p04pwuyd7pkgldkmkakras5ks7tfsyq') # cedi@mae
+age_keys+=('age10hzpv26wext204acftvf2n8r6hmnnwxdpkngzaysllpwynccjvjsjvhq4z') # argocd (k8s_cedi_dev_new)
+age_keys+=('age1l4lhmkmvr4lype9x4dm3y9lxk2uekqwwj65mp4c36tnph6ytfakqesnats') # GH Codespaces (keys_ghcodespace)
 
 find . -name "*.secret.yaml" | xargs -n1 sops --age $(join_by , "${age_keys[@]}") -e -i
