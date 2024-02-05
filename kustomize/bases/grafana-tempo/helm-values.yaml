@@ -39,8 +39,6 @@ metricsGenerator:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
   config:
     storage:
@@ -85,8 +83,6 @@ gateway:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
 ingester:
   replicas: 3
@@ -94,8 +90,6 @@ ingester:
   resources:
     requests:
       cpu: 14m
-      memory: 421Mi
-    limits:
       memory: 421Mi
 
   persistence:
@@ -118,8 +112,6 @@ distributor:
     requests:
       cpu: 10m
       memory: 1255Mi
-    limits:
-      memory: 1255Mi
 
   extraArgs:
     - "-config.expand-env=true"
@@ -140,8 +132,6 @@ compactor:
     requests:
       cpu: 19m
       memory: 909Mi
-    limits:
-      memory: 909Mi
 
 querier:
   replicas: 1
@@ -149,8 +139,6 @@ querier:
   resources:
     requests:
       cpu: 10m
-      memory: 246Mi
-    limits:
       memory: 246Mi
 
   extraArgs:
@@ -166,8 +154,6 @@ queryFrontend:
   resources:
     requests:
       cpu: 10m
-      memory: 100Mi
-    limits:
       memory: 100Mi
 
   query:
