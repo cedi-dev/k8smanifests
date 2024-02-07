@@ -54,4 +54,3 @@ spec:
         - name: cedi@mae
         - name: cedi@ivy
         - name: cedi@devpi
-
