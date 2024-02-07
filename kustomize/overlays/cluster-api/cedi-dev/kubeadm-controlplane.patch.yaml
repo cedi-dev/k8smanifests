@@ -3,5 +3,13 @@
   value: v1.28.6
 
 - op: replace
+  path: "/spec/kubeadmConfigSpec/preKubeadmCommands/0"
+  value: export CRUN=1.14
+
+- op: replace
+  path: "/spec/kubeadmConfigSpec/preKubeadmCommands/1"
+  value: export CONTAINERD=1.7.13
+
+- op: replace
   path: "/spec/kubeadmConfigSpec/preKubeadmCommands/2"
   value: export KUBERNETES_VERSION="v1.28.6"
