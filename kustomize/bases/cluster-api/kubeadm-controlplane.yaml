@@ -103,26 +103,6 @@ spec:
         path: /etc/modules-load.d/crio.conf
         permissions: "0744"
       - content: |
-          version = 2
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
-            runtime_type = "io.containerd.runc.v2"
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
-            SystemdCgroup = true
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.crun]
-            runtime_type = "io.containerd.runc.v2"
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.crun.options]
-            BinaryName = "crun"
-            Root = "/usr/local/sbin"
-            SystemdCgroup = true
-          [plugins."io.containerd.grpc.v1.cri".containerd]
-            default_runtime_name = "crun"
-          [plugins."io.containerd.runtime.v1.linux"]
-            runtime = "crun"
-            runtime_root = "/usr/local/sbin"
-        owner: root:root
-        path: /etc/containerd/config.toml
-        permissions: "0744"
-      - content: |
           net.bridge.bridge-nf-call-iptables  = 1
           net.bridge.bridge-nf-call-ip6tables = 1
           net.ipv4.ip_forward                 = 1
@@ -178,7 +158,7 @@ spec:
           rotate-server-certificates: "true"
           tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
     preKubeadmCommands:
-      - export CRUN=1.14
+      - set -x
       - export CONTAINERD=1.7.13
       - export KUBERNETES_VERSION="v1.29.1"
       - export KUBERNETES_VERSION_MAJOR="${KUBERNETES_VERSION%.*}"
@@ -196,10 +176,11 @@ spec:
       - sha256sum --check cri-containerd-cni-$CONTAINERD-linux-$ARCH.tar.gz.sha256sum
       - tar --no-overwrite-dir -C / -xzf cri-containerd-cni-$CONTAINERD-linux-$ARCH.tar.gz
       - rm -f cri-containerd-cni-$CONTAINERD-linux-$ARCH.tar.gz cri-containerd-cni-$CONTAINERD-linux-$ARCH.tar.gz.sha256sum
-      - wget https://github.com/containers/crun/releases/download/$CRUN/crun-$CRUN-linux-$ARCH
-        -O /usr/local/sbin/crun && chmod +x /usr/local/sbin/crun
       - rm -f /etc/cni/net.d/10-containerd-net.conflist
       - chmod -R 644 /etc/cni && chown -R root:root /etc/cni
+      - mkdir -p /etc/containerd
+      - containerd config default > /etc/containerd/config.toml
+      - sed -i  "s/SystemdCgroup = false/SystemdCgroup = true/" /etc/containerd/config.toml
       - systemctl daemon-reload && systemctl enable containerd && systemctl start containerd
       - mkdir -p /etc/apt/keyrings/
       - curl -fsSL https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION_MAJOR/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
