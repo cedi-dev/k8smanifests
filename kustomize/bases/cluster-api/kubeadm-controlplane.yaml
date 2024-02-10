@@ -210,7 +210,7 @@ spec:
       - systemctl enable kubelet
       - kubeadm config images pull --kubernetes-version $KUBERNETES_VERSION_CLEAN
       - echo 'source <(kubectl completion bash)' >>~/.bashrc
-      - echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >>~/.bashrc
+      - echo 'export KUBECONFIG=/etc/kubernetes/super-admin.conf' >>~/.bashrc
       - apt-get -y autoremove && apt-get -y clean all
   machineTemplate:
     infrastructureRef:
