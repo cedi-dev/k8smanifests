@@ -18,6 +18,9 @@ ingress-nginx:
       enabled: true
       externalTrafficPolicy: "Local"
       healthCheckNodePort: 32596
+      ipFamilyPolicy: SingleStack
+      ipFamilies:
+      - IPv4
 
       annotations:
         load-balancer.hetzner.cloud/location: "nbg1"
