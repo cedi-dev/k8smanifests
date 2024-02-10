@@ -1,22 +1,22 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: shortlinks
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  destination:
-    namespace: urlshortener
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    path: manifests/shortlinks
-    repoURL: https://github.com/cedi-dev/k8smanifests.git
-    targetRevision: main
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: shortlinks
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   destination:
+#     namespace: urlshortener
+#     server: https://kubernetes.default.svc
+#   project: default
+#   source:
+#     path: manifests/shortlinks
+#     repoURL: https://github.com/cedi-dev/k8smanifests.git
+#     targetRevision: main
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
