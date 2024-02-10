@@ -3,10 +3,6 @@
   value: v1.29.1
 
 - op: replace
-  path: "/spec/kubeadmConfigSpec/preKubeadmCommands/0"
-  value: export CRUN=1.14
-
-- op: replace
   path: "/spec/kubeadmConfigSpec/preKubeadmCommands/1"
   value: export CONTAINERD=1.7.13
 
