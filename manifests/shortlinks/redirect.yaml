@@ -1,64 +1,64 @@
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: redirect-to-shortlink
-spec:
-  source: short.cedi.dev
-  target: ccl.pw
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: cedric-kienzler
-spec:
-  source: cedric-kienzler.de
-  target: https://cedi.dev
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: cedi-dev
-spec:
-  source: cedi.dev
-  target: https://www.cedi.dev
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: lucyfae
-spec:
-  source: lucyfae.de
-  target: https://www.lucyfae.de
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: kienzler-io
-spec:
-  source: kienzler.io
-  target: https://cedi.dev
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
+# apiVersion: urlshortener.cedi.dev/v1alpha1
+# kind: Redirect
+# metadata:
+#   name: redirect-to-shortlink
+# spec:
+#   source: short.cedi.dev
+#   target: ccl.pw
+#   code: 308
+#   tls:
+#     enable: true
+#     annotations:
+#       cert-manager.io/cluster-issuer: letsencrypt-prod
+# ---
+# apiVersion: urlshortener.cedi.dev/v1alpha1
+# kind: Redirect
+# metadata:
+#   name: cedric-kienzler
+# spec:
+#   source: cedric-kienzler.de
+#   target: https://cedi.dev
+#   code: 308
+#   tls:
+#     enable: true
+#     annotations:
+#       cert-manager.io/cluster-issuer: letsencrypt-prod
+# ---
+# apiVersion: urlshortener.cedi.dev/v1alpha1
+# kind: Redirect
+# metadata:
+#   name: cedi-dev
+# spec:
+#   source: cedi.dev
+#   target: https://www.cedi.dev
+#   code: 308
+#   tls:
+#     enable: true
+#     annotations:
+#       cert-manager.io/cluster-issuer: letsencrypt-prod
+# ---
+# apiVersion: urlshortener.cedi.dev/v1alpha1
+# kind: Redirect
+# metadata:
+#   name: lucyfae
+# spec:
+#   source: lucyfae.de
+#   target: https://www.lucyfae.de
+#   code: 308
+#   tls:
+#     enable: true
+#     annotations:
+#       cert-manager.io/cluster-issuer: letsencrypt-prod
+# ---
+# apiVersion: urlshortener.cedi.dev/v1alpha1
+# kind: Redirect
+# metadata:
+#   name: kienzler-io
+# spec:
+#   source: kienzler.io
+#   target: https://cedi.dev
+#   code: 308
+#   tls:
+#     enable: true
+#     annotations:
+#       cert-manager.io/cluster-issuer: letsencrypt-prod
