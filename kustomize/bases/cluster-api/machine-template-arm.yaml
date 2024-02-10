@@ -1,25 +1,6 @@
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: HCloudMachineTemplate
 metadata:
-  name: worker-arm-small
-  namespace: default
-  labels:
-    cluster.x-k8s.io/cluster-name: "cedi-dev"
-spec:
-  template:
-    spec:
-      imageName: ubuntu-22.04
-      placementGroupName: worker-nodes
-      type: cax21
-      sshKeys:
-        - name: cedi@mae
-        - name: cedi@ivy
-        - name: cedi@devpi
-
----
-apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-kind: HCloudMachineTemplate
-metadata:
   name: worker-arm-medium
   namespace: default
   labels:
@@ -30,25 +11,6 @@ spec:
       imageName: ubuntu-22.04
       placementGroupName: worker-nodes
       type: cax31
-      sshKeys:
-        - name: cedi@mae
-        - name: cedi@ivy
-        - name: cedi@devpi
-
----
-apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-kind: HCloudMachineTemplate
-metadata:
-  name: worker-arm-large
-  namespace: default
-  labels:
-    cluster.x-k8s.io/cluster-name: "cedi-dev"
-spec:
-  template:
-    spec:
-      imageName: ubuntu-22.04
-      placementGroupName: worker-nodes
-      type: cax41
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy

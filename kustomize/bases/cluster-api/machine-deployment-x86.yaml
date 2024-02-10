@@ -3,8 +3,8 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
   annotations:
-    cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "2"
-    cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "2"
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "1"
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
   labels:
     nodepool: worker-x86
   name: worker-x86-nbg
