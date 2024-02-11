@@ -75,8 +75,12 @@ datasources:
     editable: false
     jsonData:
       derivedFields:
-        - name: "traceID"
-          matcherRegex: "traceID=(\\w+)"
+        - name: "trace_id"
+          matcherRegex: "trace_id=(\\w+)"
+          url: "$${__value.raw}"
+          datasourceUid: tempo
+        - name: "span_id"
+          matcherRegex: "span_id=(\\w+)"
           url: "$${__value.raw}"
           datasourceUid: tempo
       maxLines: 1000
