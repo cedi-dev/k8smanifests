@@ -1,6 +1,6 @@
 apiVersion: v2
 name: addon-prometheus-node-exporter
-version: 4.8.1
+version: 4.30.0
 dependencies:
   - name: prometheus-node-exporter
     version: 4.30.0

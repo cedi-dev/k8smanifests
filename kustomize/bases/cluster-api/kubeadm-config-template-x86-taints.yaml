@@ -86,6 +86,7 @@ spec:
         - chmod -R 644 /etc/cni && chown -R root:root /etc/cni
         - mkdir -p /etc/containerd
         - containerd config default > /etc/containerd/config.toml
+        - sed -i  "s/SystemdCgroup = false/SystemdCgroup = true/" /etc/containerd/config.toml
         - systemctl daemon-reload && systemctl enable containerd && systemctl start containerd
         - mkdir -p /etc/apt/keyrings/
         - curl -fsSL https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION_MAJOR/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg

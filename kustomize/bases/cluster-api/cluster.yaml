@@ -8,6 +8,7 @@ spec:
     pods:
       cidrBlocks:
         - 10.244.0.0/16
+        # - fd00:244::/64 # explicitly to not forget later
   controlPlaneRef:
     apiVersion: controlplane.cluster.x-k8s.io/v1beta1
     kind: KubeadmControlPlane

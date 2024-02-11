@@ -14,6 +14,12 @@ ingress-nginx:
         cpu: 535m
         memory: 572Mi
 
+    tolerations:
+      - key: "arch"
+        operator: "Equal"
+        value: "amd64"
+        effect: "NoSchedule"
+
     service:
       enabled: true
       externalTrafficPolicy: "Local"

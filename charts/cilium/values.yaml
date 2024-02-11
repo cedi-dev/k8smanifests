@@ -20,7 +20,7 @@ cilium:
   ipam:
     mode: "kubernetes"
 
-  kubeProxyReplacement: "strict"
+  kubeProxyReplacement: "true"
 
   operator:
     rollOutPods: true

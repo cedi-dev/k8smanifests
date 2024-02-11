@@ -32,14 +32,14 @@ patchesJson6902:
       kind: MachineDeployment
       namespace: default
       name: worker-arm-fsn
-    path: machine-deployment-arm.patch.yaml
+    path: machine-deployment.patch.yaml
 
   - target:
       version: v1beta1
       kind: MachineDeployment
       namespace: default
       name: worker-arm-hel
-    path: machine-deployment-arm.patch.yaml
+    path: machine-deployment.patch.yaml
 
   - target:
       version: v1beta1
