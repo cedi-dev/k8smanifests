@@ -462,6 +462,7 @@
               "mode": "dashed"
             }
           },
+          "fieldMinMax": false,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -488,6 +489,7 @@
               }
             ]
           },
+          "unit": "s",
           "unitScale": true
         },
         "overrides": []
