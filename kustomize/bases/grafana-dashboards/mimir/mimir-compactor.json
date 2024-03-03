@@ -36,6 +36,391 @@
    "panels": [
      {
        "collapsed": false,
+       "gridPos": {
+         "h": 1,
+         "w": 24,
+         "x": 0,
+         "y": 0
+       },
+       "id": 31,
+       "panels": [],
+       "title": "Overview",
+       "type": "row"
+     },
+     {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "$datasource"
+       },
+       "description": "",
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "thresholds"
+           },
+           "mappings": [],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "red",
+                 "value": 80
+               }
+             ]
+           },
+           "unitScale": true
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 4,
+         "w": 3,
+         "x": 0,
+         "y": 1
+       },
+       "id": 32,
+       "options": {
+         "colorMode": "value",
+         "graphMode": "none",
+         "justifyMode": "auto",
+         "orientation": "auto",
+         "reduceOptions": {
+           "calcs": [
+             "lastNotNull"
+           ],
+           "fields": "",
+           "values": false
+         },
+         "showPercentChange": false,
+         "textMode": "auto",
+         "wideLayout": true
+       },
+       "pluginVersion": "10.3.3",
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum by (pod) (cortex_compactor_tenants_discovered{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"})",
+           "instant": false,
+           "legendFormat": "__auto",
+           "range": true,
+           "refId": "A"
+         }
+       ],
+       "title": "Active Mimir Tenants",
+       "type": "stat"
+     },
+     {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "$datasource"
+       },
+       "description": "",
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "thresholds"
+           },
+           "mappings": [],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "red",
+                 "value": 80
+               }
+             ]
+           },
+           "unitScale": true
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 4,
+         "w": 3,
+         "x": 3,
+         "y": 1
+       },
+       "id": 36,
+       "options": {
+         "colorMode": "value",
+         "graphMode": "none",
+         "justifyMode": "auto",
+         "orientation": "auto",
+         "reduceOptions": {
+           "calcs": [
+             "lastNotNull"
+           ],
+           "fields": "",
+           "values": false
+         },
+         "showPercentChange": false,
+         "textMode": "auto",
+         "wideLayout": true
+       },
+       "pluginVersion": "10.3.3",
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum by (pod) (\n    cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}\n)",
+           "instant": false,
+           "legendFormat": "__auto",
+           "range": true,
+           "refId": "A"
+         }
+       ],
+       "title": "Successfull Tenants",
+       "type": "stat"
+     },
+     {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "$datasource"
+       },
+       "description": "",
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "thresholds"
+           },
+           "mappings": [],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "red",
+                 "value": 80
+               }
+             ]
+           },
+           "unitScale": true
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 4,
+         "w": 3,
+         "x": 6,
+         "y": 1
+       },
+       "id": 33,
+       "options": {
+         "colorMode": "value",
+         "graphMode": "none",
+         "justifyMode": "auto",
+         "orientation": "auto",
+         "reduceOptions": {
+           "calcs": [
+             "lastNotNull"
+           ],
+           "fields": "",
+           "values": false
+         },
+         "showPercentChange": false,
+         "textMode": "auto",
+         "wideLayout": true
+       },
+       "pluginVersion": "10.3.3",
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum by (pod) (\n    cortex_compactor_tenants_discovered{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} - \n    (\n        cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} +\n        cortex_compactor_tenants_processing_failed{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} +\n        cortex_compactor_tenants_skipped{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}\n    )\n)",
+           "instant": false,
+           "legendFormat": "__auto",
+           "range": true,
+           "refId": "A"
+         }
+       ],
+       "title": "Outstanding Tenants",
+       "type": "stat"
+     },
+     {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "$datasource"
+       },
+       "description": "",
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "thresholds"
+           },
+           "mappings": [
+             {
+               "options": {
+                 "0": {
+                   "color": "green",
+                   "index": 0,
+                   "text": "None"
+                 }
+               },
+               "type": "value"
+             }
+           ],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "orange",
+                 "value": 1
+               }
+             ]
+           },
+           "unitScale": true
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 4,
+         "w": 3,
+         "x": 9,
+         "y": 1
+       },
+       "id": 35,
+       "options": {
+         "colorMode": "value",
+         "graphMode": "none",
+         "justifyMode": "auto",
+         "orientation": "auto",
+         "reduceOptions": {
+           "calcs": [
+             "lastNotNull"
+           ],
+           "fields": "",
+           "values": false
+         },
+         "showPercentChange": false,
+         "textMode": "auto",
+         "wideLayout": true
+       },
+       "pluginVersion": "10.3.3",
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum by (pod) (cortex_compactor_tenants_skipped{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"})",
+           "instant": false,
+           "legendFormat": "__auto",
+           "range": true,
+           "refId": "A"
+         }
+       ],
+       "title": "Skipped Tenants",
+       "type": "stat"
+     },
+     {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "$datasource"
+       },
+       "description": "",
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "thresholds"
+           },
+           "mappings": [
+             {
+               "options": {
+                 "0": {
+                   "color": "green",
+                   "index": 0,
+                   "text": "None"
+                 }
+               },
+               "type": "value"
+             }
+           ],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "red",
+                 "value": 1
+               }
+             ]
+           },
+           "unitScale": true
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 4,
+         "w": 3,
+         "x": 12,
+         "y": 1
+       },
+       "id": 34,
+       "options": {
+         "colorMode": "value",
+         "graphMode": "none",
+         "justifyMode": "auto",
+         "orientation": "auto",
+         "reduceOptions": {
+           "calcs": [
+             "lastNotNull"
+           ],
+           "fields": "",
+           "values": false
+         },
+         "showPercentChange": false,
+         "textMode": "auto",
+         "wideLayout": true
+       },
+       "pluginVersion": "10.3.3",
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum by (pod) (cortex_compactor_tenants_processing_failed{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"})",
+           "instant": false,
+           "legendFormat": "__auto",
+           "range": true,
+           "refId": "A"
+         }
+       ],
+       "title": "Failed Tenants",
+       "type": "stat"
+     },
+     {
+       "collapsed": false,
        "datasource": {
          "type": "prometheus",
          "uid": "mimir-cedi"
@@ -44,7 +429,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 0
+         "y": 5
        },
        "id": 23,
        "panels": [],
@@ -85,7 +470,7 @@
          "h": 7,
          "w": 6,
          "x": 0,
-         "y": 1
+         "y": 6
        },
        "hiddenSeries": false,
        "id": 1,
@@ -202,7 +587,7 @@
          "h": 7,
          "w": 6,
          "x": 6,
-         "y": 1
+         "y": 6
        },
        "hiddenSeries": false,
        "id": 2,
@@ -364,7 +749,7 @@
          "h": 7,
          "w": 6,
          "x": 12,
-         "y": 1
+         "y": 6
        },
        "id": 3,
        "legend": {
@@ -633,7 +1018,7 @@
          "h": 7,
          "w": 6,
          "x": 18,
-         "y": 1
+         "y": 6
        },
        "id": 4,
        "legend": {
@@ -781,7 +1166,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 8
+         "y": 13
        },
        "id": 24,
        "panels": [],
@@ -817,7 +1202,7 @@
          "h": 7,
          "w": 12,
          "x": 0,
-         "y": 9
+         "y": 14
        },
        "hiddenSeries": false,
        "id": 5,
@@ -911,7 +1296,7 @@
          "h": 7,
          "w": 12,
          "x": 12,
-         "y": 9
+         "y": 14
        },
        "hiddenSeries": false,
        "id": 6,
@@ -1016,7 +1401,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 16
+         "y": 21
        },
        "id": 25,
        "panels": [],
@@ -1051,7 +1436,7 @@
          "h": 7,
          "w": 12,
          "x": 0,
-         "y": 17
+         "y": 22
        },
        "hiddenSeries": false,
        "id": 7,
@@ -1145,7 +1530,7 @@
          "h": 7,
          "w": 12,
          "x": 12,
-         "y": 17
+         "y": 22
        },
        "hiddenSeries": false,
        "id": 8,
@@ -1228,7 +1613,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 24
+         "y": 29
        },
        "id": 26,
        "panels": [],
@@ -1264,7 +1649,7 @@
          "h": 7,
          "w": 12,
          "x": 0,
-         "y": 25
+         "y": 30
        },
        "hiddenSeries": false,
        "id": 9,
@@ -1360,7 +1745,7 @@
          "h": 7,
          "w": 12,
          "x": 12,
-         "y": 25
+         "y": 30
        },
        "hiddenSeries": false,
        "id": 10,
@@ -1454,7 +1839,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 32
+         "y": 37
        },
        "id": 27,
        "panels": [],
@@ -1493,7 +1878,7 @@
          "h": 7,
          "w": 12,
          "x": 0,
-         "y": 33
+         "y": 38
        },
        "hiddenSeries": false,
        "id": 11,
@@ -1597,7 +1982,7 @@
          "h": 7,
          "w": 12,
          "x": 12,
-         "y": 33
+         "y": 38
        },
        "hiddenSeries": false,
        "id": 12,
@@ -1702,7 +2087,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 40
+         "y": 45
        },
        "id": 28,
        "panels": [],
@@ -1738,7 +2123,7 @@
          "h": 7,
          "w": 6,
          "x": 0,
-         "y": 41
+         "y": 46
        },
        "hiddenSeries": false,
        "id": 13,
@@ -1831,7 +2216,7 @@
          "h": 7,
          "w": 6,
          "x": 6,
-         "y": 41
+         "y": 46
        },
        "hiddenSeries": false,
        "id": 14,
@@ -1924,7 +2309,7 @@
          "h": 7,
          "w": 6,
          "x": 12,
-         "y": 41
+         "y": 46
        },
        "hiddenSeries": false,
        "id": 15,
@@ -2039,7 +2424,7 @@
          "h": 7,
          "w": 6,
          "x": 18,
-         "y": 41
+         "y": 46
        },
        "hiddenSeries": false,
        "id": 16,
@@ -2144,7 +2529,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 48
+         "y": 53
        },
        "id": 29,
        "panels": [],
@@ -2179,7 +2564,7 @@
          "h": 7,
          "w": 6,
          "x": 0,
-         "y": 49
+         "y": 54
        },
        "hiddenSeries": false,
        "id": 17,
@@ -2294,7 +2679,7 @@
          "h": 7,
          "w": 6,
          "x": 6,
-         "y": 49
+         "y": 54
        },
        "hiddenSeries": false,
        "id": 18,
@@ -2409,7 +2794,7 @@
          "h": 7,
          "w": 6,
          "x": 12,
-         "y": 49
+         "y": 54
        },
        "hiddenSeries": false,
        "id": 19,
@@ -2524,7 +2909,7 @@
          "h": 7,
          "w": 6,
          "x": 18,
-         "y": 49
+         "y": 54
        },
        "hiddenSeries": false,
        "id": 20,
@@ -2629,7 +3014,7 @@
          "h": 1,
          "w": 24,
          "x": 0,
-         "y": 56
+         "y": 61
        },
        "id": 30,
        "panels": [],
@@ -2673,7 +3058,7 @@
          "h": 7,
          "w": 12,
          "x": 0,
-         "y": 57
+         "y": 62
        },
        "hiddenSeries": false,
        "id": 21,
@@ -2766,7 +3151,7 @@
          "h": 7,
          "w": 12,
          "x": 12,
-         "y": 57
+         "y": 62
        },
        "hiddenSeries": false,
        "id": 22,
@@ -2871,9 +3256,9 @@
      "list": [
        {
          "current": {
-           "selected": true,
-           "text": "Mimir (cedi.dev)",
-           "value": "mimir-cedi"
+           "selected": false,
+           "text": "Prometheus",
+           "value": "prometheus"
          },
          "hide": 0,
          "includeAll": false,
@@ -2891,7 +3276,7 @@
        {
          "allValue": ".+",
          "current": {
-           "selected": true,
+           "selected": false,
            "text": [
              "All"
            ],
@@ -2923,7 +3308,7 @@
        {
          "allValue": ".+",
          "current": {
-           "selected": true,
+           "selected": false,
            "text": [
              "All"
            ],
