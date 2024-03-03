@@ -844,7 +844,18 @@
               "mode": "off"
             }
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "index": 0,
+                  "text": "100%"
+                }
+              },
+              "type": "special"
+            }
+          ],
           "max": 1,
           "min": 0,
           "thresholds": {
