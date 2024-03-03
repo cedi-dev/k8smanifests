@@ -420,118 +420,193 @@
       "type": "stat"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": {
-        "type": "prometheus",
         "uid": "$datasource"
       },
-      "description": "### Last successful run per-compactor replica\nDisplays the compactor replicas, and for each, shows how long it has been since\nits last successful compaction run.\n\nThe value in the status column is based on how long it has been since the last successful compaction.\n\n- Okay: less than 2 hours\n- Delayed: more than 2 hours\n- Late: more than 6 hours\n- Very late: more than 12 hours\n\nIf the status of any compactor replicas are *Late* or *Very late*, check their health.\n",
+      "description": "### Longest time since last successful run\nDisplays the amount of time since the most recent successful execution\nof the compactor.\nThe value shown will be for the compactor replica that has the longest time since its\nlast successful run.\nThe table to the right shows a summary for all compactor replicas.\n\nIf there is no time value, one of the following messages might appear:\n\n- If you see \"No compactor data\" in this panel, that means that no compactors are active yet.\n\n- If you see \"No successful runs\" in this panel, that means that compactors are active, but none\n  of them were successfully executed yet.\n\nThese might be expected - for example, if you just recently restarted your compactors,\nthey might not have had a chance to complete their first compaction run.\nHowever, if these messages persist, you should check the health of your compactors.\n\n",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "dashed"
-            }
-          },
-          "fieldMinMax": false,
+          "decimals": 1,
           "mappings": [],
+          "noValue": "No compactor data",
           "thresholds": {
             "mode": "absolute",
-            "steps": [
-              {
-                "color": "purple",
-                "value": null
-              },
-              {
-                "color": "green",
-                "value": 1
-              },
-              {
-                "color": "yellow",
-                "value": 7200
-              },
-              {
-                "color": "#EF843C",
-                "value": 21600
-              },
-              {
-                "color": "red",
-                "value": 43200
-              }
-            ]
+            "steps": []
           },
           "unit": "s",
           "unitScale": true
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Last run"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "from": "-Infinity",
+                      "result": {
+                        "color": "text",
+                        "text": "No successful runs since startup yet"
+                      },
+                      "to": 0
+                    },
+                    "type": "range"
+                  }
+                ]
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 7200
+                    },
+                    {
+                      "color": "orange",
+                      "value": 21600
+                    },
+                    {
+                      "color": "red",
+                      "value": 43200
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
+      "fill": 1,
       "gridPos": {
         "h": 4,
-        "w": 9,
+        "w": 3,
         "x": 15,
         "y": 1
       },
-      "id": 38,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "multi",
-          "sort": "none"
-        }
+      "id": 3,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
-      "pluginVersion": "2.1.5",
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "first"
+          ],
+          "fields": "/^Last run$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "percentage": false,
+      "pluginVersion": "10.3.3",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
-          "editorMode": "code",
-          "exemplar": false,
           "expr": "max by(pod)\n(\n  (time() * (max_over_time(cortex_compactor_last_successful_run_timestamp_seconds{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}[1h]) !=bool 0))\n  -\n  max_over_time(cortex_compactor_last_successful_run_timestamp_seconds{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}[1h])\n)\n",
-          "format": "time_series",
-          "instant": false,
-          "legendFormat": "{{pod}}",
-          "range": true,
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Last successful run per-compactor replica",
-      "type": "timeseries"
+      "thresholds": [],
+      "title": "Longest time since last successful run",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "renameByName": {
+              "Value": "Last run",
+              "pod": "Compactor"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "sort": [
+              {
+                "desc": true,
+                "field": "Last run"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "stat",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "logBase": 1,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ]
     },
     {
       "collapsed": false,
@@ -785,193 +860,118 @@
       "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
-      "description": "### Longest time since last successful run\nDisplays the amount of time since the most recent successful execution\nof the compactor.\nThe value shown will be for the compactor replica that has the longest time since its\nlast successful run.\nThe table to the right shows a summary for all compactor replicas.\n\nIf there is no time value, one of the following messages might appear:\n\n- If you see \"No compactor data\" in this panel, that means that no compactors are active yet.\n\n- If you see \"No successful runs\" in this panel, that means that compactors are active, but none\n  of them were successfully executed yet.\n\nThese might be expected - for example, if you just recently restarted your compactors,\nthey might not have had a chance to complete their first compaction run.\nHowever, if these messages persist, you should check the health of your compactors.\n\n",
+      "description": "### Last successful run per-compactor replica\nDisplays the compactor replicas, and for each, shows how long it has been since\nits last successful compaction run.\n\nThe value in the status column is based on how long it has been since the last successful compaction.\n\n- Okay: less than 2 hours\n- Delayed: more than 2 hours\n- Late: more than 6 hours\n- Very late: more than 12 hours\n\nIf the status of any compactor replicas are *Late* or *Very late*, check their health.\n",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "decimals": 1,
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "fieldMinMax": false,
           "mappings": [],
-          "noValue": "No compactor data",
           "thresholds": {
             "mode": "absolute",
-            "steps": []
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              },
+              {
+                "color": "yellow",
+                "value": 7200
+              },
+              {
+                "color": "#EF843C",
+                "value": 21600
+              },
+              {
+                "color": "red",
+                "value": 43200
+              }
+            ]
           },
           "unit": "s",
           "unitScale": true
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Last run"
-            },
-            "properties": [
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "options": {
-                      "from": "-Infinity",
-                      "result": {
-                        "color": "text",
-                        "text": "No successful runs since startup yet"
-                      },
-                      "to": 0
-                    },
-                    "type": "range"
-                  }
-                ]
-              },
-              {
-                "id": "color",
-                "value": {
-                  "mode": "thresholds"
-                }
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 7200
-                    },
-                    {
-                      "color": "orange",
-                      "value": 21600
-                    },
-                    {
-                      "color": "red",
-                      "value": 43200
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
-      "fill": 1,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 12,
         "y": 6
       },
-      "id": 3,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
+      "id": 38,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "first"
-          ],
-          "fields": "/^Last run$/",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
-        "showPercentChange": false,
-        "textMode": "value",
-        "wideLayout": true
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "10.3.3",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "2.1.5",
       "targets": [
         {
           "datasource": {
-            "uid": "$datasource"
+            "type": "prometheus",
+            "uid": "prometheus"
           },
+          "editorMode": "code",
+          "exemplar": false,
           "expr": "max by(pod)\n(\n  (time() * (max_over_time(cortex_compactor_last_successful_run_timestamp_seconds{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}[1h]) !=bool 0))\n  -\n  max_over_time(cortex_compactor_last_successful_run_timestamp_seconds{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}[1h])\n)\n",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
+          "format": "time_series",
+          "instant": false,
+          "legendFormat": "{{pod}}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "title": "Longest time since last successful run",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "renameByName": {
-              "Value": "Last run",
-              "pod": "Compactor"
-            }
-          }
-        },
-        {
-          "id": "sortBy",
-          "options": {
-            "sort": [
-              {
-                "desc": true,
-                "field": "Last run"
-              }
-            ]
-          }
-        }
-      ],
-      "type": "stat",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "logBase": 1,
-          "min": 0,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": false
-        }
-      ]
+      "title": "Last successful run per-compactor replica",
+      "type": "timeseries"
     },
     {
       "aliasColors": {},
