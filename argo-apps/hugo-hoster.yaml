@@ -8,7 +8,7 @@ spec:
     - list:
         elements:
           - name: hugo-hoster
-            path: charts/hugo-hoster
+            path: kustomize/overlays/hugo-hoster
           - name: hugo-pages
             path: manifests/hugo-pages
   template:

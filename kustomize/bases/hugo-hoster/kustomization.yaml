@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: hugo-hoster
+
+helmCharts:
+  - name: hugo-hoster
+    repo: https://hugo-hoster.github.io/hugo-hoster-helm/
+    version: 0.0.4
+    releaseName: prometheus-stack
+    namespace: hugo-hoster
+    valuesFile: helm-values.yaml

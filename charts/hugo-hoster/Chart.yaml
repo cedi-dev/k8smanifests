@@ -1,7 +1,0 @@
-apiVersion: v2
-name: addon-hugo-hoster
-version: 0.0.4
-dependencies:
-  - name: hugo-hoster
-    version: 0.0.4
-    repository: https://hugo-hoster.github.io/hugo-hoster-helm/

@@ -1,6 +1,0 @@
-dependencies:
-- name: hugo-hoster
-  repository: https://hugo-hoster.github.io/hugo-hoster-helm/
-  version: 0.0.4
-digest: sha256:0b3e156f07597a5363e629b3d82b63a5c84bcf89beeba282aec554afc77ed3f6
-generated: "2023-09-14T11:45:41.075491+02:00"
