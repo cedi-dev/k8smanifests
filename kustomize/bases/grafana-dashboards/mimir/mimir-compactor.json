@@ -177,9 +177,9 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "min by (container) (\n    cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}\n)",
+          "expr": "min by (container) (cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} > 0)",
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{pod}}",
           "range": true,
           "refId": "A"
         }
@@ -247,7 +247,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "max by (container) (cortex_compactor_tenants_discovered{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}) - min by (container) (cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"})",
+          "expr": "max by (container) (cortex_compactor_tenants_discovered{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}) - min by (container) (cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} > 0)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -905,7 +905,7 @@
             "uid": "$datasource"
           },
           "editorMode": "code",
-          "expr": "sum by (pod) (\n(\n  cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} +\n  cortex_compactor_tenants_processing_failed{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} +\n  cortex_compactor_tenants_skipped{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}\n)\n/\ncortex_compactor_tenants_discovered{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}\n)",
+          "expr": "(\n  sum by (pod) (cortex_compactor_tenants_processing_succeeded) +\n  sum by (pod) (cortex_compactor_tenants_processing_failed) +\n  sum by (pod) (cortex_compactor_tenants_skipped)\n)\n/\nsum by (pod) (cortex_compactor_tenants_discovered)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -1054,6 +1054,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "### Last successful run per-compactor replica\nDisplays the compactor replicas, and for each, shows how long it has been since\nits last successful compaction run.\n\nThe value in the status column is based on how long it has been since the last successful compaction.\n\n- Okay: less than 2 hours\n- Delayed: more than 2 hours\n- Late: more than 6 hours\n- Very late: more than 12 hours\n\nIf the status of any compactor replicas are *Late* or *Very late*, check their health.\n\n",
@@ -1256,6 +1257,7 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "expr": "max by(pod)\n(\n  (time() * (max_over_time(cortex_compactor_last_successful_run_timestamp_seconds{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}[1h]) !=bool 0))\n  -\n  max_over_time(cortex_compactor_last_successful_run_timestamp_seconds{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}[1h])\n)\n",
           "format": "table",
           "instant": true,
@@ -3412,8 +3414,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3616,8 +3617,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3783,7 +3783,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
