@@ -104,7 +104,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "max by (container) (cortex_compactor_tenants_discovered{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"})",
@@ -174,7 +174,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "min by (container) (cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} > 0)",
@@ -244,7 +244,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "max by (container) (cortex_compactor_tenants_discovered{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}) - min by (container) (cortex_compactor_tenants_processing_succeeded{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"} > 0)",
@@ -325,7 +325,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "max by (container) (cortex_compactor_tenants_skipped{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"})",
@@ -406,7 +406,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "expr": "max by (container) (cortex_compactor_tenants_processing_failed{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"})",
@@ -612,7 +612,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -626,7 +626,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -636,6 +636,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "### Per-instance runs\nNumber of times a compactor instance triggers a compaction across all tenants that it manages.\n\n",
@@ -768,10 +769,12 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "expr": "sum(rate(cortex_compactor_runs_started_total{cluster=~\"$cluster\", job=~\"($namespace)/((compactor.*|cortex|mimir|mimir-backend.*))\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "started",
+          "range": true,
           "refId": "A",
           "step": 10
         },
@@ -1033,7 +1036,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1358,7 +1361,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -1372,7 +1375,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -1603,7 +1606,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -1617,7 +1620,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -1825,7 +1828,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -1839,7 +1842,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -2089,7 +2092,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -2103,7 +2106,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -2378,7 +2381,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -2392,7 +2395,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -2840,7 +2843,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -2854,7 +2857,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -3345,7 +3348,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "mimir-cedi"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -3359,7 +3362,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "mimir-cedi"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
