@@ -4,8 +4,34 @@ global:
       topologyKey: topology.kubernetes.io/zone
       whenUnsatisfiable: ScheduleAnyway
 
+  domain: argocd.cedi.dev
+
+  image:
+    repository: "ghcr.io/cedi-dev/argocd-custom-container"
+    imagePullPolicy: "Always"
+
+  logging:
+    format: json
+
+  deploymentStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
 dex:
   enabled: true
+
+  containerSecurityContext:
+    runAsNonRoot: false
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+
   metrics:
     enabled: true
     serviceMonitor:
@@ -20,6 +46,10 @@ dex:
 redis:
   serviceAccount:
     create: true
+
+  exporter:
+    enabled: false
+
   metrics:
     enabled: true
     serviceMonitor:
@@ -33,10 +63,6 @@ redis:
 
 repoServer:
   replicas: 2
-
-  image:
-    repository: "ghcr.io/cedi-dev/argocd-custom-container"
-    imagePullPolicy: "Always"
 
   volumes:
     - name: helm-secrets
@@ -68,34 +94,8 @@ repoServer:
 server:
   replicas: 2
 
-  image:
-    repository: "ghcr.io/cedi-dev/argocd-custom-container"
-    imagePullPolicy: "Always"
   certificate:
     enabled: false
-    domain: argocd.cedi.dev
-
-  config:
-    url: https://argocd.cedi.dev
-    kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
-    exec.enabled: "true"
-    dex.config: |
-      connectors:
-        - type: github
-          id: github
-          name: GitHub
-          config:
-            clientID: $dex.oauth.github.clientID
-            clientSecret: $dex.oauth.github.clientSecret
-            orgs:
-              - name: cedi-dev
-    resource.exclusions: |
-      - apiGroups:
-          - cilium.io
-        kinds:
-          - CiliumIdentity
-        clusters:
-          - "*"
 
   ingress:
     enabled: true
@@ -105,24 +105,13 @@ server:
     pathType: ImplementationSpecific
     hosts:
       - argocd.cedi.dev
-    tls:
-      - secretName: argocd-secret
-        hosts:
-          - argocd.cedi.dev
+
+    tls: true
 
     annotations:
       "cert-manager.io/cluster-issuer": "letsencrypt-prod"
       "nginx.ingress.kubernetes.io/backend-protocol": HTTPS
       "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
-
-  rbacConfig:
-    policy.default: role:readonly
-    policy.csv: |
-      p, role:org-admin, *, *, *, allow
-      p, role:viewer, *, get, *, allow
-
-      g, cedi-dev:argocd, role:viewer
-      g, cedi-dev:admin, role:org-admin
 
   metrics:
     enabled: true
@@ -140,6 +129,17 @@ server:
 
 applicationSet:
   replicas: 2
+
+  containerSecurityContext:
+  runAsNonRoot: false
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  seccompProfile:
+    type: RuntimeDefault
+  capabilities:
+    drop:
+      - ALL
+
   metrics:
     enabled: true
     serviceMonitor:
@@ -154,7 +154,20 @@ applicationSet:
 controller:
   # -- The number of application controller pods to run.
   # If changing the number of replicas you must pass the number as `ARGOCD_CONTROLLER_REPLICAS` as an environment variable
-  replicas: 1
+  replicas: 2
+
+  dynamicClusterDistribution: true
+
+  containerSecurityContext:
+    runAsNonRoot: false
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+
   metrics:
     enabled: true
     serviceMonitor:
@@ -170,8 +183,42 @@ notifications:
   enabled: false
 
 configs:
+  cm:
+    exec.enabled: "true"
+    kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
+
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: $dex.oauth.github.clientID
+            clientSecret: $dex.oauth.github.clientSecret
+            orgs:
+              - name: cedi-dev
+
+    resource.exclusions: |
+      - apiGroups:
+          - cilium.io
+        kinds:
+          - CiliumIdentity
+        clusters:
+          - "*"
+
   params:
+    create: true
     otlp.address: "tempo-distributor.observability.svc.cluster.local:4317"
+
+  rbac:
+    create: true
+    policy.default: role:readonly
+    policy.csv: |
+      p, role:org-admin, *, *, *, allow
+      p, role:viewer, *, get, *, allow
+
+      g, cedi-dev:argocd, role:viewer
+      g, cedi-dev:admin, role:org-admin
 
   secret:
     extra:
