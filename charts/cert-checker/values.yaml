@@ -1,5 +1,4 @@
 cert-checker:
-
   replicaCount: 1
 
   ## Config
@@ -19,6 +18,8 @@ cert-checker:
       - dns: dash.ccl.pw
       - dns: hole.elbschloss.xyz
       - dns: kienzler.io
+      - dns: fritz-schiltach.kienzler.io
+      - dns: 4omc3zg9nnqjvwaj.myfritz.net
 
   serviceMonitor:
     enabled: true
