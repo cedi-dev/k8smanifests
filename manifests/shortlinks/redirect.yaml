@@ -4,7 +4,7 @@ metadata:
   name: redirect-to-shortlink
 spec:
   source: short.cedi.dev
-  target: ccl.pw
+  target: https://ccl.pw
   code: 308
   tls:
     enable: true
@@ -17,7 +17,7 @@ metadata:
   name: cedric-kienzler
 spec:
   source: cedric-kienzler.de
-  target: https://cedi.dev
+  target: https://www.cedi.dev
   code: 308
   tls:
     enable: true
@@ -56,7 +56,20 @@ metadata:
   name: kienzler-io
 spec:
   source: kienzler.io
-  target: https://cedi.dev
+  target: https://www.cedi.dev
+  code: 308
+  tls:
+    enable: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: Redirect
+metadata:
+  name: fritzbox-schiltach
+spec:
+  source: fritz-schiltach.kienzler.io
+  target: https://4omc3zg9nnqjvwaj.myfritz.net
   code: 308
   tls:
     enable: true

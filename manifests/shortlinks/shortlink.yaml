@@ -169,3 +169,13 @@ spec:
   target: "https://github.com/syself/cluster-api-provider-hetzner/"
   code: 307
   owner: cedi
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: ShortLink
+metadata:
+  name: fritz-schiltach
+spec:
+  target: "https://fritz-schiltach.kienzler.io"
+  code: 307
+  owner: cedi
