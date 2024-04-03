@@ -8,7 +8,7 @@ global:
 hugohoster:
   image:
     pullPolicy: Always # TODO: IfNotPresent
-    tag: "main"
+    tag: "develop"
 
   metrics:
     enabled: true
