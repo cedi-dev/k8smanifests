@@ -9,3 +9,5 @@ spec:
   repository: https://github.com/fam-kienzler/website.git
   type: cron
   url: test.kienzler.io
+  options:
+    command: npm install && hugo
