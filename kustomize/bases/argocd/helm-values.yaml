@@ -9,6 +9,7 @@ global:
   image:
     repository: "ghcr.io/cedi-dev/argocd-custom-container"
     imagePullPolicy: "Always"
+    tag: "latest"
 
   logging:
     format: json
