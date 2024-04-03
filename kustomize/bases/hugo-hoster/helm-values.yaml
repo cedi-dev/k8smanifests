@@ -1,3 +1,10 @@
+global:
+  extraEnv:
+    - name: OTLP_ENDPOINT
+      value: "tempo-distributor.observability.svc.cluster.local:4318"
+    - name: OTLP_INSECURE
+      value: "true"
+
 hugohoster:
   image:
     pullPolicy: Always # TODO: IfNotPresent
