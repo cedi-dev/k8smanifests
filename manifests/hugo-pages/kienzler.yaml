@@ -1,7 +1,7 @@
 apiVersion: hugo-hoster.cedi.dev/v1alpha1
 kind: HugoPage
 metadata:
-  name: kienzler.io
+  name: kienzler-io
   namespace: hugo-hoster
 spec:
   branch: main
