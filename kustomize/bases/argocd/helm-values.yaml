@@ -9,7 +9,7 @@ global:
   image:
     repository: "ghcr.io/cedi-dev/argocd-custom-container"
     imagePullPolicy: "Always"
-    tag: "latest"
+    #tag: "latest"
 
   logging:
     format: json
@@ -63,7 +63,7 @@ redis:
         scope: k8s-cedi-dev
 
 repoServer:
-  replicas: 2
+  replicas: 1
 
   volumes:
     - name: helm-secrets
@@ -93,7 +93,7 @@ repoServer:
     runAsUser: 1000
 
 server:
-  replicas: 2
+  replicas: 1
 
   certificate:
     enabled: false
@@ -129,7 +129,7 @@ server:
     runAsUser: 1000
 
 applicationSet:
-  replicas: 2
+  replicas: 1
 
   containerSecurityContext:
   runAsNonRoot: false
@@ -155,7 +155,7 @@ applicationSet:
 controller:
   # -- The number of application controller pods to run.
   # If changing the number of replicas you must pass the number as `ARGOCD_CONTROLLER_REPLICAS` as an environment variable
-  replicas: 2
+  replicas: 1
 
   dynamicClusterDistribution: true
 
