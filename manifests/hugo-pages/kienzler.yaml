@@ -11,3 +11,5 @@ spec:
   url: test.kienzler.io
   options:
     command: npm install && hugo
+    image:
+      imagePullPolicy: Always
