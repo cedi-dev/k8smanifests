@@ -75,3 +75,16 @@ spec:
     enable: true
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: Redirect
+metadata:
+  name: fritzbox-schiltach
+spec:
+  source: fritz.elbschloss.xyz
+  target: nilntp8ot72zhp1l.myfritz.net
+  code: 308
+  tls:
+    enable: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
