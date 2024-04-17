@@ -133,6 +133,7 @@ jobs:
                   echo "$chart"
                   pushd $chart
                   pwd
+                  helm dependency update
                   helm dependency build
                   helm template . --values ./values.yaml | kubeval --ignore-missing-schemas --strict | tee -a kubeval.txt
                   popd
