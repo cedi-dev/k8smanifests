@@ -70,6 +70,7 @@ jobs:
         id: kubeval
         continue-on-error: true
         run: |
+          set -e
           touch kubeval.txt
           for manifest in ./manifests/*/*.yaml
           do
@@ -123,7 +124,7 @@ jobs:
         id: kubeval
         continue-on-error: true
         run: |
-          set -ex
+          set -e
           touch kubeval.txt
           for chart in ./charts/*/
           do
@@ -184,6 +185,7 @@ jobs:
       - name: Kustomize
         id: kubeval
         run: |
+          set -e
           touch kubeval.txt
           for kust in ./kustomize/overlays/*/
           do
