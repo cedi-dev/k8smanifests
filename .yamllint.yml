@@ -3,6 +3,10 @@ extends: relaxed
 rules:
   line-length: disable
   new-line-at-end-of-file: disable
+  indentation:
+    level: error
+    spaces: consistent
+    indent-sequences: true
 
 ignore: |
   .yamllint.yml
