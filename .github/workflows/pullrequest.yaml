@@ -23,7 +23,7 @@ jobs:
         id: lint-output
         if: steps.lint.outcome != 'success'
         run: |
-          echo "::set-output name=logfile::$(sed ':a;N;$!ba;s/\n/{newline}/g' < ${{ steps.lint.outputs.logfile }} )"
+          echo "logfile=$(sed ':a;N;$!ba;s/\n/{newline}/g' < ${{ steps.lint.outputs.logfile }} )" >> $GITHUB_OUTPUT
 
       - name: Augment PR with yamllint infos
         uses: actions/github-script@v7.0.1
@@ -76,7 +76,7 @@ jobs:
             echo "$manifests"
             kubeval --ignore-missing-schemas --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/ $manifest | tee -a kubeval.txt
           done
-          echo "::set-output name=kubeval::$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)"
+          echo "kubeval=$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)" >> $GITHUB_OUTPUT
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@v7.0.1
@@ -123,6 +123,7 @@ jobs:
         id: kubeval
         continue-on-error: true
         run: |
+          set -ex
           touch kubeval.txt
           for chart in ./charts/*/
           do
@@ -130,10 +131,11 @@ jobs:
               for app in $stage*/
               do
                   echo "$chart"
+                  helm dependency build
                   helm template $chart --values $chart/values.yaml | kubeval --ignore-missing-schemas --strict | tee -a kubeval.txt
               done
           done
-          echo "::set-output name=kubeval::$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)"
+          echo "kubeval=$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)" >> $GITHUB_OUTPUT
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@v7.0.1
@@ -185,7 +187,7 @@ jobs:
             echo "$kust"
             kustomize build --enable-alpha-plugins --enable-helm $kust | kubeval --ignore-missing-schemas --strict | tee -a kubeval.txt
           done
-          echo "::set-output name=kubeval::$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)"
+          echo "kubeval=$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)" >> $GITHUB_OUTPUT
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@v7.0.1
