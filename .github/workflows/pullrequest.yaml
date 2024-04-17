@@ -131,8 +131,11 @@ jobs:
               for app in $stage*/
               do
                   echo "$chart"
+                  pushd $chart
+                  pwd
                   helm dependency build
-                  helm template $chart --values $chart/values.yaml | kubeval --ignore-missing-schemas --strict | tee -a kubeval.txt
+                  helm template . --values ./values.yaml | kubeval --ignore-missing-schemas --strict | tee -a kubeval.txt
+                  popd
               done
           done
           echo "kubeval=$(sed ':a;N;$!ba;s/\n/{newline}/g' < kubeval.txt)" >> $GITHUB_OUTPUT
