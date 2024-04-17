@@ -45,7 +45,7 @@ jobs:
 
             new_output = output.replace(/{newline}/g, "\n");
 
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -99,7 +99,7 @@ jobs:
 
             new_output = output.replace(/{newline}/g, "\n");
 
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -161,7 +161,7 @@ jobs:
 
             new_output = output.replace(/{newline}/g, "\n");
 
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -214,7 +214,7 @@ jobs:
 
             new_output = output.replace(/{newline}/g, "\n");
 
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
