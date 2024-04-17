@@ -3,7 +3,7 @@ ingress-nginx:
 
   controller:
     extraArgs:
-      enable-ssl-passthrough: ''
+      enable-ssl-passthrough: ""
 
     kind: DaemonSet
     ingressClassByName: true
@@ -26,7 +26,7 @@ ingress-nginx:
       healthCheckNodePort: 32596
       ipFamilyPolicy: SingleStack
       ipFamilies:
-      - IPv4
+        - IPv4
 
       annotations:
         load-balancer.hetzner.cloud/location: "nbg1"
