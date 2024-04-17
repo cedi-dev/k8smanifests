@@ -6,7 +6,7 @@ rules:
   indentation:
     level: error
     spaces: consistent
-    indent-sequences: true
+    indent-sequences: consistent
 
 ignore: |
   .yamllint.yml
