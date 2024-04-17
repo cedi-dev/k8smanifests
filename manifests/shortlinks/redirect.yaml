@@ -79,7 +79,7 @@ spec:
 apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: Redirect
 metadata:
-  name: fritzbox-schiltach
+  name: fritzbox-elbschloss
 spec:
   source: fritz.elbschloss.xyz
   target: nilntp8ot72zhp1l.myfritz.net
