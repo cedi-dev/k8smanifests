@@ -21,13 +21,11 @@ jobs:
 
       - name: single-line
         id: lint-output
-        if: steps.lint.outcome != 'success'
         run: |
           echo "::set-output name=logfile::$(sed ':a;N;$!ba;s/\n/{newline}/g' < ${{ steps.lint.outputs.logfile }} )"
 
       - name: Augment PR with yamllint infos
         uses: actions/github-script@v7.0.1
-        if: steps.lint.outcome != 'success'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -80,7 +78,6 @@ jobs:
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@v7.0.1
-        if: steps.kubeval.outcome != 'success'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -137,7 +134,6 @@ jobs:
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@v7.0.1
-        if: steps.kubeval.outcome != 'success'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -189,7 +185,6 @@ jobs:
 
       - name: Augment PR with kubeval infos
         uses: actions/github-script@v7.0.1
-        if: steps.kubeval.outcome != 'success'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
