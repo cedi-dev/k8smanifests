@@ -8,3 +8,23 @@ chaos-mesh:
     # rootUrl specify the base url for openid/oauth2 (like GCP Auth Integration) callback URL.
     rootUrl: http://localhost:2333
     securityMode: false
+
+    persistentVolume:
+      enabled: true
+      storageClassName: hcloud-volumes
+
+    ingress:
+      enabled: true
+
+      ingressClassName: "tailnet-nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth-chaos-mesh.cedi.dev/oauth2/start
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy-chaos-mesh.svc.cluster.local/oauth2/auth
+
+      hosts:
+        - name: chaos.cedi.dev
+          tls: true
+          tlsSecret: chaos-cedi-dev-tls
+          tlsHosts:
+            - chaos.cedi.dev

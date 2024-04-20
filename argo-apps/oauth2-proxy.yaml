@@ -9,6 +9,7 @@ spec:
         elements:
           # - name: postgresql
           - name: cert-checker
+          - name: chaos-mesh
   template:
     metadata:
       name: oauth2-proxy-{{name}}
