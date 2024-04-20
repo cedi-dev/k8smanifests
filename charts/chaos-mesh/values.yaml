@@ -1,0 +1,10 @@
+chaos-mesh:
+  chaosDaemon:
+    runtime: containerd
+    socketPath: /run/containerd/containerd.sock
+
+  dashboard:
+    create: true
+    # rootUrl specify the base url for openid/oauth2 (like GCP Auth Integration) callback URL.
+    rootUrl: http://localhost:2333
+    securityMode: false
