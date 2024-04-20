@@ -16,7 +16,7 @@ chaos-mesh:
     ingress:
       enabled: true
 
-      ingressClassName: "tailnet-nginx"
+      ingressClassName: "nginx"
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
         nginx.ingress.kubernetes.io/auth-signin: https://auth-chaos-mesh.cedi.dev/oauth2/start
