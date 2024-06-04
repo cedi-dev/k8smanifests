@@ -102,3 +102,31 @@ spec:
     enable: true
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: Redirect
+metadata:
+  name: gold-specht
+spec:
+  source: gold-specht.de
+  target: https://metallglanz.com/
+  code: 308
+  tls:
+    enable: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+
+---
+apiVersion: urlshortener.cedi.dev/v1alpha1
+kind: Redirect
+metadata:
+  name: shop-gold-specht
+spec:
+  source: shop.gold-specht.de
+  target: https://shop.metallglanz.com/
+  code: 308
+  tls:
+    enable: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
