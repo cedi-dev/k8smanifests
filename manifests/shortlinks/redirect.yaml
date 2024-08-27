@@ -107,10 +107,10 @@ spec:
 apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: Redirect
 metadata:
-  name: gold-specht
+  name: metallglanz
 spec:
-  source: gold-specht.de
-  target: https://metallglanz.com/
+  source: metallglanz.com
+  target: https://gold-specht.de/
   code: 308
   tls:
     enable: true
@@ -121,10 +121,10 @@ spec:
 apiVersion: urlshortener.cedi.dev/v1alpha1
 kind: Redirect
 metadata:
-  name: shop-gold-specht
+  name: shop-metallglanz
 spec:
-  source: shop.gold-specht.de
-  target: https://shop.metallglanz.com/
+  source: shop.metallglanz.com
+  target: https://shop.gold-specht.de/
   code: 308
   tls:
     enable: true
