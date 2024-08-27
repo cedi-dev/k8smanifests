@@ -4,6 +4,7 @@ namespace: cert-manager
 
 resources:
   - ../../bases/cluster-issuer/
+  - ./letsencrypt-prod-http01.yaml
 
 generators:
   - ./secret-generator.yaml
