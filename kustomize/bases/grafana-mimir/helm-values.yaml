@@ -186,7 +186,7 @@ alertmanager:
                 app.kubernetes.io/component: alertmanager
                 app.kubernetes.io/instance: mimir
                 app.kubernetes.io/name: mimir
-            topologyKey: topology.kubernetes.io/region
+            topologyKey: kubernetes.io/hostname
 
 compactor:
   replicas: 3
