@@ -35,7 +35,6 @@ global:
     - name: JAEGER_SERVICE_NAME
       value: "mimir"
 
-
   extraEnvFrom:
     - secretRef:
         name: mimir-s3-secret
@@ -122,7 +121,7 @@ ingester:
 
   zoneAwareReplication:
     enabled: true
-    topologyKey: 'topology.kubernetes.io/region'
+    topologyKey: "topology.kubernetes.io/region"
     zones:
       - name: fsn
         nodeSelector:
@@ -152,7 +151,7 @@ store_gateway:
 
   zoneAwareReplication:
     enabled: true
-    topologyKey: 'topology.kubernetes.io/region'
+    topologyKey: "topology.kubernetes.io/region"
     zones:
       - name: fsn
         nodeSelector:
@@ -170,7 +169,7 @@ store_gateway:
       whenUnsatisfiable: ScheduleAnyway
 
 alertmanager:
-  enabled: false
+  enabled: true
   persistentVolume:
     enabled: true
   replicas: 1
