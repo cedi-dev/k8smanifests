@@ -178,13 +178,15 @@ alertmanager:
 
   affinity:
     podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: alertmanager
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/component: alertmanager
+                app.kubernetes.io/instance: mimir
+                app.kubernetes.io/name: mimir
+            topologyKey: topology.kubernetes.io/region
 
 compactor:
   replicas: 3
