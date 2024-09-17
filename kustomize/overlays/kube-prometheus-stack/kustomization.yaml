@@ -5,6 +5,9 @@ namespace: monitoring
 bases:
   - ../../bases/kube-prometheus-stack
 
+resources:
+  - ./rules/adguard.yaml
+
 generators:
   - ./secret-generator.yaml
 
