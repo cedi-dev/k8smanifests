@@ -2,18 +2,15 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: observability
 
-bases:
-  - ../../bases/grafana-mimir
-
 generators:
   - ./secret-generator.yaml
 
-
 resources:
-#  - tailscale-ingress.yaml
+  - ../../bases/grafana-mimir
+  #  - tailscale-ingress.yaml
   - prometheus-rules.yaml
 
-patchesJson6902:
+patches:
   - target:
       kind: HorizontalPodAutoscaler
       group: autoscaling
@@ -30,12 +27,3 @@ patchesJson6902:
         value:
           type: Utilization
           averageUtilization: 60
-
-  - target:
-      kind: Deployment
-      group: apps
-      version: v1
-      name: mimir-rollout-operator
-    patch: |-
-      - op: remove
-        path: /spec/template/spec/containers/0/resources/limits/cpu
