@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: adguard
-  namespace: observability
+  namespace: monitoring
 spec:
   groups:
     - name: adguard
@@ -48,7 +48,6 @@ spec:
                 > 2
               )
               or
-              (
               (
                 # subtract the average of the last 7d from the last 1d to better understand
                 # how the current average compares to historical averages
