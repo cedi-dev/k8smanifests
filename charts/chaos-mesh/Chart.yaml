@@ -3,5 +3,5 @@ name: addon-chaos-mesh
 version: 2.6.3
 dependencies:
   - name: chaos-mesh
-    version: 2.6.4
+    version: 2.7.0
     repository: https://charts.chaos-mesh.org
