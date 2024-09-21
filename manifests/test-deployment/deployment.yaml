@@ -22,6 +22,7 @@ spec:
           operator: "Equal"
           value: "amd64"
           effect: "NoSchedule"
+
       containers:
         - image: gcr.io/kuar-demo/kuard-amd64:blue
           name: kuard

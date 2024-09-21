@@ -1,6 +1,6 @@
 - op: replace
   path: "/spec/version"
-  value: v1.28.6
+  value: v1.29.9
 
 - op: replace
   path: "/spec/kubeadmConfigSpec/preKubeadmCommands/1"
