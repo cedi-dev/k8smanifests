@@ -10,84 +10,6 @@ spec:
     enable: true
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: cedric-kienzler
-spec:
-  source: cedric-kienzler.de
-  target: https://www.cedi.dev
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: cedi-dev
-spec:
-  source: cedi.dev
-  target: https://www.cedi.dev
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: lucyfae
-spec:
-  source: lucyfae.de
-  target: https://www.lucyfae.de
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: kienzler-io
-spec:
-  source: kienzler.io
-  target: https://www.cedi.dev
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: fritzbox-schiltach
-spec:
-  source: fritz-schiltach.kienzler.io
-  target: https://4omc3zg9nnqjvwaj.myfritz.net
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: fritzbox-elbschloss
-spec:
-  source: fritz.elbschloss.xyz
-  target: nilntp8ot72zhp1l.myfritz.net
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
 
 ---
 apiVersion: urlshortener.cedi.dev/v1alpha1
@@ -97,34 +19,6 @@ metadata:
 spec:
   source: robusta.cedi.dev
   target: https://platform.robusta.dev/cedi-dev/
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: metallglanz
-spec:
-  source: metallglanz.com
-  target: https://gold-specht.de/
-  code: 308
-  tls:
-    enable: true
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-
----
-apiVersion: urlshortener.cedi.dev/v1alpha1
-kind: Redirect
-metadata:
-  name: shop-metallglanz
-spec:
-  source: shop.metallglanz.com
-  target: https://shop.gold-specht.de/
   code: 308
   tls:
     enable: true
