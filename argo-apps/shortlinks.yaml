@@ -20,7 +20,7 @@ spec:
       #  - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: "observability"
+        namespace: "urlshortener"
         server: https://kubernetes.default.svc
       project: default
       source:
