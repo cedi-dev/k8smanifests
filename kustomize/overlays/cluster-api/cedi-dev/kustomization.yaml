@@ -54,3 +54,16 @@ patchesJson6902:
       namespace: default
       name: worker-x86-nbg
     path: machine-deployment.patch.yaml
+
+  - target:
+      version: v1beta1
+      kind: MachineDeployment
+      namespace: default
+      name: worker-x86-nbg
+    patch: |
+      - op: replace
+        path: "/spec/template/spec/infrastructureRef/name"
+        value: worker-x86-small-ubuntu-24-04
+      - op: replace
+        path: "/spec/replicas"
+        value: 1
