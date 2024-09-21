@@ -11,7 +11,7 @@ spec:
     spec:
       imageName: ubuntu-22.04
       placementGroupName: worker-nodes
-      type: cx21
+      type: cx22
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy

@@ -176,6 +176,8 @@ alertmanager:
   statefulSet:
     enabled: true
 
+  topologySpreadConstraints: {}
+
 compactor:
   replicas: 3
 

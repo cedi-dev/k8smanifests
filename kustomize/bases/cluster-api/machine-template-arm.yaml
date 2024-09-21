@@ -10,7 +10,7 @@ spec:
     spec:
       imageName: ubuntu-22.04
       placementGroupName: worker-nodes
-      type: cax31
+      type: cax21
       sshKeys:
         - name: cedi@mae
         - name: cedi@ivy
