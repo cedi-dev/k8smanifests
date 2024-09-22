@@ -7,4 +7,3 @@ resources:
 
 generators:
   - ./secret-generator.yaml
-  # - ./playbook-secret-generator.yaml
