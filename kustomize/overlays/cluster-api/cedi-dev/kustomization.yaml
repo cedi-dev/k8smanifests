@@ -10,14 +10,7 @@ patchesJson6902:
       version: v1beta1
       kind: KubeadmConfigTemplate
       namespace: default
-      name: worker-template
-    path: kubeadm-config-template.patch.yaml
-
-  - target:
-      version: v1beta1
-      kind: KubeadmConfigTemplate
-      namespace: default
-      name: worker-template-x86-taints
+      name: worker-template.*
     path: kubeadm-config-template.patch.yaml
 
   - target:
@@ -31,29 +24,31 @@ patchesJson6902:
       version: v1beta1
       kind: MachineDeployment
       namespace: default
+      name: worker-.*
+    patch: |
+      - op: replace
+        path: "/spec/template/spec/version"
+        value: v1.29.9
+
+  - target:
+      version: v1beta1
+      kind: MachineDeployment
+      namespace: default
+      name: worker-arm-\w{3}
+    patch: |
+      - op: replace
+        path: "/spec/replicas"
+        value: 2
+
+  - target:
+      version: v1beta1
+      kind: MachineDeployment
+      namespace: default
       name: worker-arm-fsn
-    path: machine-deployment.patch.yaml
-
-  - target:
-      version: v1beta1
-      kind: MachineDeployment
-      namespace: default
-      name: worker-arm-hel
-    path: machine-deployment.patch.yaml
-
-  - target:
-      version: v1beta1
-      kind: MachineDeployment
-      namespace: default
-      name: worker-arm-nbg
-    path: machine-deployment.patch.yaml
-
-  - target:
-      version: v1beta1
-      kind: MachineDeployment
-      namespace: default
-      name: worker-x86-nbg
-    path: machine-deployment.patch.yaml
+    patch: |
+      - op: replace
+        path: "/spec/template/spec/infrastructureRef/name"
+        value: worker-arm-small-ubuntu-24-04
 
   - target:
       version: v1beta1
@@ -64,6 +59,3 @@ patchesJson6902:
       - op: replace
         path: "/spec/template/spec/infrastructureRef/name"
         value: worker-x86-small-ubuntu-24-04
-      - op: replace
-        path: "/spec/replicas"
-        value: 1
