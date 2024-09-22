@@ -1,14 +1,33 @@
 clusterName: cedi-dev
 globalConfig:
-  signing_key: foobar2342
-  account_id: foobar4223
+  signing_key: "{{ env.SIGNING_KEY }}"
+  account_id: "{{ env.ACCOUNT_ID }}"
+
 sinksConfig:
   - robusta_sink:
       name: robusta_ui_sink
-      token: token2342
+      token: "{{ env.ROBUSTA_UI_SINK_TOKEN }}"
+
 enablePlatformPlaybooks: true
+
 runner:
   sendAdditionalTelemetry: true
+  additional_env_vars:
+    - name: SIGNING_KEY
+      valueFrom:
+        secretKeyRef:
+          name: robusta-secrets
+          key: signing_key
+    - name: ACCOUNT_ID
+      valueFrom:
+        secretKeyRef:
+          name: robusta-secrets
+          key: account_id
+    - name: ROBUSTA_UI_SINK_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: robusta-secrets
+          key: robusta_ui_sink_token
 rsa:
   private: private2342
   public: public2342
