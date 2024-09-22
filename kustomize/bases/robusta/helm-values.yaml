@@ -32,7 +32,7 @@ runner:
           name: robusta-secrets
           key: robusta_ui_sink_token
 
-enableHolmesGPT: true
+enableHolmesGPT: false
 holmes:
   additionalEnvVars:
     - name: MODEL
