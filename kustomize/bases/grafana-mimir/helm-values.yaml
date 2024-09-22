@@ -121,7 +121,7 @@ ingester:
 
   zoneAwareReplication:
     enabled: true
-    topologyKey: "topology.kubernetes.io/region"
+    topologyKey: "kubernetes.io/hostname"
     zones:
       - name: fsn
         nodeSelector:
@@ -132,11 +132,6 @@ ingester:
       - name: hel
         nodeSelector:
           topology.kubernetes.io/region: hel1
-
-    topologySpreadConstraints:
-      maxSkew: 3
-      topologyKey: topology.kubernetes.io/region
-      whenUnsatisfiable: ScheduleAnyway
 
 store_gateway:
   replicas: 3
@@ -151,7 +146,7 @@ store_gateway:
 
   zoneAwareReplication:
     enabled: true
-    topologyKey: "topology.kubernetes.io/region"
+    topologyKey: "kubernetes.io/hostname"
     zones:
       - name: fsn
         nodeSelector:
@@ -162,11 +157,6 @@ store_gateway:
       - name: hel
         nodeSelector:
           topology.kubernetes.io/region: hel1
-
-    topologySpreadConstraints:
-      maxSkew: 3
-      topologyKey: topology.kubernetes.io/region
-      whenUnsatisfiable: ScheduleAnyway
 
 alertmanager:
   enabled: true
@@ -183,6 +173,11 @@ alertmanager:
       value: "amd64"
       effect: "NoSchedule"
 
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
+
 compactor:
   replicas: 3
 
@@ -193,6 +188,11 @@ compactor:
     requests:
       cpu: 944m
       memory: 335Mi
+
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
 distributor:
   replicas: 3
@@ -208,15 +208,10 @@ distributor:
       cpu: 80m
       memory: 196Mi
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: distributor
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
 overrides_exporter:
   replicas: 1
@@ -235,15 +230,10 @@ querier:
       maxSurge: 0
       maxUnavailable: 1
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: querier
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
   resources:
     requests:
@@ -259,15 +249,10 @@ query_frontend:
       maxSurge: 0
       maxUnavailable: 1
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: query-frontend
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
   resources:
     requests:
@@ -284,15 +269,10 @@ query_scheduler:
       maxSurge: 0
       maxUnavailable: 1
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: query-scheduler
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
   resources:
     requests:
@@ -313,15 +293,10 @@ ruler:
       cpu: 18m
       memory: 100Mi
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: ruler
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
 chunks-cache:
   enabled: true
@@ -333,15 +308,10 @@ chunks-cache:
       cpu: 10m
       memory: 100Mi
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: chunks-cache
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
 index-cache:
   enabled: true
@@ -353,33 +323,24 @@ index-cache:
       cpu: 10m
       memory: 100Mi
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: index-cache
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
 metadata-cache:
   enabled: true
+  replicas: 3
 
   resources:
     requests:
       cpu: 10m
       memory: 100Mi
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: metadata-cache
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
 results-cache:
   enabled: true
@@ -390,15 +351,10 @@ results-cache:
       cpu: 10m
       memory: 100Mi
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app.kubernetes.io/component: results-cache
-              app.kubernetes.io/instance: mimir
-              app.kubernetes.io/name: mimir
-          topologyKey: topology.kubernetes.io/region
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/region
+    whenUnsatisfiable: ScheduleAnyway
 
 rollout_operator:
   resources:
