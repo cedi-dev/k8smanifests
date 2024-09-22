@@ -176,7 +176,12 @@ alertmanager:
   statefulSet:
     enabled: true
 
-  topologySpreadConstraints: {}
+  # temporarily allow to run on amd64 due to resource constraints
+  tolerations:
+    - key: "arch"
+      operator: "Equal"
+      value: "amd64"
+      effect: "NoSchedule"
 
 compactor:
   replicas: 3
