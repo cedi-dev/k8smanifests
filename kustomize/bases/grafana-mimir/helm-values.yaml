@@ -175,7 +175,7 @@ alertmanager:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 compactor:
@@ -191,7 +191,7 @@ compactor:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 distributor:
@@ -210,7 +210,7 @@ distributor:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 overrides_exporter:
@@ -232,7 +232,7 @@ querier:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
   resources:
@@ -251,7 +251,7 @@ query_frontend:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
   resources:
@@ -271,7 +271,7 @@ query_scheduler:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
   resources:
@@ -295,7 +295,7 @@ ruler:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 chunks-cache:
@@ -310,7 +310,7 @@ chunks-cache:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 index-cache:
@@ -325,7 +325,7 @@ index-cache:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 metadata-cache:
@@ -339,7 +339,7 @@ metadata-cache:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 results-cache:
@@ -353,7 +353,7 @@ results-cache:
 
   topologySpreadConstraints:
     maxSkew: 1
-    topologyKey: topology.kubernetes.io/region
+    topologyKey: "kubernetes.io/hostname"
     whenUnsatisfiable: ScheduleAnyway
 
 rollout_operator:
