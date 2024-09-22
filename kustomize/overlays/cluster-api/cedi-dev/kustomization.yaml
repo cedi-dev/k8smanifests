@@ -40,22 +40,13 @@ patchesJson6902:
         path: "/spec/replicas"
         value: 2
 
-  - target:
-      version: v1beta1
-      kind: MachineDeployment
-      namespace: default
-      name: worker-arm-fsn
-    patch: |
-      - op: replace
-        path: "/spec/template/spec/infrastructureRef/name"
-        value: worker-arm-small-ubuntu-24-04
-
-  - target:
-      version: v1beta1
-      kind: MachineDeployment
-      namespace: default
-      name: worker-x86-nbg
-    patch: |
-      - op: replace
-        path: "/spec/template/spec/infrastructureRef/name"
-        value: worker-x86-small-ubuntu-24-04
+  # example for migrating just one deployment to a different machine template
+  # - target:
+  #     version: v1beta1
+  #     kind: MachineDeployment
+  #     namespace: default
+  #     name: worker-x86-nbg
+  #   patch: |
+  #     - op: replace
+  #       path: "/spec/template/spec/infrastructureRef/name"
+  #       value: worker-x86-small-ubuntu-24-04
