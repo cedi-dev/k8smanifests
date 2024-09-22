@@ -28,7 +28,7 @@ patchesJson6902:
     patch: |
       - op: replace
         path: "/spec/template/spec/version"
-        value: 1.30.5
+        value: 1.31.1
 
   - target:
       version: v1beta1
