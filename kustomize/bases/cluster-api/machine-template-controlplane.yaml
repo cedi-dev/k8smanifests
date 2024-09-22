@@ -15,3 +15,22 @@ spec:
         - name: cedi@mae
         - name: cedi@ivy
         - name: cedi@devpi
+
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudMachineTemplate
+metadata:
+  name: control-plane-arm-ubuntu-24-04
+  namespace: default
+  labels:
+    cluster.x-k8s.io/cluster-name: "cedi-dev"
+spec:
+  template:
+    spec:
+      imageName: ubuntu-22.04
+      placementGroupName: control-plane
+      type: cax11
+      sshKeys:
+        - name: cedi@mae
+        - name: cedi@ivy
+        - name: cedi@devpi
