@@ -159,7 +159,7 @@ store_gateway:
           topology.kubernetes.io/region: hel1
 
 alertmanager:
-  enabled: true
+  enabled: false
   persistentVolume:
     enabled: true
   replicas: 1
