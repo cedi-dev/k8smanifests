@@ -3,12 +3,23 @@ globalConfig:
   signing_key: foobar2342
   account_id: foobar4223
 sinksConfig:
-- robusta_sink:
-    name: robusta_ui_sink
-    token: token2342
+  - robusta_sink:
+      name: robusta_ui_sink
+      token: token2342
 enablePlatformPlaybooks: true
 runner:
   sendAdditionalTelemetry: true
 rsa:
   private: private2342
   public: public2342
+
+enableHolmesGPT: true
+holmes:
+  additionalEnvVars:
+    - name: MODEL
+      value: gpt-4o
+    - name: OPENAI_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: holmes-secrets
+          key: openAiKey
