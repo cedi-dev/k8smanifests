@@ -1,7 +1,9 @@
 clusterName: cedi-dev
+
 globalConfig:
   signing_key: "{{ env.SIGNING_KEY }}"
   account_id: "{{ env.ACCOUNT_ID }}"
+  prometheus_url: "http://prom-stack-prometheus.monitoring.svc.cluster.local:9090"
 
 sinksConfig:
   - robusta_sink:
@@ -9,6 +11,7 @@ sinksConfig:
       token: "{{ env.ROBUSTA_UI_SINK_TOKEN }}"
 
 enablePlatformPlaybooks: true
+enableServiceMonitors: true
 
 runner:
   sendAdditionalTelemetry: true
@@ -28,9 +31,6 @@ runner:
         secretKeyRef:
           name: robusta-secrets
           key: robusta_ui_sink_token
-rsa:
-  private: private2342
-  public: public2342
 
 enableHolmesGPT: true
 holmes:
