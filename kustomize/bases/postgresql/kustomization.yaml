@@ -5,7 +5,7 @@ namespace: postgresql
 helmCharts:
   - name: pgadmin4
     repo: https://helm.runix.net
-    version: 1.29.0
+    version: 1.30.0
     releaseName: pgadmin
     namespace: postgresql
     valuesFile: pgadmin-values.yaml
