@@ -38,7 +38,7 @@ patchesJson6902:
     patch: |
       - op: replace
         path: "/spec/replicas"
-        value: 2
+        value: 1
 
   # example for migrating just one deployment to a different machine template
   # - target:
