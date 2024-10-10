@@ -18,7 +18,6 @@ cert-checker:
       - dns: dash.ccl.pw
       - dns: hole.elbschloss.xyz
       - dns: kienzler.io
-      - dns: fritz-schiltach.kienzler.io
       - dns: 4omc3zg9nnqjvwaj.myfritz.net
       - dns: hass.elbschloss.xyz
       - dns: manager.elbschloss.xyz
