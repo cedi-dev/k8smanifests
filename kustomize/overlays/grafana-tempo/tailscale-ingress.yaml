@@ -1,17 +1,15 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tempo
+  name: tempo-distributor
 spec:
   ingressClassName: tailscale
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: tempo-distributor
-                port:
-                  number: 4318
+  defaultBackend:
+    service:
+      name: tempo-distributor
+      port:
+        number: 4318
+  tls:
+    - hosts:
+        - tempo-distributor
+      secretName: tempo-distributor-tls

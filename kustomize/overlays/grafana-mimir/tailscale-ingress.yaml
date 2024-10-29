@@ -1,17 +1,15 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: mimir
+  name: mimir-nginx
 spec:
   ingressClassName: tailscale
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: mimir-nginx
-                port:
-                  number: 80
+  defaultBackend:
+    service:
+      name: mimir-nginx
+      port:
+        number: 80
+  tls:
+    - hosts:
+        - mimir-nginx
+      secretName: mimir-nginx-tls
