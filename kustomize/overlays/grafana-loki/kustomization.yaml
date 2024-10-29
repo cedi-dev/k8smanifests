@@ -4,7 +4,7 @@ namespace: observability
 
 resources:
   - ../../bases/grafana-loki
-  # - tailscale-ingress.yaml
+  - tailscale-ingress.yaml
   - servicemonitor.yaml
 
 generators:
