@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: loki
+  name: loki-gateway
 spec:
   ingressClassName: tailscale
   defaultBackend:
@@ -10,3 +10,6 @@ spec:
       name: loki-gateway
       port:
         number: 80
+  tls:
+    - hosts:
+        - loki-gateway
