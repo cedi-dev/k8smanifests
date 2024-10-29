@@ -2,15 +2,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: mimir-mgmt-cedi-dev
-  annotations:
-    ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: tailnet-nginx
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  name: mimir
 spec:
+  ingressClassName: tailscale
   rules:
-    - host: mimir.mgmt.cedi.dev
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -19,7 +15,3 @@ spec:
                 name: mimir-nginx
                 port:
                   number: 80
-  tls:
-    - secretName: mimir-mgmt-cedi-dev-secret
-      hosts:
-        - mimir.mgmt.cedi.dev

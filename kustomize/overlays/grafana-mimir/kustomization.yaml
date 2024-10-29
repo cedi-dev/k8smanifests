@@ -7,7 +7,7 @@ generators:
 
 resources:
   - ../../bases/grafana-mimir
-  #  - tailscale-ingress.yaml
+  - tailscale-ingress.yaml
   - prometheus-rules.yaml
 
 patches:
