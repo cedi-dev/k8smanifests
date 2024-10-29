@@ -3,8 +3,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: loki
-  annotations:
-    tailscale.com/experimental-forward-cluster-traffic-via-ingress: "true"
 spec:
   ingressClassName: tailscale
   rules:
