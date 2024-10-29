@@ -2,8 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: observability
 
-bases:
+resources:
   - ../../bases/grafana-loki
+  - tailscale-ingress.yaml
+  - servicemonitor.yaml
 
 generators:
   - ./secret-generator.yaml
@@ -13,15 +15,12 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Loki'
+        grafana_folder: "Grafana Loki"
     files:
       - loki-writes-resources.json
       - loki-read-resources.json
-
-resources:
-  - servicemonitor.yaml
 
 patchesJson6902:
   - target:
@@ -32,16 +31,6 @@ patchesJson6902:
     patch: |-
       - op: remove
         path: /spec/persistentVolumeClaimRetentionPolicy
-
-  - target:
-      kind: (StatefulSet|Deployment)
-      group: apps
-      version: v1
-      name: ".*"
-    patch: |-
-      - op: replace
-        path: /spec/template/spec/affinity/podAntiAffinity/requiredDuringSchedulingIgnoredDuringExecution/0/topologyKey
-        value: topology.kubernetes.io/region
 
   - target:
       kind: (StatefulSet|Deployment)

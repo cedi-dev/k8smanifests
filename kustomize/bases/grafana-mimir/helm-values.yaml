@@ -27,7 +27,7 @@ global:
     - name: JAEGER_AGENT_HOST
       value: "tempo-distributor.observability.svc.cluster.local"
     - name: JAEGER_AGENT_PORT
-      value: "6831"
+      value: "14268"
     - name: JAEGER_SAMPLER_TYPE
       value: "const"
     - name: JAEGER_DISABLED
