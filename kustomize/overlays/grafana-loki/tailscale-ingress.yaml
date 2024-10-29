@@ -13,3 +13,4 @@ spec:
   tls:
     - hosts:
         - loki-gateway
+      secretName: loki-gateway-tls
