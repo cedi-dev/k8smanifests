@@ -5,6 +5,9 @@ namespace: argocd
 resources:
   - ../../../bases/argocd/
 
+generators:
+  - ./secret-generator.yaml
+
 patches:
   - target:
       kind: Role
@@ -27,16 +30,16 @@ patches:
       - op: remove
         path: "/spec/rules/0/host"
 
-  - target:
-      kind: Deployment
-      namespace: argocd
-      name: argocd-repo-server
-    patch: |-
-      - op: remove
-        path: "/spec/template/spec/containers/0/volumeMounts/0"
+  # - target:
+  #     kind: Deployment
+  #     namespace: argocd
+  #     name: argocd-repo-server
+  #   patch: |-
+  #     - op: remove
+  #       path: "/spec/template/spec/containers/0/volumeMounts/0"
 
-      - op: remove
-        path: "/spec/template/spec/volumes/0"
+  #     - op: remove
+  #       path: "/spec/template/spec/volumes/0"
 
   - target:
       kind: ConfigMap
