@@ -4,8 +4,10 @@ namespace: observability
 
 resources:
   - ../../../bases/grafana-tempo
-  - ./secret-generator.yaml
   - ./tailscale-ingress.yaml
+
+generators:
+  - ./secret-generator.yaml
 
 patchesJson6902:
   - target:
