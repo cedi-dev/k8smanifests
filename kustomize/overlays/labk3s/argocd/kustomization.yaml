@@ -25,14 +25,11 @@ patches:
         value: tailscale
 
       - op: remove
-        path: "/spec/tls"
+        path: "/spec/rules/0/host"
 
-      - op: add
-        path: "/spec/tls"
-        value: |-
-          - hosts:
-              - argocd-lab
-            secretName: argocd-lab-tls
+      - op: replace
+        path: "/spec/tls/0/hosts/0"
+        value: lab-argocd
 
   - target:
       kind: ConfigMap
