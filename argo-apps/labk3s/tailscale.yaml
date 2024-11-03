@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: promtail
+  name: tailscale
   namespace: argocd
 spec:
   destination:
-    namespace: observability
+    namespace: tailscale
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: kustomize/overlays/labk3s/grafana-promtail
+    path: kustomize/overlays/labk3s/tailscale
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
