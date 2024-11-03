@@ -31,6 +31,10 @@ patches:
         path: "/spec/tls/0/hosts/0"
         value: lab-argocd
 
+      - op: add
+        path: "/metadata/annotations/tailscale.com~1funnel"
+        value: true
+
   - target:
       kind: ConfigMap
       name: argocd-cm
