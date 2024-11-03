@@ -10,7 +10,7 @@ spec:
           - name: grafana-agent-operator
             path: charts/grafana-agent-operator
           - name: grafana-promtail
-            path: charts/grafana-promtail
+            path: kustomize/overlays/cedi-dev/grafana-promtail
           - name: grafana-loki
             path: kustomize/overlays/cedi-dev/grafana-loki
           - name: grafana-tempo
