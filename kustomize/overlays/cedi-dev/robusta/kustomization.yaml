@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: robusta
 
 resources:
-  - ../../bases/robusta
+  - ../../../bases/robusta
 
 generators:
   - ./secret-generator.yaml

@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: nautobot
 
 resources:
-  - ../../bases/nautobot
+  - ../../../bases/nautobot
 
 generators:
   - ./secret-generator.yaml

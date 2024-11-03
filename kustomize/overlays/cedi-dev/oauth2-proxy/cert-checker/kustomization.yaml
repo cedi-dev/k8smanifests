@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: oauth2-proxy-cert-checker
 
 resources:
-  - ../../../bases/oauth2-proxy
+  - ../../../../bases/oauth2-proxy
 
 generators:
   - ./secret-generator.yaml

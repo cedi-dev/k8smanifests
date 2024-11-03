@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: opentelemetry-operator-system
 
 bases:
-  - ../../bases/otel-collector-operator
+  - ../../../bases/otel-collector-operator
 
 patchesStrategicMerge:
   - delete-extra-namespace.patch.yaml

@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: postgresql
 
 bases:
-  - ../../bases/postgresql
+  - ../../../bases/postgresql
 
 generators:
   - ./secret-generator.yaml

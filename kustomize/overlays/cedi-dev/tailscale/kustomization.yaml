@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: tailscale
 
 bases:
-  - ../../bases/tailscale
+  - ../../../bases/tailscale
 
 generators:
   - ./secret-generator.yaml

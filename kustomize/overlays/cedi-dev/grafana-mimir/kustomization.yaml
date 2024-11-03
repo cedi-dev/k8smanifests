@@ -6,7 +6,7 @@ generators:
   - ./secret-generator.yaml
 
 resources:
-  - ../../bases/grafana-mimir
+  - ../../../bases/grafana-mimir
   - tailscale-ingress.yaml
   - prometheus-rules.yaml
 

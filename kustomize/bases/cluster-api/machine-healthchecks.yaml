@@ -7,6 +7,10 @@ spec:
   clusterName: cedi-dev
   maxUnhealthy: 100%
   nodeStartupTimeout: 20m0s
+  remediationTemplate:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: HCloudRemediationTemplate
+    name: control-plane-remediation-request
   selector:
     matchLabels:
       cluster.x-k8s.io/control-plane: ""
@@ -28,6 +32,10 @@ spec:
   clusterName: cedi-dev
   maxUnhealthy: 100%
   nodeStartupTimeout: 20m0s
+  remediationTemplate:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: HCloudRemediationTemplate
+    name: worker-remediation-request
   selector:
     matchLabels:
       nodepool: worker-arm
@@ -49,6 +57,10 @@ spec:
   clusterName: cedi-dev
   maxUnhealthy: 100%
   nodeStartupTimeout: 20m0s
+  remediationTemplate:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: HCloudRemediationTemplate
+    name: worker-remediation-request
   selector:
     matchLabels:
       nodepool: worker-x86
@@ -59,3 +71,29 @@ spec:
     - status: "False"
       timeout: 5m0s
       type: Ready
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudRemediationTemplate
+metadata:
+  name: control-plane-remediation-request
+  namespace: default
+spec:
+  template:
+    spec:
+      strategy:
+        retryLimit: 1
+        timeout: 180s
+        type: Reboot
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: HCloudRemediationTemplate
+metadata:
+  name: worker-remediation-request
+  namespace: default
+spec:
+  template:
+    spec:
+      strategy:
+        retryLimit: 1
+        timeout: 180s
+        type: Reboot

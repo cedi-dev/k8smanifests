@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: cert-manager
 
 resources:
-  - ../../bases/cluster-issuer/
+  - ../../../bases/cluster-issuer/
   - ./letsencrypt-prod-http01.yaml
 
 generators:

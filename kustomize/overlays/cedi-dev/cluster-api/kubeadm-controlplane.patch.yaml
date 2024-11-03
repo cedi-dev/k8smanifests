@@ -1,11 +1,11 @@
 - op: replace
   path: "/spec/kubeadmConfigSpec/preKubeadmCommands/1"
-  value: export CONTAINERD=1.7.13
+  value: export CONTAINERD=1.7.23
 
 - op: replace
   path: "/spec/kubeadmConfigSpec/preKubeadmCommands/2"
-  value: export KUBERNETES_VERSION="v1.29.9"
+  value: export KUBERNETES_VERSION="v1.30.6"
 
 - op: replace
   path: "/spec/version"
-  value: v1.29.9
+  value: v1.30.6
