@@ -16,8 +16,9 @@ spec:
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
+    # IMPORTANT: No automation. I don't want it to auto-delete my cluster
+    # automated:
+    #   prune: false
+    #   selfHeal: false
     syncOptions:
       - CreateNamespace=true
