@@ -5,11 +5,10 @@ metadata:
 spec:
   acme:
     email: k8s@cedi.dev
-    preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-prod-acme-account-key
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
-    - http01:
-        ingress:
-          class: nginx
+      - http01:
+          ingress:
+            class: nginx
