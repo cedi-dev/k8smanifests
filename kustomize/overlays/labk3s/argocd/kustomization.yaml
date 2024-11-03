@@ -25,21 +25,14 @@ patches:
         value: tailscale
 
       - op: remove
-        path: "/spec/tls/0/hosts"
+        path: "/spec/tls"
 
-      - op: remove
-        path: "/spec/rules/0/host"
-
-  # - target:
-  #     kind: Deployment
-  #     namespace: argocd
-  #     name: argocd-repo-server
-  #   patch: |-
-  #     - op: remove
-  #       path: "/spec/template/spec/containers/0/volumeMounts/0"
-
-  #     - op: remove
-  #       path: "/spec/template/spec/volumes/0"
+      - op: add
+        path: "/spec/tls"
+        value: |-
+          - hosts:
+              - argocd-lab
+            secretName: argocd-lab-tls
 
   - target:
       kind: ConfigMap
