@@ -1,10 +1,9 @@
-promtail:
-  fullnameOverride: "promtail"
+fullnameOverride: "promtail"
 
-  config:
-    clients:
-      - url: https://loki-gateway.tailc18b.ts.net/loki/api/v1/push
-        tenant_id: labk3s
+config:
+  clients:
+    - url: https://loki-gateway.tailc18b.ts.net/loki/api/v1/push
+      tenant_id: labk3s
 
-  serviceMonitor:
-    enabled: false
+serviceMonitor:
+  enabled: false
