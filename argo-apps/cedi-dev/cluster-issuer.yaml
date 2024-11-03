@@ -1,15 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nautobot
+  name: cluster-issuer
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: nautobot
-    server: https://kubernetes.default.svc
   project: default
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
   source:
-    path: kustomize/overlays/nautobot
+    path: kustomize/overlays/cedi-dev/cluster-issuer
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:

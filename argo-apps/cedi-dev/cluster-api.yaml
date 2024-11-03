@@ -1,15 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tailscale
+  name: cluster-cedi-dev
   namespace: argocd
+  # IMPORTANT: No finalizers by default. If I delete this Argo-App I don't want to purge my cluster...
+  #finalizers:
+  #  - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: "tailscale"
-    server: https://kubernetes.default.svc
   project: default
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
   source:
-    path: "kustomize/overlays/tailscale"
+    path: kustomize/overlays/cedi-dev/cluster-api
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:

@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: hugo-hosting
+  name: kube-metrics
   namespace: argocd
 spec:
   generators:
     - list:
         elements:
-          - name: hugo-hoster
-            path: kustomize/overlays/hugo-hoster
-          - name: hugo-pages
-            path: manifests/hugo-pages
+          - name: metrics-server
+            path: kustomize/overlays/cedi-dev/metrics-server
+          - name: kube-state-metrics
+            path: kustomize/overlays/cedi-dev/kube-state-metrics
   template:
     metadata:
       name: "{{name}}"
@@ -19,7 +19,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: "hugo-hoster"
+        namespace: "kube-system"
         server: https://kubernetes.default.svc
       project: default
       source:

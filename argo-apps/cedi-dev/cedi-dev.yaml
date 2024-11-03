@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: robusta
+  name: 1-meda-cedi-dev-cluster
   namespace: argocd
 spec:
   destination:
-    namespace: robusta
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: kustomize/overlays/robusta
+    path: argo-apps/cedi-dev
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:

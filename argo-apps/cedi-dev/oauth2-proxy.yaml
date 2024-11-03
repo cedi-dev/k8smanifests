@@ -1,29 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: exporters
+  name: oauth2-proxy
   namespace: argocd
 spec:
   generators:
     - list:
         elements:
-          - name: node-exporter
-            path: charts/node-exporter
-          - name: hcloud-exporter
-            path: kustomize/overlays/hcloud-exporter
+          # - name: postgresql
+          - name: cert-checker
+          - name: chaos-mesh
   template:
     metadata:
-      name: "{{name}}"
+      name: oauth2-proxy-{{name}}
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: "{{name}}"
+        namespace: oauth2-proxy-{{name}}
         server: https://kubernetes.default.svc
       project: default
       source:
-        path: "{{path}}"
+        path: kustomize/overlays/cedi-dev/oauth2-proxy/{{name}}
         repoURL: https://github.com/cedi-dev/k8smanifests.git
         targetRevision: main
       syncPolicy:

@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: nautobot
   namespace: argocd
 spec:
   destination:
-    namespace: argocd
+    namespace: nautobot
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: kustomize/overlays/argocd
+    path: kustomize/overlays/cedi-dev/nautobot
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
@@ -18,8 +18,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-  ignoreDifferences:
-    - kind: CiliumIdentity
-      group: cilium.io
-      jsonPointers:
-        - /

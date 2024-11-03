@@ -1,28 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: oauth2-proxy
+  name: hugo-hosting
   namespace: argocd
 spec:
   generators:
     - list:
         elements:
-          # - name: postgresql
-          - name: cert-checker
-          - name: chaos-mesh
+          - name: hugo-hoster
+            path: kustomize/overlays/cedi-dev/hugo-hoster
+          - name: hugo-pages
+            path: manifests/hugo-pages
   template:
     metadata:
-      name: oauth2-proxy-{{name}}
+      name: "{{name}}"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: oauth2-proxy-{{name}}
+        namespace: "hugo-hoster"
         server: https://kubernetes.default.svc
       project: default
       source:
-        path: kustomize/overlays/oauth2-proxy/{{name}}
+        path: "{{path}}"
         repoURL: https://github.com/cedi-dev/k8smanifests.git
         targetRevision: main
       syncPolicy:

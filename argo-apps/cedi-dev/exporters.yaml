@@ -1,26 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: ccl-pw
+  name: exporters
   namespace: argocd
 spec:
   generators:
     - list:
         elements:
-          - name: shortlinks
-            path: manifests/shortlinks
-          - name: redirects
-            path: manifests/redirects
+          - name: node-exporter
+            path: charts/node-exporter
+          - name: hcloud-exporter
+            path: kustomize/overlays/cedi-dev/hcloud-exporter
   template:
     metadata:
       name: "{{name}}"
       namespace: argocd
-      # No finalizers here on purpose! This stuff is critical and shouldn't be finalized easily^^
-      #finalizers:
-      #  - resources-finalizer.argocd.argoproj.io
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: "urlshortener"
+        namespace: "{{name}}"
         server: https://kubernetes.default.svc
       project: default
       source:

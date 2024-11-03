@@ -1,17 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: urlshortener
+  name: otel-collector-operator
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: urlshortener
+    namespace: opentelemetry-operator-system
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: kustomize/overlays/urlshortener
+    path: kustomize/overlays/cedi-dev/otel-collector-operator
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:

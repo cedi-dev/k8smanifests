@@ -1,28 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: observability
+  name: ccl-pw
   namespace: argocd
 spec:
   generators:
     - list:
         elements:
-          - name: grafana-agent-operator
-            path: charts/grafana-agent-operator
-          - name: grafana-promtail
-            path: charts/grafana-promtail
-          - name: grafana-loki
-            path: kustomize/overlays/grafana-loki
-          - name: grafana-tempo
-            path: kustomize/overlays/grafana-tempo
-          - name: grafana-vulture
-            path: charts/grafana-vulture
-          - name: grafana-mimir
-            path: kustomize/overlays/grafana-mimir
-          - name: grafana
-            path: kustomize/overlays/grafana
-          #- name: grafana-oncall
-          #  path: kustomize/overlays/grafana-oncall
+          - name: urlshortener
+            path: kustomize/overlays/cedi-dev/urlshortener
+          - name: shortlinks
+            path: manifests/shortlinks
+          - name: redirects
+            path: manifests/redirects
   template:
     metadata:
       name: "{{name}}"
@@ -32,7 +22,7 @@ spec:
       #  - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: "observability"
+        namespace: "urlshortener"
         server: https://kubernetes.default.svc
       project: default
       source:

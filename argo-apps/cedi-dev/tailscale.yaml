@@ -1,17 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster-issuer
+  name: tailscale
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
   destination:
-    namespace: default
+    namespace: "tailscale"
     server: https://kubernetes.default.svc
+  project: default
   source:
-    path: kustomize/overlays/cluster-issuer
+    path: "kustomize/overlays/cedi-dev/tailscale"
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
