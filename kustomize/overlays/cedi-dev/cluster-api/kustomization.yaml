@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: default
 
-bases:
+resources:
   - ../../../bases/cluster-api/
 
-patchesJson6902:
+patches:
   - target:
       version: v1beta1
       kind: KubeadmConfigTemplate
@@ -39,6 +39,19 @@ patchesJson6902:
       - op: replace
         path: "/spec/replicas"
         value: 1
+
+  - target:
+      version: v1beta1
+      kind: MachineDeployment
+      namespace: default
+      name: worker-arm-fsn
+    patch: |
+      - op: replace
+        path: "/spec/template/spec/infrastructureRef/name"
+        value: worker-arm-small-ubuntu-24-04
+      - op: replace
+        path: "/spec/replicas"
+        value: 2
 
   # example for migrating just one deployment to a different machine template
   # - target:
