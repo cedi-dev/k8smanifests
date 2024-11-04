@@ -9,7 +9,12 @@ generators:
   - ./secret-generator.yaml
 
 patches:
-  - path: delete-sm.yaml
+  - path: delete-sm-server.yaml
+  - path: delete-sm-repo-server.yaml
+  - path: delete-sm-redis.yaml
+  - path: delete-sm-dex.yaml
+  - path: delete-sm-app-controller.yaml
+  - path: delete-sm-appset-controller.yaml
   - target:
       kind: Role
       namespace: argocd
