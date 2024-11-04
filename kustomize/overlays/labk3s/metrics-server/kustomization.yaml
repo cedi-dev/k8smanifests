@@ -6,6 +6,7 @@ resources:
   - ../../../bases/metrics-server
 
 patches:
+  - path: delete-sm.yaml
   - target:
       kind: Deployment
       version: v1
