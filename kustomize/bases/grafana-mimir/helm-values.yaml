@@ -25,7 +25,7 @@ minio:
 global:
   extraEnv:
     - name: JAEGER_AGENT_HOST
-      value: "mimir-collector-collector"
+      value: "mimir-collector-collector:4318"
     - name: JAEGER_SAMPLER_TYPE
       value: "const"
     - name: JAEGER_DISABLED

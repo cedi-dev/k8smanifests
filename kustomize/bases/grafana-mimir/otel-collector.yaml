@@ -1,18 +1,27 @@
 apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
-  name: mimir-collector
+  name: mimir-otel
 spec:
   mode: deployment
   config:
     receivers:
-      jaeger:
+      otlp:
         protocols:
           grpc:
             endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
+      jaeger:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:14250
           thrift_binary:
+            endpoint: 0.0.0.0:6832
           thrift_compact:
+            endpoint: 0.0.0.0:6831
           thrift_http:
+            endpoint: 0.0.0.0:14268
 
     processors:
 
@@ -26,6 +35,7 @@ spec:
         traces:
           receivers:
             - jaeger
+            - otel
           exporters:
             - debug
             - otlphttp
