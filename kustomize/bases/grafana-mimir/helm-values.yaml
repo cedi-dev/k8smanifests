@@ -26,10 +26,6 @@ global:
   extraEnv:
     - name: JAEGER_AGENT_HOST
       value: "mimir-otel-collector"
-    - name: JAEGER_SAMPLER_TYPE
-      value: "const"
-    - name: JAEGER_DISABLED
-      value: "false"
 
   extraEnvFrom:
     - secretRef:
