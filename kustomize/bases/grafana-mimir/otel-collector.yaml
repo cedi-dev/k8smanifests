@@ -27,6 +27,7 @@ spec:
 
     exporters:
       debug:
+        verbosity: detailed
       otlphttp:
         endpoint: tempo-distributor.observability.svc.cluster.local:4318
 
