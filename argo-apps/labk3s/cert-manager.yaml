@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/cert-manager
+    path: kustomize/overlays/labk3s/cert-manager
     repoURL: https://github.com/cedi-dev/k8smanifests.git
     targetRevision: main
   syncPolicy:
