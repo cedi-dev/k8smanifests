@@ -9,3 +9,6 @@ helmCharts:
     releaseName: mimir
     namespace: observability
     valuesFile: helm-values.yaml
+
+resources:
+  - otel-collector.yaml

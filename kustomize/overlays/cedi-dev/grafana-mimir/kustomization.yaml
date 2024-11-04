@@ -9,7 +9,6 @@ resources:
   - ../../../bases/grafana-mimir
   - tailscale-ingress.yaml
   - prometheus-rules.yaml
-  - otel-collector.yaml
 
 patches:
   - target:
