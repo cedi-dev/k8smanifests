@@ -35,7 +35,7 @@ spec:
         traces:
           receivers:
             - jaeger
-            - otel
+            - otlp
           exporters:
             - debug
             - otlphttp
