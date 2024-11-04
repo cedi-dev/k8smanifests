@@ -6,7 +6,6 @@ resources:
   - ../../../bases/metrics-server
 
 patches:
-  - path: servicemonitor.delete.yaml
   - target:
       kind: Deployment
       version: v1
