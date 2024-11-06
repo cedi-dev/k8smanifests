@@ -7,7 +7,7 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_datasource: '1'
+        grafana_datasource: "1"
     files:
       - grafana.yaml
 
@@ -15,9 +15,17 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_datasource: '1'
+        grafana_datasource: "1"
     files:
       - prom-operator.yaml
+
+  - name: homelab-datasources
+    namespace: observability
+    options:
+      labels:
+        grafana_datasource: "1"
+    files:
+      - homelab.yaml
 
 resources:
   - pdc-agent.yaml
