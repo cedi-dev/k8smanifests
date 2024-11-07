@@ -3,13 +3,23 @@ kind: Kustomization
 namespace: observability
 
 configMapGenerator:
+  - name: synologyDashboard
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: "1"
+      annotations:
+        grafana_folder: "Infrastructure"
+    files:
+      - infrastructure/synology-dashboard.json
+
   - name: adguardhome
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Infrastructure'
+        grafana_folder: "Infrastructure"
     files:
       - infrastructure/adguardhome_exporter.json
 
@@ -17,9 +27,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Infra Apps'
+        grafana_folder: "Kubernetes Infra Apps"
     files:
       - kubernetes-infra-apps/argocd-dashboard.json
 
@@ -27,9 +37,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Infra Apps'
+        grafana_folder: "Kubernetes Infra Apps"
     files:
       - kubernetes-infra-apps/cert-manager-dashboard.json
 
@@ -37,7 +47,7 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
     files:
       - dashboards/etcd-enhanced-dashboard.json
 
@@ -45,9 +55,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Infra Apps'
+        grafana_folder: "Kubernetes Infra Apps"
     files:
       - kubernetes-infra-apps/ingress-nginx-dashboard.json
 
@@ -55,9 +65,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Infrastructure'
+        grafana_folder: "Infrastructure"
     files:
       - infrastructure/hcloud-server-dashboard.json
 
@@ -65,7 +75,7 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
     files:
       - dashboards/node-problem-detector.json
 
@@ -73,9 +83,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Infrastructure'
+        grafana_folder: "Infrastructure"
     files:
       - infrastructure/node_exporter.json
 
@@ -83,7 +93,7 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
     files:
       - dashboards/urlshortener.json
 
@@ -91,9 +101,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-alertmanager-resources.json
 
@@ -101,9 +111,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-alertmanager.json
 
@@ -111,9 +121,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-compactor-resources.json
 
@@ -121,9 +131,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-compactor.json
 
@@ -131,9 +141,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-config.json
 
@@ -141,9 +151,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-object-store.json
 
@@ -151,9 +161,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-overrides.json
 
@@ -161,9 +171,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-overview-networking.json
 
@@ -171,9 +181,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-overview-resources.json
 
@@ -181,9 +191,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-overview.json
 
@@ -191,9 +201,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-queries.json
 
@@ -201,9 +211,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-reads-networking.json
 
@@ -211,9 +221,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-reads-resources.json
 
@@ -221,9 +231,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-reads.json
 
@@ -231,9 +241,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-remote-ruler-reads-resources.json
 
@@ -241,9 +251,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-remote-ruler-reads.json
 
@@ -251,9 +261,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-rollout-progress.json
 
@@ -261,9 +271,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-ruler.json
 
@@ -271,9 +281,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-scaling.json
 
@@ -281,9 +291,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-slow-queries.json
 
@@ -291,9 +301,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-tenants.json
 
@@ -301,9 +311,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-top-tenants.json
 
@@ -311,9 +321,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-writes-networking.json
 
@@ -321,9 +331,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-writes-resources.json
 
@@ -331,9 +341,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Grafana Mimir'
+        grafana_folder: "Grafana Mimir"
     files:
       - mimir/mimir-writes.json
 
@@ -341,20 +351,19 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Infrastructure'
+        grafana_folder: "Infrastructure"
     files:
       - infrastructure/cert-checker.json
-
 
   - name: apiserver
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/apiserver.json
 
@@ -362,9 +371,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/cluster-total.json
 
@@ -372,9 +381,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/controller-manager.json
 
@@ -382,9 +391,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/k8s-resources-cluster.json
 
@@ -392,9 +401,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/k8s-resources-namespace.json
 
@@ -402,9 +411,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/k8s-resources-node.json
 
@@ -412,9 +421,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/k8s-resources-pod.json
 
@@ -422,9 +431,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/k8s-resources-workload.json
 
@@ -432,9 +441,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/k8s-resources-workloads-namespace.json
 
@@ -442,9 +451,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/kubelet.json
 
@@ -452,9 +461,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/namespace-by-pod.json
 
@@ -462,9 +471,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/namespace-by-workload.json
 
@@ -472,9 +481,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/persistentvolumesusage.json
 
@@ -482,9 +491,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/pod-total.json
 
@@ -492,9 +501,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/proxy.json
 
@@ -502,9 +511,9 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/scheduler.json
 
@@ -512,8 +521,8 @@ configMapGenerator:
     namespace: observability
     options:
       labels:
-        grafana_dashboard: '1'
+        grafana_dashboard: "1"
       annotations:
-        grafana_folder: 'Kubernetes Mixin'
+        grafana_folder: "Kubernetes Mixin"
     files:
       - kubernetes-mixin/workload-total.json
