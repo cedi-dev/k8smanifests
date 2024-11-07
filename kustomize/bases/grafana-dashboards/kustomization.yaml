@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: observability
 
 configMapGenerator:
-  - name: synologyDashboard
+  - name: synology-dashboard
     namespace: observability
     options:
       labels:
