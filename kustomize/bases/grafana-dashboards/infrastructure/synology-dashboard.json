@@ -24,7 +24,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 1,
-    "id": 69,
+    "id": 70,
     "links": [
         {
             "asDropdown": false,
@@ -3422,8 +3422,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "yellow",
@@ -3546,8 +3545,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             }
                         ]
                     },
@@ -3627,8 +3625,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             }
                         ]
                     },
@@ -4979,7 +4976,7 @@
         }
     ],
     "preload": false,
-    "refresh": "5s",
+    "refresh": "1m",
     "schemaVersion": 40,
     "tags": [
         "Synology",
@@ -5023,6 +5020,6 @@
     "timezone": "browser",
     "title": "Synology Dashboard",
     "uid": "lcHlCU2Vz",
-    "version": 7,
+    "version": 1,
     "weekStart": "monday"
 }
