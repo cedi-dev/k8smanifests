@@ -18,7 +18,7 @@ datasources:
 
   - name: "Loki (homelab)"
     type: loki
-    uid: loki-lab
+    uid: loki-homelab
     url: http://loki-gateway.observability.svc.cluster.local
     access: proxy
     editable: false
@@ -39,7 +39,7 @@ datasources:
 
   - name: "Loki (labk3s)"
     type: loki
-    uid: loki-lab
+    uid: loki-labk3s
     url: http://loki-gateway.observability.svc.cluster.local
     access: proxy
     editable: false
