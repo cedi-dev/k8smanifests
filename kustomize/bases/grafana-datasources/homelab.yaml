@@ -16,7 +16,28 @@ datasources:
     secureJsonData:
       httpHeaderValue1: homelab
 
-  - name: "Loki-Logs-labk3s"
+  - name: "Loki (homelab)"
+    type: loki
+    uid: loki-lab
+    url: http://loki-gateway.observability.svc.cluster.local
+    access: proxy
+    editable: false
+    jsonData:
+      derivedFields:
+        - name: "trace_id"
+          matcherRegex: "trace_id=(\\w+)"
+          url: "$${__value.raw}"
+          datasourceUid: tempo
+        - name: "span_id"
+          matcherRegex: "span_id=(\\w+)"
+          url: "$${__value.raw}"
+          datasourceUid: tempo
+      maxLines: 1000
+      httpHeaderName1: X-Scope-OrgID
+    secureJsonData:
+      httpHeaderValue1: homelab
+
+  - name: "Loki (labk3s)"
     type: loki
     uid: loki-lab
     url: http://loki-gateway.observability.svc.cluster.local

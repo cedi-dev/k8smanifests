@@ -44,7 +44,7 @@ datasources:
     secureJsonData:
       httpHeaderValue1: metamonitoring
 
-  - name: "Tempo-Traces"
+  - name: "Tempo (cedi.dev)"
     type: tempo
     uid: tempo
     url: http://tempo-query-frontend.observability.svc.cluster.local:3100
@@ -67,7 +67,7 @@ datasources:
       lokiSearch:
         datasourceUid: loki
 
-  - name: "Loki-Logs"
+  - name: "Loki (cedi.dev)"
     type: loki
     uid: loki
     url: http://loki-gateway.observability.svc.cluster.local
