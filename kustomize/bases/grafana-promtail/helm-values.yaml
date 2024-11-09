@@ -3,6 +3,7 @@ fullnameOverride: "promtail"
 config:
   clients:
     - url: http://loki-gateway.observability.svc.cluster.local/loki/api/v1/push
+      tenant_id: cedi-dev
 
 serviceMonitor:
   enabled: true

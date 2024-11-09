@@ -3,7 +3,7 @@ fullnameOverride: loki
 deploymentMode: SimpleScalable
 
 loki:
-  auth_enabled: false
+  auth_enabled: true
 
   storage:
     type: s3

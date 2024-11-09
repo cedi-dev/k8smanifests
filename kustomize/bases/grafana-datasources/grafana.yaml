@@ -84,3 +84,6 @@ datasources:
           url: "$${__value.raw}"
           datasourceUid: tempo
       maxLines: 1000
+      httpHeaderName1: X-Scope-OrgID
+    secureJsonData:
+      httpHeaderValue1: cedi-dev
