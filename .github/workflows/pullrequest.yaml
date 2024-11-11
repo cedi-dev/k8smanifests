@@ -187,7 +187,7 @@ jobs:
         run: |
           set -e
           touch kubeval.txt
-          for kust in ./kustomize/overlays/*/
+          for kust in ./kustomize/overlays/*/*
           do
             echo "$kust"
             kustomize build --enable-alpha-plugins --enable-helm $kust | kubeval --ignore-missing-schemas --strict | tee -a kubeval.txt

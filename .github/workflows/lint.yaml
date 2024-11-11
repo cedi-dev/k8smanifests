@@ -77,7 +77,7 @@ jobs:
 
       - name: Kustomize
         run: |
-          for kust in ./kustomize/overlays/*/
+          for kust in ./kustomize/overlays/*/*
           do
             if [[ $kust != "./kustomize/overlays/oauth2-proxy/" ]]; then
               echo "$kust"
