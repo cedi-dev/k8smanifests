@@ -3,6 +3,16 @@ kind: Kustomization
 namespace: observability
 
 configMapGenerator:
+  - name: rpi-dashboard
+    namespace: observability
+    options:
+      labels:
+        grafana_dashboard: "1"
+      annotations:
+        grafana_folder: "Infrastructure"
+    files:
+      - infrastructure/rpi_dashboard.json
+
   - name: synology-dashboard
     namespace: observability
     options:
