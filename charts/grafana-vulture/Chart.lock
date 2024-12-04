@@ -1,6 +1,6 @@
 dependencies:
 - name: tempo-vulture
   repository: https://grafana.github.io/helm-charts
-  version: 0.7.0
-digest: sha256:b2157b69667d0475d9ad34588ac4bfaf92674a0b24ab6ef9695a18a17b2968d8
-generated: "2024-11-18T22:53:09.165943821Z"
+  version: 0.7.1
+digest: sha256:ec647422f05835a74e5b3160679125a1758e8b7f3344f37bdd2a0c3865a2e52a
+generated: "2024-12-04T00:28:16.716440768Z"
