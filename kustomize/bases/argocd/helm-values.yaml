@@ -189,15 +189,14 @@ configs:
     kustomize.buildOptions: "--enable-alpha-plugins --enable-helm"
 
     dex.config: |
-      connectors:
-        - type: github
-          id: github
-          name: GitHub
-          config:
-            clientID: $dex.oauth.github.clientID
-            clientSecret: $dex.oauth.github.clientSecret
-            orgs:
-              - name: cedi-dev
+      - type: oidc
+        id: tsidp
+        name: Tailscale IDP
+        config:
+          clientID: foo
+          clientSecret: bar
+          issuer: https://idp.tailc18b.ts.net/.well-known/openid-configuration
+          redirectURI: https://argocd.cedi.dev/api/dex/callback
 
     resource.exclusions: |
       - apiGroups:
