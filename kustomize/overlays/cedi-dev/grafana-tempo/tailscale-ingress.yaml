@@ -4,11 +4,24 @@ metadata:
   name: tempo-distributor
 spec:
   ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: tempo-distributor
-      port:
-        number: 4318
+  rules:
+    - host: tempo-distributor
+      http:
+        paths:
+          - path: /otlp-http
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: tempo-distributor
+                port:
+                  number: 4318
+          - path: /otlp-grpc
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: tempo-distributor
+                port:
+                  number: 4317
   tls:
     - hosts:
         - tempo-distributor
