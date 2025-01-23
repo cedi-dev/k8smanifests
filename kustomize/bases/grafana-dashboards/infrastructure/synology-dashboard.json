@@ -24,7 +24,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 1,
-    "id": 70,
+    "id": 67,
     "links": [
         {
             "asDropdown": false,
@@ -325,7 +325,7 @@
                 "showHeader": true,
                 "sortBy": []
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -568,7 +568,7 @@
                 "textMode": "value_and_name",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -675,7 +675,7 @@
                 },
                 "showHeader": false
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -1069,7 +1069,7 @@
                 "showHeader": true,
                 "sortBy": []
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -1462,7 +1462,7 @@
                 "showHeader": false,
                 "sortBy": []
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -1714,7 +1714,7 @@
                 "showHeader": true,
                 "sortBy": []
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -1871,7 +1871,7 @@
                 "showThresholdMarkers": true,
                 "sizing": "auto"
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -1970,7 +1970,7 @@
                 "showThresholdMarkers": true,
                 "sizing": "auto"
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -2153,7 +2153,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -2291,18 +2291,19 @@
                 "showHeader": false,
                 "sortBy": []
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
-                    "editorMode": "builder",
+                    "editorMode": "code",
                     "exemplar": false,
-                    "expr": "up",
+                    "expr": "up{instance=~\"192.168.0.64.*\"}",
                     "format": "table",
                     "instant": false,
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "Lyxon-PC"
                 }
@@ -2623,7 +2624,7 @@
                 "showHeader": true,
                 "sortBy": []
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -2791,7 +2792,7 @@
                 "showThresholdMarkers": true,
                 "sizing": "auto"
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -2890,7 +2891,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -3072,7 +3073,7 @@
                     "sort": "desc"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -3281,7 +3282,7 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
@@ -3422,7 +3423,8 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green"
+                                "color": "green",
+                                "value": null
                             },
                             {
                                 "color": "yellow",
@@ -3465,7 +3467,7 @@
                     "sort": "desc"
                 }
             },
-            "pluginVersion": "11.3.0",
+            "pluginVersion": "11.4.0",
             "targets": [
                 {
                     "datasource": {
