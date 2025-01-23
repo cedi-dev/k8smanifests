@@ -98,8 +98,6 @@ read:
     requests:
       cpu: 27m
       memory: 137Mi
-    limits:
-      memory: 137Mi
 
 backend:
   replicas: 3
