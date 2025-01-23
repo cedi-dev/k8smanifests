@@ -22,7 +22,7 @@ configMapGenerator:
       - loki-writes-resources.json
       - loki-read-resources.json
 
-patchesJson6902:
+patches:
   - target:
       kind: StatefulSet
       group: apps
