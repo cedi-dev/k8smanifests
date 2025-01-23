@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: observability
 
 resources:
-  - ../../../bases/grafana-loki
+  - ../../../bases/grafana-loki/
   - tailscale-ingress.yaml
   - servicemonitor.yaml
 
