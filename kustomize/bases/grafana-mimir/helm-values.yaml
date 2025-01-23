@@ -66,7 +66,7 @@ mimir:
       # With sharding we can further shard each day another 16 times. 14 days * 16 shards = 224 subqueries.
       max_query_parallelism: 224
       max_global_series_per_user: 0
-      ingestion_rate: 0
+      ingestion_rate: 2000000
       ingestion_burst_size: 2000000
       # Delete from storage metrics data older than 1 year.
       compactor_blocks_retention_period: 1y
