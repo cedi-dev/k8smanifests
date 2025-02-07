@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mimir-nginx
-  annotation:
+  annotations:
     tailscale.com/tags: "tag:o11y-endpoint"
 spec:
   ingressClassName: tailscale
