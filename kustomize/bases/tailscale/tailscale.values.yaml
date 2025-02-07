@@ -9,4 +9,3 @@ operatorConfig:
   # Multiple tags are defined as array items and passed to the operator as a comma-separated string
   defaultTags:
     - "tag:k8s-operator"
-    - "tag:prod"
