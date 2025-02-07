@@ -41,6 +41,10 @@ patches:
         path: "/metadata/annotations/tailscale.com~1funnel"
         value: true
 
+      - op: add
+        path: "/metadata/annotations/tailscale.com~1tags"
+        value: "homelab"
+
   - target:
       kind: ConfigMap
       name: argocd-cm
