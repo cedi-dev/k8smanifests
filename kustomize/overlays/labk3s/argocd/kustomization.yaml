@@ -43,7 +43,7 @@ patches:
 
       - op: add
         path: "/metadata/annotations/tailscale.com~1tags"
-        value: "tag:homelab"
+        value: "\"tag:homelab\""
 
   - target:
       kind: ConfigMap
