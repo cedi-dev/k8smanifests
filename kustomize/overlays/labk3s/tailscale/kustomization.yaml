@@ -8,3 +8,6 @@ generators:
 resources:
   - ../../../bases/tailscale
   - ./dns-config.yaml
+
+patches:
+  - path: deployment.yaml
