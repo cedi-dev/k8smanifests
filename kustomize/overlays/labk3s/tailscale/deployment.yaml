@@ -13,3 +13,5 @@ spec:
               value: tag:k3s
             - name: OPERATOR_INITIAL_TAGS
               value: tag:k3s-operator
+            - name: OPERATOR_HOSTNAME
+              value: lab-tailscale-operator
