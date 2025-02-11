@@ -27,5 +27,14 @@ configMapGenerator:
     files:
       - homelab.yaml
 
+  - name: homeassistant-datasources
+    namespace: observability
+    options:
+      labels:
+        grafana_datasource: "1"
+    files:
+      - homeassistant.yaml
+      - homeassistant-schiltach.yaml
+
 resources:
   - pdc-agent.yaml
