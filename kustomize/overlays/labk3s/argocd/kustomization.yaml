@@ -49,9 +49,41 @@ patches:
       kind: ConfigMap
       name: argocd-cm
     patch: |-
-      - op: remove
+      - op: replace
         path: "/data/dex.config"
+        value: |
+          connectors:
+            - type: oidc
+              id: oidc
+              name: Tailscale
+              config:
+                issuer: https://idp.tailc18b.ts.net
+                clientID: foo
+                clientSecret: bar
+                redirectURI: https://lab-argocd.tailc18b.ts.net/api/dex/callback
+                scopes:
+                  - openid
+                getUserInfo: true
+                Default: username
+                claimMapping:
+                  Default: username
 
       - op: replace
         path: "/data/url"
-        value: argocd-argocd-server-ingress.tailc18b.ts.net
+        value: https://lab-argocd.tailc18b.ts.net
+
+  - target:
+      kind: ConfigMap
+      name: argocd-rbac-cm
+    patch: |-
+      - op: replace
+        path: "/data/policy.csv"
+        value: |-
+          p, role:org-admin, *, *, *, allow
+          p, role:viewer, *, get, *, allow
+          g, cedi@github, role:org-admin
+          g, cedi, role:org-admin
+
+      - op: replace
+        path: "/data/scopes"
+        value: "[username,email]"
