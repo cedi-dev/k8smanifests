@@ -190,14 +190,20 @@ configs:
 
     dex.config: |
       connectors:
-        - type: github
-          id: github
-          name: GitHub
+        - type: oidc
+          id: oidc
+          name: Tailscale
           config:
-            clientID: $dex.oauth.github.clientID
-            clientSecret: $dex.oauth.github.clientSecret
-            orgs:
-              - name: cedi-dev
+            issuer: https://idp.tailc18b.ts.net
+            clientID: foo
+            clientSecret: bar
+            redirectURI: https://argocd.tailc18b.ts.net/api/dex/callback
+            scopes:
+              - openid
+            getUserInfo: true
+            Default: username
+            claimMapping:
+              Default: username
 
     resource.exclusions: |
       - apiGroups:
@@ -214,17 +220,13 @@ configs:
   rbac:
     create: true
     policy.default: role:readonly
+    scopes: "[username,email]"
     policy.csv: |
       p, role:org-admin, *, *, *, allow
       p, role:viewer, *, get, *, allow
 
-      g, cedi-dev:argocd, role:viewer
-      g, cedi-dev:admin, role:org-admin
-
-  secret:
-    extra:
-      dex.oauth.github.clientID: foobar1234
-      dex.oauth.github.clientSecret: fooobar2345
+      g, cedi@github, role:org-admin
+      g, cedi, role:org-admin
 
   repositories:
     bitnami:
