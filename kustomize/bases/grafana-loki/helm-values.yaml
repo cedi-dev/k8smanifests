@@ -32,6 +32,11 @@ loki:
 gateway:
   replicas: 3
 
+  deploymentStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+
   resources:
     requests:
       cpu: 10m
