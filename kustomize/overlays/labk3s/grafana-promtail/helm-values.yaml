@@ -2,7 +2,7 @@ fullnameOverride: "promtail"
 
 config:
   clients:
-    - url: https://loki-gateway.tailc18b.ts.net/loki/api/v1/push
+    - url: https://loki-gateway.sphinx-map.ts.net/loki/api/v1/push
       tenant_id: labk3s
 
 serviceMonitor:

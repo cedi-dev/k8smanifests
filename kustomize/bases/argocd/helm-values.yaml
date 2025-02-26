@@ -194,10 +194,10 @@ configs:
           id: oidc
           name: Tailscale
           config:
-            issuer: https://idp.tailc18b.ts.net
+            issuer: https://idp.sphinx-map.ts.net
             clientID: foo
             clientSecret: bar
-            redirectURI: https://argocd.tailc18b.ts.net/api/dex/callback
+            redirectURI: https://argocd.sphinx-map.ts.net/api/dex/callback
             scopes:
               - openid
             getUserInfo: true
