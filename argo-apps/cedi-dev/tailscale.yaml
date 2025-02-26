@@ -1,20 +1,20 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: tailscale
-#   namespace: argocd
-# spec:
-#   destination:
-#     namespace: "tailscale"
-#     server: https://kubernetes.default.svc
-#   project: default
-#   source:
-#     path: "kustomize/overlays/cedi-dev/tailscale"
-#     repoURL: https://github.com/cedi-dev/k8smanifests.git
-#     targetRevision: main
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
-#     syncOptions:
-#       - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tailscale
+  namespace: argocd
+spec:
+  destination:
+    namespace: "tailscale"
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: "kustomize/overlays/cedi-dev/tailscale"
+    repoURL: https://github.com/cedi-dev/k8smanifests.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
