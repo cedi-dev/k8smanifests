@@ -42,8 +42,6 @@ gateway:
     requests:
       cpu: 10m
       memory: 100Mi
-    limits:
-      memory: 100Mi
 
   affinity:
     podAntiAffinity:
@@ -78,8 +76,6 @@ write:
     requests:
       memory: 313Mi
       cpu: 35m
-    limits:
-      memory: 313Mi
 
 read:
   replicas: 3
@@ -121,8 +117,6 @@ backend:
   resources:
     requests:
       cpu: 22m
-      memory: 100Mi
-    limits:
       memory: 100Mi
 
 monitoring:
