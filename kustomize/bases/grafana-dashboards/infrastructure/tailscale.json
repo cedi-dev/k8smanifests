@@ -383,7 +383,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "rate(tailscaled_inbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m])",
+                    "expr": "rate(tailscaled_inbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m]) > 0",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "legendFormat": "{{instance}} RX {{reason}}",
@@ -397,7 +397,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "(rate(tailscaled_outbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m]))*-1",
+                    "expr": "(rate(tailscaled_outbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m]) > 0)*-1",
                     "hide": false,
                     "instant": false,
                     "legendFormat": "{{instance}} TX {{reason}}",
