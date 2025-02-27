@@ -16,10 +16,10 @@
         ]
     },
     "description": "Tailscale - Point to point VPN. Shows traffic and some other metrics. dashboard retrieved from random guy on the internet.",
-    "editable": false,
+    "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 68,
+    "id": 71,
     "links": [
         {
             "asDropdown": false,
@@ -52,7 +52,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
+                "uid": "${datasource}"
             },
             "description": "Advertised and approved subnet routes",
             "fieldConfig": {
@@ -80,7 +80,7 @@
             },
             "gridPos": {
                 "h": 4,
-                "w": 12,
+                "w": 24,
                 "x": 0,
                 "y": 1
             },
@@ -102,12 +102,12 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "11.2.0",
+            "pluginVersion": "11.5.2",
             "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
+                        "uid": "${datasource}"
                     },
                     "editorMode": "code",
                     "expr": "tailscaled_advertised_routes{job=\"$job\", instance=~\"$instance\"}",
@@ -118,7 +118,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
+                        "uid": "${datasource}"
                     },
                     "editorMode": "code",
                     "expr": "tailscaled_approved_routes{job=\"$job\", instance=~\"$instance\"}",
@@ -174,115 +174,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "fixedColor": "text",
-                        "mode": "fixed"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 10
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 4,
-                "w": 6,
-                "x": 12,
-                "y": 1
-            },
-            "id": 11,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "percentChangeColorMode": "standard",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showPercentChange": false,
-                "textMode": "auto",
-                "wideLayout": true
-            },
-            "pluginVersion": "11.2.0",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
-                    },
-                    "editorMode": "code",
-                    "expr": "tailscaled_health_messages{job=\"$job\", instance=~\"$instance\"}",
-                    "legendFormat": "{{type}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Health Messages",
-            "transformations": [
-                {
-                    "id": "calculateField",
-                    "options": {
-                        "mode": "reduceRow",
-                        "reduce": {
-                            "reducer": "sum"
-                        },
-                        "replaceFields": true
-                    }
-                }
-            ],
-            "transparent": true,
-            "type": "stat"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
-            },
-            "gridPos": {
-                "h": 4,
-                "w": 6,
-                "x": 18,
-                "y": 1
-            },
-            "id": 22,
-            "options": {
-                "code": {
-                    "language": "markdown",
-                    "showLineNumbers": false,
-                    "showMiniMap": false
-                },
-                "content": "### Colors\n\nPurple = inbound traffic  \nBlue = outbound traffic",
-                "mode": "markdown"
-            },
-            "pluginVersion": "11.2.0",
-            "transparent": true,
-            "type": "text"
-        },
-        {
-            "datasource": {
-                "default": true,
-                "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
+                "uid": "${datasource}"
             },
             "description": "Inbound/outbound bytes/sec per interface",
             "fieldConfig": {
@@ -377,7 +269,7 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
+                "h": 9,
                 "w": 12,
                 "x": 0,
                 "y": 5
@@ -396,21 +288,22 @@
                     "showLegend": false
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "multi",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.4.0",
+            "pluginVersion": "11.5.2",
             "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
+                        "uid": "${datasource}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
                     "exemplar": false,
-                    "expr": "sum by(instance) (rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])) * 8",
+                    "expr": "(sum by(instance) (rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])) * 8)*-1",
                     "format": "time_series",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
@@ -423,7 +316,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
+                        "uid": "${datasource}"
                     },
                     "editorMode": "code",
                     "expr": "sum by (instance) (\r\n  rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\r\n)*8",
@@ -440,470 +333,8 @@
         },
         {
             "datasource": {
-                "default": true,
                 "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
-            },
-            "description": "Dropped Packets",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "barWidthFactor": 0.6,
-                        "drawStyle": "line",
-                        "fillOpacity": 40,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "line"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [
-                            {
-                                "color": "dark-red",
-                                "value": null
-                            }
-                        ]
-                    },
-                    "unit": "pps"
-                },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byRegexp",
-                            "options": "/.*unknown/"
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": true,
-                                    "tooltip": false,
-                                    "viz": true
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byRegexp",
-                            "options": "/.*error/"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "mode": "thresholds",
-                                    "seriesBy": "max"
-                                }
-                            },
-                            {
-                                "id": "custom.gradientMode",
-                                "value": "scheme"
-                            },
-                            {
-                                "id": "custom.fillOpacity",
-                                "value": 25
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byRegexp",
-                            "options": "/.*multicast/"
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": true,
-                                    "tooltip": false,
-                                    "viz": true
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byRegexp",
-                            "options": "/.*acl/"
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": true,
-                                    "tooltip": false,
-                                    "viz": true
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 5
-            },
-            "id": 8,
-            "options": {
-                "legend": {
-                    "calcs": [
-                        "mean",
-                        "max",
-                        "min"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": false
-                },
-                "tooltip": {
-                    "mode": "multi",
-                    "sort": "none"
-                }
-            },
-            "pluginVersion": "11.4.0",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "code",
-                    "expr": "rate(tailscaled_inbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m])",
-                    "fullMetaSearch": false,
-                    "includeNullMetadata": true,
-                    "legendFormat": "{{instance}} RX {{reason}}",
-                    "range": true,
-                    "refId": "A",
-                    "useBackend": false
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
-                    },
-                    "editorMode": "code",
-                    "expr": "rate(tailscaled_outbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m])",
-                    "hide": false,
-                    "instant": false,
-                    "legendFormat": "{{instance}} TX {{reason}}",
-                    "range": true,
-                    "refId": "B"
-                }
-            ],
-            "title": "Errors (TX/RX)",
-            "transparent": true,
-            "type": "timeseries"
-        },
-        {
-            "collapsed": false,
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 13
-            },
-            "id": 15,
-            "panels": [],
-            "title": "Direct Traffic (P2P)",
-            "type": "row"
-        },
-        {
-            "datasource": {
-                "default": true,
-                "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
-            },
-            "description": "Traffic from direct peer-to-peer connections.\n",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "barWidthFactor": 0.6,
-                        "drawStyle": "line",
-                        "fillOpacity": 40,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "bps"
-                },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Value"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-purple",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 14
-            },
-            "id": 6,
-            "options": {
-                "legend": {
-                    "calcs": [
-                        "mean",
-                        "max",
-                        "min"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "multi",
-                    "sort": "none"
-                }
-            },
-            "pluginVersion": "11.4.0",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "code",
-                    "expr": "sum by (instance) (\r\n  rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\r\n)*8",
-                    "fullMetaSearch": false,
-                    "includeNullMetadata": true,
-                    "legendFormat": "{{instance}} RX {{path}}",
-                    "range": true,
-                    "refId": "A",
-                    "useBackend": false
-                }
-            ],
-            "title": "Inbound",
-            "transparent": true,
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "default": true,
-                "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
-            },
-            "description": "Traffic to direct peer-to-peer connections.",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "barWidthFactor": 0.6,
-                        "drawStyle": "line",
-                        "fillOpacity": 40,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "bps"
-                },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Value"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-blue",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 14
-            },
-            "id": 17,
-            "options": {
-                "legend": {
-                    "calcs": [
-                        "mean",
-                        "max",
-                        "min"
-                    ],
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "multi",
-                    "sort": "none"
-                }
-            },
-            "pluginVersion": "11.4.0",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
-                    },
-                    "editorMode": "code",
-                    "expr": "sum by (instance) (\r\n  rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\r\n)*8",
-                    "hide": false,
-                    "instant": false,
-                    "legendFormat": "{{instance}} TX {{path}}",
-                    "range": true,
-                    "refId": "B"
-                }
-            ],
-            "title": "Outbound",
-            "transparent": true,
-            "type": "timeseries"
-        },
-        {
-            "collapsed": false,
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 22
-            },
-            "id": 16,
-            "panels": [],
-            "title": "Relayed Traffic (DERP)",
-            "type": "row"
-        },
-        {
-            "datasource": {
-                "default": true,
-                "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
+                "uid": "${datasource}"
             },
             "description": "Traffic from relayed connections. DERP (Designated Encrypted Relay for Packets) servers act as a relay server when a direct connection isn’t possible. Relay connections might result in higher latency.\n",
             "fieldConfig": {
@@ -960,31 +391,15 @@
                     },
                     "unit": "bps"
                 },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Value"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-purple",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
-                "h": 8,
+                "h": 9,
                 "w": 12,
-                "x": 0,
-                "y": 23
+                "x": 12,
+                "y": 5
             },
-            "id": 18,
+            "id": 24,
             "options": {
                 "legend": {
                     "calcs": [
@@ -997,39 +412,52 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "multi",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.4.0",
+            "pluginVersion": "11.5.2",
             "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
+                        "uid": "${datasource}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[2m])*8",
+                    "expr": "rate(tailscaled_inbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m])*8",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
-                    "legendFormat": "{{instance}} RX {{path}}",
+                    "legendFormat": "{{instance}} RX {{reason}}",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "(rate(tailscaled_outbound_dropped_packets_total{job=\"$job\", instance=~\"$instance\"}[2m])*8)*-1",
+                    "hide": false,
+                    "instant": false,
+                    "legendFormat": "{{instance}} TX {{reason}}",
+                    "range": true,
+                    "refId": "B"
                 }
             ],
-            "title": "Inbound",
+            "title": "Dropped Traffic",
             "transparent": true,
             "type": "timeseries"
         },
         {
             "datasource": {
-                "default": true,
                 "type": "prometheus",
-                "uid": "bdystiylb8s8wb"
+                "uid": "${datasource}"
             },
-            "description": "Traffic from relayed connections. DERP (Designated Encrypted Relay for Packets) servers act as a relay server when a direct connection isn’t possible.  Relay connections might result in higher latency.",
+            "description": "Traffic from direct peer-to-peer connections.\n",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -1084,55 +512,15 @@
                     },
                     "unit": "bps"
                 },
-                "overrides": [
-                    {
-                        "__systemRef": "hideSeriesFrom",
-                        "matcher": {
-                            "id": "byNames",
-                            "options": {
-                                "mode": "exclude",
-                                "names": [
-                                    "100.70.71.101:5252 recv "
-                                ],
-                                "prefix": "All except:",
-                                "readOnly": true
-                            }
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": false,
-                                    "tooltip": false,
-                                    "viz": false
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Value"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-blue",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
                 "h": 8,
                 "w": 12,
-                "x": 12,
-                "y": 23
+                "x": 0,
+                "y": 14
             },
-            "id": 19,
+            "id": 6,
             "options": {
                 "legend": {
                     "calcs": [
@@ -1145,56 +533,204 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "multi",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.4.0",
+            "pluginVersion": "11.5.2",
             "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "bdystiylb8s8wb"
+                        "uid": "${datasource}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[2m])*8",
+                    "expr": "sum by (instance) (\r\n  rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\r\n)*8",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
-                    "legendFormat": "{{instance}} TX {{path}}",
+                    "legendFormat": "{{instance}} RX {{path}}",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "(sum by (instance) (\n  rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=~\"direct_.*\"}[2m])\n)*8)*-1",
+                    "hide": false,
+                    "instant": false,
+                    "legendFormat": "{{instance}} TX {{path}}",
+                    "range": true,
+                    "refId": "B"
                 }
             ],
-            "title": "Outbound",
+            "title": "Direct Traffic (P2P)",
+            "transparent": true,
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+            },
+            "description": "Traffic from relayed connections. DERP (Designated Encrypted Relay for Packets) servers act as a relay server when a direct connection isn’t possible. Relay connections might result in higher latency.\n",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "barWidthFactor": 0.6,
+                        "drawStyle": "line",
+                        "fillOpacity": 40,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "never",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "bps"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 14
+            },
+            "id": 18,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "mean",
+                        "max",
+                        "min"
+                    ],
+                    "displayMode": "table",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "multi",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.5.2",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "code",
+                    "expr": "rate(tailscaled_inbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[2m])*8",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "legendFormat": "{{instance}} RX {{path}}",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "(rate(tailscaled_outbound_bytes_total{job=\"$job\", instance=~\"$instance\", path=\"derp\"}[2m])*8)*-1",
+                    "hide": false,
+                    "instant": false,
+                    "legendFormat": "{{instance}} TX {{path}}",
+                    "range": true,
+                    "refId": "B"
+                }
+            ],
+            "title": "Relayed Traffic (DERP)",
             "transparent": true,
             "type": "timeseries"
         }
     ],
+    "preload": false,
     "refresh": "1m",
-    "schemaVersion": 39,
+    "schemaVersion": 40,
     "tags": [
         "prometheus"
     ],
     "templating": {
         "list": [
             {
+                "allowCustomValue": false,
                 "current": {
-                    "selected": false,
-                    "text": "tailscale-job",
-                    "value": "tailscale-job"
+                    "text": "Mimir (homelab)",
+                    "value": "mimir-homelab"
+                },
+                "description": "",
+                "label": "Datasource",
+                "name": "datasource",
+                "options": [],
+                "query": "prometheus",
+                "refresh": 1,
+                "regex": "",
+                "type": "datasource"
+            },
+            {
+                "current": {
+                    "text": "tailscale_exporter",
+                    "value": "tailscale_exporter"
                 },
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "bdystiylb8s8wb"
+                    "uid": "${datasource}"
                 },
                 "definition": "label_values(up, job)",
                 "description": "Fetch info from Prometheus scrape job.",
-                "hide": 0,
                 "includeAll": false,
                 "label": "job",
-                "multi": false,
                 "name": "job",
                 "options": [],
                 "query": {
@@ -1204,27 +740,22 @@
                 },
                 "refresh": 1,
                 "regex": ".*tailscale.*",
-                "skipUrlSync": false,
                 "sort": 1,
                 "type": "query"
             },
             {
-                "allValue": "",
                 "current": {
-                    "selected": true,
                     "text": "All",
                     "value": "$__all"
                 },
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "bdystiylb8s8wb"
+                    "uid": "${datasource}"
                 },
                 "definition": "label_values(up{job=\"$job\"}, instance)",
                 "description": "What target you want to fetch info from.",
-                "hide": 0,
                 "includeAll": true,
                 "label": "instance",
-                "multi": false,
                 "name": "instance",
                 "options": [],
                 "query": {
@@ -1234,7 +765,6 @@
                 },
                 "refresh": 1,
                 "regex": "",
-                "skipUrlSync": false,
                 "sort": 1,
                 "type": "query"
             }
@@ -1248,6 +778,6 @@
     "timezone": "browser",
     "title": "Tailscale",
     "uid": "de9fpk1payv40c",
-    "version": 71,
+    "version": 1,
     "weekStart": ""
 }
