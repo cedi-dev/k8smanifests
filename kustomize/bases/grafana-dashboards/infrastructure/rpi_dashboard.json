@@ -191,9 +191,11 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "max by (instance) (rpi_fan_rpm)",
+          "instant": true,
           "legendFormat": "{{instance}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -271,9 +273,11 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "max by (instance) (rpi_fan_pwm_level)",
+          "instant": true,
           "legendFormat": "{{instance}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -686,7 +690,6 @@
           },
           "decimals": 0,
           "mappings": [],
-          "max": 4,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
