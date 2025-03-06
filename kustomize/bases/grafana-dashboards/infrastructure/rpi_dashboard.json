@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 65,
+  "id": 66,
   "links": [],
   "panels": [
     {
@@ -100,7 +100,7 @@
         "tooltipSecondarySortByField": "value",
         "tooltipSecondarySortDirection": 1
       },
-      "pluginVersion": "2.1.13",
+      "pluginVersion": "2.1.14",
       "targets": [
         {
           "datasource": {
@@ -108,9 +108,12 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
+          "exemplar": false,
           "expr": "label_replace(up{job=\"rpi_exporter\", instance !~ \"nas.*\"}, \"instance_name\", \"$1\", \"instance\", \"(.*):(.*)\") == 0",
+          "hide": false,
+          "instant": true,
           "legendFormat": "{{instance_name}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -180,7 +183,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -188,7 +191,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rpi_fan_rpm",
+          "expr": "max by (instance) (rpi_fan_rpm)",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -260,7 +263,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -268,7 +271,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rpi_fan_pwm_level",
+          "expr": "max by (instance) (rpi_fan_pwm_level)",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -379,14 +382,17 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -394,8 +400,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "max_over_time(rpi_cpu_temperature_celsius[$__interval])",
+          "editorMode": "code",
+          "expr": "max by (instance) (rpi_cpu_temperature_celsius)",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{instance}}",
@@ -496,14 +502,17 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -512,7 +521,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "max_over_time(rpi_gpu_temperature_celsius[$__interval])",
+          "expr": "max by (instance) (rpi_gpu_temperature_celsius)",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -546,8 +555,8 @@
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
+            "fillOpacity": 33,
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -604,14 +613,17 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -619,7 +631,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rpi_fan_rpm",
+          "expr": "max by (instance) (rpi_fan_rpm)",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -648,8 +660,8 @@
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
+            "fillOpacity": 33,
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
@@ -707,14 +719,17 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -722,7 +737,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rpi_fan_pwm_level",
+          "expr": "max by (instance) (rpi_fan_pwm_level)",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
