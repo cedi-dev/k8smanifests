@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     path: kustomize/overlays/cedi-dev/cluster-api
-    repoURL: https://github.com/cedi-dev/k8smanifests.git
+    repoURL: https://github.com/specht-labs/k8s-deployment.git
     targetRevision: main
   syncPolicy:
     # IMPORTANT: No automation. I don't want it to auto-delete my cluster

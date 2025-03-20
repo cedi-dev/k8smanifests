@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/cert-checker
-    repoURL: https://github.com/cedi-dev/k8smanifests.git
+    repoURL: https://github.com/specht-labs/k8s-deployment.git
     targetRevision: main
   syncPolicy:
     automated:
