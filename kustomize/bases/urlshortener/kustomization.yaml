@@ -4,7 +4,7 @@ namespace: urlshortener
 
 helmCharts:
   - name: urlshortener
-    repo: https://urlshortener-cedi-dev.github.io/urlshortener-helm/
+    repo: https://spechtlabs.github.io/helm-charts
     version: 0.0.13
     releaseName: urlshortener
     namespace: urlshortener
