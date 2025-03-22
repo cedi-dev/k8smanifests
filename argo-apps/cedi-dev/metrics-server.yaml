@@ -24,7 +24,7 @@ spec:
       project: default
       source:
         path: "{{path}}"
-        repoURL: https://github.com/specht-labs/k8s-deployment.git
+        repoURL: https://github.com/SpechtLabs/k8s-deployment.git
         targetRevision: main
       syncPolicy:
         automated:

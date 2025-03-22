@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: kustomize/overlays/labk3s/tailscale
-    repoURL: https://github.com/specht-labs/k8s-deployment.git
+    repoURL: https://github.com/SpechtLabs/k8s-deployment.git
     targetRevision: main
   syncPolicy:
     automated:

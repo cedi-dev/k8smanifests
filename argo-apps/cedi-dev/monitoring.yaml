@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: kustomize/overlays/cedi-dev/kube-prometheus-stack
-    repoURL: https://github.com/specht-labs/k8s-deployment.git
+    repoURL: https://github.com/SpechtLabs/k8s-deployment.git
     targetRevision: main
   syncPolicy:
     automated:

@@ -7,7 +7,7 @@ global:
   domain: argocd.cedi.dev
 
   image:
-    repository: "ghcr.io/specht-labs/argocd-custom-container"
+    repository: "ghcr.io/SpechtLabs/argocd-custom-container"
     imagePullPolicy: "Always"
     tag: "main"
 

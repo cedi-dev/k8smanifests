@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: argo-apps/cedi-dev
-    repoURL: https://github.com/specht-labs/k8s-deployment.git
+    repoURL: https://github.com/SpechtLabs/k8s-deployment.git
     targetRevision: main
   syncPolicy:
     automated:
